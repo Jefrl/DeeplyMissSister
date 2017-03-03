@@ -7,13 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A525C6411E69481E00933774 /* HXLTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A525C6401E69481E00933774 /* HXLTabBar.m */; };
+		A56F78FC1E67131900E5E3CB /* HXLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A56F78F91E67131900E5E3CB /* HXLNavigationController.m */; };
+		A56F78FD1E67131900E5E3CB /* HXLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A56F78FB1E67131900E5E3CB /* HXLTabBarController.m */; };
+		A56F79031E6802A700E5E3CB /* UIBarButtonItem+HXLBarBtnItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A56F79021E6802A700E5E3CB /* UIBarButtonItem+HXLBarBtnItem.m */; };
+		A56F79061E6874BC00E5E3CB /* UIImage+HXLRenderOriginal.m in Sources */ = {isa = PBXBuildFile; fileRef = A56F79051E6874BC00E5E3CB /* UIImage+HXLRenderOriginal.m */; };
 		A57F5F281E62DC2E002BA929 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57F5F261E62DC2E002BA929 /* Main.storyboard */; };
-		A57F5F2A1E62DC2E002BA929 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A57F5F291E62DC2E002BA929 /* Assets.xcassets */; };
 		A57F5F2D1E62DC2E002BA929 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57F5F2B1E62DC2E002BA929 /* LaunchScreen.storyboard */; };
 		A57F5F381E62DC2E002BA929 /* BaiSiBuDeJieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A57F5F371E62DC2E002BA929 /* BaiSiBuDeJieTests.m */; };
 		A57F5F5D1E634D01002BA929 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A57F5F561E634D00002BA929 /* AppDelegate.m */; };
 		A57F5F691E63517B002BA929 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A57F5F581E634D01002BA929 /* main.m */; };
-		A57F5F6A1E635184002BA929 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A57F5F671E635157002BA929 /* Info.plist */; };
+		A5E1A45C1E65929C0060F656 /* HXLLastestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1A45B1E65929C0060F656 /* HXLLastestViewController.m */; };
+		A5E1A45F1E6593AE0060F656 /* HXLReleaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1A45E1E6593AE0060F656 /* HXLReleaseViewController.m */; };
+		A5E1A4651E6593E20060F656 /* HXLFollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1A4641E6593E20060F656 /* HXLFollowViewController.m */; };
+		A5E1A4681E6593FC0060F656 /* HXLMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1A4671E6593FC0060F656 /* HXLMineViewController.m */; };
+		A5E1A46B1E6598DF0060F656 /* HXLEssenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1A46A1E6598DF0060F656 /* HXLEssenceViewController.m */; };
+		A5E1A4701E65A7C70060F656 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5E1A46F1E65A7C70060F656 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,9 +36,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A525C63F1E69481E00933774 /* HXLTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLTabBar.h; sourceTree = "<group>"; };
+		A525C6401E69481E00933774 /* HXLTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLTabBar.m; sourceTree = "<group>"; };
+		A56F78F81E67131900E5E3CB /* HXLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLNavigationController.h; sourceTree = "<group>"; };
+		A56F78F91E67131900E5E3CB /* HXLNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLNavigationController.m; sourceTree = "<group>"; };
+		A56F78FA1E67131900E5E3CB /* HXLTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLTabBarController.h; sourceTree = "<group>"; };
+		A56F78FB1E67131900E5E3CB /* HXLTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLTabBarController.m; sourceTree = "<group>"; };
+		A56F79011E6802A700E5E3CB /* UIBarButtonItem+HXLBarBtnItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+HXLBarBtnItem.h"; sourceTree = "<group>"; };
+		A56F79021E6802A700E5E3CB /* UIBarButtonItem+HXLBarBtnItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+HXLBarBtnItem.m"; sourceTree = "<group>"; };
+		A56F79041E6874BC00E5E3CB /* UIImage+HXLRenderOriginal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+HXLRenderOriginal.h"; sourceTree = "<group>"; };
+		A56F79051E6874BC00E5E3CB /* UIImage+HXLRenderOriginal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HXLRenderOriginal.m"; sourceTree = "<group>"; };
 		A57F5F1A1E62DC2E002BA929 /* BaiSiBuDeJie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaiSiBuDeJie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57F5F271E62DC2E002BA929 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A57F5F291E62DC2E002BA929 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A57F5F2C1E62DC2E002BA929 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A57F5F331E62DC2E002BA929 /* BaiSiBuDeJieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaiSiBuDeJieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57F5F371E62DC2E002BA929 /* BaiSiBuDeJieTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaiSiBuDeJieTests.m; sourceTree = "<group>"; };
@@ -38,6 +56,18 @@
 		A57F5F561E634D00002BA929 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A57F5F581E634D01002BA929 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A57F5F671E635157002BA929 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5E1A4591E656C510060F656 /* BaiSiBiDeJie-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaiSiBiDeJie-Prefix.pch"; sourceTree = "<group>"; };
+		A5E1A45A1E65929C0060F656 /* HXLLastestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLLastestViewController.h; sourceTree = "<group>"; };
+		A5E1A45B1E65929C0060F656 /* HXLLastestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLLastestViewController.m; sourceTree = "<group>"; };
+		A5E1A45D1E6593AE0060F656 /* HXLReleaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLReleaseViewController.h; sourceTree = "<group>"; };
+		A5E1A45E1E6593AE0060F656 /* HXLReleaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLReleaseViewController.m; sourceTree = "<group>"; };
+		A5E1A4631E6593E20060F656 /* HXLFollowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLFollowViewController.h; sourceTree = "<group>"; };
+		A5E1A4641E6593E20060F656 /* HXLFollowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLFollowViewController.m; sourceTree = "<group>"; };
+		A5E1A4661E6593FC0060F656 /* HXLMineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLMineViewController.h; sourceTree = "<group>"; };
+		A5E1A4671E6593FC0060F656 /* HXLMineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLMineViewController.m; sourceTree = "<group>"; };
+		A5E1A4691E6598DF0060F656 /* HXLEssenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLEssenceViewController.h; sourceTree = "<group>"; };
+		A5E1A46A1E6598DF0060F656 /* HXLEssenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLEssenceViewController.m; sourceTree = "<group>"; };
+		A5E1A46F1E65A7C70060F656 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +88,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A525C63E1E6947EE00933774 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A525C63F1E69481E00933774 /* HXLTabBar.h */,
+				A525C6401E69481E00933774 /* HXLTabBar.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A56F78F51E6712C500E5E3CB /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				A56F78F61E6712C500E5E3CB /* Category */,
+				A56F78F71E6712C500E5E3CB /* Controller */,
+				A525C63E1E6947EE00933774 /* View */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		A56F78F61E6712C500E5E3CB /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				A56F79011E6802A700E5E3CB /* UIBarButtonItem+HXLBarBtnItem.h */,
+				A56F79021E6802A700E5E3CB /* UIBarButtonItem+HXLBarBtnItem.m */,
+				A56F79041E6874BC00E5E3CB /* UIImage+HXLRenderOriginal.h */,
+				A56F79051E6874BC00E5E3CB /* UIImage+HXLRenderOriginal.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		A56F78F71E6712C500E5E3CB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A56F78F81E67131900E5E3CB /* HXLNavigationController.h */,
+				A56F78F91E67131900E5E3CB /* HXLNavigationController.m */,
+				A56F78FA1E67131900E5E3CB /* HXLTabBarController.h */,
+				A56F78FB1E67131900E5E3CB /* HXLTabBarController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		A57F5F111E62DC2E002BA929 = {
 			isa = PBXGroup;
 			children = (
@@ -89,7 +160,6 @@
 			isa = PBXGroup;
 			children = (
 				A57F5F261E62DC2E002BA929 /* Main.storyboard */,
-				A57F5F291E62DC2E002BA929 /* Assets.xcassets */,
 				A57F5F2B1E62DC2E002BA929 /* LaunchScreen.storyboard */,
 			);
 			name = "Supporting Files";
@@ -109,9 +179,9 @@
 			children = (
 				A57F5F431E634D00002BA929 /* Essence */,
 				A57F5F4B1E634D00002BA929 /* Lastest */,
-				A57F5F591E634D01002BA929 /* Publish */,
+				A5E1A4451E655C9D0060F656 /* Release */,
 				A57F5F471E634D00002BA929 /* Follow */,
-				A57F5F4F1E634D00002BA929 /* Me */,
+				A5E1A44B1E655D410060F656 /* Mine */,
 				A57F5F531E634D00002BA929 /* Other */,
 			);
 			path = Classes;
@@ -130,6 +200,8 @@
 		A57F5F441E634D00002BA929 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A5E1A4691E6598DF0060F656 /* HXLEssenceViewController.h */,
+				A5E1A46A1E6598DF0060F656 /* HXLEssenceViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -161,6 +233,8 @@
 		A57F5F481E634D00002BA929 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A5E1A4631E6593E20060F656 /* HXLFollowViewController.h */,
+				A5E1A4641E6593E20060F656 /* HXLFollowViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -192,6 +266,8 @@
 		A57F5F4C1E634D00002BA929 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A5E1A45A1E65929C0060F656 /* HXLLastestViewController.h */,
+				A5E1A45B1E65929C0060F656 /* HXLLastestViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -210,40 +286,10 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		A57F5F4F1E634D00002BA929 /* Me */ = {
-			isa = PBXGroup;
-			children = (
-				A57F5F501E634D00002BA929 /* Controller */,
-				A57F5F511E634D00002BA929 /* Model */,
-				A57F5F521E634D00002BA929 /* View */,
-			);
-			path = Me;
-			sourceTree = "<group>";
-		};
-		A57F5F501E634D00002BA929 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		A57F5F511E634D00002BA929 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		A57F5F521E634D00002BA929 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		A57F5F531E634D00002BA929 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				A56F78F51E6712C500E5E3CB /* Public */,
 				A57F5F541E634D00002BA929 /* System */,
 			);
 			path = Other;
@@ -252,39 +298,76 @@
 		A57F5F541E634D00002BA929 /* System */ = {
 			isa = PBXGroup;
 			children = (
+				A5E1A46F1E65A7C70060F656 /* Assets.xcassets */,
 				A57F5F551E634D00002BA929 /* AppDelegate.h */,
 				A57F5F561E634D00002BA929 /* AppDelegate.m */,
 				A57F5F581E634D01002BA929 /* main.m */,
+				A5E1A4591E656C510060F656 /* BaiSiBiDeJie-Prefix.pch */,
 				A57F5F671E635157002BA929 /* Info.plist */,
 			);
 			path = System;
 			sourceTree = "<group>";
 		};
-		A57F5F591E634D01002BA929 /* Publish */ = {
+		A5E1A4451E655C9D0060F656 /* Release */ = {
 			isa = PBXGroup;
 			children = (
-				A57F5F5A1E634D01002BA929 /* Controller */,
-				A57F5F5B1E634D01002BA929 /* Model */,
-				A57F5F5C1E634D01002BA929 /* View */,
+				A5E1A4461E655C9D0060F656 /* Controller */,
+				A5E1A4471E655C9D0060F656 /* Model */,
+				A5E1A4481E655C9D0060F656 /* View */,
 			);
-			path = Publish;
+			path = Release;
 			sourceTree = "<group>";
 		};
-		A57F5F5A1E634D01002BA929 /* Controller */ = {
+		A5E1A4461E655C9D0060F656 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A5E1A45D1E6593AE0060F656 /* HXLReleaseViewController.h */,
+				A5E1A45E1E6593AE0060F656 /* HXLReleaseViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		A57F5F5B1E634D01002BA929 /* Model */ = {
+		A5E1A4471E655C9D0060F656 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		A57F5F5C1E634D01002BA929 /* View */ = {
+		A5E1A4481E655C9D0060F656 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A5E1A44B1E655D410060F656 /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				A5E1A44C1E655D410060F656 /* Controller */,
+				A5E1A44D1E655D410060F656 /* Model */,
+				A5E1A44E1E655D410060F656 /* View */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		A5E1A44C1E655D410060F656 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A5E1A4661E6593FC0060F656 /* HXLMineViewController.h */,
+				A5E1A4671E6593FC0060F656 /* HXLMineViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A5E1A44D1E655D410060F656 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A5E1A44E1E655D410060F656 /* View */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -335,6 +418,7 @@
 		A57F5F121E62DC2E002BA929 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = HXL;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = com.Jefrl.www;
 				TargetAttributes = {
@@ -373,9 +457,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A57F5F6A1E635184002BA929 /* Info.plist in Resources */,
 				A57F5F2D1E62DC2E002BA929 /* LaunchScreen.storyboard in Resources */,
-				A57F5F2A1E62DC2E002BA929 /* Assets.xcassets in Resources */,
+				A5E1A4701E65A7C70060F656 /* Assets.xcassets in Resources */,
 				A57F5F281E62DC2E002BA929 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,8 +477,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5E1A4681E6593FC0060F656 /* HXLMineViewController.m in Sources */,
+				A56F78FD1E67131900E5E3CB /* HXLTabBarController.m in Sources */,
+				A5E1A46B1E6598DF0060F656 /* HXLEssenceViewController.m in Sources */,
+				A56F79031E6802A700E5E3CB /* UIBarButtonItem+HXLBarBtnItem.m in Sources */,
 				A57F5F691E63517B002BA929 /* main.m in Sources */,
+				A56F79061E6874BC00E5E3CB /* UIImage+HXLRenderOriginal.m in Sources */,
+				A525C6411E69481E00933774 /* HXLTabBar.m in Sources */,
 				A57F5F5D1E634D01002BA929 /* AppDelegate.m in Sources */,
+				A56F78FC1E67131900E5E3CB /* HXLNavigationController.m in Sources */,
+				A5E1A45F1E6593AE0060F656 /* HXLReleaseViewController.m in Sources */,
+				A5E1A4651E6593E20060F656 /* HXLFollowViewController.m in Sources */,
+				A5E1A45C1E65929C0060F656 /* HXLLastestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +624,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BaiSiBuDeJie/Classes/Other/System/BaiSiBiDeJie-Prefix.pch";
 				INFOPLIST_FILE = BaiSiBuDeJie/Classes/Other/System/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hxl.BaiSiBuDeJie;
@@ -542,6 +638,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BaiSiBuDeJie/Classes/Other/System/BaiSiBiDeJie-Prefix.pch";
 				INFOPLIST_FILE = BaiSiBuDeJie/Classes/Other/System/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hxl.BaiSiBuDeJie;
@@ -592,6 +691,7 @@
 				A57F5F3E1E62DC2E002BA929 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A57F5F3F1E62DC2E002BA929 /* Build configuration list for PBXNativeTarget "BaiSiBuDeJieTests" */ = {
 			isa = XCConfigurationList;
@@ -600,6 +700,7 @@
 				A57F5F411E62DC2E002BA929 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
