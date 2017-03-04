@@ -69,8 +69,10 @@
     HXLReleaseViewController *releaseVC = [[HXLReleaseViewController alloc] init];
     
     UIWindow *keyWindow = UIApplication.sharedApplication.keyWindow;
-    [keyWindow.rootViewController presentViewController:releaseVC animated:YES completion:nil];
+    UIViewController *rootVC = keyWindow.rootViewController;
+    [rootVC presentViewController:releaseVC animated:NO completion:nil];
     
     NSLog(@"");
+
 }
 @end

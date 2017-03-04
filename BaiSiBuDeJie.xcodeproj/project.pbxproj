@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D66E25AFE5787B298224065 /* Pods_BaiSiBuDeJie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89B9201A1224C81E29BA6B8B /* Pods_BaiSiBuDeJie.framework */; };
 		A525C6411E69481E00933774 /* HXLTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A525C6401E69481E00933774 /* HXLTabBar.m */; };
 		A56F78FC1E67131900E5E3CB /* HXLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A56F78F91E67131900E5E3CB /* HXLNavigationController.m */; };
 		A56F78FD1E67131900E5E3CB /* HXLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A56F78FB1E67131900E5E3CB /* HXLTabBarController.m */; };
 		A56F79031E6802A700E5E3CB /* UIBarButtonItem+HXLBarBtnItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A56F79021E6802A700E5E3CB /* UIBarButtonItem+HXLBarBtnItem.m */; };
 		A56F79061E6874BC00E5E3CB /* UIImage+HXLRenderOriginal.m in Sources */ = {isa = PBXBuildFile; fileRef = A56F79051E6874BC00E5E3CB /* UIImage+HXLRenderOriginal.m */; };
+		A57EA6001E6ABFFE0054AE05 /* HXLReleaseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A57EA5FF1E6ABFFE0054AE05 /* HXLReleaseButton.m */; };
+		A57EA6031E6AC6720054AE05 /* UIView+HXLGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = A57EA6021E6AC6720054AE05 /* UIView+HXLGeometry.m */; };
+		A57EA6C71E6AE4D70054AE05 /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57EA6C61E6AE4D70054AE05 /* pop.framework */; };
+		A57EA6C81E6AE4D70054AE05 /* pop.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A57EA6C61E6AE4D70054AE05 /* pop.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A57F5F281E62DC2E002BA929 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57F5F261E62DC2E002BA929 /* Main.storyboard */; };
 		A57F5F2D1E62DC2E002BA929 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57F5F2B1E62DC2E002BA929 /* LaunchScreen.storyboard */; };
 		A57F5F381E62DC2E002BA929 /* BaiSiBuDeJieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A57F5F371E62DC2E002BA929 /* BaiSiBuDeJieTests.m */; };
@@ -23,6 +28,7 @@
 		A5E1A4681E6593FC0060F656 /* HXLMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1A4671E6593FC0060F656 /* HXLMineViewController.m */; };
 		A5E1A46B1E6598DF0060F656 /* HXLEssenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1A46A1E6598DF0060F656 /* HXLEssenceViewController.m */; };
 		A5E1A4701E65A7C70060F656 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5E1A46F1E65A7C70060F656 /* Assets.xcassets */; };
+		A5F5EB291E6AA0680008A718 /* HXLReleaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F5EB281E6AA0680008A718 /* HXLReleaseView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +41,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A57EA6C11E6ADEC40054AE05 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A57EA6C81E6AE4D70054AE05 /* pop.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		689013E8EE81F9E3D63AA94F /* Pods-BaiSiBuDeJie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaiSiBuDeJie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BaiSiBuDeJie/Pods-BaiSiBuDeJie.debug.xcconfig"; sourceTree = "<group>"; };
+		89B9201A1224C81E29BA6B8B /* Pods_BaiSiBuDeJie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaiSiBuDeJie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A525C63F1E69481E00933774 /* HXLTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLTabBar.h; sourceTree = "<group>"; };
 		A525C6401E69481E00933774 /* HXLTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLTabBar.m; sourceTree = "<group>"; };
 		A56F78F81E67131900E5E3CB /* HXLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLNavigationController.h; sourceTree = "<group>"; };
@@ -46,6 +68,11 @@
 		A56F79021E6802A700E5E3CB /* UIBarButtonItem+HXLBarBtnItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+HXLBarBtnItem.m"; sourceTree = "<group>"; };
 		A56F79041E6874BC00E5E3CB /* UIImage+HXLRenderOriginal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+HXLRenderOriginal.h"; sourceTree = "<group>"; };
 		A56F79051E6874BC00E5E3CB /* UIImage+HXLRenderOriginal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HXLRenderOriginal.m"; sourceTree = "<group>"; };
+		A57EA5FE1E6ABFFE0054AE05 /* HXLReleaseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLReleaseButton.h; sourceTree = "<group>"; };
+		A57EA5FF1E6ABFFE0054AE05 /* HXLReleaseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLReleaseButton.m; sourceTree = "<group>"; };
+		A57EA6011E6AC6720054AE05 /* UIView+HXLGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HXLGeometry.h"; sourceTree = "<group>"; };
+		A57EA6021E6AC6720054AE05 /* UIView+HXLGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HXLGeometry.m"; sourceTree = "<group>"; };
+		A57EA6C61E6AE4D70054AE05 /* pop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = pop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57F5F1A1E62DC2E002BA929 /* BaiSiBuDeJie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaiSiBuDeJie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57F5F271E62DC2E002BA929 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A57F5F2C1E62DC2E002BA929 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -68,6 +95,9 @@
 		A5E1A4691E6598DF0060F656 /* HXLEssenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLEssenceViewController.h; sourceTree = "<group>"; };
 		A5E1A46A1E6598DF0060F656 /* HXLEssenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLEssenceViewController.m; sourceTree = "<group>"; };
 		A5E1A46F1E65A7C70060F656 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A5F5EB271E6AA0670008A718 /* HXLReleaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLReleaseView.h; sourceTree = "<group>"; };
+		A5F5EB281E6AA0680008A718 /* HXLReleaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLReleaseView.m; sourceTree = "<group>"; };
+		B81860FAD8E8C777829B877F /* Pods-BaiSiBuDeJie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaiSiBuDeJie.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaiSiBuDeJie/Pods-BaiSiBuDeJie.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +105,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A57EA6C71E6AE4D70054AE05 /* pop.framework in Frameworks */,
+				8D66E25AFE5787B298224065 /* Pods_BaiSiBuDeJie.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +120,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3EF42A8420B47E4ABE531885 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				689013E8EE81F9E3D63AA94F /* Pods-BaiSiBuDeJie.debug.xcconfig */,
+				B81860FAD8E8C777829B877F /* Pods-BaiSiBuDeJie.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A525C63E1E6947EE00933774 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +155,8 @@
 				A56F79021E6802A700E5E3CB /* UIBarButtonItem+HXLBarBtnItem.m */,
 				A56F79041E6874BC00E5E3CB /* UIImage+HXLRenderOriginal.h */,
 				A56F79051E6874BC00E5E3CB /* UIImage+HXLRenderOriginal.m */,
+				A57EA6011E6AC6720054AE05 /* UIView+HXLGeometry.h */,
+				A57EA6021E6AC6720054AE05 /* UIView+HXLGeometry.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -132,9 +175,12 @@
 		A57F5F111E62DC2E002BA929 = {
 			isa = PBXGroup;
 			children = (
+				A57EA6C61E6AE4D70054AE05 /* pop.framework */,
 				A57F5F1C1E62DC2E002BA929 /* BaiSiBuDeJie */,
 				A57F5F361E62DC2E002BA929 /* BaiSiBuDeJieTests */,
 				A57F5F1B1E62DC2E002BA929 /* Products */,
+				3EF42A8420B47E4ABE531885 /* Pods */,
+				D09C18AF89FB8C3D100E6C6B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -337,6 +383,10 @@
 		A5E1A4481E655C9D0060F656 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A5F5EB271E6AA0670008A718 /* HXLReleaseView.h */,
+				A5F5EB281E6AA0680008A718 /* HXLReleaseView.m */,
+				A57EA5FE1E6ABFFE0054AE05 /* HXLReleaseButton.h */,
+				A57EA5FF1E6ABFFE0054AE05 /* HXLReleaseButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -374,6 +424,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		D09C18AF89FB8C3D100E6C6B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				89B9201A1224C81E29BA6B8B /* Pods_BaiSiBuDeJie.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -381,9 +439,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A57F5F3C1E62DC2E002BA929 /* Build configuration list for PBXNativeTarget "BaiSiBuDeJie" */;
 			buildPhases = (
+				570E229C1025A7C6E34DEE9F /* [CP] Check Pods Manifest.lock */,
 				A57F5F161E62DC2E002BA929 /* Sources */,
 				A57F5F171E62DC2E002BA929 /* Frameworks */,
 				A57F5F181E62DC2E002BA929 /* Resources */,
+				A57EA6C11E6ADEC40054AE05 /* Embed Frameworks */,
+				4CF9EBF0893FAA86587B494F /* [CP] Embed Pods Frameworks */,
+				0DC889B1B1299CBA74775933 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -472,6 +534,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0DC889B1B1299CBA74775933 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BaiSiBuDeJie/Pods-BaiSiBuDeJie-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4CF9EBF0893FAA86587B494F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BaiSiBuDeJie/Pods-BaiSiBuDeJie-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		570E229C1025A7C6E34DEE9F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A57F5F161E62DC2E002BA929 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -481,11 +591,14 @@
 				A56F78FD1E67131900E5E3CB /* HXLTabBarController.m in Sources */,
 				A5E1A46B1E6598DF0060F656 /* HXLEssenceViewController.m in Sources */,
 				A56F79031E6802A700E5E3CB /* UIBarButtonItem+HXLBarBtnItem.m in Sources */,
+				A57EA6031E6AC6720054AE05 /* UIView+HXLGeometry.m in Sources */,
 				A57F5F691E63517B002BA929 /* main.m in Sources */,
 				A56F79061E6874BC00E5E3CB /* UIImage+HXLRenderOriginal.m in Sources */,
+				A5F5EB291E6AA0680008A718 /* HXLReleaseView.m in Sources */,
 				A525C6411E69481E00933774 /* HXLTabBar.m in Sources */,
 				A57F5F5D1E634D01002BA929 /* AppDelegate.m in Sources */,
 				A56F78FC1E67131900E5E3CB /* HXLNavigationController.m in Sources */,
+				A57EA6001E6ABFFE0054AE05 /* HXLReleaseButton.m in Sources */,
 				A5E1A45F1E6593AE0060F656 /* HXLReleaseViewController.m in Sources */,
 				A5E1A4651E6593E20060F656 /* HXLFollowViewController.m in Sources */,
 				A5E1A45C1E65929C0060F656 /* HXLLastestViewController.m in Sources */,
@@ -622,6 +735,7 @@
 		};
 		A57F5F3D1E62DC2E002BA929 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 689013E8EE81F9E3D63AA94F /* Pods-BaiSiBuDeJie.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -636,6 +750,7 @@
 		};
 		A57F5F3E1E62DC2E002BA929 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B81860FAD8E8C777829B877F /* Pods-BaiSiBuDeJie.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

@@ -36,6 +36,14 @@
 /** 需要全文引用的分类头文件 */
 #import "UIBarButtonItem+HXLBarBtnItem.h"
 #import "UIImage+HXLRenderOriginal.h"
+#import "UIView+HXLGeometry.h"
+
+/** 各个类中的宏 */
+// 发布页面
+#define A_spaceX  20
+#define B_spaceX  10
+#define HXLSPRING_SPEED 20
+#define HXLSPRING_SPEEDBOUNDCE 5
 
 // 定义字体大小 (正常)
 #define FONT_11 [UIFont systemFontOfSize:11.0f]
