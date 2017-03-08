@@ -87,10 +87,6 @@
     
     // 将包装好的导航控制器添加到 tabBar 控制器中
     [self addChildViewController:childNavC];
-    if ([childController isKindOfClass:[HXLReleaseViewController class]]) {
-        
-        return;
-    }
     
     childNavC.tabBarItem.image = image;
     childNavC.tabBarItem.selectedImage = selectedImage;

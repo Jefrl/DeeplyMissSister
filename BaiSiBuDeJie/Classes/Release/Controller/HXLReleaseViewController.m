@@ -9,6 +9,9 @@
 #import "HXLReleaseViewController.h"
 #import "HXLReleaseButton.h"
 #import "POP.h"
+#import "HXLReleasePunViewController.h"
+#import "HXLNavigationController.h"
+#import "HXLTabBarController.h"
 
 @interface HXLReleaseViewController ()
 /** labelArray */
@@ -52,12 +55,9 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = RGBRandomColor;
+    
     [self setup];
-}
 
-/** 状态栏的设置 */
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
 }
 
 /** UI 界面的搭建 */
@@ -164,40 +164,53 @@
 /** 五个按钮的点击事件 */
 - (void)btnClick:(UIButton *)btn {
     NSInteger num = btn.tag;
-    if (num == 0) {
+    if (num == 0) { // 视频
         NSLog(@"%@", _labelArray[num]);
-        [self btnViewDisappearWithPop];
-    } else if (num == 1) {
+        [self btnViewDisappearWithPop:nil];
+    } else if (num == 1) { // 图片
         NSLog(@"%@", _labelArray[num]);
-        [self btnViewDisappearWithPop];
-    } else if (num == 2) {
+        [self btnViewDisappearWithPop:nil];
+    } else if (num == 2) { // 段子
         NSLog(@"%@", _labelArray[num]);
-        [self btnViewDisappearWithPop];
-    } else if (num == 3) {
+        
+        // 定义一个 block, 动画完成后执行
+        void (^complete_block)() = ^(){
+            
+            // 通过 APP 类的主窗口获取, 当前窗口的根控制器;
+            UIWindow *keywidow = [UIApplication sharedApplication].keyWindow;
+            UITabBarController *tabBarC = (UITabBarController *)keywidow.rootViewController;
+            HXLReleasePunViewController *releasePunVC = [[HXLReleasePunViewController alloc] init];
+            // 要注意位置, push 之前设置隐藏;
+            [tabBarC.selectedViewController pushViewController:releasePunVC animated:YES];
+        };
+        
+        // 动画
+        [self btnViewDisappearWithPop:complete_block];
+        
+    } else if (num == 3) { // 声音
         NSLog(@"%@", _labelArray[num]);
-        [self btnViewDisappearWithPop];
-    } else if (num == 4) {
+        [self btnViewDisappearWithPop:nil];
+    } else if (num == 4) { // 链接
         NSLog(@"%@", _labelArray[num]);
-        [self btnViewDisappearWithPop];
-    } else if (num == 5) {
-        NSLog(@"%@", _labelArray[num]);
-        [self btnViewDisappearWithPop];
+        [self btnViewDisappearWithPop:nil];
     }
 }
 
 /** 点击屏幕 */
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self btnViewDisappearWithPop];
+    [self btnViewDisappearWithPop:nil];
 }
 
 /** 取消按钮的点击 */
 - (void)cancelBtnClick:(UIButton *)cancelbtn {
     // 让6个动画执行完
-    [self btnViewDisappearWithPop];
+    [self btnViewDisappearWithPop:nil];
 }
 
 /** 让6个动画执行完消失 */
-- (void)btnViewDisappearWithPop {
+
+
+- (void)btnViewDisappearWithPop:(void (^)())complete_block {
     // 禁止互交
     self.view.userInteractionEnabled = NO;
     
@@ -219,10 +232,15 @@
         animation.springBounciness = HXLSPRING_SPEEDBOUNDCE;
         animation.beginTime = CACurrentMediaTime() + [self.timeArray[i] doubleValue];
         
+        HXL_WEAKSELF; // 弱指向
         if (i == totalCount - 1) { // 最后一个动画了
             [animation setCompletionBlock:^(POPAnimation *animation, BOOL finished) {
+                
                 // 有没有循环引用呢?!
-                [self dismissViewControllerAnimated:NO completion:nil];
+                [weakSelf dismissViewControllerAnimated:NO completion:nil];
+                
+                // block 有值才调用
+                !complete_block ?  : complete_block() ;
             }];
         }
         

@@ -30,8 +30,27 @@
 // RGB 指定颜色与透明度
 #define RGBColor(r, g, b, a) [UIColor colorWithRed: r / 255.0 green: g / 255.0 blue: b / 255.0 alpha: a]
 
-// 随机颜色(不透明)
+// RGB 随机颜色(不透明)
 #define RGBRandomColor RGBColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256), 1);
+
+// 颜色
+#define RED_COLOR    [UIColor redColor]
+#define ORANGE_COLOR [UIColor orangeColor]
+#define YELLOW_COLOR [UIColor yellowColor]
+#define GREEN_COLOR  [UIColor greenColor]
+#define BLUE_COLOR   [UIColor blueColor]
+#define CYAN_COLOR   [UIColor cyanColor]
+#define PURPLE_COLOR [UIColor purpleColor]
+#define BLACK_COLOR  [UIColor blackColor]
+#define WHITE_COLOR  [UIColor whiteColor]
+#define GRAY_COLOR   [UIColor grayColor]
+#define BROWN_COLOR  [UIColor brownColor]
+
+// 主窗口
+#define KEYWINDOW [UIApplication sharedApplication].keyWindow
+
+// block 中的 weakSelf
+#define HXL_WEAKSELF __weak typeof(self) weakSelf = self
 
 /** 需要全文引用的分类头文件 */
 #import "UIBarButtonItem+HXLBarBtnItem.h"
@@ -44,6 +63,7 @@
 #define B_spaceX  10
 #define HXLSPRING_SPEED 20
 #define HXLSPRING_SPEEDBOUNDCE 5
+/** 各个类中的宏 */
 
 // 定义字体大小 (正常)
 #define FONT_11 [UIFont systemFontOfSize:11.0f]

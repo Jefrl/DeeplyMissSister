@@ -9,6 +9,12 @@
 #import "UIView+HXLGeometry.h"
 
 @implementation UIView (HXLGeometry)
+/** xib 的加载 */
++ (instancetype)loadViewFormXib:(NSInteger)index {
+    NSArray *array = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil];
+    return array[index];
+}
+
 - (void)setX:(CGFloat)x {
     CGRect frame = self.frame;
     frame.origin.x = x;

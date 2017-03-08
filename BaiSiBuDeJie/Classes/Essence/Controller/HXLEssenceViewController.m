@@ -7,6 +7,7 @@
 //
 
 #import "HXLEssenceViewController.h"
+#import "HXLEssenceTabView.h"
 
 
 @interface HXLEssenceViewController ()
@@ -30,11 +31,24 @@
 
 /** UI 界面的搭建 */
 - (void)setup {
-    
+    // 导航栏的搭建
     [self setupNavigationBar];
+    // 搭建 view
+    HXLEssenceTabView *essenceTabView = [HXLEssenceTabView loadViewFormXib:0];
+    CGFloat displayView_height = 30;
+    essenceTabView.frame = CGRectMake(0, displayView_height, SCREEN_WIDTH, SCREEN_HEIGHT - 64);
+    [self.view addSubview:essenceTabView];
+    
+    // 搭建 displayView
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = RED_COLOR;
+    view.frame = CGRectMake(0, 0, SCREEN_WIDTH, displayView_height);
+    [self.view addSubview:view];
 }
 
 #pragma mark - 02
+
+
 #pragma mark - 01
 /** 导航栏的搭建 */
 - (void)setupNavigationBar {
@@ -57,6 +71,7 @@
     
     self.navigationItem.leftBarButtonItem = leftBarBtnItem;
     self.navigationItem.rightBarButtonItem = rightBarBtnItem;
+
 }
 
 /** 导航栏左&右侧的点击事件 */
