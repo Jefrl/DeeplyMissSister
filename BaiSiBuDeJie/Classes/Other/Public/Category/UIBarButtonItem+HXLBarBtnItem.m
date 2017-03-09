@@ -40,7 +40,7 @@
     [btn setTitleColor:titleColor forState:UIControlStateNormal];
     [btn addTarget:target action:action forControlEvents:controlEvents];
     [btn sizeToFit];
-    
+    btn.contentEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
     // 消除按钮监听点击范围过大的 bug;
     // custom view控件
     UIView *btnView = [[UIView alloc] initWithFrame:btn.bounds];

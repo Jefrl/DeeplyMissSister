@@ -7,7 +7,6 @@
 //
 
 #import "HXLEssenceViewController.h"
-#import "HXLEssenceTabView.h"
 
 
 @interface HXLEssenceViewController ()
@@ -20,8 +19,8 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = RGBRandomColor;
-    
     [self setup];
+//    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 /** 状态栏的设置 */
@@ -34,16 +33,23 @@
     // 导航栏的搭建
     [self setupNavigationBar];
     // 搭建 view
-    HXLEssenceTabView *essenceTabView = [HXLEssenceTabView loadViewFormXib:0];
-    CGFloat displayView_height = 30;
-    essenceTabView.frame = CGRectMake(0, displayView_height, SCREEN_WIDTH, SCREEN_HEIGHT - 64);
-    [self.view addSubview:essenceTabView];
+//    HXLEssenceTabView *essenceTabView = [HXLEssenceTabView loadViewFormXib:0];
     
-    // 搭建 displayView
-    UIView *view = [[UIView alloc] init];
-    view.backgroundColor = RED_COLOR;
-    view.frame = CGRectMake(0, 0, SCREEN_WIDTH, displayView_height);
-    [self.view addSubview:view];
+//    essenceTabView.frame = CGRectMake(0, displayView_height, SCREEN_WIDTH, SCREEN_HEIGHT - 64);
+    // 搭建 contentView
+//    UIScrollView *contentView = [[UIScrollView alloc] init];
+//    contentView.frame = self.view.bounds;
+//    contentView.backgroundColor = BROWN_COLOR;
+//    
+//    // 搭建 headlineView
+//    CGFloat displayView_height = 30;
+//    UIScrollView *headlineView = [[UIScrollView alloc] init];
+//    headlineView.frame = CGRectMake(0, 0, SCREEN_WIDTH, displayView_height);
+//    headlineView.backgroundColor = BLACK_COLOR;
+//    
+//    // 添加加到精华 View 上注意添加顺序
+//    [self.view addSubview:contentView];
+//    [self.view addSubview:headlineView];
 }
 
 #pragma mark - 02

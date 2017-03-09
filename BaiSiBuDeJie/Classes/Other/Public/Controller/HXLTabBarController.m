@@ -71,6 +71,7 @@
     HXLEssenceViewController *essenceVC = [[HXLEssenceViewController alloc] init];
     HXLLastestViewController *lastestVC = [[HXLLastestViewController alloc] init];
     HXLFollowViewController *followVC = [[HXLFollowViewController alloc] init];
+    
     HXLMineViewController *mineVC = [[HXLMineViewController alloc] init];
     
     [self addCustomChildViewController:essenceVC image:[UIImage imageRenderingModeAlwaysOriginal:[UIImage imageNamed:@"tabBar_essence_icon"]] selectedImage:[UIImage imageRenderingModeAlwaysOriginal:[UIImage imageNamed:@"tabBar_essence_click_icon"]] title:@"精华"];
@@ -83,7 +84,10 @@
 /** 创建导航控制器, 并成为 UITabBarC 的子控制 */
 - (void)addCustomChildViewController:(UIViewController *)childController image:(UIImage *)image selectedImage:(UIImage *)selectedImage title:(NSString *)title {
     
+    NSLog(@"%@--", NSStringFromCGRect(childController.view.frame));
+    
     HXLNavigationController *childNavC = [[HXLNavigationController alloc] initWithRootViewController:childController];
+    NSLog(@"%@", NSStringFromCGRect(childNavC.view.frame));
     
     // 将包装好的导航控制器添加到 tabBar 控制器中
     [self addChildViewController:childNavC];

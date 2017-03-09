@@ -20,7 +20,7 @@
     
     self.window = [[UIWindow alloc] initWithFrame:SCREEN_BOUNDS];
     HXLTabBarController *hxlTabVC = [[HXLTabBarController alloc] init];
-    hxlTabVC.view.backgroundColor = [UIColor redColor];
+    hxlTabVC.view.backgroundColor = [UIColor blackColor];
     
     self.window.rootViewController = hxlTabVC;
     [self.window makeKeyAndVisible];

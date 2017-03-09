@@ -10,14 +10,15 @@
 		8D66E25AFE5787B298224065 /* Pods_BaiSiBuDeJie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89B9201A1224C81E29BA6B8B /* Pods_BaiSiBuDeJie.framework */; };
 		A525C6411E69481E00933774 /* HXLTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A525C6401E69481E00933774 /* HXLTabBar.m */; };
 		A52C40071E6E6C0F00D2DC8C /* HXLPostButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A52C40061E6E6C0F00D2DC8C /* HXLPostButton.m */; };
-		A52C403F1E6EDE2600D2DC8C /* HXLPunView.m in Sources */ = {isa = PBXBuildFile; fileRef = A52C403E1E6EDE2600D2DC8C /* HXLPunView.m */; };
-		A52C40411E6EDE3200D2DC8C /* HXLPunView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52C40401E6EDE3200D2DC8C /* HXLPunView.xib */; };
+		A557D91A1E70F25300B54327 /* HXLReleaseLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A557D9151E70F25300B54327 /* HXLReleaseLinkViewController.m */; };
+		A557D91B1E70F25300B54327 /* HXLReleasePunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A557D9171E70F25300B54327 /* HXLReleasePunViewController.m */; };
+		A557D91C1E70F25300B54327 /* HXLReleaseVoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A557D9191E70F25300B54327 /* HXLReleaseVoiceViewController.m */; };
+		A557D9211E70F2FD00B54327 /* HXLPunView.m in Sources */ = {isa = PBXBuildFile; fileRef = A557D91F1E70F2FD00B54327 /* HXLPunView.m */; };
+		A557D9221E70F2FD00B54327 /* HXLPunView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A557D9201E70F2FD00B54327 /* HXLPunView.xib */; };
 		A56F78FC1E67131900E5E3CB /* HXLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A56F78F91E67131900E5E3CB /* HXLNavigationController.m */; };
 		A56F78FD1E67131900E5E3CB /* HXLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A56F78FB1E67131900E5E3CB /* HXLTabBarController.m */; };
 		A56F79031E6802A700E5E3CB /* UIBarButtonItem+HXLBarBtnItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A56F79021E6802A700E5E3CB /* UIBarButtonItem+HXLBarBtnItem.m */; };
 		A56F79061E6874BC00E5E3CB /* UIImage+HXLRenderOriginal.m in Sources */ = {isa = PBXBuildFile; fileRef = A56F79051E6874BC00E5E3CB /* UIImage+HXLRenderOriginal.m */; };
-		A57700901E702D12000F42E8 /* HXLEssenceTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = A577008E1E702D12000F42E8 /* HXLEssenceTabView.m */; };
-		A57700911E702D12000F42E8 /* HXLEssenceTabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A577008F1E702D12000F42E8 /* HXLEssenceTabView.xib */; };
 		A57EA6001E6ABFFE0054AE05 /* HXLReleaseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A57EA5FF1E6ABFFE0054AE05 /* HXLReleaseButton.m */; };
 		A57EA6031E6AC6720054AE05 /* UIView+HXLGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = A57EA6021E6AC6720054AE05 /* UIView+HXLGeometry.m */; };
 		A57EA6C71E6AE4D70054AE05 /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57EA6C61E6AE4D70054AE05 /* pop.framework */; };
@@ -27,9 +28,6 @@
 		A57F5F381E62DC2E002BA929 /* BaiSiBuDeJieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A57F5F371E62DC2E002BA929 /* BaiSiBuDeJieTests.m */; };
 		A57F5F5D1E634D01002BA929 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A57F5F561E634D00002BA929 /* AppDelegate.m */; };
 		A57F5F691E63517B002BA929 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A57F5F581E634D01002BA929 /* main.m */; };
-		A59A98FB1E6D14C3006214BE /* HXLReleasePunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59A98FA1E6D14C3006214BE /* HXLReleasePunViewController.m */; };
-		A59A98FE1E6D14F9006214BE /* HXLReleaseVoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59A98FD1E6D14F9006214BE /* HXLReleaseVoiceViewController.m */; };
-		A59A99011E6D1525006214BE /* HXLReleaseLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59A99001E6D1525006214BE /* HXLReleaseLinkViewController.m */; };
 		A5E1A45C1E65929C0060F656 /* HXLLastestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1A45B1E65929C0060F656 /* HXLLastestViewController.m */; };
 		A5E1A45F1E6593AE0060F656 /* HXLReleaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1A45E1E6593AE0060F656 /* HXLReleaseViewController.m */; };
 		A5E1A4651E6593E20060F656 /* HXLFollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1A4641E6593E20060F656 /* HXLFollowViewController.m */; };
@@ -69,9 +67,15 @@
 		A525C6401E69481E00933774 /* HXLTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLTabBar.m; sourceTree = "<group>"; };
 		A52C40051E6E6C0F00D2DC8C /* HXLPostButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLPostButton.h; sourceTree = "<group>"; };
 		A52C40061E6E6C0F00D2DC8C /* HXLPostButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLPostButton.m; sourceTree = "<group>"; };
-		A52C403D1E6EDE2600D2DC8C /* HXLPunView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLPunView.h; sourceTree = "<group>"; };
-		A52C403E1E6EDE2600D2DC8C /* HXLPunView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLPunView.m; sourceTree = "<group>"; };
-		A52C40401E6EDE3200D2DC8C /* HXLPunView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLPunView.xib; sourceTree = "<group>"; };
+		A557D9141E70F25300B54327 /* HXLReleaseLinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLReleaseLinkViewController.h; sourceTree = "<group>"; };
+		A557D9151E70F25300B54327 /* HXLReleaseLinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLReleaseLinkViewController.m; sourceTree = "<group>"; };
+		A557D9161E70F25300B54327 /* HXLReleasePunViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLReleasePunViewController.h; sourceTree = "<group>"; };
+		A557D9171E70F25300B54327 /* HXLReleasePunViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLReleasePunViewController.m; sourceTree = "<group>"; };
+		A557D9181E70F25300B54327 /* HXLReleaseVoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLReleaseVoiceViewController.h; sourceTree = "<group>"; };
+		A557D9191E70F25300B54327 /* HXLReleaseVoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLReleaseVoiceViewController.m; sourceTree = "<group>"; };
+		A557D91E1E70F2FD00B54327 /* HXLPunView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLPunView.h; sourceTree = "<group>"; };
+		A557D91F1E70F2FD00B54327 /* HXLPunView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLPunView.m; sourceTree = "<group>"; };
+		A557D9201E70F2FD00B54327 /* HXLPunView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLPunView.xib; sourceTree = "<group>"; };
 		A56F78F81E67131900E5E3CB /* HXLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLNavigationController.h; sourceTree = "<group>"; };
 		A56F78F91E67131900E5E3CB /* HXLNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLNavigationController.m; sourceTree = "<group>"; };
 		A56F78FA1E67131900E5E3CB /* HXLTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLTabBarController.h; sourceTree = "<group>"; };
@@ -80,9 +84,6 @@
 		A56F79021E6802A700E5E3CB /* UIBarButtonItem+HXLBarBtnItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+HXLBarBtnItem.m"; sourceTree = "<group>"; };
 		A56F79041E6874BC00E5E3CB /* UIImage+HXLRenderOriginal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+HXLRenderOriginal.h"; sourceTree = "<group>"; };
 		A56F79051E6874BC00E5E3CB /* UIImage+HXLRenderOriginal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HXLRenderOriginal.m"; sourceTree = "<group>"; };
-		A577008D1E702D12000F42E8 /* HXLEssenceTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLEssenceTabView.h; sourceTree = "<group>"; };
-		A577008E1E702D12000F42E8 /* HXLEssenceTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLEssenceTabView.m; sourceTree = "<group>"; };
-		A577008F1E702D12000F42E8 /* HXLEssenceTabView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLEssenceTabView.xib; sourceTree = "<group>"; };
 		A57EA5FE1E6ABFFE0054AE05 /* HXLReleaseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLReleaseButton.h; sourceTree = "<group>"; };
 		A57EA5FF1E6ABFFE0054AE05 /* HXLReleaseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLReleaseButton.m; sourceTree = "<group>"; };
 		A57EA6011E6AC6720054AE05 /* UIView+HXLGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HXLGeometry.h"; sourceTree = "<group>"; };
@@ -98,12 +99,6 @@
 		A57F5F561E634D00002BA929 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A57F5F581E634D01002BA929 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A57F5F671E635157002BA929 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A59A98F91E6D14C3006214BE /* HXLReleasePunViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLReleasePunViewController.h; sourceTree = "<group>"; };
-		A59A98FA1E6D14C3006214BE /* HXLReleasePunViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLReleasePunViewController.m; sourceTree = "<group>"; };
-		A59A98FC1E6D14F9006214BE /* HXLReleaseVoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLReleaseVoiceViewController.h; sourceTree = "<group>"; };
-		A59A98FD1E6D14F9006214BE /* HXLReleaseVoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLReleaseVoiceViewController.m; sourceTree = "<group>"; };
-		A59A98FF1E6D1525006214BE /* HXLReleaseLinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLReleaseLinkViewController.h; sourceTree = "<group>"; };
-		A59A99001E6D1525006214BE /* HXLReleaseLinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLReleaseLinkViewController.m; sourceTree = "<group>"; };
 		A5E1A4591E656C510060F656 /* BaiSiBiDeJie-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaiSiBiDeJie-Prefix.pch"; sourceTree = "<group>"; };
 		A5E1A45A1E65929C0060F656 /* HXLLastestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLLastestViewController.h; sourceTree = "<group>"; };
 		A5E1A45B1E65929C0060F656 /* HXLLastestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLLastestViewController.m; sourceTree = "<group>"; };
@@ -155,6 +150,43 @@
 				A525C6401E69481E00933774 /* HXLTabBar.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		A557D9131E70F25300B54327 /* PostViewControl */ = {
+			isa = PBXGroup;
+			children = (
+				A557D9161E70F25300B54327 /* HXLReleasePunViewController.h */,
+				A557D9171E70F25300B54327 /* HXLReleasePunViewController.m */,
+				A557D9141E70F25300B54327 /* HXLReleaseLinkViewController.h */,
+				A557D9151E70F25300B54327 /* HXLReleaseLinkViewController.m */,
+				A557D9181E70F25300B54327 /* HXLReleaseVoiceViewController.h */,
+				A557D9191E70F25300B54327 /* HXLReleaseVoiceViewController.m */,
+			);
+			path = PostViewControl;
+			sourceTree = "<group>";
+		};
+		A557D91D1E70F2FD00B54327 /* PostView */ = {
+			isa = PBXGroup;
+			children = (
+				A557D91E1E70F2FD00B54327 /* HXLPunView.h */,
+				A557D91F1E70F2FD00B54327 /* HXLPunView.m */,
+				A557D9201E70F2FD00B54327 /* HXLPunView.xib */,
+			);
+			path = PostView;
+			sourceTree = "<group>";
+		};
+		A557D9231E70F5D400B54327 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		A557D9271E70F5D400B54327 /* HeadlineView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HeadlineView;
 			sourceTree = "<group>";
 		};
 		A56F78F51E6712C500E5E3CB /* Public */ = {
@@ -281,9 +313,8 @@
 		A57F5F461E634D00002BA929 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A577008D1E702D12000F42E8 /* HXLEssenceTabView.h */,
-				A577008E1E702D12000F42E8 /* HXLEssenceTabView.m */,
-				A577008F1E702D12000F42E8 /* HXLEssenceTabView.xib */,
+				A557D9231E70F5D400B54327 /* CollectionViewCell */,
+				A557D9271E70F5D400B54327 /* HeadlineView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -376,19 +407,6 @@
 			path = System;
 			sourceTree = "<group>";
 		};
-		A59A98F81E6D1279006214BE /* ChildViewControl */ = {
-			isa = PBXGroup;
-			children = (
-				A59A98F91E6D14C3006214BE /* HXLReleasePunViewController.h */,
-				A59A98FA1E6D14C3006214BE /* HXLReleasePunViewController.m */,
-				A59A98FC1E6D14F9006214BE /* HXLReleaseVoiceViewController.h */,
-				A59A98FD1E6D14F9006214BE /* HXLReleaseVoiceViewController.m */,
-				A59A98FF1E6D1525006214BE /* HXLReleaseLinkViewController.h */,
-				A59A99001E6D1525006214BE /* HXLReleaseLinkViewController.m */,
-			);
-			path = ChildViewControl;
-			sourceTree = "<group>";
-		};
 		A5E1A4451E655C9D0060F656 /* Release */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,7 +420,7 @@
 		A5E1A4461E655C9D0060F656 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A59A98F81E6D1279006214BE /* ChildViewControl */,
+				A557D9131E70F25300B54327 /* PostViewControl */,
 				A5E1A45D1E6593AE0060F656 /* HXLReleaseViewController.h */,
 				A5E1A45E1E6593AE0060F656 /* HXLReleaseViewController.m */,
 			);
@@ -419,13 +437,11 @@
 		A5E1A4481E655C9D0060F656 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A557D91D1E70F2FD00B54327 /* PostView */,
 				A57EA5FE1E6ABFFE0054AE05 /* HXLReleaseButton.h */,
 				A57EA5FF1E6ABFFE0054AE05 /* HXLReleaseButton.m */,
 				A52C40051E6E6C0F00D2DC8C /* HXLPostButton.h */,
 				A52C40061E6E6C0F00D2DC8C /* HXLPostButton.m */,
-				A52C403D1E6EDE2600D2DC8C /* HXLPunView.h */,
-				A52C403E1E6EDE2600D2DC8C /* HXLPunView.m */,
-				A52C40401E6EDE3200D2DC8C /* HXLPunView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -559,10 +575,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A57F5F2D1E62DC2E002BA929 /* LaunchScreen.storyboard in Resources */,
-				A52C40411E6EDE3200D2DC8C /* HXLPunView.xib in Resources */,
 				A5E1A4701E65A7C70060F656 /* Assets.xcassets in Resources */,
 				A57F5F281E62DC2E002BA929 /* Main.storyboard in Resources */,
-				A57700911E702D12000F42E8 /* HXLEssenceTabView.xib in Resources */,
+				A557D9221E70F2FD00B54327 /* HXLPunView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,23 +645,22 @@
 			files = (
 				A5E1A4681E6593FC0060F656 /* HXLMineViewController.m in Sources */,
 				A56F78FD1E67131900E5E3CB /* HXLTabBarController.m in Sources */,
+				A557D91B1E70F25300B54327 /* HXLReleasePunViewController.m in Sources */,
 				A5E1A46B1E6598DF0060F656 /* HXLEssenceViewController.m in Sources */,
+				A557D91C1E70F25300B54327 /* HXLReleaseVoiceViewController.m in Sources */,
 				A56F79031E6802A700E5E3CB /* UIBarButtonItem+HXLBarBtnItem.m in Sources */,
 				A57EA6031E6AC6720054AE05 /* UIView+HXLGeometry.m in Sources */,
 				A52C40071E6E6C0F00D2DC8C /* HXLPostButton.m in Sources */,
 				A57F5F691E63517B002BA929 /* main.m in Sources */,
 				A56F79061E6874BC00E5E3CB /* UIImage+HXLRenderOriginal.m in Sources */,
-				A59A98FB1E6D14C3006214BE /* HXLReleasePunViewController.m in Sources */,
 				A525C6411E69481E00933774 /* HXLTabBar.m in Sources */,
 				A57F5F5D1E634D01002BA929 /* AppDelegate.m in Sources */,
-				A59A99011E6D1525006214BE /* HXLReleaseLinkViewController.m in Sources */,
 				A56F78FC1E67131900E5E3CB /* HXLNavigationController.m in Sources */,
+				A557D91A1E70F25300B54327 /* HXLReleaseLinkViewController.m in Sources */,
 				A57EA6001E6ABFFE0054AE05 /* HXLReleaseButton.m in Sources */,
-				A57700901E702D12000F42E8 /* HXLEssenceTabView.m in Sources */,
-				A52C403F1E6EDE2600D2DC8C /* HXLPunView.m in Sources */,
 				A5E1A45F1E6593AE0060F656 /* HXLReleaseViewController.m in Sources */,
 				A5E1A4651E6593E20060F656 /* HXLFollowViewController.m in Sources */,
-				A59A98FE1E6D14F9006214BE /* HXLReleaseVoiceViewController.m in Sources */,
+				A557D9211E70F2FD00B54327 /* HXLPunView.m in Sources */,
 				A5E1A45C1E65929C0060F656 /* HXLLastestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

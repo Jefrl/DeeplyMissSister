@@ -45,6 +45,8 @@
     NSMutableDictionary *disabledAttrs = [NSMutableDictionary dictionary];
     disabledAttrs[NSForegroundColorAttributeName] = WHITE_COLOR;
     [item setTitleTextAttributes:disabledAttrs forState:UIControlStateHighlighted];
+    
+    // 设置导航条上按钮位置
 }
 
 - (void)viewDidLoad {
