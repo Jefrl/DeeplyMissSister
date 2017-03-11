@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UIBarButtonItem (HXLBarBtnItem)
-/** 设置导航栏左右按钮的(图片类型) */
+/** 设置导航栏左右按钮的 */
 + (instancetype)barButtonItemImage:(UIImage *)BGImage selectedImage:(UIImage *)selectedImage addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;
 
 /** 设置导航栏左右按钮(文字类型) */

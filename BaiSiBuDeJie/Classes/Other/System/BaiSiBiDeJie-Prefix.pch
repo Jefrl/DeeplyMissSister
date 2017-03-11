@@ -12,59 +12,6 @@
 // 只允许导入到 OC 相关文件
 #ifndef __ObJC__
 
-// 当前屏幕尺寸
-#define SCREEN_BOUNDS [UIScreen mainScreen].bounds
-#define SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
-#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
-// 导航条 & UITabBar 条的高度
-#define NAVIGATIONBAR_HEIGHT 64
-#define TABBAR_HEIGHT 49
-
-// 统一日志输出
-#ifdef DEBUG  // 调试阶段
-#define NSLog(...)  NSLog(@"%s,%d\nLog: %@\n\n", __func__, __LINE__, [NSString stringWithFormat:__VA_ARGS__])
-#else  // 发布阶段
-#define NSLog(...)
-#endif
-
-// RGB 指定颜色与透明度
-#define RGBColor(r, g, b, a) [UIColor colorWithRed: r / 255.0 green: g / 255.0 blue: b / 255.0 alpha: a]
-
-// RGB 随机颜色(不透明)
-#define RGBRandomColor RGBColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256), 1);
-
-// 颜色
-#define RED_COLOR    [UIColor redColor]
-#define ORANGE_COLOR [UIColor orangeColor]
-#define YELLOW_COLOR [UIColor yellowColor]
-#define GREEN_COLOR  [UIColor greenColor]
-#define BLUE_COLOR   [UIColor blueColor]
-#define CYAN_COLOR   [UIColor cyanColor]
-#define PURPLE_COLOR [UIColor purpleColor]
-#define BLACK_COLOR  [UIColor blackColor]
-#define WHITE_COLOR  [UIColor whiteColor]
-#define GRAY_COLOR   [UIColor grayColor]
-#define BROWN_COLOR  [UIColor brownColor]
-
-// 主窗口
-#define KEYWINDOW [UIApplication sharedApplication].keyWindow
-
-// block 中的 weakSelf
-#define HXL_WEAKSELF __weak typeof(self) weakSelf = self
-
-/** 需要全文引用的分类头文件 */
-#import "UIBarButtonItem+HXLBarBtnItem.h"
-#import "UIImage+HXLRenderOriginal.h"
-#import "UIView+HXLGeometry.h"
-
-/** 各个类中的宏 */
-// 发布页面
-#define A_spaceX  20
-#define B_spaceX  10
-#define HXLSPRING_SPEED 20
-#define HXLSPRING_SPEEDBOUNDCE 5
-/** 各个类中的宏 */
-
 // 定义字体大小 (正常)
 #define FONT_11 [UIFont systemFontOfSize:11.0f]
 #define FONT_12 [UIFont systemFontOfSize:12.0f]
@@ -84,6 +31,68 @@
 #define FONT_B_16 [UIFont boldSystemFontOfSize:16.0f]
 #define FONT_B_17 [UIFont boldSystemFontOfSize:17.0f]
 #define FONT_B_18 [UIFont boldSystemFontOfSize:18.0f]
+
+// 颜色
+#define RED_COLOR    [UIColor redColor]
+#define ORANGE_COLOR [UIColor orangeColor]
+#define YELLOW_COLOR [UIColor yellowColor]
+#define GREEN_COLOR  [UIColor greenColor]
+#define BLUE_COLOR   [UIColor blueColor]
+#define CYAN_COLOR   [UIColor cyanColor]
+#define PURPLE_COLOR [UIColor purpleColor]
+#define BLACK_COLOR  [UIColor blackColor]
+#define WHITE_COLOR  [UIColor whiteColor]
+#define GRAY_COLOR   [UIColor grayColor]
+#define BROWN_COLOR  [UIColor brownColor]
+
+// RGB 指定颜色与透明度
+#define RGBColor(r, g, b, a) [UIColor colorWithRed: r / 255.0 green: g / 255.0 blue: b / 255.0 alpha: a]
+
+// 随机颜色(不透明)
+#define RGBRandomColor RGBColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256), 1);
+
+// 当前屏幕尺寸
+#define SCREEN_BOUNDS [UIScreen mainScreen].bounds
+#define SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+// 导航条 & UITabBar 条的高度
+#define NAVIGATIONBAR_HEIGHT 64
+#define TABBAR_HEIGHT 49
+
+// 统一日志输出
+#ifdef DEBUG  // 调试阶段
+#define NSLog(...)  NSLog(@"%s,%d\nLog: %@\n\n", __func__, __LINE__, [NSString stringWithFormat:__VA_ARGS__])
+#else  // 发布阶段
+#define NSLog(...)
+#endif
+
+// 主窗口
+#define KEYWINDOW [UIApplication sharedApplication].keyWindow
+
+// 弱引用
+#define HXL_WEAKSELF __weak typeof(self) weakSelf = self;
+
+/** 需要全文引用的头文件 */
+// 分类
+#import "UIBarButtonItem+HXLBarBtnItem.h"
+#import "UIImage+HXLRenderOriginal.h"
+#import "UIView+HXLGeometry.h"
+// 基类
+#import "HXLHeadlineBtn.h"
+
+/** 各个类中的宏 */
+//-- UIEssenceViewController
+#define Margin 20
+#define HeadlineView_height 30
+#define TitleFont  FONT_13
+
+//-- UIReleaseViewController
+#define A_spaceX  20
+#define B_spaceX  10
+#define HXLSPRING_SPEED 20
+#define HXLSPRING_SPEEDBOUNDCE 5
+
+
 
 #endif
 // Include any system framework and library headers here that should be included in all compilation units.

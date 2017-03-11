@@ -232,6 +232,7 @@
         animation.springBounciness = HXLSPRING_SPEEDBOUNDCE;
         animation.beginTime = CACurrentMediaTime() + [self.timeArray[i] doubleValue];
         
+        
         HXL_WEAKSELF; // 弱指向
         if (i == totalCount - 1) { // 最后一个动画了
             [animation setCompletionBlock:^(POPAnimation *animation, BOOL finished) {

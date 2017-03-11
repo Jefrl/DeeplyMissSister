@@ -7,20 +7,26 @@
 //
 
 #import "HXLEssenceViewController.h"
+#import "HXLAllTableVC.h"
+#import "HXLVideoTableVC.h"
+#import "HXLPictureTableVC.h"
+#import "HXLPunTableVC.h"
+#import "HXLVoiceTableVC.h"
+#import "HXLHeadlineView.h"
 
-
-@interface HXLEssenceViewController ()
+@interface HXLEssenceViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
+/** headlineVC_arr 头标题控制器数组 */
+@property (nonatomic, strong) NSArray *headlineVC_arr;
 
 @end
 
 @implementation HXLEssenceViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.view.backgroundColor = RGBRandomColor;
+    // 界面搭建
     [self setup];
-//    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 /** 状态栏的设置 */
@@ -29,31 +35,88 @@
 }
 
 /** UI 界面的搭建 */
+NSString * const reuseID = @"collectionCell";
 - (void)setup {
+    // 禁止系统调整
+    self.automaticallyAdjustsScrollViewInsets = NO;
     // 导航栏的搭建
     [self setupNavigationBar];
-    // 搭建 view
-//    HXLEssenceTabView *essenceTabView = [HXLEssenceTabView loadViewFormXib:0];
+    // 添加子控制器
+    [self setupChildVC];
     
-//    essenceTabView.frame = CGRectMake(0, displayView_height, SCREEN_WIDTH, SCREEN_HEIGHT - 64);
     // 搭建 contentView
-//    UIScrollView *contentView = [[UIScrollView alloc] init];
-//    contentView.frame = self.view.bounds;
-//    contentView.backgroundColor = BROWN_COLOR;
-//    
-//    // 搭建 headlineView
-//    CGFloat displayView_height = 30;
-//    UIScrollView *headlineView = [[UIScrollView alloc] init];
-//    headlineView.frame = CGRectMake(0, 0, SCREEN_WIDTH, displayView_height);
-//    headlineView.backgroundColor = BLACK_COLOR;
-//    
-//    // 添加加到精华 View 上注意添加顺序
-//    [self.view addSubview:contentView];
-//    [self.view addSubview:headlineView];
+    UICollectionViewFlowLayout *collectionViewFlowLayout = [[UICollectionViewFlowLayout alloc] init];
+    UICollectionView *contentView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:collectionViewFlowLayout];
+    //
+    collectionViewFlowLayout.minimumLineSpacing = 0;
+    collectionViewFlowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    collectionViewFlowLayout.itemSize = SCREEN_BOUNDS.size;
+    contentView.frame = self.view.bounds;
+    contentView.backgroundColor = BROWN_COLOR;
+    //
+    contentView.delegate = self;
+    contentView.dataSource = self;
+    contentView.pagingEnabled = YES;
+    contentView.bounces = NO;
+    [contentView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseID];
+    // 添加加到精华 View 上注意添加顺序
+    [self.view addSubview:contentView];
+    
+    // 搭建 headlineView
+    [self setupHeadlineView: _headlineVC_arr];
+    
 }
 
 #pragma mark - 02
+/** 搭建  */
+/** 代理方法 */
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    return _headlineVC_arr.count;
+}
 
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseID forIndexPath:indexPath];
+    UIViewController *childVC = _headlineVC_arr[indexPath.row];
+    childVC.view.backgroundColor = RGBRandomColor;
+    [cell.contentView addSubview:childVC.view];
+    
+    return cell;
+}
+
+
+/** 搭建 headlineView */
+- (void)setupHeadlineView:(NSArray *)array {
+    
+    HXLHeadlineView *headlineView = [[HXLHeadlineView alloc] setupHeadlineViewWithArray:_headlineVC_arr];
+    [self.view addSubview:headlineView];
+}
+
+/** 添加essenceVC 的子控制器 */
+- (void)setupChildVC {
+    
+    HXLAllTableVC *allTableVC = [[HXLAllTableVC alloc] init];
+    allTableVC.title = @"全部";
+    HXLVideoTableVC *videoTableVC = [[HXLVideoTableVC alloc] init];
+    videoTableVC.title = @"视频";
+    HXLPictureTableVC *picTableVC = [[HXLPictureTableVC alloc] init];
+    picTableVC.title = @"图片";
+    HXLPunTableVC *punTableVC = [[HXLPunTableVC alloc] init];
+    punTableVC.title = @"段子";
+    HXLVoiceTableVC *voiceTableVC = [[HXLVoiceTableVC alloc] init];
+    voiceTableVC.title = @"声音";
+    
+    [self addChildViewController:allTableVC];
+    [self addChildViewController:videoTableVC];
+    [self addChildViewController:picTableVC];
+    [self addChildViewController:punTableVC];
+    [self addChildViewController:voiceTableVC];
+    NSArray *array = @[allTableVC, videoTableVC, picTableVC, punTableVC, voiceTableVC];
+    // 保存到数组
+    _headlineVC_arr = array;
+}
 
 #pragma mark - 01
 /** 导航栏的搭建 */
@@ -77,7 +140,6 @@
     
     self.navigationItem.leftBarButtonItem = leftBarBtnItem;
     self.navigationItem.rightBarButtonItem = rightBarBtnItem;
-
 }
 
 /** 导航栏左&右侧的点击事件 */
