@@ -36,5 +36,10 @@
 	<true/>
 	<key>UIStatusBarStyle</key>
 	<string></string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

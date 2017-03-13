@@ -4,5 +4,10 @@ target 'BaiSiBuDeJie' do
  use_frameworks!
 
   pod 'pop'
-
+  pod 'AFNetworking'
+  pod 'MJExtension'
+  pod 'MJRefresh'
+  pod 'SDWebImage'
+  pod 'SVProgressHUD'
+  
 end

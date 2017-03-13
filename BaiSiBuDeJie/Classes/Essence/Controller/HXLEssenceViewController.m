@@ -21,6 +21,9 @@
 @end
 
 @implementation HXLEssenceViewController
+
+NSString * const reuseID = @"collectionCell";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -35,7 +38,6 @@
 }
 
 /** UI 界面的搭建 */
-NSString * const reuseID = @"collectionCell";
 - (void)setup {
     // 禁止系统调整
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -43,32 +45,36 @@ NSString * const reuseID = @"collectionCell";
     [self setupNavigationBar];
     // 添加子控制器
     [self setupChildVC];
-    
     // 搭建 contentView
-    UICollectionViewFlowLayout *collectionViewFlowLayout = [[UICollectionViewFlowLayout alloc] init];
-    UICollectionView *contentView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:collectionViewFlowLayout];
-    //
-    collectionViewFlowLayout.minimumLineSpacing = 0;
-    collectionViewFlowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    collectionViewFlowLayout.itemSize = SCREEN_BOUNDS.size;
-    contentView.frame = self.view.bounds;
-    contentView.backgroundColor = BROWN_COLOR;
-    //
-    contentView.delegate = self;
-    contentView.dataSource = self;
-    contentView.pagingEnabled = YES;
-    contentView.bounces = NO;
-    [contentView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseID];
-    // 添加加到精华 View 上注意添加顺序
-    [self.view addSubview:contentView];
-    
+    [self setupContentCollectionView];
     // 搭建 headlineView
     [self setupHeadlineView: _headlineVC_arr];
     
 }
 
 #pragma mark - 02
-/** 搭建  */
+/** 搭建contentCollectionView  */
+- (void)setupContentCollectionView {
+    // collectionViewFlowLayout 的创建与设置
+    UICollectionViewFlowLayout *collectionViewFlowLayout = [[UICollectionViewFlowLayout alloc] init];
+    collectionViewFlowLayout.minimumLineSpacing = 0;
+    collectionViewFlowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    collectionViewFlowLayout.itemSize = SCREEN_BOUNDS.size;
+    // contentCollectionView 的创建与设置
+    UICollectionView *contentCollectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:collectionViewFlowLayout];
+    contentCollectionView.frame = self.view.bounds;
+    contentCollectionView.backgroundColor = BROWN_COLOR; // 调试棕色
+    contentCollectionView.pagingEnabled = YES;
+    contentCollectionView.bounces = NO;
+    // 代理与数据源
+    contentCollectionView.delegate = self;
+    contentCollectionView.dataSource = self;
+    // 注册 UICollectionViewCell ;
+    [contentCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseID];
+    
+    [self.view addSubview:contentCollectionView];
+}
+
 /** 代理方法 */
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
@@ -79,9 +85,10 @@ NSString * const reuseID = @"collectionCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseID forIndexPath:indexPath];
-    UIViewController *childVC = _headlineVC_arr[indexPath.row];
-    childVC.view.backgroundColor = RGBRandomColor;
-    [cell.contentView addSubview:childVC.view];
+    // 每一个tableView 添加到collectionViewCell 的contentView 上;
+    UITableViewController *childVC = _headlineVC_arr[indexPath.row];
+    childVC.tableView.backgroundColor = GRAY_COLOR; // 调试灰色
+    [cell.contentView addSubview:childVC.tableView];
     
     return cell;
 }
