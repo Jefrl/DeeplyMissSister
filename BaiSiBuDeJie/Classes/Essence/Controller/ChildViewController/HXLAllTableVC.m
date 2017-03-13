@@ -13,6 +13,7 @@
 @end
 
 @implementation HXLAllTableVC
+// 重用标识;
 NSString * const tableView_reuseID = @"tableViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
