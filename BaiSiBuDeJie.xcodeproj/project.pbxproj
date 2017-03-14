@@ -52,6 +52,7 @@
 		A5E1A4681E6593FC0060F656 /* HXLMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1A4671E6593FC0060F656 /* HXLMineViewController.m */; };
 		A5E1A46B1E6598DF0060F656 /* HXLEssenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1A46A1E6598DF0060F656 /* HXLEssenceViewController.m */; };
 		A5E1A4701E65A7C70060F656 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5E1A46F1E65A7C70060F656 /* Assets.xcassets */; };
+		A5FD85D01E77A9C6002D0CC6 /* HXLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FD85CF1E77A9C6002D0CC6 /* HXLSessionManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,6 +162,9 @@
 		A5E1A4691E6598DF0060F656 /* HXLEssenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLEssenceViewController.h; sourceTree = "<group>"; };
 		A5E1A46A1E6598DF0060F656 /* HXLEssenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLEssenceViewController.m; sourceTree = "<group>"; };
 		A5E1A46F1E65A7C70060F656 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A5FD85CE1E77A9C6002D0CC6 /* HXLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLSessionManager.h; sourceTree = "<group>"; };
+		A5FD85CF1E77A9C6002D0CC6 /* HXLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLSessionManager.m; sourceTree = "<group>"; };
+		A5FD85D21E77B1FD002D0CC6 /* Single.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Single.h; sourceTree = "<group>"; };
 		B81860FAD8E8C777829B877F /* Pods-BaiSiBuDeJie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaiSiBuDeJie.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaiSiBuDeJie/Pods-BaiSiBuDeJie.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -240,6 +244,7 @@
 		A56F78F51E6712C500E5E3CB /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				A5FD85CD1E77A902002D0CC6 /* DataTool */,
 				A5C8CB401E73C3160028224E /* BaseClass */,
 				A5C8CB4D1E73C3160028224E /* Category */,
 			);
@@ -593,6 +598,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		A5FD85CD1E77A902002D0CC6 /* DataTool */ = {
+			isa = PBXGroup;
+			children = (
+				A5FD85CE1E77A9C6002D0CC6 /* HXLSessionManager.h */,
+				A5FD85CF1E77A9C6002D0CC6 /* HXLSessionManager.m */,
+				A5FD85D21E77B1FD002D0CC6 /* Single.h */,
+			);
+			path = DataTool;
+			sourceTree = "<group>";
+		};
 		D09C18AF89FB8C3D100E6C6B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -784,6 +799,7 @@
 				A5E1A45F1E6593AE0060F656 /* HXLReleaseViewController.m in Sources */,
 				A5ADEE271E766CFB00997971 /* HXLEssenceCollectionViewCell.m in Sources */,
 				A5C8CB6C1E73C3880028224E /* HXLVoiceTableVC.m in Sources */,
+				A5FD85D01E77A9C6002D0CC6 /* HXLSessionManager.m in Sources */,
 				A5C8CB5B1E73C3160028224E /* UIView+HXLGeometry.m in Sources */,
 				A51EEB131E76D857002237E0 /* HXLVoiceTableViewCell.m in Sources */,
 				A5E1A4651E6593E20060F656 /* HXLFollowViewController.m in Sources */,

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Single.h"
+
 
 @interface HXLPunTableVC : UITableViewController
+singtonInterface
 
 @end

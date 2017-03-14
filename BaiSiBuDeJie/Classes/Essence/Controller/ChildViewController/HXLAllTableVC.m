@@ -14,7 +14,7 @@
 
 @implementation HXLAllTableVC
 // 重用标识;
-NSString * const tableView_reuseID = @"allCell";
+NSString * const all_reuseID = @"allCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -25,7 +25,7 @@ NSString * const tableView_reuseID = @"allCell";
     self.tableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT + HeadlineView_height, 0, TABBAR_HEIGHT, 0);
     // scrollIndicatorInsets 的设置;
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:tableView_reuseID];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:all_reuseID];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
@@ -42,10 +42,10 @@ NSString * const tableView_reuseID = @"allCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tableView_reuseID];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:all_reuseID];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:tableView_reuseID];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:all_reuseID];
     }
     
     cell.detailTextLabel.text = @"123";
