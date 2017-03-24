@@ -7,7 +7,6 @@
 //
 
 #import "HXLSessionManager.h"
-#import "Single.h"
 
 
 @implementation HXLSessionManager

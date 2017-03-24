@@ -27,7 +27,7 @@ NSString * const reuseID = @"collectionCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = RGBRandomColor;
+    self.view.backgroundColor = RED_COLOR;
     // 界面搭建
     [self setup];
 }
@@ -87,7 +87,7 @@ NSString * const reuseID = @"collectionCell";
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseID forIndexPath:indexPath];
     // 每一个tableView 添加到collectionViewCell 的contentView 上;
     UITableViewController *childVC = _headlineVC_arr[indexPath.row];
-    childVC.tableView.backgroundColor = GRAY_COLOR; // 调试灰色
+    childVC.tableView.backgroundColor = LIGHTGRAY_COLOR; // 调试灰色
     [cell.contentView addSubview:childVC.tableView];
     
     return cell;

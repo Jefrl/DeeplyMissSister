@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HXLAllTableVC : UITableViewController
+@interface HXLAllTableVC : HXLEssenceBaseWithChildTVC
 
 @end

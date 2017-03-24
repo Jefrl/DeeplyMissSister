@@ -6,11 +6,9 @@
 //  Copyright © 2017年 com.Jefrl.www. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "Single.h"
+#import "HXLEssenceBaseWithChildTVC.h"
 
+@interface HXLPunTableVC : HXLEssenceBaseWithChildTVC
 
-@interface HXLPunTableVC : UITableViewController
-singtonInterface
 
 @end

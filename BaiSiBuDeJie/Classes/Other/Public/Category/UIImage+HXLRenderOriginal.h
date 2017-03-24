@@ -11,5 +11,9 @@
 @interface UIImage (HXLRenderOriginal)
 /** 图片取消渲染 */
 + (UIImage *)imageRenderingModeAlwaysOriginal:(UIImage *)image;
+/** 由字符串获取网络图片 */
++ (UIImage *)imageWithString:(NSString *)nameString;
+/** 圆形图片的裁剪 */
++ (UIImage *)imageCircleClipWithImage:(UIImage *)image;
 
 @end

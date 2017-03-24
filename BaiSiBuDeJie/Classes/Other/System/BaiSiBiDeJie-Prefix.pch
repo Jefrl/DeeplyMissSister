@@ -44,6 +44,7 @@
 #define WHITE_COLOR  [UIColor whiteColor]
 #define GRAY_COLOR   [UIColor grayColor]
 #define BROWN_COLOR  [UIColor brownColor]
+#define LIGHTGRAY_COLOR [UIColor lightGrayColor]
 
 // RGB 指定颜色与透明度
 #define RGBColor(r, g, b, a) [UIColor colorWithRed: r / 255.0 green: g / 255.0 blue: b / 255.0 alpha: a]
@@ -73,12 +74,18 @@
 #define HXL_WEAKSELF __weak typeof(self) weakSelf = self;
 
 /** 需要全文引用的头文件 */
+// Const 文件
+#import "HXLConst.h"
 // 分类
 #import "UIBarButtonItem+HXLBarBtnItem.h"
 #import "UIImage+HXLRenderOriginal.h"
 #import "UIView+HXLGeometry.h"
 // 基类
 #import "HXLHeadlineBtn.h"
+#import "HXLEssenceBaseWithChildTVC.h"
+
+// 公共 URL
+#define HXLPUBLIC_URL @"http://api.budejie.com/api/api_open.php"
 
 /** 各个类中的宏 */
 //-- UIEssenceViewController
