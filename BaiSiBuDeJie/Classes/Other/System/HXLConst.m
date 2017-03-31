@@ -15,3 +15,5 @@ CGFloat const essenceMargin_y = 10;
 CGFloat const essenceMargin_x = 10;
 // 基类(也是段子)的重用标识;
 NSString * const pun_reuseID = @"punCell";
+
+NSInteger const showHotCount = 3;

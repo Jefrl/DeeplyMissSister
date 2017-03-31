@@ -13,9 +13,8 @@
 @end
 
 @implementation HXLPunTableVC
-- (void)viewDidLoad {
-    [super viewDidLoad];
-//    self.type = 29;
+- (NSInteger)type {
+    return self.type = 29;
 }
 
 @end

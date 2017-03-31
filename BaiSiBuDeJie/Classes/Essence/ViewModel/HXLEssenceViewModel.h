@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface HXLEssenceViewModel : NSObject
-/** <#name#> */
-@property (nonatomic, strong) NSArray *<#name#>Array
+///** <#name#> */
+//@property (nonatomic, strong) NSArray *<#name#>Array
 
 @end

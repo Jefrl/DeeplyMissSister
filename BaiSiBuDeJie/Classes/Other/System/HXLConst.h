@@ -23,3 +23,6 @@ UIKIT_EXTERN CGFloat const essenceMargin_y;
 UIKIT_EXTERN CGFloat const essenceMargin_x;
 // 基类(也是段子)的重用标识;
 UIKIT_EXTERN NSString * const pun_reuseID;
+
+// 规定展示的热评数目
+UIKIT_EXTERN NSInteger const showHotCount;

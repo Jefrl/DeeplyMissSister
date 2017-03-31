@@ -29,6 +29,8 @@
     
     UINavigationBar *navgationBar = [UINavigationBar appearanceWhenContainedIn:[self class], nil];
     [navgationBar setTitleTextAttributes:dictM_titleText];
+    // 背景色或图片
+//    [navgationBar setBarTintColor:BLACK_COLOR]; //navigationbarBackgroundN
     [navgationBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundN"] forBarMetrics:UIBarMetricsDefault];
 }
 

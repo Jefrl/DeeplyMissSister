@@ -57,23 +57,29 @@
 #define SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 // 导航条 & UITabBar 条的高度
-#define NAVIGATIONBAR_HEIGHT 64
+#define NAVIGATIONBAR_HEIGHT (20 + 44)
 #define TABBAR_HEIGHT 49
 
 // 统一日志输出
 #ifdef DEBUG  // 调试阶段
-#define NSLog(...)  NSLog(@"%s,%d\nLog: %@\n\n", __func__, __LINE__, [NSString stringWithFormat:__VA_ARGS__])
+#define NSLog(...)  NSLog(@"$--%d-->: %s\nLog: %@ :<--%d--$\n\n", __LINE__, __func__, [NSString stringWithFormat:__VA_ARGS__], __LINE__)
 #else  // 发布阶段
 #define NSLog(...)
 #endif
 
 // 主窗口
 #define KEYWINDOW [UIApplication sharedApplication].keyWindow
+// 将数据写到桌面的plist
+#define WriteToPlist(data, filename, type) [data writeToFile:[NSString stringWithFormat:@"/Users/Jefrl/Desktop/%@%@.plist", filename, type] atomically:YES];
 
 // 弱引用
 #define HXL_WEAKSELF __weak typeof(self) weakSelf = self;
 
 /** 需要全文引用的头文件 */
+// 三方类
+#import "UIImageView+HXLSDWeb.h"
+// 网络工具类
+#import "HXLSessionManager.h"
 // Const 文件
 #import "HXLConst.h"
 // 分类
@@ -92,6 +98,7 @@
 #define Margin 20
 #define HeadlineView_height 30
 #define TitleFont  FONT_13
+#define Underline_height 1
 
 //-- UIReleaseViewController
 #define A_spaceX  20

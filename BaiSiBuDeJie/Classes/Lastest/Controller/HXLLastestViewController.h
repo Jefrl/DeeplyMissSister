@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HXLEssenceViewController.h"
 
-@interface HXLLastestViewController : UIViewController
+@interface HXLLastestViewController : HXLEssenceViewController
 
 @end

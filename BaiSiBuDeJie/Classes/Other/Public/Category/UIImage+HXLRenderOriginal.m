@@ -9,12 +9,31 @@
 #import "UIImage+HXLRenderOriginal.h"
 
 @implementation UIImage (HXLRenderOriginal)
-
 + (UIImage *)imageRenderingModeAlwaysOriginal:(UIImage *)image
 {
     
     UIImage *imageOrigin = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     return imageOrigin;
+}
+
++ (UIImage *)imageResizableImageWithCapInsets:(UIEdgeInsets)capInsets resizingMode:(UIImageResizingMode)resizingMode imageNamed:(NSString *)name
+{
+    UIImage *image = [UIImage imageNamed:name];
+    // 取出用户自定义的系数
+    CGFloat t = capInsets.top;
+    CGFloat l = capInsets.left;
+    CGFloat b = capInsets.bottom;
+    CGFloat r = capInsets.right;
+    // 创建用户子定义的系数后的图片内边距;
+    CGFloat top = image.size.height * t;
+    CGFloat left = image.size.width * l;
+    CGFloat bottom = image.size.height * b - 1;
+    CGFloat right = image.size.width * r - 1;
+    UIEdgeInsets capInsetsNew = UIEdgeInsetsMake(top, left, bottom, right);
+    // 拉伸图片
+    UIImage *resizableImage = [image resizableImageWithCapInsets:capInsetsNew resizingMode:resizingMode];
+    
+    return resizableImage;
 }
 
 + (UIImage *)imageWithString:(NSString *)nameString
@@ -42,6 +61,26 @@
     // 关闭上下文
     UIGraphicsEndImageContext();
     
+    return image;
+}
+
++ (UIImage *)imageWithColor:(UIColor *)color
+{
+    // 描述矩形
+    CGRect rect = CGRectMake(0, 0, 1, 1);
+    // 开启位图上下文
+    UIGraphicsBeginImageContext(rect.size);
+    // 获取位图上下文
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    // 使用color演示填充上下文
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    // 渲染上下文
+    CGContextFillRect(context, rect);
+    // 从上下文中获取图片
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    // 结束上下文
+    UIGraphicsEndImageContext();
+
     return image;
 }
 

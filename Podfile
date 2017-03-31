@@ -9,5 +9,6 @@ target 'BaiSiBuDeJie' do
   pod 'MJRefresh'
   pod 'SDWebImage'
   pod 'SVProgressHUD'
-  
+  pod 'DACircularProgress', '~> 2.3.1'
+  pod 'NJKWebViewProgress', '~> 0.2.3'
 end

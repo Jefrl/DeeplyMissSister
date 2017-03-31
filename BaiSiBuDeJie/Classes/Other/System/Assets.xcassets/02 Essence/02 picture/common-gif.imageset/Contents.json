@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "common-gif.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "NavBar64@2x.png",
+      "filename" : "common-gif@2x.png",
       "scale" : "2x"
     },
     {

@@ -11,4 +11,5 @@
 @interface UIImageView (HXLSDWeb)
 /** 网络图片是否切圆 & 占位 */
 - (void)setImageString:(NSString *)urlString placeholderImage:(UIImage *)placeholderImage circleImage:(BOOL)isYes;
+
 @end

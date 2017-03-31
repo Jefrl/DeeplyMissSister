@@ -13,10 +13,8 @@
 @end
 
 @implementation HXLPictureTableVC
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-//    self.type = 10;
+- (NSInteger)type {
+   return self.type = 10;
 }
 
 @end

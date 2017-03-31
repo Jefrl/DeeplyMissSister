@@ -13,9 +13,8 @@
 @end
 
 @implementation HXLAllTableVC
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.type = 1;
+- (NSInteger)type {
+    return 1;
 }
 
 @end

@@ -35,6 +35,10 @@
 		A57F5F381E62DC2E002BA929 /* BaiSiBuDeJieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A57F5F371E62DC2E002BA929 /* BaiSiBuDeJieTests.m */; };
 		A57F5F5D1E634D01002BA929 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A57F5F561E634D00002BA929 /* AppDelegate.m */; };
 		A57F5F691E63517B002BA929 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A57F5F581E634D01002BA929 /* main.m */; };
+		A58C44771E8BAC1000F91698 /* HXLEssenceCommentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A58C44761E8BAC1000F91698 /* HXLEssenceCommentItem.m */; };
+		A591DB011E891848007EC238 /* UIView+HXLSDWeb.m in Sources */ = {isa = PBXBuildFile; fileRef = A591DB001E891848007EC238 /* UIView+HXLSDWeb.m */; };
+		A591DB041E891CC6007EC238 /* HXLProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A591DB031E891CC6007EC238 /* HXLProgressView.m */; };
+		A59F83421E8CE23600A342BB /* HXLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A59F83411E8CE23600A342BB /* HXLUser.m */; };
 		A5ADEE241E76677100997971 /* HXLEssenceCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5ADEE231E76677100997971 /* HXLEssenceCollectionView.m */; };
 		A5ADEE271E766CFB00997971 /* HXLEssenceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5ADEE261E766CFB00997971 /* HXLEssenceCollectionViewCell.m */; };
 		A5C8CB3F1E73C2660028224E /* HXLHeadlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C8CB3E1E73C2660028224E /* HXLHeadlineView.m */; };
@@ -122,6 +126,14 @@
 		A57F5F561E634D00002BA929 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A57F5F581E634D01002BA929 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A57F5F671E635157002BA929 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A58C44751E8BAC1000F91698 /* HXLEssenceCommentItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLEssenceCommentItem.h; sourceTree = "<group>"; };
+		A58C44761E8BAC1000F91698 /* HXLEssenceCommentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLEssenceCommentItem.m; sourceTree = "<group>"; };
+		A591DAFF1E891848007EC238 /* UIView+HXLSDWeb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HXLSDWeb.h"; sourceTree = "<group>"; };
+		A591DB001E891848007EC238 /* UIView+HXLSDWeb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HXLSDWeb.m"; sourceTree = "<group>"; };
+		A591DB021E891CC6007EC238 /* HXLProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLProgressView.h; sourceTree = "<group>"; };
+		A591DB031E891CC6007EC238 /* HXLProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLProgressView.m; sourceTree = "<group>"; };
+		A59F83401E8CE23600A342BB /* HXLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLUser.h; sourceTree = "<group>"; };
+		A59F83411E8CE23600A342BB /* HXLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLUser.m; sourceTree = "<group>"; };
 		A5ADEE221E76677100997971 /* HXLEssenceCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLEssenceCollectionView.h; sourceTree = "<group>"; };
 		A5ADEE231E76677100997971 /* HXLEssenceCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLEssenceCollectionView.m; sourceTree = "<group>"; };
 		A5ADEE251E766CFB00997971 /* HXLEssenceCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLEssenceCollectionViewCell.h; sourceTree = "<group>"; };
@@ -205,20 +217,20 @@
 		A51EEB041E76D7BA002237E0 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				A51EEB151E76D884002237E0 /* HXLAllTableViewCell.h */,
-				A51EEB161E76D884002237E0 /* HXLAllTableViewCell.m */,
-				A51EEB051E76D7F6002237E0 /* HXLVideoTableViewCell.h */,
-				A51EEB061E76D7F6002237E0 /* HXLVideoTableViewCell.m */,
-				A51EEB181E76D8A9002237E0 /* HXLVideoTableViewCell.xib */,
-				A51EEB081E76D816002237E0 /* HXLPictureTableViewCell.h */,
-				A51EEB091E76D816002237E0 /* HXLPictureTableViewCell.m */,
-				A51EEB1A1E76D8D5002237E0 /* HXLPictureTableViewCell.xib */,
 				A51EEB0B1E76D844002237E0 /* HXLPunTableViewCell.h */,
 				A51EEB0C1E76D844002237E0 /* HXLPunTableViewCell.m */,
 				A51EEB0D1E76D844002237E0 /* HXLPunTableViewCell.xib */,
+				A51EEB081E76D816002237E0 /* HXLPictureTableViewCell.h */,
+				A51EEB091E76D816002237E0 /* HXLPictureTableViewCell.m */,
+				A51EEB1A1E76D8D5002237E0 /* HXLPictureTableViewCell.xib */,
+				A51EEB051E76D7F6002237E0 /* HXLVideoTableViewCell.h */,
+				A51EEB061E76D7F6002237E0 /* HXLVideoTableViewCell.m */,
+				A51EEB181E76D8A9002237E0 /* HXLVideoTableViewCell.xib */,
 				A51EEB101E76D857002237E0 /* HXLVoiceTableViewCell.h */,
 				A51EEB111E76D857002237E0 /* HXLVoiceTableViewCell.m */,
 				A51EEB121E76D857002237E0 /* HXLVoiceTableViewCell.xib */,
+				A51EEB151E76D884002237E0 /* HXLAllTableViewCell.h */,
+				A51EEB161E76D884002237E0 /* HXLAllTableViewCell.m */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -352,6 +364,10 @@
 			children = (
 				A538C3E01E7A643000B3EFD3 /* HXLEssenceItem.h */,
 				A538C3E11E7A643000B3EFD3 /* HXLEssenceItem.m */,
+				A58C44751E8BAC1000F91698 /* HXLEssenceCommentItem.h */,
+				A58C44761E8BAC1000F91698 /* HXLEssenceCommentItem.m */,
+				A59F83401E8CE23600A342BB /* HXLUser.h */,
+				A59F83411E8CE23600A342BB /* HXLUser.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -515,6 +531,8 @@
 				A5C8CB4A1E73C3160028224E /* HXLReleaseButton.m */,
 				A5C8CB4B1E73C3160028224E /* HXLTabBar.h */,
 				A5C8CB4C1E73C3160028224E /* HXLTabBar.m */,
+				A591DB021E891CC6007EC238 /* HXLProgressView.h */,
+				A591DB031E891CC6007EC238 /* HXLProgressView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -526,6 +544,8 @@
 				A5C8CB4F1E73C3160028224E /* UIBarButtonItem+HXLBarBtnItem.m */,
 				A52CBBCD1E83DF4D006042B1 /* UIImageView+HXLSDWeb.h */,
 				A52CBBCE1E83DF4D006042B1 /* UIImageView+HXLSDWeb.m */,
+				A591DAFF1E891848007EC238 /* UIView+HXLSDWeb.h */,
+				A591DB001E891848007EC238 /* UIView+HXLSDWeb.m */,
 				A5C8CB501E73C3160028224E /* UIImage+HXLRenderOriginal.h */,
 				A5C8CB511E73C3160028224E /* UIImage+HXLRenderOriginal.m */,
 				A5C8CB521E73C3160028224E /* UIView+HXLGeometry.h */,
@@ -809,6 +829,7 @@
 				A51EEB071E76D7F6002237E0 /* HXLVideoTableViewCell.m in Sources */,
 				A51EEB171E76D884002237E0 /* HXLAllTableViewCell.m in Sources */,
 				A5C8CB3F1E73C2660028224E /* HXLHeadlineView.m in Sources */,
+				A591DB011E891848007EC238 /* UIView+HXLSDWeb.m in Sources */,
 				A5ADEE241E76677100997971 /* HXLEssenceCollectionView.m in Sources */,
 				A557D91B1E70F25300B54327 /* HXLReleasePunViewController.m in Sources */,
 				A52CBBCF1E83DF4D006042B1 /* UIImageView+HXLSDWeb.m in Sources */,
@@ -819,12 +840,14 @@
 				A557D91C1E70F25300B54327 /* HXLReleaseVoiceViewController.m in Sources */,
 				A5F7AA131E79959F00F72EDD /* HXLConst.m in Sources */,
 				A5C8CB581E73C3160028224E /* HXLTabBar.m in Sources */,
+				A58C44771E8BAC1000F91698 /* HXLEssenceCommentItem.m in Sources */,
 				A52C40071E6E6C0F00D2DC8C /* HXLPostButton.m in Sources */,
 				A5C8CB5A1E73C3160028224E /* UIImage+HXLRenderOriginal.m in Sources */,
 				A57F5F691E63517B002BA929 /* main.m in Sources */,
 				A5C8CB561E73C3160028224E /* HXLHeadlineBtn.m in Sources */,
 				A57F5F5D1E634D01002BA929 /* AppDelegate.m in Sources */,
 				A557D91A1E70F25300B54327 /* HXLReleaseLinkViewController.m in Sources */,
+				A591DB041E891CC6007EC238 /* HXLProgressView.m in Sources */,
 				A5C8CB681E73C3880028224E /* HXLAllTableVC.m in Sources */,
 				A5C8CB6A1E73C3880028224E /* HXLPunTableVC.m in Sources */,
 				A53E05B91E7BECFF0079DA41 /* HXLDataTool.m in Sources */,
@@ -836,6 +859,7 @@
 				A5C8CB5B1E73C3160028224E /* UIView+HXLGeometry.m in Sources */,
 				A51EEB131E76D857002237E0 /* HXLVoiceTableViewCell.m in Sources */,
 				A5E1A4651E6593E20060F656 /* HXLFollowViewController.m in Sources */,
+				A59F83421E8CE23600A342BB /* HXLUser.m in Sources */,
 				A5C8CB551E73C3160028224E /* HXLTabBarController.m in Sources */,
 				A557D9211E70F2FD00B54327 /* HXLPunView.m in Sources */,
 				A5C8CB541E73C3160028224E /* HXLNavigationController.m in Sources */,

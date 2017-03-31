@@ -10,6 +10,14 @@
 
 @interface HXLHeadlineView : UIScrollView
 /** 创建 headlineView */
-- (instancetype)setupHeadlineViewWithArray:(NSArray *)headlineVC_arr;
+- (instancetype)initWithHeadlineViewWithArray:(NSArray *)headlineVC_arr;
+/** moveUnderlineBtn */
+- (void)moveUnderlineBtn: (UIButton *)headlineBtn;
+/** headlineBtn_arr 按钮数组 */
+@property (nonatomic, strong) NSMutableArray *headlineBtn_arr;
+/** 记录选中按钮的 tag 为索引 */
+@property (nonatomic, assign) NSInteger selectedBtnIndex;
+/** 记录上一个按钮 tag */
+@property (nonatomic, assign) NSInteger lastBtnIndex;
 
 @end

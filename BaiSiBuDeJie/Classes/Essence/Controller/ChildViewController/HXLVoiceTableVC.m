@@ -13,10 +13,7 @@
 @end
 
 @implementation HXLVoiceTableVC
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.type = 31;
+- (NSInteger)type {
+    return self.type = 31;
 }
-
 @end

@@ -17,6 +17,15 @@
 @interface HXLEssenceViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 /** headlineVC_arr 头标题控制器数组 */
 @property (nonatomic, strong) NSArray *headlineVC_arr;
+/** contentCollectionView */
+@property (nonatomic, weak) UICollectionView *contentCollectionView;
+/** headlineView */
+@property (nonatomic, weak) HXLHeadlineView *headlineView;
+/** ob */
+@property (nonatomic, strong) NSNotificationCenter *ob;
+/** selectedBtn */
+@property (nonatomic, strong) UIButton *selectedBtn;
+
 
 @end
 
@@ -27,9 +36,24 @@ NSString * const reuseID = @"collectionCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = RED_COLOR;
+//    self.view.backgroundColor = RED_COLOR;
     // 界面搭建
     [self setup];
+    // 注册通知
+    _ob = [[NSNotificationCenter defaultCenter] addObserverForName:@"btn" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+        CGFloat offsetX = SCREEN_WIDTH * _headlineView.selectedBtnIndex;
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            
+            [_contentCollectionView setContentOffset:CGPointMake(offsetX, 0) animated:NO];
+        } completion:nil];
+    }];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    NSLog(@"");
 }
 
 /** 状态栏的设置 */
@@ -73,6 +97,7 @@ NSString * const reuseID = @"collectionCell";
     [contentCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseID];
     
     [self.view addSubview:contentCollectionView];
+    _contentCollectionView = contentCollectionView;
 }
 
 /** 代理方法 */
@@ -85,19 +110,32 @@ NSString * const reuseID = @"collectionCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseID forIndexPath:indexPath];
+    // 添加到cell 之前, 要将重用的cell 的之前的内容移除
+    [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
     // 每一个tableView 添加到collectionViewCell 的contentView 上;
     UITableViewController *childVC = _headlineVC_arr[indexPath.row];
-    childVC.tableView.backgroundColor = LIGHTGRAY_COLOR; // 调试灰色
+//    childVC.tableView.backgroundColor = LIGHTGRAY_COLOR; // 调试灰色
     [cell.contentView addSubview:childVC.tableView];
     
     return cell;
+}
+
+/** 滚动停止更新 underline */
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    NSInteger i = scrollView.contentOffset.x / SCREEN_WIDTH;
+    NSLog(@"%ld", i);
+    [_headlineView moveUnderlineBtn:_headlineView.headlineBtn_arr[i]];
 }
 
 
 /** 搭建 headlineView */
 - (void)setupHeadlineView:(NSArray *)array {
     
-    HXLHeadlineView *headlineView = [[HXLHeadlineView alloc] setupHeadlineViewWithArray:_headlineVC_arr];
+    HXLHeadlineView *headlineView = [[HXLHeadlineView alloc] initWithHeadlineViewWithArray:_headlineVC_arr];
+    _headlineView = headlineView;
+//    headlineView.frame = CGRectMake(0, NAVIGATIONBAR_HEIGHT, SCREEN_WIDTH, HeadlineView_height);
     [self.view addSubview:headlineView];
 }
 
@@ -107,11 +145,11 @@ NSString * const reuseID = @"collectionCell";
     HXLAllTableVC *allTableVC = [[HXLAllTableVC alloc] init];
     allTableVC.title = @"全部";
     HXLVideoTableVC *videoTableVC = [[HXLVideoTableVC alloc] init];
-    videoTableVC.title = @"视频";
+    videoTableVC.title = @"视频视频视频";
     HXLPictureTableVC *picTableVC = [[HXLPictureTableVC alloc] init];
-    picTableVC.title = @"图片";
+    picTableVC.title = @"图片图片";
     HXLPunTableVC *punTableVC = [[HXLPunTableVC alloc] init];
-    punTableVC.title = @"段子";
+    punTableVC.title = @"段子段子段子段子段子段子";
     HXLVoiceTableVC *voiceTableVC = [[HXLVoiceTableVC alloc] init];
     voiceTableVC.title = @"声音";
     

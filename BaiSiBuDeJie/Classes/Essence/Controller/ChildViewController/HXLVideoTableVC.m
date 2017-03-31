@@ -14,8 +14,7 @@
 @end
 
 @implementation HXLVideoTableVC
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.type = 41;
+- (NSInteger)type {
+    return 41;
 }
 @end
