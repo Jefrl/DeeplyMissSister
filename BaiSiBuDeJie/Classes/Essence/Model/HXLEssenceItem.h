@@ -12,15 +12,15 @@
 /** 帖子的类型 */
 @property (nonatomic, assign)  HXLTopicType type;
 /** id */
-@property (nonatomic, copy) NSString *ID;
+@property (nonatomic, strong) NSString *ID;
 /** 名称 */
-@property (nonatomic, copy) NSString *name;
+@property (nonatomic, strong) NSString *name;
 /** 头像的URL */
-@property (nonatomic, copy) NSString *profile_image;
+@property (nonatomic, strong) NSString *profile_image;
 /** 发帖时间 */
-@property (nonatomic, copy) NSString *create_at;
+@property (nonatomic, strong) NSString *created_at;
 /** 文字内容 */
-@property (nonatomic, copy) NSString *text;
+@property (nonatomic, strong) NSString *text;
 /** 顶的数量 */
 @property (nonatomic, strong) NSString *ding;
 /** 踩的数量 */
@@ -41,11 +41,11 @@
 @property (nonatomic, strong) NSArray *top_cmt;
 
 /** 小图片的URL */
-@property (nonatomic, copy) NSString *small_image;
+@property (nonatomic, strong) NSString *small_image;
 /** 中图片的URL */
-@property (nonatomic, copy) NSString *middle_image;
+@property (nonatomic, strong) NSString *middle_image;
 /** 大图片的URL */
-@property (nonatomic, copy) NSString *large_image;
+@property (nonatomic, strong) NSString *large_image;
 /** 音频时长 */
 @property (nonatomic, assign) NSInteger voicetime;
 /** 视频时长 */
@@ -57,7 +57,11 @@
 //@property (nonatomic, copy) NSString *qzone_uid;
 
 /****** 额外的辅助属性 ******/
-/** 帖子中所有热评用户评论数组 */
+/** 是否存在热评 */
+@property (nonatomic, assign) BOOL isExistHotComment;
+/** 热评的最大下标值 */
+@property (nonatomic, assign)  NSUInteger maxIndex;
+/** 帖子中所有用户热评模型数组 */
 @property (nonatomic, strong)  NSArray *hotArray;
 
 /** cell的高度 */

@@ -91,7 +91,7 @@
         [headlineBtn addTarget:self action:@selector(headlineBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         // 保存到数组
         [self.headlineBtn_arr addObject:headlineBtn];
-            NSLog(@"%@", _headlineBtn_arr);
+            
         if (i == 0) {
             _selectedBtnIndex = i;
             headlineBtn.titleLabel.font = FONT_15;
@@ -129,8 +129,7 @@
         CGFloat headlineBtn_width = currentWidth;
         CGFloat headlineBtn_hight = HeadlineView_height;
         headlineBtn.frame = CGRectMake(headlineBtn_x, headlineBtn_y, headlineBtn_width, headlineBtn_hight);
-        NSLog(@"%@", NSStringFromCGRect(headlineBtn.frame));
-        
+         
         tempWidth += currentWidth;
     }
     // 设置_underline 的 frame;

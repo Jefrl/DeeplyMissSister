@@ -8,16 +8,18 @@
 
 #import "HXLEssenceItem.h"
 #import "HXLEssenceCommentItem.h"
+#import "HXLUser.h"
 
 #import "MJExtension.h"
 @interface HXLEssenceItem ()
-//{
-//    CGFloat _cellHeight;
-//}
 
 @end
 
 @implementation HXLEssenceItem
+{
+    CGFloat _cellHeight;
+}
+
 
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{
@@ -35,50 +37,50 @@
              };
 }
 
+// 计算出每个模型的高度
 - (CGFloat)cellHeight
 {
-    // 最大宽度的限制
-    CGSize text_maxSize = CGSizeMake(SCREEN_WIDTH - essenceMargin_y * 2, MAXFLOAT);
-    CGSize hotC_maxSize = CGSizeMake(SCREEN_WIDTH - essenceMargin_y * 4, MAXFLOAT);
-    CGFloat textHight = [self.text boundingRectWithSize:text_maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : FONT_17} context:nil].size.height;
+//    if (!_cellHeight) {
     
-//    if (_cell.containBottomView.hidden) { // 无热评激活到 contentView 的约束
-//        
-//        _cell.containConstraint_midToSuperBottom.active = YES;
-//        _cell.constraint_midToBottomTop.active = NO;
-//        
-//        self.cellHight = essenceMargin_y + containTopView_hight + (textHight + essenceMargin_y * 2) + containMidView_hight + (self.containBottomViewHight) + cellMargin_y;
-//    } else { // 有热评激活到 midView 到 BottomView的 顶部的约束
-//        _cell.containConstraint_midToSuperBottom.active = NO;
-//        _cell.constraint_midToBottomTop.active = YES;
-    
-        // 暂定有三条固定热评;
-//        CGFloat firstHot_hight= [self.firstHot_label.text boundingRectWithSize:hotC_maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:FONT_14} context:nil].size.height;
-//        
-//        CGFloat secondHot_hight= [_cell.secondHot_label.text boundingRectWithSize:hotC_maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:FONT_14} context:nil].size.height;
-//        
-//        CGFloat thirdHot_hight= [_cell.thirdHot_label.text boundingRectWithSize:hotC_maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:FONT_14} context:nil].size.height;
-//        // 获得底部容易的高度
-//        self.containBottomViewHight = firstHot_hight + secondHot_hight + thirdHot_hight + essenceMargin_y * 4;
-//        
-//        self.cellHight = essenceMargin_y + containTopView_hight + (textHight + essenceMargin_y * 2) + containMidView_hight + (self.containBottomViewHight) + essenceMargin_y + cellMargin_y;
-//        
-//        if (cell.punCellItem.type == HXLTopicTypePicture) {
-//            
-//            
-//        }
-    if (_type == HXLTopicTypePicture) {
+        // 1. 基础通用高度
+        CGSize text_maxSize = CGSizeMake(SCREEN_WIDTH - essenceMargin_y * 2, MAXFLOAT);
+        CGSize hotC_maxSize = CGSizeMake(SCREEN_WIDTH - essenceMargin_y * 4, MAXFLOAT);
+        // 1.1 帖子描述文字高度
+        CGFloat textHight = [self.text boundingRectWithSize:text_maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : FONT_17} context:nil].size.height;
         
+        _cellHeight = essenceMargin_y + containTopView_hight + (textHight + essenceMargin_y * 2) + containMidView_hight + cellMargin_y;
+        NSLog(@"%.f", _cellHeight );  
+        // 2. 热评的高度
+        if (self.isExistHotComment) {// 存在热评模型 (至少一条热评)
+            CGFloat __block _tmpHeight = 0;
+            [self.hotArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                HXLEssenceCommentItem *hotItem = obj;
+                HXLUser *user = hotItem.user;
+                NSString *content = [NSString stringWithFormat:@"%@:  %@", user.username, hotItem.content];
+                CGFloat labelHeight = [content boundingRectWithSize:hotC_maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:FONT_14} context:nil].size.height;
+                //
+                _tmpHeight = essenceMargin_y + labelHeight;
+                if (idx == self.maxIndex) *stop = YES;
+                
+            }];
+            
+            _cellHeight = _cellHeight + _tmpHeight + 2 * essenceMargin_y;
+            NSLog(@"%.f", _cellHeight );
+        }
         
-    } else if(_type == HXLTopicTypeVideo ) {
+        // 3. 不同类型 cell 的差异高度
+        if (self.type == HXLTopicTypePicture) {
+            
+        } else if(self.type == HXLTopicTypeVideo ) {
+            
+        } else if(self.type == HXLTopicTypeVoice ) {
+            
+        }
         
-    } else if(_type == HXLTopicTypeVoice ) {
-        
-    }
-    
+//    }
+    NSLog(@"%.f", _cellHeight );
     return _cellHeight;
 }
-
-
 
 @end

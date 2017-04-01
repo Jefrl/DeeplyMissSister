@@ -16,12 +16,19 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="238"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="237"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="237.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dFL-XI-0Fi" userLabel="containTop">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabelLabelLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2M-pH-dUZ">
+                                <rect key="frame" x="50" y="22" width="72" height="11"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_header_image_small" translatesAutoresizingMaskIntoConstraints="NO" id="MZu-s3-ZSW">
                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                 <constraints>
@@ -35,12 +42,6 @@
                                     <constraint firstAttribute="width" constant="13" id="sGF-Lt-A9l"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2M-pH-dUZ">
-                                <rect key="frame" x="50" y="22" width="24" height="11"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbT-TX-Ilr">
                                 <rect key="frame" x="50" y="0.0" width="36" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -108,6 +109,7 @@
                             <constraint firstItem="oTf-Gp-VBb" firstAttribute="leading" secondItem="FaK-ze-m6s" secondAttribute="leading" constant="10" id="JM7-Te-BbF"/>
                             <constraint firstItem="kZG-8R-9hw" firstAttribute="leading" secondItem="FaK-ze-m6s" secondAttribute="leading" constant="10" id="MWe-nb-rUH"/>
                             <constraint firstAttribute="trailing" secondItem="kZG-8R-9hw" secondAttribute="trailing" constant="10" id="Wy3-dL-JW6"/>
+                            <constraint firstAttribute="bottom" secondItem="kZG-8R-9hw" secondAttribute="bottom" constant="10" id="Y4z-mG-Uo5"/>
                             <constraint firstAttribute="trailing" secondItem="oTf-Gp-VBb" secondAttribute="trailing" constant="10" id="c03-M2-oUT"/>
                             <constraint firstItem="bg1-hj-P0q" firstAttribute="top" secondItem="oTf-Gp-VBb" secondAttribute="bottom" constant="10" id="eSS-uW-IHR"/>
                             <constraint firstItem="bg1-hj-P0q" firstAttribute="leading" secondItem="FaK-ze-m6s" secondAttribute="leading" constant="10" id="jI4-rq-NwX"/>
@@ -115,7 +117,14 @@
                             <constraint firstAttribute="bottom" secondItem="bg1-hj-P0q" secondAttribute="bottom" constant="10" id="nMa-N4-q2L"/>
                             <constraint firstItem="kZG-8R-9hw" firstAttribute="top" secondItem="FaK-ze-m6s" secondAttribute="top" constant="10" id="nvu-px-KNC"/>
                             <constraint firstItem="oTf-Gp-VBb" firstAttribute="top" secondItem="kZG-8R-9hw" secondAttribute="bottom" constant="10" id="tzv-CE-sZn"/>
+                            <constraint firstAttribute="bottom" secondItem="oTf-Gp-VBb" secondAttribute="bottom" constant="10" id="vhu-HG-hGT"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Y4z-mG-Uo5"/>
+                                <exclude reference="vhu-HG-hGT"/>
+                            </mask>
+                        </variation>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fvj-Vr-NDf" userLabel="containMid">
                         <rect key="frame" x="0.0" y="96" width="320" height="40"/>
@@ -211,10 +220,14 @@
                 <outlet property="containConstraint_midToSuperBottom" destination="OVd-lA-5ly" id="fgQ-mH-b2r"/>
                 <outlet property="dislikeBtn" destination="wfa-wv-fhD" id="dNd-NG-r6U"/>
                 <outlet property="firstHot_label" destination="kZG-8R-9hw" id="JDp-f6-vsv"/>
+                <outlet property="firstLabel_layoutToSuper" destination="Y4z-mG-Uo5" id="KKj-J8-dZ1"/>
+                <outlet property="firstlabel_layoutToSecond" destination="tzv-CE-sZn" id="rch-iu-DgZ"/>
                 <outlet property="icon_imageView" destination="MZu-s3-ZSW" id="d0d-9i-9Lp"/>
                 <outlet property="jewel_imageView" destination="wK1-FU-bvc" id="gSi-92-GVq"/>
                 <outlet property="likeBtn" destination="KH7-vb-y2R" id="fle-nS-9sO"/>
                 <outlet property="secondHot_label" destination="oTf-Gp-VBb" id="a2C-nl-IEV"/>
+                <outlet property="secondlabel_layoutToSuper" destination="vhu-HG-hGT" id="kEk-Qx-o8x"/>
+                <outlet property="secondlabel_layoutToThird" destination="eSS-uW-IHR" id="CQO-NN-wIJ"/>
                 <outlet property="shareBtn" destination="618-Bj-YNn" id="dAs-Vd-bUE"/>
                 <outlet property="text_label" destination="13P-BG-2Ri" id="70B-oI-5vg"/>
                 <outlet property="thirdHot_label" destination="bg1-hj-P0q" id="hGa-jG-b71"/>

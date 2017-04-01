@@ -7,8 +7,8 @@
 //
 
 #import "UIView+HXLSDWeb.h"
-#import "UIimageView+WebCache.h"
+//#import "UIimageView+WebCache.h"
 
-@implementation UIView (HXLSDWeb)
+@implementation UITableViewCell (HXLSDWeb)
 
 @end

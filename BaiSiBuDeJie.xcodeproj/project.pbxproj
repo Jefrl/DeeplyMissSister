@@ -25,6 +25,7 @@
 		A538C3E51E7AD0F200B3EFD3 /* member_ diamond_icon.gif in Resources */ = {isa = PBXBuildFile; fileRef = A538C3E31E7AD0F200B3EFD3 /* member_ diamond_icon.gif */; };
 		A538C3E61E7AD0F200B3EFD3 /* member_ diamond_iconN.gif in Resources */ = {isa = PBXBuildFile; fileRef = A538C3E41E7AD0F200B3EFD3 /* member_ diamond_iconN.gif */; };
 		A53E05B91E7BECFF0079DA41 /* HXLDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A53E05B81E7BECFF0079DA41 /* HXLDataTool.m */; };
+		A552086D1E8E3E5B00E77AFC /* UITableViewCell+HXL.m in Sources */ = {isa = PBXBuildFile; fileRef = A552086C1E8E3E5B00E77AFC /* UITableViewCell+HXL.m */; };
 		A557D91A1E70F25300B54327 /* HXLReleaseLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A557D9151E70F25300B54327 /* HXLReleaseLinkViewController.m */; };
 		A557D91B1E70F25300B54327 /* HXLReleasePunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A557D9171E70F25300B54327 /* HXLReleasePunViewController.m */; };
 		A557D91C1E70F25300B54327 /* HXLReleaseVoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A557D9191E70F25300B54327 /* HXLReleaseVoiceViewController.m */; };
@@ -106,6 +107,8 @@
 		A538C3E41E7AD0F200B3EFD3 /* member_ diamond_iconN.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "member_ diamond_iconN.gif"; path = "Assets.xcassets/02 Essence/06 useSet/member_ diamond_iconN.gif"; sourceTree = "<group>"; };
 		A53E05B71E7BECFF0079DA41 /* HXLDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLDataTool.h; sourceTree = "<group>"; };
 		A53E05B81E7BECFF0079DA41 /* HXLDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLDataTool.m; sourceTree = "<group>"; };
+		A552086B1E8E3E5B00E77AFC /* UITableViewCell+HXL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+HXL.h"; sourceTree = "<group>"; };
+		A552086C1E8E3E5B00E77AFC /* UITableViewCell+HXL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+HXL.m"; sourceTree = "<group>"; };
 		A557D9141E70F25300B54327 /* HXLReleaseLinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLReleaseLinkViewController.h; sourceTree = "<group>"; };
 		A557D9151E70F25300B54327 /* HXLReleaseLinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLReleaseLinkViewController.m; sourceTree = "<group>"; };
 		A557D9161E70F25300B54327 /* HXLReleasePunViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLReleasePunViewController.h; sourceTree = "<group>"; };
@@ -342,9 +345,9 @@
 			isa = PBXGroup;
 			children = (
 				A57F5F441E634D00002BA929 /* Controller */,
+				A57F5F461E634D00002BA929 /* View */,
 				A52CBBD11E83E9DF006042B1 /* ViewModel */,
 				A57F5F451E634D00002BA929 /* Model */,
-				A57F5F461E634D00002BA929 /* View */,
 			);
 			path = Essence;
 			sourceTree = "<group>";
@@ -544,6 +547,8 @@
 				A5C8CB4F1E73C3160028224E /* UIBarButtonItem+HXLBarBtnItem.m */,
 				A52CBBCD1E83DF4D006042B1 /* UIImageView+HXLSDWeb.h */,
 				A52CBBCE1E83DF4D006042B1 /* UIImageView+HXLSDWeb.m */,
+				A552086B1E8E3E5B00E77AFC /* UITableViewCell+HXL.h */,
+				A552086C1E8E3E5B00E77AFC /* UITableViewCell+HXL.m */,
 				A591DAFF1E891848007EC238 /* UIView+HXLSDWeb.h */,
 				A591DB001E891848007EC238 /* UIView+HXLSDWeb.m */,
 				A5C8CB501E73C3160028224E /* UIImage+HXLRenderOriginal.h */,
@@ -851,6 +856,7 @@
 				A5C8CB681E73C3880028224E /* HXLAllTableVC.m in Sources */,
 				A5C8CB6A1E73C3880028224E /* HXLPunTableVC.m in Sources */,
 				A53E05B91E7BECFF0079DA41 /* HXLDataTool.m in Sources */,
+				A552086D1E8E3E5B00E77AFC /* UITableViewCell+HXL.m in Sources */,
 				A5C8CB691E73C3880028224E /* HXLPictureTableVC.m in Sources */,
 				A5E1A45F1E6593AE0060F656 /* HXLReleaseViewController.m in Sources */,
 				A5ADEE271E766CFB00997971 /* HXLEssenceCollectionViewCell.m in Sources */,

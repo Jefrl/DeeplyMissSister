@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIView (HXLSDWeb)
+@interface UITableViewCell (HXLSDWeb)
+
 
 @end
