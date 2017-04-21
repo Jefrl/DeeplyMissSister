@@ -97,7 +97,7 @@
 
 - (void)setupUniformStyle {
     
-    self.tableView.backgroundColor = ORANGE_COLOR;
+    self.tableView.backgroundColor = RGBColor(206, 206, 206, 1);
     // 由于滚动的原因, tableView 系统默认低于状态栏, 高度也减了状态栏的高度;
     self.view.height += self.view.y;
     self.view.y = 0;
@@ -126,7 +126,26 @@
 
 - (void)test
 {
+    // 请求参数
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"a"] = @"dataList";
+    params[@"c"] = @"comment";
+//    params[@"data_id"] = item.ID;
+    params[@"hot"] = @"1";
     
+    [self.sessionManager request:RequestTypeGet urlStr:HXLPUBLIC_URL parameters:params resultBlock:^(id responseObject, NSError *error) {
+        if (error) {
+            NSLog(@"%@", error); return ;
+        }
+        
+        // 字典数组 -> 转模型数组
+        self.allHots = [HXLEssenceCommentItem mj_objectArrayWithKeyValuesArray:responseObject[@"hot"]];
+        
+        self.commentItemArray = [HXLEssenceCommentItem mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+//        item.hotArray = _allHots;
+        [self.tableView reloadData];
+    }];
+
 }
 
 - (void)setupData {
@@ -137,7 +156,6 @@
     params[@"type"] = @(self.type);
     params[@"c"] = @"data";
     // 请求发出
-    NSLog(@"");
     [self.sessionManager request:RequestTypeGet urlStr:HXLPUBLIC_URL parameters:params resultBlock:^(id responseObject, NSError *error) {
         
         if (error) {
@@ -181,26 +199,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     HXLEssenceItem *item = _itemArray[indexPath.row];
-    // 请求参数
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"a"] = @"dataList";
-    params[@"c"] = @"comment";
-    params[@"data_id"] = item.ID;
-    params[@"hot"] = @"1";
-    
-    [self.sessionManager request:RequestTypeGet urlStr:HXLPUBLIC_URL parameters:params resultBlock:^(id responseObject, NSError *error) {
-        if (error) {
-            NSLog(@"%@", error); return ;
-        }
-       
-        // 字典数组 -> 转模型数组
-        self.allHots = [HXLEssenceCommentItem mj_objectArrayWithKeyValuesArray:responseObject[@"hot"]];
-        
-        self.commentItemArray = [HXLEssenceCommentItem mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        item.hotArray = _allHots;
-        [self.tableView reloadData];
-    }];
-    
     return item.cellHeight;
 }
 

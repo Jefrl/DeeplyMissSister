@@ -46,7 +46,7 @@
 #define BROWN_COLOR  [UIColor brownColor]
 #define LIGHTGRAY_COLOR [UIColor lightGrayColor]
 
-// RGB 指定颜色与透明度
+// RGB 指定颜色与不透明度 (不透明: 1 透明: 0)
 #define RGBColor(r, g, b, a) [UIColor colorWithRed: r / 255.0 green: g / 255.0 blue: b / 255.0 alpha: a]
 
 // 随机颜色(不透明)

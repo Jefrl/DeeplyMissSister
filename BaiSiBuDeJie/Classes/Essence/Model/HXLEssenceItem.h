@@ -40,6 +40,8 @@
 /** 最热评论数组 */
 @property (nonatomic, strong) NSArray *top_cmt;
 
+/** gif 图片 */
+@property (nonatomic, strong) NSString *gifFistFrame;
 /** 小图片的URL */
 @property (nonatomic, strong) NSString *small_image;
 /** 中图片的URL */
@@ -57,15 +59,15 @@
 //@property (nonatomic, copy) NSString *qzone_uid;
 
 /****** 额外的辅助属性 ******/
-/** 是否存在热评 */
-@property (nonatomic, assign) BOOL isExistHotComment;
+///** 是否存在热评 */
+//@property (nonatomic, assign) BOOL isExistHotComment;
+///** 帖子中所有用户热评模型数组 */
+//@property (nonatomic, strong)  NSArray *hotArray;
 /** 热评的最大下标值 */
 @property (nonatomic, assign)  NSUInteger maxIndex;
-/** 帖子中所有用户热评模型数组 */
-@property (nonatomic, strong)  NSArray *hotArray;
 
 /** cell的高度 */
-@property (nonatomic, assign) CGFloat cellHeight;
+@property (nonatomic, assign, readonly) CGFloat cellHeight;
 /** 图片控件的frame */
 @property (nonatomic, assign, readonly) CGRect pictureFrame;
 /** 图片是否太大 */

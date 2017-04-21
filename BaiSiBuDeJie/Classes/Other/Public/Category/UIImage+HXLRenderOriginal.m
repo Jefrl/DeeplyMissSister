@@ -36,7 +36,7 @@
     return resizableImage;
 }
 
-+ (UIImage *)imageWithString:(NSString *)nameString
++ (UIImage *)imageWithURLString:(NSString *)nameString
 {
     UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: nameString]]];
     

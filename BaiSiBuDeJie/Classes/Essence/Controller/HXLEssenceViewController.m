@@ -112,7 +112,6 @@ NSString * const reuseID = @"collectionCell";
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseID forIndexPath:indexPath];
     // 添加到cell 之前, 要将重用的cell 的之前的内容移除
     [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    
     // 每一个tableView 添加到collectionViewCell 的contentView 上;
     UITableViewController *childVC = _headlineVC_arr[indexPath.row];
 //    childVC.tableView.backgroundColor = LIGHTGRAY_COLOR; // 调试灰色

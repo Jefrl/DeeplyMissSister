@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class HXLDataTool;
 #import "Single.h"
 
 @interface HXLDataTool : NSObject
 /** 单例方法的声明 */
-singtonInterface
+singtonInterface(HXLDataTool)
 
 @end

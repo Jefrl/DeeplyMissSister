@@ -98,15 +98,15 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    self.contentView.x += 10;
-    self.contentView.y += 10;
-    self.contentView.width -= 20;
-    self.contentView.height -= 10;
+    self.contentView.x = 10;
+    self.contentView.y = 10;
+    self.contentView.width = SCREEN_WIDTH - 20;
+    self.contentView.height = self.punCellItem.cellHeight - essenceMargin_y - cellMargin_y;
 }
 
 - (void)setFrame:(CGRect)frame {
     
-    frame.size.height -= 1;
+    frame.size.height = self.punCellItem.cellHeight - cellMargin_y;
     [super setFrame:frame];
 }
 
@@ -157,20 +157,18 @@
 
     // 热评控件设置
     NSArray *hotLabelArray = @[_firstHot_label, _secondHot_label, _thirdHot_label];
-    if (!punCellItem.hotArray) { // 不存在热评模型;
-        punCellItem.isExistHotComment = NO;
-        self.containBottomView.hidden = YES;
+    if (punCellItem.top_cmt.count == 0) { // 不存在热评模型;
         // 无热评则让到热评的约束失效, 并激活到父控件 contentView 的约束
+        self.containBottomView.hidden = YES;
         self.containConstraint_midToSuperBottom.active = YES;
         self.constraint_midToBottomTop.active = NO;
     } else { // 存在热评模型
-        
-        punCellItem.isExistHotComment = YES;
         self.containBottomView.hidden = NO;
         self.containConstraint_midToSuperBottom.active = NO;
         self.constraint_midToBottomTop.active = YES;
+        // 先恢复原有约束
         [hotLabelArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            UILabel *label = obj;// 先全隐藏, 并恢复原有约束
+            UILabel *label = obj;
             label.hidden = YES;
             if (idx == 0) {
                 _firstLabel_layoutToSuper.active = NO;
@@ -182,7 +180,8 @@
             }
         }];
         
-        [punCellItem.hotArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        // 设置对应约束
+        [punCellItem.top_cmt enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             // 取出一一对应idx 的 label 赋值
             HXLEssenceCommentItem *item = obj;
             HXLUser *user = item.user;
@@ -190,8 +189,6 @@
             NSString *content = [NSString stringWithFormat:@"%@: %@", user.username, item.content];
             label.text = content;
             label.hidden = NO;
-            
-            punCellItem.maxIndex = punCellItem.hotArray.count > showHotCount ? showHotCount - 1 : punCellItem.hotArray.count - 1;
             
             if (idx == punCellItem.maxIndex) {
                 *stop = YES;
@@ -228,11 +225,12 @@
     
     displayView.punCellItem = punCellItem;
     displayView.hidden = NO;
-    displayView.frame = CGRectMake(0, 66, SCREEN_WIDTH, 200);
+    displayView.frame = viewFrame;
     
     for (UIView *view in hiddenViews) {
         view.hidden = YES;
     }
+    
     
 }
 

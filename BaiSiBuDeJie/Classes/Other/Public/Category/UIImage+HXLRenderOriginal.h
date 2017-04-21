@@ -14,7 +14,7 @@
 /** 图片1*1拉伸 */
 + (UIImage *)imageResizableImageWithCapInsets:(UIEdgeInsets)capInsets resizingMode:(UIImageResizingMode)resizingMode imageNamed:(NSString *)name;
 /** 由字符串获取网络图片 */
-+ (UIImage *)imageWithString:(NSString *)nameString;
++ (UIImage *)imageWithURLString:(NSString *)nameString;
 /** 圆形图片的裁剪 */
 + (UIImage *)imageCircleClipWithImage:(UIImage *)image;
 /** 用颜色画一张图片 */

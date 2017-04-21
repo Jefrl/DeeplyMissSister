@@ -10,7 +10,7 @@
 // 基类的容器控件上, 中的高度, 竖直, 水平方向的间隙值
 CGFloat const containTopView_hight = 40;
 CGFloat const containMidView_hight = 40;
-CGFloat const cellMargin_y = 1;
+CGFloat const cellMargin_y = 0.7;
 CGFloat const essenceMargin_y = 10;
 CGFloat const essenceMargin_x = 10;
 // 基类(也是段子)的重用标识;
