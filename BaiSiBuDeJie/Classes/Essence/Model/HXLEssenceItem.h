@@ -71,7 +71,7 @@
 /** 图片控件的frame */
 @property (nonatomic, assign, readonly) CGRect pictureFrame;
 /** 图片是否太大 */
-@property (nonatomic, assign, getter=isBigPicture) BOOL bigPicture;
+@property (nonatomic, assign) BOOL isBigPicture;
 /** 图片的下载进度 */
 @property (nonatomic, assign) CGFloat pictureProgress;
 

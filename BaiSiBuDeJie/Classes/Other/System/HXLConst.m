@@ -13,6 +13,7 @@ CGFloat const containMidView_hight = 40;
 CGFloat const cellMargin_y = 0.7;
 CGFloat const essenceMargin_y = 10;
 CGFloat const essenceMargin_x = 10;
+
 // 基类(也是段子)的重用标识;
 NSString * const pun_reuseID = @"punCell";
 

@@ -8,8 +8,8 @@
 
 #import "HXLPictureTableViewCell.h"
 #import "UIImageView+WebCache.h"
-#import "DALabeledCircularProgressView.h"
 #import "HXLEssenceItem.h"
+#import "HXLShowBigPictureViewController.h"
 
 @interface HXLPictureTableViewCell ()
 
@@ -29,6 +29,22 @@
 @end
 
 @implementation HXLPictureTableViewCell
+- (IBAction)seeBigPictureClick:(UIButton *)sender {
+    
+    HXLShowBigPictureViewController *showBigPicVC = [[HXLShowBigPictureViewController alloc] init];
+    showBigPicVC.punCellItem = self.punCellItem;
+    
+    UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    
+    [rootVC presentViewController:showBigPicVC animated:YES completion:nil];
+    
+    NSLog(@"");
+}
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.clipsToBounds = YES;
+}
 
 - (void)setPunCellItem:(HXLEssenceItem *)punCellItem
 {
@@ -39,32 +55,35 @@
     
     [self.smallImageView sd_setImageWithURL:[NSURL URLWithString:_punCellItem.small_image] placeholderImage:nil completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         
-//        if (error) { // 网络加载失败就, 显示加载失败的图片;
-//            self.smallImageView.hidden = YES;
-//            self.loadError_imageView.hidden = NO;
-//            return ;
-//        }
-//        
-//        // 如果是大图片, 才需要进行绘图处理
-//        if (_punCellItem.isBigPicture == NO) return;
-//        
-//        // 开启图形上下文
-//        UIGraphicsBeginImageContextWithOptions(_punCellItem.pictureFrame.size, YES, 0.0);
-//        
-//        // 将下载完的image对象绘制到图形上下文
-//        CGFloat width = _punCellItem.pictureFrame.size.width;
-//        CGFloat height = width * image.size.height / image.size.width;
-//        [image drawInRect:CGRectMake(0, 0, width, height)];
-//        
-//        // 获得图片
-//        self.smallImageView.image = UIGraphicsGetImageFromCurrentImageContext();
-//        
-//        // 结束图形上下文
-//        UIGraphicsEndImageContext();
-//        
+        if (error) { // 网络加载失败就, 显示加载失败的图片;
+            self.smallImageView.hidden = YES;
+            self.loadError_imageView.hidden = NO;
+            return ;
+        }
+        
+//         如果是大图片, 才需要进行绘图处理
+        if (_punCellItem.isBigPicture == NO) return;
+        
+        self.seeBigButton.hidden = NO;
+        
+        // 开启图形上下文
+        UIGraphicsBeginImageContextWithOptions(_punCellItem.pictureFrame.size, YES, 0.0);
+        
+        // 将下载完的image对象绘制到图形上下文
+        CGFloat width = _punCellItem.pictureFrame.size.width;
+        CGFloat height = image.size.height * width / image.size.width;
+        
+        [image drawInRect:CGRectMake(0, 0, width, height)];
+        // 获得图片
+        self.smallImageView.image = UIGraphicsGetImageFromCurrentImageContext();
+        
+        // 结束图形上下文
+        UIGraphicsEndImageContext();
+        
     }];
     
     if (_punCellItem.is_gif) {
+        self.seeBigButton.hidden = YES;
         self.gifImageView.hidden = NO;
     }
     

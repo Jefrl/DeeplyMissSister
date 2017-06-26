@@ -148,7 +148,7 @@ NSString * const reuseID = @"collectionCell";
     HXLPictureTableVC *picTableVC = [[HXLPictureTableVC alloc] init];
     picTableVC.title = @"图片图片";
     HXLPunTableVC *punTableVC = [[HXLPunTableVC alloc] init];
-    punTableVC.title = @"段子段子段子段子段子段子";
+    punTableVC.title = @"段子段子段子段子";
     HXLVoiceTableVC *voiceTableVC = [[HXLVoiceTableVC alloc] init];
     voiceTableVC.title = @"声音";
     

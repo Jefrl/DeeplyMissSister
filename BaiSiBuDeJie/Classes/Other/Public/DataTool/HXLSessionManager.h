@@ -5,8 +5,7 @@
 //  Created by Jefrl on 17/3/14.
 //  Copyright © 2017年 com.Jefrl.www. All rights reserved.
 //
-
-#import <AFNetworking/AFNetworking.h>
+#import "AFNetworking.h"
 
 typedef enum {
     RequestTypeGet,
@@ -19,3 +18,4 @@ typedef enum {
 - (void)request:(RequestType)requestType urlStr:(NSString *)urlStr parameters:(NSDictionary *)parameters resultBlock:(void(^)(id responseObject, NSError *error))resultBlock;
 
 @end
+

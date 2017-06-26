@@ -91,7 +91,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.backgroundColor = WHITE_COLOR;
+    self.backgroundColor = GRAY_COLOR;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
@@ -102,6 +102,8 @@
     self.contentView.y = 10;
     self.contentView.width = SCREEN_WIDTH - 20;
     self.contentView.height = self.punCellItem.cellHeight - essenceMargin_y - cellMargin_y;
+    
+    
 }
 
 - (void)setFrame:(CGRect)frame {
@@ -114,6 +116,7 @@
 - (HXLPictureTableViewCell *)pictureView {
     if (!_pictureView) {
         HXLPictureTableViewCell *pictureView = [HXLPictureTableViewCell loadViewFormXib:0];
+        
         [self.contentView addSubview:pictureView];
         _pictureView = pictureView;
     }

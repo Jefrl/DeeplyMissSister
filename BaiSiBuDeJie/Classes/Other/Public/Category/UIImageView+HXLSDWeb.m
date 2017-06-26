@@ -7,7 +7,7 @@
 //
 
 #import "UIImageView+HXLSDWeb.h"
-#import "UIimageView+WebCache.h"
+#import "UIImageView+WebCache.h"
 
 @implementation UIImageView (HXLSDWeb)
 - (void)setImageString:(NSString *)urlString placeholderImage:(UIImage *)placeholderImage circleImage:(BOOL)isYes

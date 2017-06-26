@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8D66E25AFE5787B298224065 /* Pods_BaiSiBuDeJie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89B9201A1224C81E29BA6B8B /* Pods_BaiSiBuDeJie.framework */; };
+		16A694935D871F8D90122510 /* Pods_BaiSiBuDeJie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89B9201A1224C81E29BA6B8B /* Pods_BaiSiBuDeJie.framework */; };
 		A51EEB071E76D7F6002237E0 /* HXLVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A51EEB061E76D7F6002237E0 /* HXLVideoTableViewCell.m */; };
 		A51EEB0A1E76D816002237E0 /* HXLPictureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A51EEB091E76D816002237E0 /* HXLPictureTableViewCell.m */; };
 		A51EEB0E1E76D844002237E0 /* HXLPunTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A51EEB0C1E76D844002237E0 /* HXLPunTableViewCell.m */; };
@@ -31,13 +31,13 @@
 		A557D91C1E70F25300B54327 /* HXLReleaseVoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A557D9191E70F25300B54327 /* HXLReleaseVoiceViewController.m */; };
 		A557D9211E70F2FD00B54327 /* HXLPunView.m in Sources */ = {isa = PBXBuildFile; fileRef = A557D91F1E70F2FD00B54327 /* HXLPunView.m */; };
 		A557D9221E70F2FD00B54327 /* HXLPunView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A557D9201E70F2FD00B54327 /* HXLPunView.xib */; };
+		A56300581F01100400DAEE75 /* HXLShowBigPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A56300571F01100400DAEE75 /* HXLShowBigPictureViewController.m */; };
 		A57F5F281E62DC2E002BA929 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57F5F261E62DC2E002BA929 /* Main.storyboard */; };
 		A57F5F2D1E62DC2E002BA929 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57F5F2B1E62DC2E002BA929 /* LaunchScreen.storyboard */; };
 		A57F5F381E62DC2E002BA929 /* BaiSiBuDeJieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A57F5F371E62DC2E002BA929 /* BaiSiBuDeJieTests.m */; };
 		A57F5F5D1E634D01002BA929 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A57F5F561E634D00002BA929 /* AppDelegate.m */; };
 		A57F5F691E63517B002BA929 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A57F5F581E634D01002BA929 /* main.m */; };
 		A58C44771E8BAC1000F91698 /* HXLEssenceCommentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A58C44761E8BAC1000F91698 /* HXLEssenceCommentItem.m */; };
-		A591DB011E891848007EC238 /* UIView+HXLSDWeb.m in Sources */ = {isa = PBXBuildFile; fileRef = A591DB001E891848007EC238 /* UIView+HXLSDWeb.m */; };
 		A591DB041E891CC6007EC238 /* HXLProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A591DB031E891CC6007EC238 /* HXLProgressView.m */; };
 		A59F83421E8CE23600A342BB /* HXLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A59F83411E8CE23600A342BB /* HXLUser.m */; };
 		A5ADEE241E76677100997971 /* HXLEssenceCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5ADEE231E76677100997971 /* HXLEssenceCollectionView.m */; };
@@ -118,7 +118,8 @@
 		A557D91E1E70F2FD00B54327 /* HXLPunView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLPunView.h; sourceTree = "<group>"; };
 		A557D91F1E70F2FD00B54327 /* HXLPunView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLPunView.m; sourceTree = "<group>"; };
 		A557D9201E70F2FD00B54327 /* HXLPunView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLPunView.xib; sourceTree = "<group>"; };
-		A57EA6C61E6AE4D70054AE05 /* pop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = pop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A56300561F01100400DAEE75 /* HXLShowBigPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLShowBigPictureViewController.h; sourceTree = "<group>"; };
+		A56300571F01100400DAEE75 /* HXLShowBigPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLShowBigPictureViewController.m; sourceTree = "<group>"; };
 		A57F5F1A1E62DC2E002BA929 /* BaiSiBuDeJie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaiSiBuDeJie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57F5F271E62DC2E002BA929 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A57F5F2C1E62DC2E002BA929 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -131,8 +132,6 @@
 		A57F5F671E635157002BA929 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A58C44751E8BAC1000F91698 /* HXLEssenceCommentItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLEssenceCommentItem.h; sourceTree = "<group>"; };
 		A58C44761E8BAC1000F91698 /* HXLEssenceCommentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLEssenceCommentItem.m; sourceTree = "<group>"; };
-		A591DAFF1E891848007EC238 /* UIView+HXLSDWeb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HXLSDWeb.h"; sourceTree = "<group>"; };
-		A591DB001E891848007EC238 /* UIView+HXLSDWeb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HXLSDWeb.m"; sourceTree = "<group>"; };
 		A591DB021E891CC6007EC238 /* HXLProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLProgressView.h; sourceTree = "<group>"; };
 		A591DB031E891CC6007EC238 /* HXLProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLProgressView.m; sourceTree = "<group>"; };
 		A59F83401E8CE23600A342BB /* HXLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLUser.h; sourceTree = "<group>"; };
@@ -194,7 +193,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D66E25AFE5787B298224065 /* Pods_BaiSiBuDeJie.framework in Frameworks */,
+				16A694935D871F8D90122510 /* Pods_BaiSiBuDeJie.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,7 +282,6 @@
 		A57F5F111E62DC2E002BA929 = {
 			isa = PBXGroup;
 			children = (
-				A57EA6C61E6AE4D70054AE05 /* pop.framework */,
 				A57F5F1C1E62DC2E002BA929 /* BaiSiBuDeJie */,
 				A57F5F361E62DC2E002BA929 /* BaiSiBuDeJieTests */,
 				A57F5F1B1E62DC2E002BA929 /* Products */,
@@ -549,8 +547,6 @@
 				A52CBBCE1E83DF4D006042B1 /* UIImageView+HXLSDWeb.m */,
 				A552086B1E8E3E5B00E77AFC /* UITableViewCell+HXL.h */,
 				A552086C1E8E3E5B00E77AFC /* UITableViewCell+HXL.m */,
-				A591DAFF1E891848007EC238 /* UIView+HXLSDWeb.h */,
-				A591DB001E891848007EC238 /* UIView+HXLSDWeb.m */,
 				A5C8CB501E73C3160028224E /* UIImage+HXLRenderOriginal.h */,
 				A5C8CB511E73C3160028224E /* UIImage+HXLRenderOriginal.m */,
 				A5C8CB521E73C3160028224E /* UIView+HXLGeometry.h */,
@@ -574,6 +570,8 @@
 				A5C8CB631E73C3880028224E /* HXLPunTableVC.m */,
 				A5C8CB661E73C3880028224E /* HXLVoiceTableVC.h */,
 				A5C8CB671E73C3880028224E /* HXLVoiceTableVC.m */,
+				A56300561F01100400DAEE75 /* HXLShowBigPictureViewController.h */,
+				A56300571F01100400DAEE75 /* HXLShowBigPictureViewController.m */,
 			);
 			path = ChildViewController;
 			sourceTree = "<group>";
@@ -721,6 +719,7 @@
 				TargetAttributes = {
 					A57F5F191E62DC2E002BA929 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = QC92EMLW27;
 						ProvisioningStyle = Automatic;
 					};
 					A57F5F321E62DC2E002BA929 = {
@@ -834,7 +833,6 @@
 				A51EEB071E76D7F6002237E0 /* HXLVideoTableViewCell.m in Sources */,
 				A51EEB171E76D884002237E0 /* HXLAllTableViewCell.m in Sources */,
 				A5C8CB3F1E73C2660028224E /* HXLHeadlineView.m in Sources */,
-				A591DB011E891848007EC238 /* UIView+HXLSDWeb.m in Sources */,
 				A5ADEE241E76677100997971 /* HXLEssenceCollectionView.m in Sources */,
 				A557D91B1E70F25300B54327 /* HXLReleasePunViewController.m in Sources */,
 				A52CBBCF1E83DF4D006042B1 /* UIImageView+HXLSDWeb.m in Sources */,
@@ -865,6 +863,7 @@
 				A5C8CB5B1E73C3160028224E /* UIView+HXLGeometry.m in Sources */,
 				A51EEB131E76D857002237E0 /* HXLVoiceTableViewCell.m in Sources */,
 				A5E1A4651E6593E20060F656 /* HXLFollowViewController.m in Sources */,
+				A56300581F01100400DAEE75 /* HXLShowBigPictureViewController.m in Sources */,
 				A59F83421E8CE23600A342BB /* HXLUser.m in Sources */,
 				A5C8CB551E73C3160028224E /* HXLTabBarController.m in Sources */,
 				A557D9211E70F2FD00B54327 /* HXLPunView.m in Sources */,
@@ -956,7 +955,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -998,7 +997,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1011,6 +1010,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = QC92EMLW27;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BaiSiBuDeJie/Classes/Other/System/BaiSiBiDeJie-Prefix.pch";
 				INFOPLIST_FILE = BaiSiBuDeJie/Classes/Other/System/Info.plist;
@@ -1026,6 +1026,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = QC92EMLW27;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BaiSiBuDeJie/Classes/Other/System/BaiSiBiDeJie-Prefix.pch";
 				INFOPLIST_FILE = BaiSiBuDeJie/Classes/Other/System/Info.plist;

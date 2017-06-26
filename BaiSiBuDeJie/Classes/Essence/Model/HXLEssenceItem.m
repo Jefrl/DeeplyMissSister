@@ -54,17 +54,29 @@
         CGFloat imageW = self.width;
         CGFloat imageH = self.height;
         if (self.type == HXLTopicTypePicture) { // 图片
-            if (self.is_gif) { // GIF 图片
-                UIImage *image = [UIImage imageWithURLString:self.gifFistFrame];
-                imageW = image.size.width;
-                imageH = image.size.height;
+            if (self.is_gif) { // GIF 图片,且始终无大图模式
+                
+                self.isBigPicture = NO;
+                imageH = imageH * small_SCREEN_WIDTH / imageW;
+                if (imageH > SCREEN_HEIGHT) {
+                    imageH = SCREEN_HEIGHT * 0.7;
+                }
+                
+            } else {
+                
+                if (imageW > SCREEN_WIDTH) {
+                    imageH = imageH * small_SCREEN_WIDTH / imageW;
+                    
+                    if (imageH > SCREEN_HEIGHT * 0.5) {
+                        self.isBigPicture = YES;
+                        
+                        imageH = SCREEN_HEIGHT * 0.5;
+                    }
+                }
             }
             
-            if (imageW > SCREEN_WIDTH) {
-                imageH = imageH * SCREEN_WIDTH / imageW;
-                imageW = SCREEN_WIDTH;
-            }
-            _pictureFrame = CGRectMake(0, _cellHeight - essenceMargin_y, imageW, imageH);
+            _pictureFrame = CGRectMake(0, _cellHeight - essenceMargin_y, SCREEN_WIDTH, imageH);
+            
             _cellHeight = _cellHeight + imageH - essenceMargin_y;
         
     } else if(self.type == HXLTopicTypeVideo ) {
