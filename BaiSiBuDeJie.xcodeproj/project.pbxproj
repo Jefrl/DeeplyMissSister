@@ -62,6 +62,7 @@
 		A5E1A46B1E6598DF0060F656 /* HXLEssenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1A46A1E6598DF0060F656 /* HXLEssenceViewController.m */; };
 		A5E1A4701E65A7C70060F656 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5E1A46F1E65A7C70060F656 /* Assets.xcassets */; };
 		A5EDA2501F024A7C0053DC04 /* HXLCircleChart.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EDA24F1F024A7C0053DC04 /* HXLCircleChart.m */; };
+		A5EDA2F31F028E940053DC04 /* FLAnimatedImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EDA2F21F028E940053DC04 /* FLAnimatedImageView+WebCache.m */; };
 		A5F7AA131E79959F00F72EDD /* HXLConst.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F7AA121E79959F00F72EDD /* HXLConst.m */; };
 		A5FD85D01E77A9C6002D0CC6 /* HXLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FD85CF1E77A9C6002D0CC6 /* HXLSessionManager.m */; };
 /* End PBXBuildFile section */
@@ -180,6 +181,8 @@
 		A5E1A46F1E65A7C70060F656 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5EDA24E1F024A7C0053DC04 /* HXLCircleChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HXLCircleChart.h; path = ../../Category/HXLCircleChart.h; sourceTree = "<group>"; };
 		A5EDA24F1F024A7C0053DC04 /* HXLCircleChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HXLCircleChart.m; path = ../../Category/HXLCircleChart.m; sourceTree = "<group>"; };
+		A5EDA2F11F028E940053DC04 /* FLAnimatedImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FLAnimatedImageView+WebCache.h"; sourceTree = "<group>"; };
+		A5EDA2F21F028E940053DC04 /* FLAnimatedImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FLAnimatedImageView+WebCache.m"; sourceTree = "<group>"; };
 		A5F7AA111E79959F00F72EDD /* HXLConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLConst.h; sourceTree = "<group>"; };
 		A5F7AA121E79959F00F72EDD /* HXLConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLConst.m; sourceTree = "<group>"; };
 		A5FD85CE1E77A9C6002D0CC6 /* HXLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLSessionManager.h; sourceTree = "<group>"; };
@@ -541,6 +544,7 @@
 		A5C8CB4D1E73C3160028224E /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				A5EDA2F01F028E940053DC04 /* FLAnimatedImage */,
 				A5C8CB4E1E73C3160028224E /* UIBarButtonItem+HXLBarBtnItem.h */,
 				A5C8CB4F1E73C3160028224E /* UIBarButtonItem+HXLBarBtnItem.m */,
 				A52CBBCD1E83DF4D006042B1 /* UIImageView+HXLSDWeb.h */,
@@ -644,6 +648,15 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		A5EDA2F01F028E940053DC04 /* FLAnimatedImage */ = {
+			isa = PBXGroup;
+			children = (
+				A5EDA2F11F028E940053DC04 /* FLAnimatedImageView+WebCache.h */,
+				A5EDA2F21F028E940053DC04 /* FLAnimatedImageView+WebCache.m */,
+			);
+			path = FLAnimatedImage;
 			sourceTree = "<group>";
 		};
 		A5FD85CD1E77A902002D0CC6 /* DataTool */ = {
@@ -849,6 +862,7 @@
 				A57F5F691E63517B002BA929 /* main.m in Sources */,
 				A5C8CB561E73C3160028224E /* HXLHeadlineBtn.m in Sources */,
 				A57F5F5D1E634D01002BA929 /* AppDelegate.m in Sources */,
+				A5EDA2F31F028E940053DC04 /* FLAnimatedImageView+WebCache.m in Sources */,
 				A557D91A1E70F25300B54327 /* HXLReleaseLinkViewController.m in Sources */,
 				A5C8CB681E73C3880028224E /* HXLAllTableVC.m in Sources */,
 				A5C8CB6A1E73C3880028224E /* HXLPunTableVC.m in Sources */,

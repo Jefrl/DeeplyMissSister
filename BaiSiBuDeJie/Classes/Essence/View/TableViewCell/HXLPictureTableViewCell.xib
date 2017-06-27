@@ -31,7 +31,7 @@
                         <constraint firstAttribute="height" constant="40" id="OQr-Bq-dhE"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L1e-Vo-lOU">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L1e-Vo-lOU" customClass="FLAnimatedImageView">
                     <rect key="frame" x="0.0" y="0.0" width="289" height="161"/>
                     <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>

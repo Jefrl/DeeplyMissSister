@@ -7,17 +7,17 @@
 //
 
 #import "HXLPictureTableViewCell.h"
-#import "UIImageView+WebCache.h"
 #import "HXLEssenceItem.h"
 #import "HXLShowBigPictureViewController.h"
+#import "FLAnimatedImageView+WebCache.h"
 
 @interface HXLPictureTableViewCell ()
 
 /** 占位图片 */
 @property (weak, nonatomic) IBOutlet UIImageView *placeholdImageView;
 /** small_imageView */
-@property (nonatomic, weak) IBOutlet UIImageView *smallImageView;
-/** gifView */
+@property (nonatomic, weak) IBOutlet FLAnimatedImageView *smallImageView;
+/** gif 标识logo */
 @property (nonatomic, weak) IBOutlet UIImageView *gifImageView;
 /** progressView */
 @property (nonatomic, weak) IBOutlet UIView *progressView;
@@ -63,6 +63,8 @@
             self.loadError_imageView.hidden = NO;
             return ;
         }
+        
+//        UIImage *imageGif =
         
 //         如果是大图片, 才需要进行绘图处理
         if (_punCellItem.isBigPicture == NO) return;
