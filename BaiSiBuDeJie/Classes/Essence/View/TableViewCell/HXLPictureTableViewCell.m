@@ -44,6 +44,9 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.clipsToBounds = YES;
+    
+    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(seeBigPictureClick:)];
+    [self addGestureRecognizer:tapGes];
 }
 
 - (void)setPunCellItem:(HXLEssenceItem *)punCellItem

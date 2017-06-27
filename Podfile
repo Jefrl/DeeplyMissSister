@@ -8,9 +8,12 @@ target 'BaiSiBuDeJie' do
   pod 'MJExtension'
   pod 'MJRefresh'
   pod 'SDWebImage'
+  pod 'FLAnimatedImage'
   pod 'SVProgressHUD'
-  pod 'DACircularProgress'
-  pod 'NJKWebViewProgress'
+  pod 'PNChart'
   
+#  pod 'DACircularProgress'
+#  pod 'NJKWebViewProgress'
+
   
 end

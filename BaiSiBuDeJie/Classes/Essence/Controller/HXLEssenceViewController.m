@@ -13,6 +13,8 @@
 #import "HXLPunTableVC.h"
 #import "HXLVoiceTableVC.h"
 #import "HXLHeadlineView.h"
+#import "FLAnimatedImageView.h"
+#import "FLAnimatedImageView+WebCache.h"
 
 @interface HXLEssenceViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 /** headlineVC_arr 头标题控制器数组 */

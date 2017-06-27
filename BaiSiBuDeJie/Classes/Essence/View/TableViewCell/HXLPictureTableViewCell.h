@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class HXLEssenceItem;
 
-@interface HXLPictureTableViewCell : UITableViewCell
+@interface HXLPictureTableViewCell : UIView
 /** cell 模型 */
 @property (nonatomic, strong) HXLEssenceItem *punCellItem;
 
