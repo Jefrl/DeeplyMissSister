@@ -41,10 +41,20 @@
 @property (strong, nonatomic) NSMutableArray *latestComments;
 /** 包含 hots 热评论数组 的二维大数组 */
 @property (nonatomic, strong) NSMutableArray *allHots;
+/** params 请求数据的参数 */
+@property (nonatomic, readwrite, strong) NSMutableDictionary *params;
+/** 请求下页数据, 要增加的参数 maxtimes */
+@property (nonatomic, readwrite, strong) NSString *maxtime;
+/** 当期页码数 */
+@property (nonatomic, readwrite,  assign) NSInteger page;
+/** 上次选中的tabar索引(或者控制器) */
+@property (nonatomic, assign) NSInteger lastSelectedIndex;
 
 @end
 
 @implementation HXLEssenceBaseWithChildTVC
+
+#pragma mark - Lazy load
 - (NSMutableArray *)hots
 {
     if (!_allHots) {
@@ -95,6 +105,16 @@
     return _sessionManager;
 }
 
+#pragma mark - viewDidLoad
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // 统一风格;
+    [self setupUniformStyle];
+    // 初始化网络数据
+    [self setupRefresh];
+}
+
+#pragma - business requirement
 - (void)setupUniformStyle {
     
     self.tableView.backgroundColor = RGBColor(206, 206, 206, 1);
@@ -116,61 +136,126 @@
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([HXLPunTableViewCell class]) bundle:nil] forCellReuseIdentifier:pun_reuseID];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // 统一风格;
-    [self setupUniformStyle];
-    // 初始化网络数据
-    [self setupData];
-}
+#pragma mark - 设置上拉刷新, 下拉加载
 
-- (void)test
+/**
+ 初始化 Refresh
+ */
+- (void)setupRefresh
 {
-    // 请求参数
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"a"] = @"dataList";
-    params[@"c"] = @"comment";
-//    params[@"data_id"] = item.ID;
-    params[@"hot"] = @"1";
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewTopics)];
+    self.tableView.mj_header.automaticallyChangeAlpha = YES;
+    [self.tableView.mj_header beginRefreshing];
     
-    [self.sessionManager request:RequestTypeGet urlStr:HXLPUBLIC_URL parameters:params resultBlock:^(id responseObject, NSError *error) {
-        if (error) {
-            NSLog(@"%@", error); return ;
-        }
-        
-        // 字典数组 -> 转模型数组
-        self.allHots = [HXLEssenceCommentItem mj_objectArrayWithKeyValuesArray:responseObject[@"hot"]];
-        
-        self.commentItemArray = [HXLEssenceCommentItem mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-//        item.hotArray = _allHots;
-        [self.tableView reloadData];
-    }];
-
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreTopics)];
 }
 
-- (void)setupData {
+/**
+ 下拉更新
+ */
+- (void)loadNewTopics {
+    // 当用户在上拉加载过程中, 立马又下拉更新, 这时先停止掉上拉加载;
+    [self.tableView.mj_footer endRefreshing];
+    
     // 请求不同类型贴子的参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"a"] = @"list";
     // 将数字包装成对象, AFN内部会处理;
     params[@"type"] = @(self.type);
     params[@"c"] = @"data";
+    self.params = params;
+    
     // 请求发出
-    [self.sessionManager request:RequestTypeGet urlStr:HXLPUBLIC_URL parameters:params resultBlock:^(id responseObject, NSError *error) {
+    [self.sessionManager request:RequestTypeGet URLString:HXLPUBLIC_URL parameters:params success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        if (self.params != params) { // 判断是否 在加载过程中, 用户将精华控制器 切换到了 最新控制器!
+            return ; // 停止加载
+        }
+        
+        self.maxtime =  responseObject[@"info"][@"maxtime"];
+        
+        // 字典数组转 模型数组
+        self.itemArray = [HXLEssenceItem mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        
+        //--test 查看json 数据结构--
+        //[self test];
+        self.responseDict = responseObject;
+        WriteToPlist(_responseDict, @"pun", @(self.type))
+        
+        // 获得新数据, 刷新界面
+        [self.tableView reloadData];
+        // 结束刷新
+        [self.tableView.mj_header endRefreshing];
+        // 页码清 0
+        self.page = 0;
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
+        if (self.params != params) { // 判断是否 在加载过程中, 用户将精华控制器 切换到了 最新控制器!
+            return ; // 停止加载
+        }
+        
+        // 结束刷新
+        [self.tableView.mj_header endRefreshing];
         
         if (error) {
             NSLog(@"%@", error);
         }
+    }];
+    
+}
+
+/**
+ 上拉加载
+ */
+- (void)loadMoreTopics {
+    
+    [self.tableView.mj_header endRefreshing];
+    
+    // 请求不同类型贴子的参数
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"a"] = @"list";
+    // 将数字包装成对象, AFN内部会处理;
+    params[@"type"] = @(self.type);
+    params[@"c"] = @"data";
+    NSInteger page = self.page + 1;
+    params[@"page"] = @(page);
+    params[@"maxtime"] = self.maxtime;
+    // 及时记录
+    self.params = params;
+    
+    // 请求发出
+    [self.sessionManager request:RequestTypeGet URLString:HXLPUBLIC_URL parameters:params success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        if (self.params != params) { // 判断是否 在加载过程中, 用户将精华控制器 切换到了 最新控制器!
+            return ; // 停止加载
+        }
+        
+        self.maxtime =  responseObject[@"info"][@"maxtime"];
+        
         // 字典数组转 模型数组
         self.itemArray = [HXLEssenceItem mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        
+        //--test 查看json 数据结构--
+        //[self test];
         self.responseDict = responseObject;
         WriteToPlist(_responseDict, @"pun", @(self.type))
         
-        //--test 查看json 数据结构--
-        
         // 获得新数据, 刷新界面
         [self.tableView reloadData];
+        // 结束刷新
+        [self.tableView. mj_footer endRefreshing];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
+        if (self.params != params) { // 判断是否 在加载过程中, 用户将精华控制器 切换到了 最新控制器!
+            return ; // 停止加载
+        }
+        
+        // 结束刷新
+        [self.tableView.mj_footer endRefreshing];
+        
+        if (error) {
+            NSLog(@"%@", error);
+        }
     }];
+    
 }
 
 #pragma mark - Table view data source

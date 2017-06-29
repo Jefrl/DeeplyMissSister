@@ -15,7 +15,11 @@ typedef enum {
 
 @interface HXLSessionManager : AFHTTPSessionManager
 /** 自定义封装 AFN 网络工具类 */
-- (void)request:(RequestType)requestType urlStr:(NSString *)urlStr parameters:(NSDictionary *)parameters resultBlock:(void(^)(id responseObject, NSError *error))resultBlock;
+- (void)request:(RequestType)requestType
+      URLString:(nullable NSString *)URLString
+     parameters:(nullable NSDictionary *)parameters
+        success:(nullable void (^)(NSURLSessionDataTask * _Nullable task, id _Nullable responseObject))success
+        failure:(nullable void (^)(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error))failure;
 
 @end
 
