@@ -1,5 +1,5 @@
 //
-//  UITableViewCell+HXL.h
+//  UIView+HXL.h
 //  BaiSiBuDeJie
 //
 //  Created by Jefrl on 17/3/31.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class HXLEssenceItem;
 
-@interface UITableViewCell (HXL)
+@interface UIView (HXL)
 - (void)setPunCellItem:(HXLEssenceItem *)punCellItem;
 
 @end

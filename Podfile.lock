@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - DACircularProgress (2.3.1)
   - FLAnimatedImage (1.0.12)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
@@ -28,6 +29,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - DACircularProgress
   - FLAnimatedImage
   - MJExtension
   - MJRefresh
@@ -38,6 +40,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
@@ -47,6 +50,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
 
-PODFILE CHECKSUM: be472b6ea10468ec73ca1de1c2ae4033f8df4cb7
+PODFILE CHECKSUM: 61f938288f39f8e70e2f1891135093ee612f6db3
 
 COCOAPODS: 1.2.0.rc.1
