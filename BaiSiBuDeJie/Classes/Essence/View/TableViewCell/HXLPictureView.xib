@@ -15,7 +15,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageBackground" translatesAutoresizingMaskIntoConstraints="NO" id="h3L-8v-dmF" userLabel="占位图片">
-                    <rect key="frame" x="0.0" y="0.0" width="289" height="15"/>
+                    <rect key="frame" x="0.0" y="10" width="289" height="15"/>
                 </imageView>
                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loadImage_error" translatesAutoresizingMaskIntoConstraints="NO" id="AAx-Od-Jg7" userLabel="失败图片">
                     <rect key="frame" x="0.0" y="60" width="289" height="40"/>
@@ -23,16 +23,14 @@
                         <constraint firstAttribute="height" constant="40" id="OQr-Bq-dhE"/>
                     </constraints>
                 </imageView>
-                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainTitle" translatesAutoresizingMaskIntoConstraints="NO" id="OUp-cW-sbb">
-                    <rect key="frame" x="179" y="5" width="100" height="19"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="100" id="TxY-lZ-yAV"/>
-                    </constraints>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L1e-Vo-lOU" customClass="FLAnimatedImageView">
+                    <rect key="frame" x="0.0" y="0.0" width="289" height="161"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="common-gif" translatesAutoresizingMaskIntoConstraints="NO" id="wfm-5X-XIi">
                     <rect key="frame" x="0.0" y="0.0" width="30" height="31"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="30" id="iq3-nM-8Kz"/>
+                        <constraint firstAttribute="width" constant="30" id="ro5-pK-M1k"/>
                     </constraints>
                 </imageView>
                 <button alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5a-2c-0f4">
@@ -46,47 +44,40 @@
                         <action selector="seeBigPictureClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="qyc-zJ-Xh9"/>
                     </connections>
                 </button>
-                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L1e-Vo-lOU" customClass="FLAnimatedImageView">
-                    <rect key="frame" x="0.0" y="0.0" width="289" height="161"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jZ1-Cl-q0O" userLabel="进度条控件" customClass="HXLProgressView">
                     <rect key="frame" x="95" y="50" width="100" height="100"/>
-                    <color key="backgroundColor" red="0.36789410509999998" green="0.74945397290000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="Pf8-aS-QzM"/>
                         <constraint firstAttribute="height" constant="100" id="UEm-lZ-6Vx"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="L1e-Vo-lOU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="00y-B1-WNC"/>
                 <constraint firstAttribute="trailing" secondItem="AAx-Od-Jg7" secondAttribute="trailing" id="1dt-40-9MT"/>
+                <constraint firstItem="wfm-5X-XIi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="701-vi-u05"/>
                 <constraint firstItem="jZ1-Cl-q0O" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="7L0-Ex-InL"/>
                 <constraint firstItem="jZ1-Cl-q0O" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="50" id="7QZ-QO-Iqx"/>
-                <constraint firstAttribute="trailing" secondItem="OUp-cW-sbb" secondAttribute="trailing" constant="10" id="8Am-Nn-KdN"/>
-                <constraint firstAttribute="trailing" secondItem="h3L-8v-dmF" secondAttribute="trailing" id="Gxh-eu-sNF"/>
+                <constraint firstItem="h3L-8v-dmF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="KV5-jn-EUh"/>
                 <constraint firstAttribute="trailing" secondItem="z5a-2c-0f4" secondAttribute="trailing" id="Rys-aA-UAA"/>
+                <constraint firstItem="wfm-5X-XIi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="T7W-M4-h7E"/>
                 <constraint firstItem="AAx-Od-Jg7" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="TC0-r7-xZc"/>
-                <constraint firstItem="h3L-8v-dmF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Xs4-bc-ai1"/>
                 <constraint firstItem="AAx-Od-Jg7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aEn-Br-jYA"/>
                 <constraint firstItem="z5a-2c-0f4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="amt-Zt-CfI"/>
-                <constraint firstItem="OUp-cW-sbb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="hb0-oA-Tvg"/>
-                <constraint firstItem="wfm-5X-XIi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="lTZ-ff-hmq"/>
                 <constraint firstAttribute="bottom" secondItem="z5a-2c-0f4" secondAttribute="bottom" id="lXB-xD-qbO"/>
-                <constraint firstItem="h3L-8v-dmF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vPf-aJ-NEl"/>
+                <constraint firstAttribute="trailing" secondItem="h3L-8v-dmF" secondAttribute="trailing" id="mlm-P3-xYR"/>
                 <constraint firstAttribute="trailing" secondItem="L1e-Vo-lOU" secondAttribute="trailing" id="wXm-M6-Zyl"/>
                 <constraint firstAttribute="bottom" secondItem="L1e-Vo-lOU" secondAttribute="bottom" id="xfH-lF-798"/>
                 <constraint firstItem="L1e-Vo-lOU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xg5-SV-CLi"/>
-                <constraint firstItem="wfm-5X-XIi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="yTM-NY-8iI"/>
+                <constraint firstItem="h3L-8v-dmF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zId-xf-OgH"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="gifImageView" destination="wfm-5X-XIi" id="dpf-tT-WNi"/>
                 <outlet property="loadError_imageView" destination="AAx-Od-Jg7" id="KU9-Na-Pml"/>
-                <outlet property="loadSuccess_imageView" destination="OUp-cW-sbb" id="x2E-Y4-jgU"/>
                 <outlet property="placeholdImageView" destination="h3L-8v-dmF" id="g6x-gk-Cka"/>
                 <outlet property="progressView" destination="jZ1-Cl-q0O" id="1rr-xI-OVL"/>
                 <outlet property="seeBigButton" destination="z5a-2c-0f4" id="xdT-uC-OPl"/>
@@ -96,7 +87,6 @@
         </view>
     </objects>
     <resources>
-        <image name="MainTitle" width="107" height="19"/>
         <image name="common-gif" width="31" height="31"/>
         <image name="imageBackground" width="75" height="15"/>
         <image name="loadImage_error" width="185" height="51"/>

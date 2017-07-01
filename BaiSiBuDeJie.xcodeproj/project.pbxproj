@@ -26,7 +26,6 @@
 		A538C3E61E7AD0F200B3EFD3 /* member_ diamond_iconN.gif in Resources */ = {isa = PBXBuildFile; fileRef = A538C3E41E7AD0F200B3EFD3 /* member_ diamond_iconN.gif */; };
 		A53E05B91E7BECFF0079DA41 /* HXLDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A53E05B81E7BECFF0079DA41 /* HXLDataTool.m */; };
 		A54C558F1F066C8600BFAB3D /* HXLProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A54C558E1F066C8600BFAB3D /* HXLProgressView.m */; };
-		A54C55911F0676AE00BFAB3D /* placehold.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A54C55901F0676AE00BFAB3D /* placehold.jpeg */; };
 		A552086D1E8E3E5B00E77AFC /* UIView+HXL.m in Sources */ = {isa = PBXBuildFile; fileRef = A552086C1E8E3E5B00E77AFC /* UIView+HXL.m */; };
 		A557D91A1E70F25300B54327 /* HXLReleaseLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A557D9151E70F25300B54327 /* HXLReleaseLinkViewController.m */; };
 		A557D91B1E70F25300B54327 /* HXLReleasePunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A557D9171E70F25300B54327 /* HXLReleasePunViewController.m */; };
@@ -63,7 +62,6 @@
 		A5E1A4681E6593FC0060F656 /* HXLMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1A4671E6593FC0060F656 /* HXLMineViewController.m */; };
 		A5E1A46B1E6598DF0060F656 /* HXLEssenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1A46A1E6598DF0060F656 /* HXLEssenceViewController.m */; };
 		A5E1A4701E65A7C70060F656 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5E1A46F1E65A7C70060F656 /* Assets.xcassets */; };
-		A5EDA2501F024A7C0053DC04 /* HXLCircleChart.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EDA24F1F024A7C0053DC04 /* HXLCircleChart.m */; };
 		A5EDA2F31F028E940053DC04 /* FLAnimatedImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EDA2F21F028E940053DC04 /* FLAnimatedImageView+WebCache.m */; };
 		A5F7AA131E79959F00F72EDD /* HXLConst.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F7AA121E79959F00F72EDD /* HXLConst.m */; };
 		A5FD85D01E77A9C6002D0CC6 /* HXLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FD85CF1E77A9C6002D0CC6 /* HXLSessionManager.m */; };
@@ -110,9 +108,8 @@
 		A538C3E41E7AD0F200B3EFD3 /* member_ diamond_iconN.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "member_ diamond_iconN.gif"; path = "Assets.xcassets/02 Essence/06 useSet/member_ diamond_iconN.gif"; sourceTree = "<group>"; };
 		A53E05B71E7BECFF0079DA41 /* HXLDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLDataTool.h; sourceTree = "<group>"; };
 		A53E05B81E7BECFF0079DA41 /* HXLDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLDataTool.m; sourceTree = "<group>"; };
-		A54C558D1F066C8600BFAB3D /* HXLProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLProgressView.h; sourceTree = "<group>"; };
-		A54C558E1F066C8600BFAB3D /* HXLProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLProgressView.m; sourceTree = "<group>"; };
-		A54C55901F0676AE00BFAB3D /* placehold.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placehold.jpeg; sourceTree = "<group>"; };
+		A54C558D1F066C8600BFAB3D /* HXLProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HXLProgressView.h; path = ../../../../Essence/View/TableViewCell/HXLProgressView.h; sourceTree = "<group>"; };
+		A54C558E1F066C8600BFAB3D /* HXLProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HXLProgressView.m; path = ../../../../Essence/View/TableViewCell/HXLProgressView.m; sourceTree = "<group>"; };
 		A552086B1E8E3E5B00E77AFC /* UIView+HXL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HXL.h"; sourceTree = "<group>"; };
 		A552086C1E8E3E5B00E77AFC /* UIView+HXL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HXL.m"; sourceTree = "<group>"; };
 		A557D9141E70F25300B54327 /* HXLReleaseLinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLReleaseLinkViewController.h; sourceTree = "<group>"; };
@@ -184,8 +181,6 @@
 		A5E1A4691E6598DF0060F656 /* HXLEssenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLEssenceViewController.h; sourceTree = "<group>"; };
 		A5E1A46A1E6598DF0060F656 /* HXLEssenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLEssenceViewController.m; sourceTree = "<group>"; };
 		A5E1A46F1E65A7C70060F656 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A5EDA24E1F024A7C0053DC04 /* HXLCircleChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HXLCircleChart.h; path = ../../Category/HXLCircleChart.h; sourceTree = "<group>"; };
-		A5EDA24F1F024A7C0053DC04 /* HXLCircleChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HXLCircleChart.m; path = ../../Category/HXLCircleChart.m; sourceTree = "<group>"; };
 		A5EDA2F11F028E940053DC04 /* FLAnimatedImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FLAnimatedImageView+WebCache.h"; sourceTree = "<group>"; };
 		A5EDA2F21F028E940053DC04 /* FLAnimatedImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FLAnimatedImageView+WebCache.m"; sourceTree = "<group>"; };
 		A5F7AA111E79959F00F72EDD /* HXLConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLConst.h; sourceTree = "<group>"; };
@@ -233,9 +228,6 @@
 				A51EEB081E76D816002237E0 /* HXLPictureView.h */,
 				A51EEB091E76D816002237E0 /* HXLPictureView.m */,
 				A51EEB1A1E76D8D5002237E0 /* HXLPictureView.xib */,
-				A54C55901F0676AE00BFAB3D /* placehold.jpeg */,
-				A54C558D1F066C8600BFAB3D /* HXLProgressView.h */,
-				A54C558E1F066C8600BFAB3D /* HXLProgressView.m */,
 				A51EEB051E76D7F6002237E0 /* HXLVideoTableViewCell.h */,
 				A51EEB061E76D7F6002237E0 /* HXLVideoTableViewCell.m */,
 				A51EEB181E76D8A9002237E0 /* HXLVideoTableViewCell.xib */,
@@ -354,8 +346,8 @@
 			isa = PBXGroup;
 			children = (
 				A57F5F441E634D00002BA929 /* Controller */,
-				A57F5F461E634D00002BA929 /* View */,
 				A52CBBD11E83E9DF006042B1 /* ViewModel */,
+				A57F5F461E634D00002BA929 /* View */,
 				A57F5F451E634D00002BA929 /* Model */,
 			);
 			path = Essence;
@@ -543,8 +535,8 @@
 				A5C8CB4A1E73C3160028224E /* HXLReleaseButton.m */,
 				A5C8CB4B1E73C3160028224E /* HXLTabBar.h */,
 				A5C8CB4C1E73C3160028224E /* HXLTabBar.m */,
-				A5EDA24E1F024A7C0053DC04 /* HXLCircleChart.h */,
-				A5EDA24F1F024A7C0053DC04 /* HXLCircleChart.m */,
+				A54C558D1F066C8600BFAB3D /* HXLProgressView.h */,
+				A54C558E1F066C8600BFAB3D /* HXLProgressView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -776,7 +768,6 @@
 			files = (
 				A538C3E61E7AD0F200B3EFD3 /* member_ diamond_iconN.gif in Resources */,
 				A57F5F2D1E62DC2E002BA929 /* LaunchScreen.storyboard in Resources */,
-				A54C55911F0676AE00BFAB3D /* placehold.jpeg in Resources */,
 				A538C3E51E7AD0F200B3EFD3 /* member_ diamond_icon.gif in Resources */,
 				A5E1A4701E65A7C70060F656 /* Assets.xcassets in Resources */,
 				A51EEB0F1E76D844002237E0 /* HXLPunTableViewCell.xib in Resources */,
@@ -894,7 +885,6 @@
 				A51EEB0E1E76D844002237E0 /* HXLPunTableViewCell.m in Sources */,
 				A5C8CB571E73C3160028224E /* HXLReleaseButton.m in Sources */,
 				A5C8CB6B1E73C3880028224E /* HXLVideoTableVC.m in Sources */,
-				A5EDA2501F024A7C0053DC04 /* HXLCircleChart.m in Sources */,
 				A52CBBD41E83EA37006042B1 /* HXLEssenceViewModel.m in Sources */,
 				A5E1A45C1E65929C0060F656 /* HXLLastestViewController.m in Sources */,
 			);

@@ -25,7 +25,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *loadError_imageView;
 /** 查看大图按钮 */
 @property (weak, nonatomic) IBOutlet UIButton *seeBigButton;
-@property (weak, nonatomic) IBOutlet UIImageView *loadSuccess_imageView;
 /** progressView */
 @property (nonatomic, strong) IBOutlet HXLProgressView *progressView;
 
@@ -50,8 +49,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    
     self.smallImageView.clipsToBounds = YES;
+    
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(seeBigPictureClick:)];
     [self addGestureRecognizer:tapGes];
     
@@ -69,42 +68,37 @@
 - (void)setPunCellItem:(HXLEssenceItem *)punCellItem
 {
     _punCellItem = punCellItem;
-    // 初始化加载进程 View
-    self.gifImageView.hidden = NO;
-    self.progressView.hidden = NO;
-    self.placeholdImageView.hidden = NO;
-    
-//    // 立马显示最新的进度值(防止因为网速慢, 导致显示的是其他图片的下载进度)
-//    [self.progressView setProgress:punCellItem.currentProgress animated:NO];
+
+    // 立马显示最新的进度值(防止因为网速慢, 导致显示的是其他图片的下载进度)
+    [self.progressView setProgress:punCellItem.currentProgress animated:NO];
     
     [self.smallImageView sd_setImageWithURL:[NSURL URLWithString:_punCellItem.small_image] placeholderImage:nil options:SDWebImageRetryFailed progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
-
+        // 进来就要显示;
+        self.progressView.hidden = NO;
+        
         NSLog(@"%@, %ld, %ld, %.01f", @"progress", receivedSize, expectedSize, 1.00 * receivedSize/expectedSize);
         
         // 计算进度值
         punCellItem.currentProgress = 1.0 * receivedSize / expectedSize;
         // 显示进度值
         [self.progressView setProgress:punCellItem.currentProgress animated:NO];
-       
+        self.progressView.progressLabel.text = [NSString stringWithFormat:@"%.1f%%", punCellItem.currentProgress * 100];
+        
     } completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         // 进来就要隐藏;
         self.progressView.hidden = YES;
         
         if (error) { // 网络加载失败就, 显示加载失败的图片;
+            NSLog(@"%@", error);
+            
             self.placeholdImageView.hidden = YES;
-            self.smallImageView.hidden = YES;
             self.loadError_imageView.hidden = NO;
             
             return ;
         }
         
-        self.smallImageView.hidden = NO;
-        self.loadError_imageView.hidden = YES;
-        
 //         如果是大图片, 才需要进行绘图处理
         if (_punCellItem.isBigPicture == NO) return;
-        
-        self.seeBigButton.hidden = NO;
         
         // 开启图形上下文
         UIGraphicsBeginImageContextWithOptions(_punCellItem.pictureFrame.size, YES, 0.0);
@@ -124,8 +118,18 @@
         
     }];
     
+    // 初始化加载进程 View
+//    self.gifImageView.hidden = NO;
+//    self.progressView.hidden = NO;
+//    self.placeholdImageView.hidden = NO;
+    
+    if (_punCellItem.isBigPicture) {
+        self.gifImageView.hidden = YES;
+        self.seeBigButton.hidden = NO;
+    }
+    
     if (_punCellItem.is_gif) {
-        
+
         self.seeBigButton.hidden = YES;
         self.gifImageView.hidden = NO;
     }
