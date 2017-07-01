@@ -6,7 +6,7 @@
 //  Copyright © 2017年 com.Jefrl.www. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 @class HXLEssenceCommentItem;
 @interface HXLEssenceItem : NSObject
 /** 帖子的类型 */
@@ -73,7 +73,7 @@
 /** 图片是否太大 */
 @property (nonatomic, assign) BOOL isBigPicture;
 /** 图片的下载进度 */
-@property (nonatomic, assign) CGFloat pictureProgress;
+@property (nonatomic, assign) CGFloat currentProgress;
 
 /** 声音控件的frame */
 @property (nonatomic, assign, readonly) CGRect voiceFrame;

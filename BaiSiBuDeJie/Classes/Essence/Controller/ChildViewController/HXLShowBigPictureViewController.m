@@ -85,7 +85,8 @@
         _scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
         _scrollView.showsVerticalScrollIndicator = NO;
         _scrollView.userInteractionEnabled = YES;
-        _scrollView.backgroundColor = [UIColor cyanColor];
+
+        _scrollView.backgroundColor = [UIColor blackColor];
         _scrollView.bounces = NO;
         UIGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backBtnClick:)];
         [_scrollView addGestureRecognizer:tapGes];
@@ -105,7 +106,7 @@
         [_imageView sd_setImageWithURL:[NSURL URLWithString:_punCellItem.small_image] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         }];
         
-        CGFloat width = _punCellItem.pictureFrame.size.width;
+        CGFloat width = SCREEN_WIDTH;
         CGFloat height = _punCellItem.height * width / _punCellItem.width;
         if (height <= SCREEN_HEIGHT) {
             _imageView.size = CGSizeMake(width, height);
@@ -163,7 +164,7 @@
 }
 
 - (void)backBtnClick:(UIButton *)btn {
-    [self dismissViewControllerAnimated:NO completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 

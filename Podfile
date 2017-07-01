@@ -11,8 +11,7 @@ target 'BaiSiBuDeJie' do
   pod 'FLAnimatedImage'
   pod 'SVProgressHUD'
   pod 'PNChart'
-  
-#  pod 'DACircularProgress'
+  pod 'DACircularProgress'
 #  pod 'NJKWebViewProgress'
 
   

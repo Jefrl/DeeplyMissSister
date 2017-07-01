@@ -6,9 +6,9 @@
 //  Copyright © 2017年 com.Jefrl.www. All rights reserved.
 //
 
-#import "UITableViewCell+HXL.h"
+#import "UIView+HXL.h"
 
-@implementation UITableViewCell (HXL)
+@implementation UIView (HXL)
 - (void)setPunCellItem:(HXLEssenceItem *)punCellItem
 {
     

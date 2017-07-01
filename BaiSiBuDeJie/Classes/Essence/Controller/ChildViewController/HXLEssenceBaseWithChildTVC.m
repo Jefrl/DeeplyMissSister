@@ -117,7 +117,7 @@
 #pragma - business requirement
 - (void)setupUniformStyle {
     
-    self.tableView.backgroundColor = RGBColor(206, 206, 206, 1);
+    self.tableView.backgroundColor = RGBColor(255, 255, 255, 1);
     // 由于滚动的原因, tableView 系统默认低于状态栏, 高度也减了状态栏的高度;
     self.view.height += self.view.y;
     self.view.y = 0;
@@ -147,7 +147,7 @@
     self.tableView.mj_header.automaticallyChangeAlpha = YES;
     [self.tableView.mj_header beginRefreshing];
     
-    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreTopics)];
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreTopics)];
 }
 
 /**
@@ -260,6 +260,7 @@
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSLog(@"%ld", self.itemArray.count);
     return self.itemArray.count;
 }
 
@@ -268,18 +269,11 @@
     
     HXLEssenceItem *item = self.itemArray[indexPath.row];
     cell.punCellItem = item;
-
-    //    cell.containBottomView.hidden = YES;
     _cell = cell;
     
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    //    HXLEssenceItem *item = self.itemArray[indexPath.row];
-    
-}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     

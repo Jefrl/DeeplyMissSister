@@ -12,10 +12,13 @@
 
 #import "MJExtension.h"
 @interface HXLEssenceItem ()
+
 {
     CGFloat _cellHeight;
     CGRect _pictureFrame;
 }
+/** 当前累加的高度 */
+@property (nonatomic, readwrite,  assign) CGFloat sumHight;
 
 @end
 
@@ -36,6 +39,14 @@
              };
 }
 
+- (CGFloat)width
+{
+    if (!_width) {
+        
+    }
+    return _width;
+}
+
 // 计算出每个模型的高度
 - (CGFloat)cellHeight
 {
@@ -43,71 +54,65 @@
         
         // 1. 基础通用高度
         CGSize text_maxSize = CGSizeMake(SCREEN_WIDTH - essenceMargin_y * 2, MAXFLOAT);
-        CGSize hotC_maxSize = CGSizeMake(SCREEN_WIDTH - essenceMargin_y * 4, MAXFLOAT);
+        //        CGSize hotC_maxSize = CGSizeMake(SCREEN_WIDTH - essenceMargin_y * 4, MAXFLOAT);
         // 1.1 帖子描述文字高度
         CGFloat textHight = [self.text boundingRectWithSize:text_maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : FONT_17} context:nil].size.height;
         
-        _cellHeight = essenceMargin_y + containTopView_hight + (textHight + essenceMargin_y * 2);
-        NSLog(@"%.f", _cellHeight );
+        // cellHeight 的高度累加得到 midView 的 y 坐标
+        self.sumHight = containTopView_hight + textHight + essenceMargin_y;
+        _cellHeight = self.sumHight;
         
-        // 2. 不同类型 cell 的差异高度
+        // 2. 加上点赞 View 的高度
+        _cellHeight = _cellHeight + containDingView_hight;
+        
+        // 3. 由于后期 cell 与 contentView 的 花式变话, 那么就变化对应的整个 cell 的高度增加 15, 原本应该20的;
+        _cellHeight = _cellHeight + DIY + essenceMargin_y;
+        
+        // 4. 有最热评时的高度
+        
+        // 5. 不同类型 cell 的差异高度
         CGFloat imageW = self.width;
         CGFloat imageH = self.height;
+        
         if (self.type == HXLTopicTypePicture) { // 图片
             if (self.is_gif) { // GIF 图片,且始终无大图模式
                 
                 self.isBigPicture = NO;
-                imageH = imageH * small_SCREEN_WIDTH / imageW;
-                if (imageH > SCREEN_HEIGHT) {
-                    imageH = SCREEN_HEIGHT * 0.7;
-                }
+                imageH = imageH * small_SCREEN_WIDTH  / imageW;
                 
             } else {
                 
                 if (imageW > SCREEN_WIDTH) {
                     imageH = imageH * small_SCREEN_WIDTH / imageW;
                     
-                    if (imageH > SCREEN_HEIGHT * 0.5) {
+                    if (imageH > SCREEN_HEIGHT * 0.8) {
                         self.isBigPicture = YES;
                         
-                        imageH = SCREEN_HEIGHT * 0.5;
+                        imageH = SCREEN_HEIGHT * 0.8;
                     }
+                    
                 }
             }
             
-            _pictureFrame = CGRectMake(0, _cellHeight - essenceMargin_y, SCREEN_WIDTH, imageH);
+            _pictureFrame = CGRectMake(0, self.sumHight, small_SCREEN_WIDTH, imageH);
             
-            _cellHeight = _cellHeight + imageH - essenceMargin_y;
-        
-    } else if(self.type == HXLTopicTypeVideo ) {
-        
-    } else if(self.type == HXLTopicTypeVoice ) {
-        
-    }
-    // 3. 点赞 midView 的高度
-    _cellHeight = _cellHeight + containMidView_hight + cellMargin_y;
-    // 4. 有最热评时的高度
-    if (self.top_cmt.count != 0) {// 存在热评模型 (至少一条热评)
-        self.maxIndex = self.top_cmt.count > showHotCount ? showHotCount - 1 : self.top_cmt.count - 1;
-        
-        CGFloat __block _tmpHeight = 0;
-        [self.top_cmt enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            HXLEssenceCommentItem *hotItem = obj;
-            HXLUser *user = hotItem.user;
-            NSString *usernameStr = [NSString stringWithFormat:@"%@:  ", user.username];
-            NSString *content = [NSString stringWithFormat:@"%@%@", usernameStr, hotItem.content];
-            CGFloat labelHeight = [content boundingRectWithSize:hotC_maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:FONT_14} context:nil].size.height;
+            _cellHeight = _cellHeight + imageH;
             
-            _tmpHeight = essenceMargin_y + labelHeight;
-            if (idx == self.maxIndex) *stop = YES;
+        } else if(self.type == HXLTopicTypeVideo ) {
             
-        }];
-        _cellHeight = _cellHeight + (_tmpHeight + essenceMargin_y) + essenceMargin_y;
+        } else if(self.type == HXLTopicTypeVoice ) {
+            
+        } else { // 段子
+            // 只有段子类型, 与点赞 View 无间距, 减掉空隙, 单独返回高度;
+            _cellHeight = _cellHeight - essenceMargin_y;
+            
+            return _cellHeight;
+        }
+        
+        
     }
     
-}
-//    NSLog(@"%.f", _cellHeight );
-return _cellHeight;
+    return _cellHeight;
 }
 
 @end
