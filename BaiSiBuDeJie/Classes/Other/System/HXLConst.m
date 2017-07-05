@@ -17,5 +17,8 @@ CGFloat const DIY = 5;
 
 // 基类(也是段子)的重用标识;
 NSString * const pun_reuseID = @"punCell";
+/** tabBar被选中的通知名字 */
+NSString * const HXLTabBarDidSelectNotification = @"HXLTabBarDidSelectNotification";
+
 
 NSInteger const showHotCount = 3;

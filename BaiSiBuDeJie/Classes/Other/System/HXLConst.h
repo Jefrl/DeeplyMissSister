@@ -26,6 +26,9 @@ UIKIT_EXTERN CGFloat const DIY;
 
 // 基类(也是段子)的重用标识;
 UIKIT_EXTERN NSString * const pun_reuseID;
+/** tabBar被选中的通知名字 */
+UIKIT_EXTERN NSString * const HXLTabBarDidSelectNotification;
+
 
 // 规定展示的热评数目
 UIKIT_EXTERN NSInteger const showHotCount;

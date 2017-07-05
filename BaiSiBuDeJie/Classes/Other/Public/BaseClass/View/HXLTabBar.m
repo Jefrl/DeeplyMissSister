@@ -42,6 +42,9 @@
     for (UIControl *btn in self.subviews) {
         if ([btn isKindOfClass:[UIControl class]]) {
             btnCount ++;
+            
+            // 注册一个发通知的
+            [btn addTarget:self action:@selector(postNotiClick:) forControlEvents:UIControlEventTouchUpInside];
         }
     }
     
@@ -75,4 +78,14 @@
     NSLog(@"");
 
 }
+
+
+/**
+ 发通知, tabBar 上的按钮被点击了
+ */
+- (void)postNotiClick:(UIButton *)btn {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:HXLTabBarDidSelectNotification object:nil userInfo:nil];
+}
+
 @end

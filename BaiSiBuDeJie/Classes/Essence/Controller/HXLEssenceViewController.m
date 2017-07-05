@@ -14,6 +14,9 @@
 #import "HXLVoiceTableVC.h"
 #import "HXLHeadlineView.h"
 
+#import "HXLTabBarController.h"
+#import "MJRefresh.h"
+
 @interface HXLEssenceViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 /** headlineVC_arr 头标题控制器数组 */
 @property (nonatomic, strong) NSArray *headlineVC_arr;
@@ -27,6 +30,7 @@
 @property (nonatomic, strong) UIButton *selectedBtn;
 
 
+
 @end
 
 @implementation HXLEssenceViewController
@@ -36,11 +40,17 @@ NSString * const reuseID = @"collectionCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    self.view.backgroundColor = RED_COLOR;
     // 界面搭建
     [self setup];
+    
     // 注册通知
-    _ob = [[NSNotificationCenter defaultCenter] addObserverForName:@"btn" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+    [self observeNoti];
+
+}
+
+- (void)observeNoti
+{
+    self.ob = [[NSNotificationCenter defaultCenter] addObserverForName:@"btn" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
         CGFloat offsetX = SCREEN_WIDTH * _headlineView.selectedBtnIndex;
         
         [UIView animateWithDuration:0.5 animations:^{
@@ -63,6 +73,7 @@ NSString * const reuseID = @"collectionCell";
 
 /** UI 界面的搭建 */
 - (void)setup {
+    
     // 禁止系统调整
     self.automaticallyAdjustsScrollViewInsets = NO;
     // 导航栏的搭建

@@ -15,6 +15,25 @@
     return array[index];
 }
 
+
+/**
+ 当前 View 是否在主窗口上
+
+ @return BOOL
+ */
+- (BOOL)isShowKeyWindow
+{
+    UIWindow *keyWindow = KEYWINDOW;
+    // 将 View 的坐标 frame 的参照物从 superView 转换成主窗口为参照物的 newFrame;
+    CGRect newFrame = [self.superview convertRect:self.frame toView:KEYWINDOW];
+    // 判断是否有交叠部分;
+    BOOL isIntersect = CGRectIntersectsRect(newFrame, keyWindow.bounds);
+    
+    BOOL flag = !self.isHidden && self.alpha > 0.01 && self.window == KEYWINDOW && isIntersect;
+    
+    return flag;
+}
+
 - (void)setX:(CGFloat)x {
     CGRect frame = self.frame;
     frame.origin.x = x;
