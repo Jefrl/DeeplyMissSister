@@ -74,7 +74,7 @@
         CGFloat imageW = self.width;
         CGFloat imageH = self.height;
         
-        if (self.type == HXLTopicTypePicture) { // 图片
+        if (self.type != HXLTopicTypeWord) { // 图片
             if (self.is_gif) { // GIF 图片,且始终无大图模式
                 
                 self.isBigPicture = NO;

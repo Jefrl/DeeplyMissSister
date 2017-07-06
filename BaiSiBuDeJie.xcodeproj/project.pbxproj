@@ -8,14 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		16A694935D871F8D90122510 /* Pods_BaiSiBuDeJie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89B9201A1224C81E29BA6B8B /* Pods_BaiSiBuDeJie.framework */; };
-		A51EEB071E76D7F6002237E0 /* HXLVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A51EEB061E76D7F6002237E0 /* HXLVideoTableViewCell.m */; };
+		A51EEB071E76D7F6002237E0 /* HXLVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A51EEB061E76D7F6002237E0 /* HXLVideoView.m */; };
 		A51EEB0A1E76D816002237E0 /* HXLPictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = A51EEB091E76D816002237E0 /* HXLPictureView.m */; };
 		A51EEB0E1E76D844002237E0 /* HXLPunTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A51EEB0C1E76D844002237E0 /* HXLPunTableViewCell.m */; };
 		A51EEB0F1E76D844002237E0 /* HXLPunTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51EEB0D1E76D844002237E0 /* HXLPunTableViewCell.xib */; };
-		A51EEB131E76D857002237E0 /* HXLVoiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A51EEB111E76D857002237E0 /* HXLVoiceTableViewCell.m */; };
-		A51EEB141E76D857002237E0 /* HXLVoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51EEB121E76D857002237E0 /* HXLVoiceTableViewCell.xib */; };
-		A51EEB171E76D884002237E0 /* HXLAllTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A51EEB161E76D884002237E0 /* HXLAllTableViewCell.m */; };
-		A51EEB191E76D8A9002237E0 /* HXLVideoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51EEB181E76D8A9002237E0 /* HXLVideoTableViewCell.xib */; };
+		A51EEB131E76D857002237E0 /* HXLVoiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = A51EEB111E76D857002237E0 /* HXLVoiceView.m */; };
 		A51EEB1B1E76D8D5002237E0 /* HXLPictureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51EEB1A1E76D8D5002237E0 /* HXLPictureView.xib */; };
 		A52C40071E6E6C0F00D2DC8C /* HXLPostButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A52C40061E6E6C0F00D2DC8C /* HXLPostButton.m */; };
 		A52CBBCC1E83B489006042B1 /* HXLEssenceBaseWithChildTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A52CBBCB1E83B489006042B1 /* HXLEssenceBaseWithChildTVC.m */; };
@@ -33,6 +30,8 @@
 		A557D9211E70F2FD00B54327 /* HXLPunView.m in Sources */ = {isa = PBXBuildFile; fileRef = A557D91F1E70F2FD00B54327 /* HXLPunView.m */; };
 		A557D9221E70F2FD00B54327 /* HXLPunView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A557D9201E70F2FD00B54327 /* HXLPunView.xib */; };
 		A56300581F01100400DAEE75 /* HXLShowBigPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A56300571F01100400DAEE75 /* HXLShowBigPictureViewController.m */; };
+		A578101E1F0E38790003E1BE /* HXLVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A578101C1F0E38790003E1BE /* HXLVideoView.xib */; };
+		A57810211F0E4A3E0003E1BE /* HXLVoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A57810201F0E4A3E0003E1BE /* HXLVoiceView.xib */; };
 		A57F5F281E62DC2E002BA929 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57F5F261E62DC2E002BA929 /* Main.storyboard */; };
 		A57F5F2D1E62DC2E002BA929 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57F5F2B1E62DC2E002BA929 /* LaunchScreen.storyboard */; };
 		A57F5F381E62DC2E002BA929 /* BaiSiBuDeJieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A57F5F371E62DC2E002BA929 /* BaiSiBuDeJieTests.m */; };
@@ -80,19 +79,15 @@
 /* Begin PBXFileReference section */
 		689013E8EE81F9E3D63AA94F /* Pods-BaiSiBuDeJie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaiSiBuDeJie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BaiSiBuDeJie/Pods-BaiSiBuDeJie.debug.xcconfig"; sourceTree = "<group>"; };
 		89B9201A1224C81E29BA6B8B /* Pods_BaiSiBuDeJie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaiSiBuDeJie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A51EEB051E76D7F6002237E0 /* HXLVideoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLVideoTableViewCell.h; sourceTree = "<group>"; };
-		A51EEB061E76D7F6002237E0 /* HXLVideoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLVideoTableViewCell.m; sourceTree = "<group>"; };
+		A51EEB051E76D7F6002237E0 /* HXLVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLVideoView.h; sourceTree = "<group>"; };
+		A51EEB061E76D7F6002237E0 /* HXLVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLVideoView.m; sourceTree = "<group>"; };
 		A51EEB081E76D816002237E0 /* HXLPictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLPictureView.h; sourceTree = "<group>"; };
 		A51EEB091E76D816002237E0 /* HXLPictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLPictureView.m; sourceTree = "<group>"; };
 		A51EEB0B1E76D844002237E0 /* HXLPunTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLPunTableViewCell.h; sourceTree = "<group>"; };
 		A51EEB0C1E76D844002237E0 /* HXLPunTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HXLPunTableViewCell.m; sourceTree = "<group>"; usesTabs = 0; };
 		A51EEB0D1E76D844002237E0 /* HXLPunTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLPunTableViewCell.xib; sourceTree = "<group>"; };
-		A51EEB101E76D857002237E0 /* HXLVoiceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLVoiceTableViewCell.h; sourceTree = "<group>"; };
-		A51EEB111E76D857002237E0 /* HXLVoiceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLVoiceTableViewCell.m; sourceTree = "<group>"; };
-		A51EEB121E76D857002237E0 /* HXLVoiceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLVoiceTableViewCell.xib; sourceTree = "<group>"; };
-		A51EEB151E76D884002237E0 /* HXLAllTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLAllTableViewCell.h; sourceTree = "<group>"; };
-		A51EEB161E76D884002237E0 /* HXLAllTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLAllTableViewCell.m; sourceTree = "<group>"; };
-		A51EEB181E76D8A9002237E0 /* HXLVideoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLVideoTableViewCell.xib; sourceTree = "<group>"; };
+		A51EEB101E76D857002237E0 /* HXLVoiceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLVoiceView.h; sourceTree = "<group>"; };
+		A51EEB111E76D857002237E0 /* HXLVoiceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLVoiceView.m; sourceTree = "<group>"; };
 		A51EEB1A1E76D8D5002237E0 /* HXLPictureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLPictureView.xib; sourceTree = "<group>"; };
 		A52C40051E6E6C0F00D2DC8C /* HXLPostButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLPostButton.h; sourceTree = "<group>"; };
 		A52C40061E6E6C0F00D2DC8C /* HXLPostButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLPostButton.m; sourceTree = "<group>"; };
@@ -123,6 +118,8 @@
 		A557D9201E70F2FD00B54327 /* HXLPunView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLPunView.xib; sourceTree = "<group>"; };
 		A56300561F01100400DAEE75 /* HXLShowBigPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLShowBigPictureViewController.h; sourceTree = "<group>"; };
 		A56300571F01100400DAEE75 /* HXLShowBigPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLShowBigPictureViewController.m; sourceTree = "<group>"; };
+		A578101C1F0E38790003E1BE /* HXLVideoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLVideoView.xib; sourceTree = "<group>"; };
+		A57810201F0E4A3E0003E1BE /* HXLVoiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLVoiceView.xib; sourceTree = "<group>"; };
 		A57F5F1A1E62DC2E002BA929 /* BaiSiBuDeJie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaiSiBuDeJie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57F5F271E62DC2E002BA929 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A57F5F2C1E62DC2E002BA929 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -228,14 +225,12 @@
 				A51EEB081E76D816002237E0 /* HXLPictureView.h */,
 				A51EEB091E76D816002237E0 /* HXLPictureView.m */,
 				A51EEB1A1E76D8D5002237E0 /* HXLPictureView.xib */,
-				A51EEB051E76D7F6002237E0 /* HXLVideoTableViewCell.h */,
-				A51EEB061E76D7F6002237E0 /* HXLVideoTableViewCell.m */,
-				A51EEB181E76D8A9002237E0 /* HXLVideoTableViewCell.xib */,
-				A51EEB101E76D857002237E0 /* HXLVoiceTableViewCell.h */,
-				A51EEB111E76D857002237E0 /* HXLVoiceTableViewCell.m */,
-				A51EEB121E76D857002237E0 /* HXLVoiceTableViewCell.xib */,
-				A51EEB151E76D884002237E0 /* HXLAllTableViewCell.h */,
-				A51EEB161E76D884002237E0 /* HXLAllTableViewCell.m */,
+				A51EEB051E76D7F6002237E0 /* HXLVideoView.h */,
+				A51EEB061E76D7F6002237E0 /* HXLVideoView.m */,
+				A578101C1F0E38790003E1BE /* HXLVideoView.xib */,
+				A51EEB101E76D857002237E0 /* HXLVoiceView.h */,
+				A51EEB111E76D857002237E0 /* HXLVoiceView.m */,
+				A57810201F0E4A3E0003E1BE /* HXLVoiceView.xib */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -768,13 +763,13 @@
 			files = (
 				A538C3E61E7AD0F200B3EFD3 /* member_ diamond_iconN.gif in Resources */,
 				A57F5F2D1E62DC2E002BA929 /* LaunchScreen.storyboard in Resources */,
+				A578101E1F0E38790003E1BE /* HXLVideoView.xib in Resources */,
 				A538C3E51E7AD0F200B3EFD3 /* member_ diamond_icon.gif in Resources */,
 				A5E1A4701E65A7C70060F656 /* Assets.xcassets in Resources */,
 				A51EEB0F1E76D844002237E0 /* HXLPunTableViewCell.xib in Resources */,
-				A51EEB191E76D8A9002237E0 /* HXLVideoTableViewCell.xib in Resources */,
+				A57810211F0E4A3E0003E1BE /* HXLVoiceView.xib in Resources */,
 				A57F5F281E62DC2E002BA929 /* Main.storyboard in Resources */,
 				A557D9221E70F2FD00B54327 /* HXLPunView.xib in Resources */,
-				A51EEB141E76D857002237E0 /* HXLVoiceTableViewCell.xib in Resources */,
 				A51EEB1B1E76D8D5002237E0 /* HXLPictureView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -843,8 +838,7 @@
 			files = (
 				A5E1A4681E6593FC0060F656 /* HXLMineViewController.m in Sources */,
 				A52CBBCC1E83B489006042B1 /* HXLEssenceBaseWithChildTVC.m in Sources */,
-				A51EEB071E76D7F6002237E0 /* HXLVideoTableViewCell.m in Sources */,
-				A51EEB171E76D884002237E0 /* HXLAllTableViewCell.m in Sources */,
+				A51EEB071E76D7F6002237E0 /* HXLVideoView.m in Sources */,
 				A5C8CB3F1E73C2660028224E /* HXLHeadlineView.m in Sources */,
 				A5ADEE241E76677100997971 /* HXLEssenceCollectionView.m in Sources */,
 				A557D91B1E70F25300B54327 /* HXLReleasePunViewController.m in Sources */,
@@ -875,7 +869,7 @@
 				A5C8CB6C1E73C3880028224E /* HXLVoiceTableVC.m in Sources */,
 				A5FD85D01E77A9C6002D0CC6 /* HXLSessionManager.m in Sources */,
 				A5C8CB5B1E73C3160028224E /* UIView+HXLGeometry.m in Sources */,
-				A51EEB131E76D857002237E0 /* HXLVoiceTableViewCell.m in Sources */,
+				A51EEB131E76D857002237E0 /* HXLVoiceView.m in Sources */,
 				A5E1A4651E6593E20060F656 /* HXLFollowViewController.m in Sources */,
 				A56300581F01100400DAEE75 /* HXLShowBigPictureViewController.m in Sources */,
 				A59F83421E8CE23600A342BB /* HXLUser.m in Sources */,

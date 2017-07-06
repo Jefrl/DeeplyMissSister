@@ -1,54 +1,49 @@
 //
-//  HXLPictureTableViewCell.m
+//  HXLVideoTableViewCell.m
 //  BaiSiBuDeJie
 //
 //  Created by Jefrl on 17/3/13.
 //  Copyright © 2017年 com.Jefrl.www. All rights reserved.
 //
 
-#import "HXLPictureView.h"
+#import "HXLVideoView.h"
 #import "HXLEssenceItem.h"
-#import "HXLShowBigPictureViewController.h"
-#import "FLAnimatedImageView+WebCache.h"
 #import "HXLProgressView.h"
+#import "UIImageView+WebCache.h"
 
-@interface HXLPictureView ()
-
+@interface HXLVideoView ()
 /** 占位图片 */
 @property (weak, nonatomic) IBOutlet UIImageView *placeholdImageView;
-/** small_imageView */
-@property (nonatomic, weak) IBOutlet FLAnimatedImageView *smallImageView;
-/** gif 标识logo */
-@property (nonatomic, weak) IBOutlet UIImageView *gifImageView;
 /** 失败加载的图片 */
 @property (weak, nonatomic) IBOutlet UIImageView *loadError_imageView;
-/** 查看大图按钮 */
-@property (weak, nonatomic) IBOutlet UIButton *seeBigButton;
 /** progressView */
 @property (nonatomic, strong) IBOutlet HXLProgressView *progressView;
-
+/** small_imageView */
+@property (nonatomic, weak) IBOutlet UIImageView *smallImageView;
+/** 播放按钮 */
+@property (weak, nonatomic) IBOutlet UIButton *playBtn;
+/** 播放次数 */
+@property (weak, nonatomic) IBOutlet UILabel *playCounts;
+/** 播放时间 */
+@property (weak, nonatomic) IBOutlet UILabel *playTime;
 
 @end
 
-@implementation HXLPictureView
-- (IBAction)seeBigPictureClick:(UIButton *)sender {
-    
-    HXLShowBigPictureViewController *showBigPicVC = [[HXLShowBigPictureViewController alloc] init];
-    showBigPicVC.punCellItem = self.punCellItem;
-    
-    UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
-    
-    [rootVC presentViewController:showBigPicVC animated:YES completion:nil];
-    
+@implementation HXLVideoView
+
+- (IBAction)playBtnClick:(UIButton *)sender {
+    NSLog(@"playBtnClick: ");
 }
 
-#pragma mark - init zone
+
+#pragma mark - Init zone
 - (void)awakeFromNib {
     [super awakeFromNib];
     
     self.smallImageView.clipsToBounds = YES;
     
-    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(seeBigPictureClick:)];
+    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playBtnClick:)];
+    
     [self addGestureRecognizer:tapGes];
     
 }
@@ -65,7 +60,9 @@
 - (void)setPunCellItem:(HXLEssenceItem *)punCellItem
 {
     _punCellItem = punCellItem;
-
+    self.playCounts.text = [NSString stringWithFormat:@"%ld", punCellItem.playcount];
+    self.playTime.text = [NSString stringWithFormat:@"%ld", punCellItem.videotime];
+    
     // 立马显示最新的进度值(防止因为网速慢, 导致显示的是其他图片的下载进度)
     [self.progressView setProgress:punCellItem.currentProgress animated:NO];
     
@@ -73,7 +70,7 @@
         // 进来就要显示;
         self.progressView.hidden = NO;
         
-//        NSLog(@"%@, %ld, %ld, %.01f", @"progress", receivedSize, expectedSize, 1.00 * receivedSize/expectedSize);
+        //        NSLog(@"%@, %ld, %ld, %.01f", @"progress", receivedSize, expectedSize, 1.00 * receivedSize/expectedSize);
         
         // 计算进度值
         punCellItem.currentProgress = 1.0 * receivedSize / expectedSize;
@@ -94,7 +91,7 @@
             return ;
         }
         
-//         如果是大图片, 才需要进行绘图处理
+        //         如果是大图片, 才需要进行绘图处理
         if (_punCellItem.isBigPicture == NO) return;
         
         // 开启图形上下文
@@ -114,17 +111,6 @@
         UIGraphicsEndImageContext();
         
     }];
-    
-    if (_punCellItem.isBigPicture) {
-        self.gifImageView.hidden = YES;
-        self.seeBigButton.hidden = NO;
-    }
-    
-    if (_punCellItem.is_gif) {
-
-        self.seeBigButton.hidden = YES;
-        self.gifImageView.hidden = NO;
-    }
     
 }
 

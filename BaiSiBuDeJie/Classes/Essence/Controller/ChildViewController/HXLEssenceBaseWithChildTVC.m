@@ -50,7 +50,7 @@
 @property (nonatomic, readwrite,  assign) NSInteger page;
 /** 上次选中的tabar索引(或者控制器) */
 @property (nonatomic, assign) NSInteger lastSelectedIndex;
-/** ob */
+/** tabBarOb */
 @property (nonatomic, readwrite, strong) NSNotificationCenter *tabBarOb;
 
 
@@ -114,42 +114,30 @@
     [super viewDidLoad];
     // 统一风格;
     [self setupUniformStyle];
-    // 注册通知观察者
-//    [self observeNotiForTabbar];
     // 初始化网络数据
     [self setupRefresh];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
+    // 注册通知观察者
+    [self observeNotiForTabbar];
 }
 
 #pragma mark - function zone
-/**
- 注册通知
- */
-//- (void)observeNotiForTabbar
-//{
-//    self.tabBarOb = (NSNotificationCenter *)[[NSNotificationCenter defaultCenter] addObserverForName:HXLTabBarDidSelectNotification object:self queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
-//        
-//        if (self.tabBarController.selectedIndex == self.lastSelectedIndex && self.view.isShowKeyWindow
-//            ) {
-//        [self.tableView.mj_header beginRefreshing];
-//            
-//        }
-//        
-//        self.lastSelectedIndex =  self.tabBarController.selectedIndex;
-//    }];
-//}
+- (void)observeNotiForTabbar
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getNotiTabBarbtn:) name:HXLTabBarDidSelectNotification object:nil];
+}
 
+- (void)getNotiTabBarbtn:(NSNotification *)noti
+{
+    NSLog(@"");
+    [self.tableView.mj_header beginRefreshing];
+}
 
-//- (void)viewWillDisappear:(BOOL)animated
-//{
-//    [[NSNotificationCenter defaultCenter] removeObserver:self];
-//    NSLog(@"");
-//}
+- (void)dealloc
+{ // 由于有看大图的 modal 视图, 不能用 viewWillDisappear 方法
+    NSLog(@"");
+    // 移除通知观察者
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (void)setupUniformStyle {
     
@@ -296,7 +284,7 @@
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"%ld", self.itemArray.count);
+//    NSLog(@"%ld", self.itemArray.count);
     return self.itemArray.count;
 }
 

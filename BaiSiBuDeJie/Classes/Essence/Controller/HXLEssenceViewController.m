@@ -37,6 +37,13 @@
 
 NSString * const reuseID = @"collectionCell";
 
+
+/** 状态栏的设置 */
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
+#pragma mark - Init Zone
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -45,7 +52,7 @@ NSString * const reuseID = @"collectionCell";
     
     // 注册通知
     [self observeNoti];
-
+    
 }
 
 - (void)observeNoti
@@ -66,10 +73,6 @@ NSString * const reuseID = @"collectionCell";
     NSLog(@"");
 }
 
-/** 状态栏的设置 */
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
 
 /** UI 界面的搭建 */
 - (void)setup {
@@ -87,7 +90,7 @@ NSString * const reuseID = @"collectionCell";
     
 }
 
-#pragma mark - 02
+#pragma mark - 搭建contentCollectionView
 /** 搭建contentCollectionView  */
 - (void)setupContentCollectionView {
     // collectionViewFlowLayout 的创建与设置
@@ -111,12 +114,11 @@ NSString * const reuseID = @"collectionCell";
     _contentCollectionView = contentCollectionView;
 }
 
-/** 代理方法 */
+/** 代理与数据源方法 */
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     return _headlineVC_arr.count;
 }
-
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -125,8 +127,8 @@ NSString * const reuseID = @"collectionCell";
     [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     // 每一个tableView 添加到collectionViewCell 的contentView 上;
     UITableViewController *childVC = _headlineVC_arr[indexPath.row];
-//    childVC.tableView.backgroundColor = LIGHTGRAY_COLOR; // 调试灰色
     [cell.contentView addSubview:childVC.tableView];
+    //    childVC.tableView.backgroundColor = LIGHTGRAY_COLOR; // 调试灰色
     
     return cell;
 }
@@ -139,7 +141,7 @@ NSString * const reuseID = @"collectionCell";
     [_headlineView moveUnderlineBtn:_headlineView.headlineBtn_arr[i]];
 }
 
-
+#pragma mark - 搭建 headlineView
 /** 搭建 headlineView */
 - (void)setupHeadlineView:(NSArray *)array {
     
@@ -149,6 +151,7 @@ NSString * const reuseID = @"collectionCell";
     [self.view addSubview:headlineView];
 }
 
+#pragma mark - 添加essenceVC 的子控制器
 /** 添加essenceVC 的子控制器 */
 - (void)setupChildVC {
     
@@ -173,7 +176,7 @@ NSString * const reuseID = @"collectionCell";
     _headlineVC_arr = array;
 }
 
-#pragma mark - 01
+#pragma mark - 搭建导航栏 UIBarButtonItem
 /** 导航栏的搭建 */
 - (void)setupNavigationBar {
     

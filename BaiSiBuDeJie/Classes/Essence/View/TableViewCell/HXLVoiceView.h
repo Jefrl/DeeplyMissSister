@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class HXLEssenceItem;
 
-@interface HXLVoiceTableViewCell : UITableViewCell
+@interface HXLVoiceView: UIView
+/** cell 模型 */
+@property (nonatomic, strong) HXLEssenceItem *punCellItem;
 
 @end
