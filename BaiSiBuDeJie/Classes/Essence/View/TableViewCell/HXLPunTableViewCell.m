@@ -139,26 +139,15 @@
     [super setFrame:frame];
 }
 
-#pragma mark - 01 模型设置
+#pragma mark - 模型属性的赋值
 - (void)setPunCellItem:(HXLEssenceItem *)punCellItem
 {
-    // 通用的基类 cell 属性设置;
-    _punCellItem = punCellItem;
-    [_icon_imageView setImageString:punCellItem.profile_image placeholderImage:[UIImage imageNamed:@"default_header_image_small"] circleImage:YES];
-    _time_label.text = punCellItem.created_at;
-    _usr_label.text = punCellItem.name;
-    _text_label.textAlignment = NSTextAlignmentLeft;
-    _text_label.text = punCellItem.text;
-    
-    // 顶赞部分设置
-    [_likeBtn setTitle:_punCellItem.ding forState:UIControlStateNormal];
-    [_dislikeBtn setTitle:_punCellItem.cai forState:UIControlStateNormal];
-    [_shareBtn setTitle:_punCellItem.repost forState:UIControlStateNormal];
-    [_commentBtn setTitle:_punCellItem.comment forState:UIControlStateNormal];
+    // cell 通用的基础类属性设置;
+    [self setupUniformStyle:punCellItem];
 
     // 热评控件设置
     
-    // 区分类别添加控件
+    // 不同类型的 MidView 控件的添加
     if (_punCellItem.type == HXLTopicTypePicture) { // 传入的模型是图片模型
         
         [self setupMidView:self.pictureView cellItem:_punCellItem hiddenMidViews:@[self.videoView, self.voiceView]];
@@ -176,6 +165,25 @@
         
     }
 
+}
+
+#pragma mark - 优化抽取的方法
+- (void)setupUniformStyle:(HXLEssenceItem *)punCellItem
+{
+    _punCellItem = punCellItem;
+    
+    [_icon_imageView setImageString:punCellItem.profile_image placeholderImage:[UIImage imageNamed:@"default_header_image_small"] circleImage:YES];
+    _time_label.text = punCellItem.created_at;
+    _usr_label.text = punCellItem.name;
+    _text_label.textAlignment = NSTextAlignmentLeft;
+    _text_label.text = punCellItem.text;
+    
+    // 顶赞部分设置
+    [_likeBtn setTitle:_punCellItem.ding forState:UIControlStateNormal];
+
+    [_dislikeBtn setTitle:_punCellItem.cai forState:UIControlStateNormal];
+    [_shareBtn setTitle:_punCellItem.repost forState:UIControlStateNormal];
+    [_commentBtn setTitle:_punCellItem.comment forState:UIControlStateNormal];
 }
 
 /** 不同类型 cell 的加载 */

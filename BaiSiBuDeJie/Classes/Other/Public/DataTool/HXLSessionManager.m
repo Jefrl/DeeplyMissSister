@@ -8,7 +8,6 @@
 
 #import "HXLSessionManager.h"
 
-
 @implementation HXLSessionManager
 /** 自定义封装 AFN 网络工具类 */
 - (void)request:(RequestType)requestType

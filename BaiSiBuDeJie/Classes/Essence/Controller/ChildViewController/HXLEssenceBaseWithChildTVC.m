@@ -7,17 +7,19 @@
 //
 
 #import "HXLEssenceBaseWithChildTVC.h"
+
 #import "HXLPunTableVC.h"
-#import "AFNetworking.h"
+#import "HXLCommentViewController.h"
+#import "HXLPunTableViewCell.h"
+#import "HXLEssenceItem.h"
+#import "HXLEssenceCommentItem.h"
+
+#import "HXLSessionManager.h"
 #import "MJExtension.h"
 #import "MJRefresh.h"
 #import "UIImageView+WebCache.h"
 #import "SVProgressHUD.h"
-#import "HXLSessionManager.h"
 
-#import "HXLPunTableViewCell.h"
-#import "HXLEssenceItem.h"
-#import "HXLEssenceCommentItem.h"
 
 
 @interface HXLEssenceBaseWithChildTVC ()
@@ -30,7 +32,7 @@
 @property (nonatomic, strong) NSArray *commentItemArray;
 /** responseDict */
 @property (nonatomic, strong) NSDictionary *responseDict;
-/** cell 保存 */
+/** cell 保存? */
 @property (nonatomic, strong) HXLPunTableViewCell *cell;
 /** dict */
 @property (nonatomic, strong) NSDictionary *dict;
@@ -59,6 +61,7 @@
 @implementation HXLEssenceBaseWithChildTVC
 
 #pragma mark - Lazy load
+
 - (NSMutableArray *)hots
 {
     if (!_allHots) {
@@ -96,14 +99,14 @@
 - (HXLSessionManager *)sessionManager {
     if (!_sessionManager) {
         _sessionManager = [HXLSessionManager manager];
-        NSMutableSet *setM = [_sessionManager.responseSerializer.acceptableContentTypes mutableCopy];
         
+        NSMutableSet *setM = [_sessionManager.responseSerializer.acceptableContentTypes mutableCopy];
         [setM addObject:@"text/plain"];
         [setM addObject:@"application/json"];
         [setM addObject:@"text/json"];
         [setM addObject:@"text/javascript"];
         [setM addObject:@"text/html"];
-        
+
         _sessionManager.responseSerializer.acceptableContentTypes = [setM copy];
     }
     return _sessionManager;
@@ -282,7 +285,7 @@
     
 }
 
-#pragma mark - Table view data source
+#pragma mark - TableView Delegate or DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 //    NSLog(@"%ld", self.itemArray.count);
     return self.itemArray.count;
@@ -293,16 +296,22 @@
     
     HXLEssenceItem *item = self.itemArray[indexPath.row];
     cell.punCellItem = item;
-    _cell = cell;
     
     return cell;
 }
-
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     HXLEssenceItem *item = _itemArray[indexPath.row];
     return item.cellHeight;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    HXLCommentViewController *commentVC = [[HXLCommentViewController alloc] init];
+    HXLEssenceItem *item = self.itemArray[indexPath.row];
+    commentVC.punCellItem = item;
+    [self.navigationController pushViewController:commentVC animated:YES];
 }
 
 @end

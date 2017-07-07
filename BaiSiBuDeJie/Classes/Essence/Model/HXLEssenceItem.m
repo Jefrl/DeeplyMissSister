@@ -7,8 +7,6 @@
 //
 
 #import "HXLEssenceItem.h"
-#import "HXLEssenceCommentItem.h"
-#import "HXLUser.h"
 
 #import "MJExtension.h"
 @interface HXLEssenceItem ()
@@ -37,14 +35,6 @@
     return @{ // 调用字典数组时, 本质用自定义类类型的模型数组替换了字典类型的数组, 可以取HXLEssenceCommentItem 类里的属性了;
              @"top_cmt" : @"HXLEssenceCommentItem"
              };
-}
-
-- (CGFloat)width
-{
-    if (!_width) {
-        
-    }
-    return _width;
 }
 
 // 计算出每个模型的高度

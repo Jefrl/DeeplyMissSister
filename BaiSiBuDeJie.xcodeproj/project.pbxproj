@@ -37,6 +37,8 @@
 		A57F5F381E62DC2E002BA929 /* BaiSiBuDeJieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A57F5F371E62DC2E002BA929 /* BaiSiBuDeJieTests.m */; };
 		A57F5F5D1E634D01002BA929 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A57F5F561E634D00002BA929 /* AppDelegate.m */; };
 		A57F5F691E63517B002BA929 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A57F5F581E634D01002BA929 /* main.m */; };
+		A58ADC121F0F21A30080DBE8 /* HXLCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58ADC101F0F21A30080DBE8 /* HXLCommentViewController.m */; };
+		A58ADC131F0F21A30080DBE8 /* HXLCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A58ADC111F0F21A30080DBE8 /* HXLCommentViewController.xib */; };
 		A58C44771E8BAC1000F91698 /* HXLEssenceCommentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A58C44761E8BAC1000F91698 /* HXLEssenceCommentItem.m */; };
 		A59F83421E8CE23600A342BB /* HXLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A59F83411E8CE23600A342BB /* HXLUser.m */; };
 		A5ADEE241E76677100997971 /* HXLEssenceCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5ADEE231E76677100997971 /* HXLEssenceCollectionView.m */; };
@@ -130,6 +132,9 @@
 		A57F5F561E634D00002BA929 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A57F5F581E634D01002BA929 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A57F5F671E635157002BA929 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A58ADC0F1F0F21A30080DBE8 /* HXLCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLCommentViewController.h; sourceTree = "<group>"; };
+		A58ADC101F0F21A30080DBE8 /* HXLCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLCommentViewController.m; sourceTree = "<group>"; };
+		A58ADC111F0F21A30080DBE8 /* HXLCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLCommentViewController.xib; sourceTree = "<group>"; };
 		A58C44751E8BAC1000F91698 /* HXLEssenceCommentItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLEssenceCommentItem.h; sourceTree = "<group>"; };
 		A58C44761E8BAC1000F91698 /* HXLEssenceCommentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLEssenceCommentItem.m; sourceTree = "<group>"; };
 		A59F83401E8CE23600A342BB /* HXLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLUser.h; sourceTree = "<group>"; };
@@ -351,9 +356,9 @@
 		A57F5F441E634D00002BA929 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A5C8CB5D1E73C3880028224E /* ChildViewController */,
 				A5E1A4691E6598DF0060F656 /* HXLEssenceViewController.h */,
 				A5E1A46A1E6598DF0060F656 /* HXLEssenceViewController.m */,
+				A5C8CB5D1E73C3880028224E /* ChildViewController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -474,6 +479,23 @@
 			path = System;
 			sourceTree = "<group>";
 		};
+		A58ADC141F0F622B0080DBE8 /* subClassTVC */ = {
+			isa = PBXGroup;
+			children = (
+				A5C8CB5E1E73C3880028224E /* HXLAllTableVC.h */,
+				A5C8CB5F1E73C3880028224E /* HXLAllTableVC.m */,
+				A5C8CB641E73C3880028224E /* HXLVideoTableVC.h */,
+				A5C8CB651E73C3880028224E /* HXLVideoTableVC.m */,
+				A5C8CB601E73C3880028224E /* HXLPictureTableVC.h */,
+				A5C8CB611E73C3880028224E /* HXLPictureTableVC.m */,
+				A5C8CB621E73C3880028224E /* HXLPunTableVC.h */,
+				A5C8CB631E73C3880028224E /* HXLPunTableVC.m */,
+				A5C8CB661E73C3880028224E /* HXLVoiceTableVC.h */,
+				A5C8CB671E73C3880028224E /* HXLVoiceTableVC.m */,
+			);
+			name = subClassTVC;
+			sourceTree = "<group>";
+		};
 		A5C8CB3A1E73C2660028224E /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -557,18 +579,12 @@
 		A5C8CB5D1E73C3880028224E /* ChildViewController */ = {
 			isa = PBXGroup;
 			children = (
+				A58ADC141F0F622B0080DBE8 /* subClassTVC */,
 				A52CBBCA1E83B489006042B1 /* HXLEssenceBaseWithChildTVC.h */,
 				A52CBBCB1E83B489006042B1 /* HXLEssenceBaseWithChildTVC.m */,
-				A5C8CB5E1E73C3880028224E /* HXLAllTableVC.h */,
-				A5C8CB5F1E73C3880028224E /* HXLAllTableVC.m */,
-				A5C8CB641E73C3880028224E /* HXLVideoTableVC.h */,
-				A5C8CB651E73C3880028224E /* HXLVideoTableVC.m */,
-				A5C8CB601E73C3880028224E /* HXLPictureTableVC.h */,
-				A5C8CB611E73C3880028224E /* HXLPictureTableVC.m */,
-				A5C8CB621E73C3880028224E /* HXLPunTableVC.h */,
-				A5C8CB631E73C3880028224E /* HXLPunTableVC.m */,
-				A5C8CB661E73C3880028224E /* HXLVoiceTableVC.h */,
-				A5C8CB671E73C3880028224E /* HXLVoiceTableVC.m */,
+				A58ADC0F1F0F21A30080DBE8 /* HXLCommentViewController.h */,
+				A58ADC101F0F21A30080DBE8 /* HXLCommentViewController.m */,
+				A58ADC111F0F21A30080DBE8 /* HXLCommentViewController.xib */,
 				A56300561F01100400DAEE75 /* HXLShowBigPictureViewController.h */,
 				A56300571F01100400DAEE75 /* HXLShowBigPictureViewController.m */,
 			);
@@ -761,6 +777,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A58ADC131F0F21A30080DBE8 /* HXLCommentViewController.xib in Resources */,
 				A538C3E61E7AD0F200B3EFD3 /* member_ diamond_iconN.gif in Resources */,
 				A57F5F2D1E62DC2E002BA929 /* LaunchScreen.storyboard in Resources */,
 				A578101E1F0E38790003E1BE /* HXLVideoView.xib in Resources */,
@@ -849,6 +866,7 @@
 				A51EEB0A1E76D816002237E0 /* HXLPictureView.m in Sources */,
 				A54C558F1F066C8600BFAB3D /* HXLProgressView.m in Sources */,
 				A557D91C1E70F25300B54327 /* HXLReleaseVoiceViewController.m in Sources */,
+				A58ADC121F0F21A30080DBE8 /* HXLCommentViewController.m in Sources */,
 				A5F7AA131E79959F00F72EDD /* HXLConst.m in Sources */,
 				A5C8CB581E73C3160028224E /* HXLTabBar.m in Sources */,
 				A58C44771E8BAC1000F91698 /* HXLEssenceCommentItem.m in Sources */,
