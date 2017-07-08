@@ -312,6 +312,9 @@
     HXLEssenceItem *item = self.itemArray[indexPath.row];
     commentVC.punCellItem = item;
     [self.navigationController pushViewController:commentVC animated:YES];
+    // 调试的页面类型, 非页面内 tableViewCell 的类型;
+    commentVC.collectionCellType = self.type;
+    
 }
 
 @end

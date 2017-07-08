@@ -24,15 +24,17 @@
 @property (nonatomic, assign) CGFloat width;
 /** UIView.frame.size.height */
 @property (nonatomic, assign) CGFloat height;
+/** UIView.frame.origin.x */
+@property (nonatomic, assign) CGFloat originX;
+/** UIView.frame.origin.y */
+@property (nonatomic, assign) CGFloat originY;
 /** UIView.center.x */
 @property (nonatomic, assign) CGFloat centerX;
 /** UIView.center.y */
 @property (nonatomic, assign) CGFloat centerY;
 
-/** UIView.frame.origin.x */
-@property (nonatomic, assign) CGFloat originX;
-/** UIView.frame.origin.y */
-@property (nonatomic, assign) CGFloat originY;
+/** UIView.frame.origin */
+@property (nonatomic, readwrite, assign) CGPoint origin;
 /** UIView.frame.size */
 @property (nonatomic, assign) CGSize size;
 

@@ -94,24 +94,15 @@
     return self.center.y;
 }
 
-- (void)setOriginX:(CGFloat)originX {
+// 范围性质
+- (void)setOrigin:(CGPoint)origin {
     CGRect frame = self.frame;
-    frame.origin.x = originX;
+    frame.origin = origin;
     self.frame = frame;
 }
 
-- (CGFloat)originX {
-    return self.frame.origin.x;
-}
-
-- (void)setOriginY:(CGFloat)originY {
-    CGRect frame = self.frame;
-    frame.origin.y = originY;
-    self.frame = frame;
-}
-
-- (CGFloat)originY {
-    return self.frame.origin.y;
+- (CGPoint)origin {
+    return self.frame.origin;
 }
 
 - (void)setSize:(CGSize)size {
@@ -123,8 +114,6 @@
 - (CGSize)size {
     return self.frame.size;
 }
-
-
 
 
 @end

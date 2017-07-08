@@ -17,6 +17,9 @@ CGFloat const DIY = 5;
 
 // 基类(也是段子)的重用标识;
 NSString * const pun_reuseID = @"punCell";
+// 评论页面的重用标识;
+NSString * const cmt_reuseID = @"cmtCell";
+
 /** tabBar被选中的通知名字 */
 NSString * const HXLTabBarDidSelectNotification = @"HXLTabBarDidSelectNotification";
 

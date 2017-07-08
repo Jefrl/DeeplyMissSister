@@ -12,6 +12,8 @@
 @interface HXLCommentViewController : UIViewController
 ///** cell */
 //@property (nonatomic, readwrite, strong) HXLPunTableViewCell *cell;
+/** collectionCellType */
+@property (nonatomic, readwrite, assign) NSInteger collectionCellType;
 @property (nonatomic, readwrite, strong) HXLEssenceItem *punCellItem;
 
 @end

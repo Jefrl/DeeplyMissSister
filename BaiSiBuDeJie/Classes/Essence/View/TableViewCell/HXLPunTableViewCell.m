@@ -109,7 +109,7 @@
     [super awakeFromNib];
     
     self. contentView.backgroundColor = WHITE_COLOR;
-    self.backgroundColor = RGBColor(204, 204, 204, 1);
+    self.backgroundColor = GRAY_PUBLIC_COLOR;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 

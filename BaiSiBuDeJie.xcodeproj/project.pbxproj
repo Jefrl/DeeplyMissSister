@@ -18,6 +18,10 @@
 		A52CBBCC1E83B489006042B1 /* HXLEssenceBaseWithChildTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A52CBBCB1E83B489006042B1 /* HXLEssenceBaseWithChildTVC.m */; };
 		A52CBBCF1E83DF4D006042B1 /* UIImageView+HXLSDWeb.m in Sources */ = {isa = PBXBuildFile; fileRef = A52CBBCE1E83DF4D006042B1 /* UIImageView+HXLSDWeb.m */; };
 		A52CBBD41E83EA37006042B1 /* HXLEssenceViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A52CBBD31E83EA37006042B1 /* HXLEssenceViewModel.m */; };
+		A533D1361F105FED00B976EC /* HXLCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A533D1341F105FED00B976EC /* HXLCommentTableViewCell.m */; };
+		A533D1371F105FED00B976EC /* HXLCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A533D1351F105FED00B976EC /* HXLCommentTableViewCell.xib */; };
+		A533D1391F10751300B976EC /* Comment31.plist in Resources */ = {isa = PBXBuildFile; fileRef = A533D1381F10751300B976EC /* Comment31.plist */; };
+		A533D13C1F107ED700B976EC /* HXLPrecmtUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A533D13B1F107ED700B976EC /* HXLPrecmtUser.m */; };
 		A538C3E21E7A643000B3EFD3 /* HXLEssenceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A538C3E11E7A643000B3EFD3 /* HXLEssenceItem.m */; };
 		A538C3E51E7AD0F200B3EFD3 /* member_ diamond_icon.gif in Resources */ = {isa = PBXBuildFile; fileRef = A538C3E31E7AD0F200B3EFD3 /* member_ diamond_icon.gif */; };
 		A538C3E61E7AD0F200B3EFD3 /* member_ diamond_iconN.gif in Resources */ = {isa = PBXBuildFile; fileRef = A538C3E41E7AD0F200B3EFD3 /* member_ diamond_iconN.gif */; };
@@ -99,6 +103,12 @@
 		A52CBBCE1E83DF4D006042B1 /* UIImageView+HXLSDWeb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+HXLSDWeb.m"; sourceTree = "<group>"; };
 		A52CBBD21E83EA37006042B1 /* HXLEssenceViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLEssenceViewModel.h; sourceTree = "<group>"; };
 		A52CBBD31E83EA37006042B1 /* HXLEssenceViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLEssenceViewModel.m; sourceTree = "<group>"; };
+		A533D1331F105FED00B976EC /* HXLCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLCommentTableViewCell.h; sourceTree = "<group>"; };
+		A533D1341F105FED00B976EC /* HXLCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLCommentTableViewCell.m; sourceTree = "<group>"; };
+		A533D1351F105FED00B976EC /* HXLCommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLCommentTableViewCell.xib; sourceTree = "<group>"; };
+		A533D1381F10751300B976EC /* Comment31.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Comment31.plist; sourceTree = "<group>"; };
+		A533D13A1F107ED700B976EC /* HXLPrecmtUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLPrecmtUser.h; sourceTree = "<group>"; };
+		A533D13B1F107ED700B976EC /* HXLPrecmtUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLPrecmtUser.m; sourceTree = "<group>"; };
 		A538C3E01E7A643000B3EFD3 /* HXLEssenceItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLEssenceItem.h; sourceTree = "<group>"; };
 		A538C3E11E7A643000B3EFD3 /* HXLEssenceItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLEssenceItem.m; sourceTree = "<group>"; };
 		A538C3E31E7AD0F200B3EFD3 /* member_ diamond_icon.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "member_ diamond_icon.gif"; path = "Assets.xcassets/02 Essence/06 useSet/member_ diamond_icon.gif"; sourceTree = "<group>"; };
@@ -236,6 +246,9 @@
 				A51EEB101E76D857002237E0 /* HXLVoiceView.h */,
 				A51EEB111E76D857002237E0 /* HXLVoiceView.m */,
 				A57810201F0E4A3E0003E1BE /* HXLVoiceView.xib */,
+				A533D1331F105FED00B976EC /* HXLCommentTableViewCell.h */,
+				A533D1341F105FED00B976EC /* HXLCommentTableViewCell.m */,
+				A533D1351F105FED00B976EC /* HXLCommentTableViewCell.xib */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -366,12 +379,15 @@
 		A57F5F451E634D00002BA929 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A533D1381F10751300B976EC /* Comment31.plist */,
 				A538C3E01E7A643000B3EFD3 /* HXLEssenceItem.h */,
 				A538C3E11E7A643000B3EFD3 /* HXLEssenceItem.m */,
 				A58C44751E8BAC1000F91698 /* HXLEssenceCommentItem.h */,
 				A58C44761E8BAC1000F91698 /* HXLEssenceCommentItem.m */,
 				A59F83401E8CE23600A342BB /* HXLUser.h */,
 				A59F83411E8CE23600A342BB /* HXLUser.m */,
+				A533D13A1F107ED700B976EC /* HXLPrecmtUser.h */,
+				A533D13B1F107ED700B976EC /* HXLPrecmtUser.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -580,13 +596,13 @@
 			isa = PBXGroup;
 			children = (
 				A58ADC141F0F622B0080DBE8 /* subClassTVC */,
+				A56300561F01100400DAEE75 /* HXLShowBigPictureViewController.h */,
+				A56300571F01100400DAEE75 /* HXLShowBigPictureViewController.m */,
 				A52CBBCA1E83B489006042B1 /* HXLEssenceBaseWithChildTVC.h */,
 				A52CBBCB1E83B489006042B1 /* HXLEssenceBaseWithChildTVC.m */,
 				A58ADC0F1F0F21A30080DBE8 /* HXLCommentViewController.h */,
 				A58ADC101F0F21A30080DBE8 /* HXLCommentViewController.m */,
 				A58ADC111F0F21A30080DBE8 /* HXLCommentViewController.xib */,
-				A56300561F01100400DAEE75 /* HXLShowBigPictureViewController.h */,
-				A56300571F01100400DAEE75 /* HXLShowBigPictureViewController.m */,
 			);
 			path = ChildViewController;
 			sourceTree = "<group>";
@@ -787,7 +803,9 @@
 				A57810211F0E4A3E0003E1BE /* HXLVoiceView.xib in Resources */,
 				A57F5F281E62DC2E002BA929 /* Main.storyboard in Resources */,
 				A557D9221E70F2FD00B54327 /* HXLPunView.xib in Resources */,
+				A533D1371F105FED00B976EC /* HXLCommentTableViewCell.xib in Resources */,
 				A51EEB1B1E76D8D5002237E0 /* HXLPictureView.xib in Resources */,
+				A533D1391F10751300B976EC /* Comment31.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -853,6 +871,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A533D13C1F107ED700B976EC /* HXLPrecmtUser.m in Sources */,
 				A5E1A4681E6593FC0060F656 /* HXLMineViewController.m in Sources */,
 				A52CBBCC1E83B489006042B1 /* HXLEssenceBaseWithChildTVC.m in Sources */,
 				A51EEB071E76D7F6002237E0 /* HXLVideoView.m in Sources */,
@@ -875,6 +894,7 @@
 				A57F5F691E63517B002BA929 /* main.m in Sources */,
 				A5C8CB561E73C3160028224E /* HXLHeadlineBtn.m in Sources */,
 				A57F5F5D1E634D01002BA929 /* AppDelegate.m in Sources */,
+				A533D1361F105FED00B976EC /* HXLCommentTableViewCell.m in Sources */,
 				A5EDA2F31F028E940053DC04 /* FLAnimatedImageView+WebCache.m in Sources */,
 				A557D91A1E70F25300B54327 /* HXLReleaseLinkViewController.m in Sources */,
 				A5C8CB681E73C3880028224E /* HXLAllTableVC.m in Sources */,
