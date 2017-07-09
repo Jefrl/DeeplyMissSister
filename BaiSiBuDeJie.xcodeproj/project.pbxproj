@@ -41,6 +41,11 @@
 		A57F5F381E62DC2E002BA929 /* BaiSiBuDeJieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A57F5F371E62DC2E002BA929 /* BaiSiBuDeJieTests.m */; };
 		A57F5F5D1E634D01002BA929 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A57F5F561E634D00002BA929 /* AppDelegate.m */; };
 		A57F5F691E63517B002BA929 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A57F5F581E634D01002BA929 /* main.m */; };
+		A5877FFB1F11BF290045CFBF /* HXLCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5877FF71F11BF290045CFBF /* HXLCoverView.m */; };
+		A5877FFC1F11BF290045CFBF /* HXLPopMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A5877FF91F11BF290045CFBF /* HXLPopMenu.m */; };
+		A5877FFD1F11BF290045CFBF /* HXLPopMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5877FFA1F11BF290045CFBF /* HXLPopMenu.xib */; };
+		A5877FFF1F11C08F0045CFBF /* cute.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A5877FFE1F11C08F0045CFBF /* cute.jpg */; };
+		A58780021F125F770045CFBF /* HXLHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = A58780011F125F770045CFBF /* HXLHeaderFooterView.m */; };
 		A58ADC121F0F21A30080DBE8 /* HXLCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58ADC101F0F21A30080DBE8 /* HXLCommentViewController.m */; };
 		A58ADC131F0F21A30080DBE8 /* HXLCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A58ADC111F0F21A30080DBE8 /* HXLCommentViewController.xib */; };
 		A58C44771E8BAC1000F91698 /* HXLEssenceCommentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A58C44761E8BAC1000F91698 /* HXLEssenceCommentItem.m */; };
@@ -142,6 +147,14 @@
 		A57F5F561E634D00002BA929 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A57F5F581E634D01002BA929 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A57F5F671E635157002BA929 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5877FF61F11BF290045CFBF /* HXLCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLCoverView.h; sourceTree = "<group>"; };
+		A5877FF71F11BF290045CFBF /* HXLCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLCoverView.m; sourceTree = "<group>"; };
+		A5877FF81F11BF290045CFBF /* HXLPopMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLPopMenu.h; sourceTree = "<group>"; };
+		A5877FF91F11BF290045CFBF /* HXLPopMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLPopMenu.m; sourceTree = "<group>"; };
+		A5877FFA1F11BF290045CFBF /* HXLPopMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLPopMenu.xib; sourceTree = "<group>"; };
+		A5877FFE1F11C08F0045CFBF /* cute.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cute.jpg; sourceTree = "<group>"; };
+		A58780001F125F770045CFBF /* HXLHeaderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLHeaderFooterView.h; sourceTree = "<group>"; };
+		A58780011F125F770045CFBF /* HXLHeaderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLHeaderFooterView.m; sourceTree = "<group>"; };
 		A58ADC0F1F0F21A30080DBE8 /* HXLCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLCommentViewController.h; sourceTree = "<group>"; };
 		A58ADC101F0F21A30080DBE8 /* HXLCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLCommentViewController.m; sourceTree = "<group>"; };
 		A58ADC111F0F21A30080DBE8 /* HXLCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLCommentViewController.xib; sourceTree = "<group>"; };
@@ -249,6 +262,8 @@
 				A533D1331F105FED00B976EC /* HXLCommentTableViewCell.h */,
 				A533D1341F105FED00B976EC /* HXLCommentTableViewCell.m */,
 				A533D1351F105FED00B976EC /* HXLCommentTableViewCell.xib */,
+				A58780001F125F770045CFBF /* HXLHeaderFooterView.h */,
+				A58780011F125F770045CFBF /* HXLHeaderFooterView.m */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -570,6 +585,12 @@
 				A5C8CB4C1E73C3160028224E /* HXLTabBar.m */,
 				A54C558D1F066C8600BFAB3D /* HXLProgressView.h */,
 				A54C558E1F066C8600BFAB3D /* HXLProgressView.m */,
+				A5877FF61F11BF290045CFBF /* HXLCoverView.h */,
+				A5877FF71F11BF290045CFBF /* HXLCoverView.m */,
+				A5877FF81F11BF290045CFBF /* HXLPopMenu.h */,
+				A5877FF91F11BF290045CFBF /* HXLPopMenu.m */,
+				A5877FFA1F11BF290045CFBF /* HXLPopMenu.xib */,
+				A5877FFE1F11C08F0045CFBF /* cute.jpg */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -794,6 +815,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A58ADC131F0F21A30080DBE8 /* HXLCommentViewController.xib in Resources */,
+				A5877FFF1F11C08F0045CFBF /* cute.jpg in Resources */,
 				A538C3E61E7AD0F200B3EFD3 /* member_ diamond_iconN.gif in Resources */,
 				A57F5F2D1E62DC2E002BA929 /* LaunchScreen.storyboard in Resources */,
 				A578101E1F0E38790003E1BE /* HXLVideoView.xib in Resources */,
@@ -802,6 +824,7 @@
 				A51EEB0F1E76D844002237E0 /* HXLPunTableViewCell.xib in Resources */,
 				A57810211F0E4A3E0003E1BE /* HXLVoiceView.xib in Resources */,
 				A57F5F281E62DC2E002BA929 /* Main.storyboard in Resources */,
+				A5877FFD1F11BF290045CFBF /* HXLPopMenu.xib in Resources */,
 				A557D9221E70F2FD00B54327 /* HXLPunView.xib in Resources */,
 				A533D1371F105FED00B976EC /* HXLCommentTableViewCell.xib in Resources */,
 				A51EEB1B1E76D8D5002237E0 /* HXLPictureView.xib in Resources */,
@@ -899,7 +922,9 @@
 				A557D91A1E70F25300B54327 /* HXLReleaseLinkViewController.m in Sources */,
 				A5C8CB681E73C3880028224E /* HXLAllTableVC.m in Sources */,
 				A5C8CB6A1E73C3880028224E /* HXLPunTableVC.m in Sources */,
+				A58780021F125F770045CFBF /* HXLHeaderFooterView.m in Sources */,
 				A53E05B91E7BECFF0079DA41 /* HXLDataTool.m in Sources */,
+				A5877FFC1F11BF290045CFBF /* HXLPopMenu.m in Sources */,
 				A552086D1E8E3E5B00E77AFC /* UIView+HXL.m in Sources */,
 				A5C8CB691E73C3880028224E /* HXLPictureTableVC.m in Sources */,
 				A5E1A45F1E6593AE0060F656 /* HXLReleaseViewController.m in Sources */,
@@ -913,6 +938,7 @@
 				A59F83421E8CE23600A342BB /* HXLUser.m in Sources */,
 				A5C8CB551E73C3160028224E /* HXLTabBarController.m in Sources */,
 				A557D9211E70F2FD00B54327 /* HXLPunView.m in Sources */,
+				A5877FFB1F11BF290045CFBF /* HXLCoverView.m in Sources */,
 				A5C8CB541E73C3160028224E /* HXLNavigationController.m in Sources */,
 				A51EEB0E1E76D844002237E0 /* HXLPunTableViewCell.m in Sources */,
 				A5C8CB571E73C3160028224E /* HXLReleaseButton.m in Sources */,

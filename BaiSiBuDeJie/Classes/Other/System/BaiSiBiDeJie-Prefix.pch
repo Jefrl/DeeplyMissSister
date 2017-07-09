@@ -78,7 +78,7 @@
 #define WriteToPlist(dictionary, filename, type) [dictionary writeToFile:[NSString stringWithFormat:@"/Users/Jefrl/Desktop/01 - Comment/%@%@.plist", filename, type] atomically:YES];
 
 // 弱引用
-#define HXL_WEAKSELF __weak typeof(self) weakSelf = self;
+#define HXL_WEAKSELF(self) __weak typeof(self) weakSelf = self;
 
 /** 需要全文引用的头文件 */
 // 三方类

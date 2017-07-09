@@ -74,11 +74,36 @@
     return self.frame.size.height;
 }
 
+- (void)setOriginX:(CGFloat)originX
+{
+    CGPoint origin = self.origin;
+    origin.x = originX;
+    self.origin = origin;
+}
+
+- (CGFloat)originX
+{
+    return self.origin.x;
+}
+
+- (void)setOriginY:(CGFloat)originY
+{
+    CGPoint origin = self.origin;
+    origin.y = originY;
+    self.origin = origin;
+}
+
+- (CGFloat)originY
+{
+    return self.origin.x;
+}
+
 - (void)setCenterX:(CGFloat)centerX {
     CGPoint center = self.center;
     center.x = centerX;
     self.center = center;
 }
+
 
 - (CGFloat)centerX {
     return self.center.x;
@@ -94,7 +119,7 @@
     return self.center.y;
 }
 
-// 范围性质
+// 范围性质, center 系统本身有
 - (void)setOrigin:(CGPoint)origin {
     CGRect frame = self.frame;
     frame.origin = origin;

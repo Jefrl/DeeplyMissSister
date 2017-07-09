@@ -28,6 +28,10 @@ UIKIT_EXTERN CGFloat const DIY;
 UIKIT_EXTERN NSString * const pun_reuseID;
 // 评论页面的重用标识;
 UIKIT_EXTERN NSString * const cmt_reuseID;
+// 评论页面 section 头部重用标识
+UIKIT_EXTERN NSString * const cmt_header_reuseID;
+// 评论页面 section 头部的高度
+UIKIT_EXTERN CGFloat const heightForHeaderInSection;
 
 /** tabBar被选中的通知名字 */
 UIKIT_EXTERN NSString * const HXLTabBarDidSelectNotification;

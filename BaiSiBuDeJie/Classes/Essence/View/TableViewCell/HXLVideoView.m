@@ -69,6 +69,7 @@
     [self.smallImageView sd_setImageWithURL:[NSURL URLWithString:_punCellItem.small_image] placeholderImage:nil options:SDWebImageRetryFailed progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
         // 进来就要显示;
         self.progressView.hidden = NO;
+        self.playBtn.hidden = YES;
         
         //        NSLog(@"%@, %ld, %ld, %.01f", @"progress", receivedSize, expectedSize, 1.00 * receivedSize/expectedSize);
         
@@ -81,12 +82,14 @@
     } completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         // 进来就要隐藏;
         self.progressView.hidden = YES;
+        self.playBtn.hidden = NO;
         
         if (error) { // 网络加载失败就, 显示加载失败的图片;
             NSLog(@"%@", error);
             
             self.placeholdImageView.hidden = YES;
             self.loadError_imageView.hidden = NO;
+            self.playBtn.hidden = NO;
             
             return ;
         }
