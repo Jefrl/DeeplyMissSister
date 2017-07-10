@@ -39,7 +39,7 @@
     // (2. 否则你自定义了 Item 按钮, 你就需要在 push完后 跟 pop 完页面后在监听方法didShowViewController 恰当的清空手势代理设为nil 跟恢复手势按钮)
     // < 3. 否则, 就干脆做一个自定义的全屏侧滑(推荐, 尤其是本身要求全屏侧滑的时候, 同时又兼容了自定义的好处)>
     // 这里我用方法3;
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemTitle:@"取消" titltColor:[UIColor whiteColor] fontSize: FONT_14 target:self action:@selector(cancelItemClick:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemTitle:@"取消" titltColor:WHITE_COLOR  titleSelectedColor:GRAY_COLOR fontSize:FONT_15 target:self action:@selector(cancelItemClick:) contentEdgeInsets:UIEdgeInsetsZero forControlEvents:UIControlEventTouchUpInside forcontrolState:UIControlStateHighlighted];
     // 右侧发表按钮
     HXLPostButton *postBtn = [HXLPostButton buttonWithType:UIButtonTypeCustom];
     [postBtn setTitle:@"发表" forState:UIControlStateNormal];

@@ -7,8 +7,6 @@
 //
 
 #import "HXLEssenceItem.h"
-#import "HXLEssenceCommentItem.h"
-#import "HXLUser.h"
 
 #import "MJExtension.h"
 @interface HXLEssenceItem ()
@@ -39,14 +37,6 @@
              };
 }
 
-- (CGFloat)width
-{
-    if (!_width) {
-        
-    }
-    return _width;
-}
-
 // 计算出每个模型的高度
 - (CGFloat)cellHeight
 {
@@ -74,7 +64,7 @@
         CGFloat imageW = self.width;
         CGFloat imageH = self.height;
         
-        if (self.type == HXLTopicTypePicture) { // 图片
+        if (self.type != HXLTopicTypeWord) { // 图片
             if (self.is_gif) { // GIF 图片,且始终无大图模式
                 
                 self.isBigPicture = NO;

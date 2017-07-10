@@ -7,7 +7,12 @@
 //
 
 #import "HXLUser.h"
+#import "MJExtension.h"
 
 @implementation HXLUser
++ (NSDictionary *)mj_replacedKeyFromPropertyName
+{
+    return @{@"ID" : @"id"};
+}
 
 @end

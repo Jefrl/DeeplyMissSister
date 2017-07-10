@@ -23,7 +23,7 @@
     [super setProgress:progress animated:animated];
     
     NSString *text = [NSString stringWithFormat:@"%.0f%%", progress * 100];
-    self.progressLabel.text = text;//[text stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    self.progressLabel.text = [text stringByReplacingOccurrencesOfString:@"-" withString:@""];
 }
 
 

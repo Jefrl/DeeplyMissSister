@@ -15,6 +15,25 @@
     return array[index];
 }
 
+
+/**
+ 当前 View 是否在主窗口上
+
+ @return BOOL
+ */
+- (BOOL)isShowKeyWindow
+{
+    UIWindow *keyWindow = KEYWINDOW;
+    // 将 View 的坐标 frame 的参照物从 superView 转换成主窗口为参照物的 newFrame;
+    CGRect newFrame = [self.superview convertRect:self.frame toView:KEYWINDOW];
+    // 判断是否有交叠部分;
+    BOOL isIntersect = CGRectIntersectsRect(newFrame, keyWindow.bounds);
+    
+    BOOL flag = !self.isHidden && self.alpha > 0.01 && self.window == KEYWINDOW && isIntersect;
+    
+    return flag;
+}
+
 - (void)setX:(CGFloat)x {
     CGRect frame = self.frame;
     frame.origin.x = x;
@@ -55,11 +74,36 @@
     return self.frame.size.height;
 }
 
+- (void)setOriginX:(CGFloat)originX
+{
+    CGPoint origin = self.origin;
+    origin.x = originX;
+    self.origin = origin;
+}
+
+- (CGFloat)originX
+{
+    return self.origin.x;
+}
+
+- (void)setOriginY:(CGFloat)originY
+{
+    CGPoint origin = self.origin;
+    origin.y = originY;
+    self.origin = origin;
+}
+
+- (CGFloat)originY
+{
+    return self.origin.x;
+}
+
 - (void)setCenterX:(CGFloat)centerX {
     CGPoint center = self.center;
     center.x = centerX;
     self.center = center;
 }
+
 
 - (CGFloat)centerX {
     return self.center.x;
@@ -75,24 +119,15 @@
     return self.center.y;
 }
 
-- (void)setOriginX:(CGFloat)originX {
+// 范围性质, center 系统本身有
+- (void)setOrigin:(CGPoint)origin {
     CGRect frame = self.frame;
-    frame.origin.x = originX;
+    frame.origin = origin;
     self.frame = frame;
 }
 
-- (CGFloat)originX {
-    return self.frame.origin.x;
-}
-
-- (void)setOriginY:(CGFloat)originY {
-    CGRect frame = self.frame;
-    frame.origin.y = originY;
-    self.frame = frame;
-}
-
-- (CGFloat)originY {
-    return self.frame.origin.y;
+- (CGPoint)origin {
+    return self.frame.origin;
 }
 
 - (void)setSize:(CGSize)size {
@@ -104,8 +139,6 @@
 - (CGSize)size {
     return self.frame.size;
 }
-
-
 
 
 @end

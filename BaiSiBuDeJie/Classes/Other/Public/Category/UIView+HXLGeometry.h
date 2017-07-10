@@ -11,8 +11,10 @@
 @interface UIView (HXLGeometry)
 /** xib 的加载 */
 + (instancetype)loadViewFormXib:(NSInteger)index;
+/** 当前 View 是否在主窗口上 */
+- (BOOL)isShowKeyWindow;
 
-// 分类如果扩展了属性, 那么要自己实现对应的 set, get 方法 
+// 分类如果增添了属性, 那么要自己实现对应的 set, get 方法
 
 /** UIView.frame.origin.x */
 @property (nonatomic, assign) CGFloat x;
@@ -22,15 +24,17 @@
 @property (nonatomic, assign) CGFloat width;
 /** UIView.frame.size.height */
 @property (nonatomic, assign) CGFloat height;
+/** UIView.frame.origin.x */
+@property (nonatomic, assign) CGFloat originX;
+/** UIView.frame.origin.y */
+@property (nonatomic, assign) CGFloat originY;
 /** UIView.center.x */
 @property (nonatomic, assign) CGFloat centerX;
 /** UIView.center.y */
 @property (nonatomic, assign) CGFloat centerY;
 
-/** UIView.frame.origin.x */
-@property (nonatomic, assign) CGFloat originX;
-/** UIView.frame.origin.y */
-@property (nonatomic, assign) CGFloat originY;
+/** UIView.frame.origin */
+@property (nonatomic, readwrite, assign) CGPoint origin;
 /** UIView.frame.size */
 @property (nonatomic, assign) CGSize size;
 

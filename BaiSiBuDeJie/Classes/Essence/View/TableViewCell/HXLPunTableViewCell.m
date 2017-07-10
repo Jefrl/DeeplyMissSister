@@ -13,8 +13,8 @@
 
 #import "UIImageView+HXLSDWeb.h"
 #import "HXLPictureView.h"
-#import "HXLVideoTableViewCell.h"
-#import "HXLVoiceTableViewCell.h"
+#import "HXLVideoView.h"
+#import "HXLVoiceView.h"
 
 @interface HXLPunTableViewCell ()
 
@@ -29,9 +29,9 @@
 /** picView */
 @property (nonatomic, weak) HXLPictureView *pictureView;
 /** videoView */
-@property (nonatomic, weak) HXLVideoTableViewCell *videoView;
+@property (nonatomic, weak) HXLVideoView *videoView;
 /** voiceView */
-@property (nonatomic, weak) HXLVoiceTableViewCell *voiceView;
+@property (nonatomic, weak) HXLVoiceView *voiceView;
 
 /** 头像 */
 @property (weak, nonatomic) IBOutlet UIImageView *icon_imageView;
@@ -67,19 +67,17 @@
     return _pictureView;
 }
 
-- (HXLVideoTableViewCell *)videoView {
+- (HXLVideoView *)videoView {
     if (!_videoView) {
-        HXLVideoTableViewCell *videoView = [HXLVideoTableViewCell loadViewFormXib:0];
-        [self.contentView addSubview:videoView];
+        HXLVideoView *videoView = [HXLVideoView loadViewFormXib:0];
         _videoView = videoView;
     }
     return _videoView;
 }
 
-- (HXLVoiceTableViewCell *)voiceView {
+- (HXLVoiceView *)voiceView {
     if (!_voiceView) {
-        HXLVoiceTableViewCell *voiceView = [HXLVoiceTableViewCell loadViewFormXib:0];
-        [self.contentView addSubview:voiceView];
+        HXLVoiceView *voiceView = [HXLVoiceView loadViewFormXib:0];
         _voiceView = voiceView;
     }
     return _voiceView;
@@ -106,12 +104,12 @@
     NSLog(@"");
 }
 
-#pragma mark - init zone
+#pragma mark - Init zone
 - (void)awakeFromNib {
     [super awakeFromNib];
     
     self. contentView.backgroundColor = WHITE_COLOR;
-    self.backgroundColor = RGBColor(204, 204, 204, 1);
+    self.backgroundColor = GRAY_PUBLIC_COLOR;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
@@ -122,8 +120,10 @@
     self.contentView.y = DIY;
     self.contentView.width = self.width - DIY * 2;
     self.contentView.height = self.height - DIY * 2;
-    // 非 Xib 加载的子控件 midView.frame
+    // 非 cell 的 Xib 本身上子控件 midView.frame 的设定
     self.pictureView.frame = self.punCellItem.pictureFrame;
+    self.videoView.frame = self.punCellItem.pictureFrame;
+    self.voiceView.frame = self.punCellItem.pictureFrame;
     
 }
 
@@ -139,11 +139,40 @@
     [super setFrame:frame];
 }
 
-#pragma mark - 01 模型设置
+#pragma mark - 模型属性的赋值
 - (void)setPunCellItem:(HXLEssenceItem *)punCellItem
 {
-    // 通用的基类 cell 属性设置;
+    // cell 通用的基础类属性设置;
+    [self setupUniformStyle:punCellItem];
+
+    // 热评控件设置
+    
+    // 不同类型的 MidView 控件的添加
+    if (_punCellItem.type == HXLTopicTypePicture) { // 传入的模型是图片模型
+        
+        [self setupMidView:self.pictureView cellItem:_punCellItem hiddenMidViews:@[self.videoView, self.voiceView]];
+        
+        
+    } else if (_punCellItem.type == HXLTopicTypeVideo) { // 视频模型
+        
+        [self setupMidView:self.videoView cellItem:_punCellItem hiddenMidViews:@[self.pictureView, self.voiceView]];
+
+    } else if (_punCellItem.type == HXLTopicTypeVoice) { // 音频模型
+        
+        [self setupMidView:self.voiceView cellItem:_punCellItem hiddenMidViews:@[self.videoView, self.pictureView]];
+        
+    } else { // 段子
+        
+        [self setupMidView:nil cellItem:nil hiddenMidViews:@[self.voiceView, self.videoView, self.pictureView]];
+    }
+
+}
+
+#pragma mark - 优化抽取的方法
+- (void)setupUniformStyle:(HXLEssenceItem *)punCellItem
+{
     _punCellItem = punCellItem;
+    
     [_icon_imageView setImageString:punCellItem.profile_image placeholderImage:[UIImage imageNamed:@"default_header_image_small"] circleImage:YES];
     _time_label.text = punCellItem.created_at;
     _usr_label.text = punCellItem.name;
@@ -152,29 +181,10 @@
     
     // 顶赞部分设置
     [_likeBtn setTitle:_punCellItem.ding forState:UIControlStateNormal];
+
     [_dislikeBtn setTitle:_punCellItem.cai forState:UIControlStateNormal];
     [_shareBtn setTitle:_punCellItem.repost forState:UIControlStateNormal];
     [_commentBtn setTitle:_punCellItem.comment forState:UIControlStateNormal];
-
-    // 热评控件设置
-    
-    // 区分类别添加控件
-    if (_punCellItem.type == HXLTopicTypePicture) { // 传入的模型是图片模型
-        
-        [self setupMidView:self.pictureView cellItem:_punCellItem hiddenMidViews:@[self.videoView, self.voiceView]];
-        
-        
-    } else if (_punCellItem.type == HXLTopicTypeVideo) { // 视频模型
-        
-//        [self setupMidView:self.videoView cellItem:_punCellItem hiddenMidViews:@[self.pictureView, self.voiceView]];
-
-    } else if (_punCellItem.type == HXLTopicTypeVoice) { // 音频模型
-        
-//        [self setupCellTypesView:self.voiceView hiddenViews:@[self.videoView, self.pictureView] viewFrame:_punCellItem.voiceFrame];
-    } else { // 段子
-//        [self setupCellTypesView:nil hiddenViews:@[self.pictureView, self.videoView, self.voiceView] viewFrame:CGRectNull];
-    }
-
 }
 
 /** 不同类型 cell 的加载 */
@@ -185,9 +195,13 @@
     [self.contentView addSubview:displayView];
     
     displayView.hidden = NO;
+    
+    // 添加到cell 之前, 要将重用 cell 的 midView 上的内容隐藏或移除
     for (UIView *view in hiddenViews) {
         view.hidden = YES;
     }
+    
+    [hiddenViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     // !切记: 不能在这里计算 frame, midView 因为类型多种, 所以作为另一个 xib 控件加载到 cell 内部, cell 是自定义, 自定义控件的内部子控件的 frame, 要么已经在xib 上布局好了, 要么走 layoutsubViews 方法;
     //    displayView.frame = viewFrame;

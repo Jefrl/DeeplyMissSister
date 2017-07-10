@@ -7,7 +7,6 @@
 //
 
 #import "HXLVideoTableVC.h"
-#import "HXLVideoTableViewCell.h"
 
 @interface HXLVideoTableVC ()
 
