@@ -28,5 +28,7 @@ CGFloat const heightForHeaderInSection = 25;
 /** tabBar被选中的通知名字 */
 NSString * const HXLTabBarDidSelectNotification = @"HXLTabBarDidSelectNotification";
 
-
+// 网络加载自定义每次加载条数
+NSInteger const loadCount = 10;
+// 规定展示的热评数目
 NSInteger const showHotCount = 3;

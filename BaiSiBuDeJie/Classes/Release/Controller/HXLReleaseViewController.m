@@ -233,12 +233,13 @@
         animation.beginTime = CACurrentMediaTime() + [self.timeArray[i] doubleValue];
         
         
-        HXL_WEAKSELF(self); // 弱指向
+        HXL_WEAKSELF; // 弱指向
         if (i == totalCount - 1) { // 最后一个动画了
             [animation setCompletionBlock:^(POPAnimation *animation, BOOL finished) {
+                HXL_STRONGSELF;
                 
                 // 有没有循环引用呢?!
-                [weakSelf dismissViewControllerAnimated:NO completion:nil];
+                [strongSelf dismissViewControllerAnimated:NO completion:nil];
                 
                 // block 有值才调用
                 !complete_block ?  : complete_block() ;

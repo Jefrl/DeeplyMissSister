@@ -36,6 +36,7 @@ UIKIT_EXTERN CGFloat const heightForHeaderInSection;
 /** tabBar被选中的通知名字 */
 UIKIT_EXTERN NSString * const HXLTabBarDidSelectNotification;
 
-
+// 网络加载自定义每次加载条数
+UIKIT_EXTERN NSInteger const loadCount;
 // 规定展示的热评数目
 UIKIT_EXTERN NSInteger const showHotCount;

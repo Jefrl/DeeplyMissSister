@@ -27,7 +27,10 @@
     dictM_titleText[NSFontAttributeName] = FONT_17;
     dictM_titleText[NSForegroundColorAttributeName] = [UIColor whiteColor];
     
-    UINavigationBar *navgationBar = [UINavigationBar appearanceWhenContainedIn:[self class], nil];
+    //这里是会报警告的代码
+    UINavigationBar *navgationBar = [UINavigationBar appearanceWhenContainedInInstancesOfClasses:
+    @[[self class]]];
+    
     [navgationBar setTitleTextAttributes:dictM_titleText];
     // 背景色或图片
 //    [navgationBar setBarTintColor:BLACK_COLOR]; //navigationbarBackgroundN

@@ -24,7 +24,7 @@
 /** 音频文件的时长 */
 @property (nonatomic, strong) NSString *voicetime;
 /** 音频文件的路径 */
-@property (nonatomic, copy) NSString *voiceuri;
+@property (nonatomic, strong) NSString *voiceuri;
 /** 该评论被点赞的数量 */
 @property (nonatomic, strong) NSString *like_count;
 /** precid(如果是评论之前的人的评论内容，则为前面帖子的评论id，如果不是则为0) */

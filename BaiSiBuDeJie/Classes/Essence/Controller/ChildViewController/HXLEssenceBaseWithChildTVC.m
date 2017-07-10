@@ -7,6 +7,7 @@
 //
 
 #import "HXLEssenceBaseWithChildTVC.h"
+#import "HXLEssenceViewController.h"
 
 #import "HXLPunTableVC.h"
 #import "HXLCommentViewController.h"
@@ -27,9 +28,11 @@
 /** HXLSessionManager 对象 */
 @property (nonatomic, strong) HXLSessionManager *sessionManager;
 /** 帖子模型数组 */
-@property (nonatomic, strong) NSArray *itemArray;
-/** 帖子中评论的模型数组 */
-@property (nonatomic, strong) NSArray *commentItemArray;
+@property (strong, nonatomic) NSMutableArray *itemArrayM;
+/** 帖子最热评模型数组(只有一组) */
+@property (nonatomic, strong) NSArray *hottestArray;
+/** 帖子所有热评模型数组(有多组) */
+@property (nonatomic, strong) NSMutableArray *allHots;
 /** responseDict */
 @property (nonatomic, strong) NSDictionary *responseDict;
 /** cell 保存? */
@@ -40,10 +43,6 @@
 @property (nonatomic, assign) CGFloat containBottomViewHight;
 
 
-/** latestComments 最新评论数组 */
-@property (strong, nonatomic) NSMutableArray *latestComments;
-/** 包含 hots 热评论数组 的二维大数组 */
-@property (nonatomic, strong) NSMutableArray *allHots;
 /** params 请求数据的参数 */
 @property (nonatomic, readwrite, strong) NSMutableDictionary *params;
 /** 请求下页数据, 要增加的参数 maxtimes */
@@ -55,12 +54,21 @@
 /** tabBarOb */
 @property (nonatomic, readwrite, strong) NSNotificationCenter *tabBarOb;
 
+/** essenceOrLastestA */
+@property (nonatomic, readwrite, strong) NSString *essenceOrLastestA;
+
 
 @end
 
 @implementation HXLEssenceBaseWithChildTVC
 
 #pragma mark - Lazy load
+- (NSString *)essenceOrLastestA
+{
+    _essenceOrLastestA = [self.parentViewController isKindOfClass:[HXLEssenceViewController class]] ? @"list" : @"newlist";
+    
+    return _essenceOrLastestA;
+}
 
 - (NSMutableArray *)hots
 {
@@ -71,28 +79,20 @@
     return _allHots;
 }
 
-- (NSMutableArray *)latestComments
+- (NSMutableArray *)itemArrayM
 {
-    if (!_latestComments) {
-        _latestComments = [NSMutableArray array];
+    if (!_itemArrayM) {
+        _itemArrayM = [NSMutableArray array];
     }
-    return _latestComments;
+    return _itemArrayM;
 }
 
-- (NSArray *)itemArray {
-    if (!_itemArray) {
-        NSArray *itemArray = [NSArray array];
-        _itemArray = itemArray;
-    }
-    return _itemArray;
-}
-
-- (NSArray *)commentItemArray
+- (NSArray *)hottestArray
 {
-    if (!_commentItemArray) {
-        _commentItemArray = [NSArray array];
+    if (!_hottestArray) {
+        _hottestArray = [NSArray array];
     }
-    return  _commentItemArray;
+    return  _hottestArray;
 }
 
 // 网络请求者
@@ -186,27 +186,25 @@
     
     // 请求不同类型贴子的参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"a"] = @"list";
+    // 由于这个是基类, 新帖也是它的子类, 那么一进入的初次刷新, 需要评判在哪个页面
+    params[@"a"] = self.essenceOrLastestA;
     // 将数字包装成对象, AFN内部会处理;
     params[@"type"] = @(self.type);
     params[@"c"] = @"data";
+    params[@"per"] = @(loadCount); // 自定义加载多少条
     self.params = params;
     
     // 请求发出
     [self.sessionManager request:RequestTypeGet URLString:HXLPUBLIC_URL parameters:params success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
-        if (self.params != params) { // 判断是否 在加载过程中, 用户将精华控制器 切换到了 最新控制器!
+        WriteToPlist(_responseDict, @"pun", @(self.type))
+        
+        self.maxtime =  responseObject[@"info"][@"maxtime"];
+        if (self.params != params) { // 判断是否 在加载过程中, 用户将对应的父控制器(精华控制器) 切换到了 最新控制器!
             return ; // 停止加载
         }
         
-        self.maxtime =  responseObject[@"info"][@"maxtime"];
-        
         // 字典数组转 模型数组
-        self.itemArray = [HXLEssenceItem mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
-        
-        //--test 查看json 数据结构--
-        //[self test];
-        self.responseDict = responseObject;
-        WriteToPlist(_responseDict, @"pun", @(self.type))
+        self.itemArrayM = [HXLEssenceItem mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
         
         // 获得新数据, 刷新界面
         [self.tableView reloadData];
@@ -216,13 +214,8 @@
         self.page = 0;
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
-        if (self.params != params) { // 判断是否 在加载过程中, 用户将精华控制器 切换到了 最新控制器!
-            return ; // 停止加载
-        }
-        
         // 结束刷新
         [self.tableView.mj_header endRefreshing];
-        
         if (error) {
             NSLog(@"%@", error);
         }
@@ -239,31 +232,29 @@
     
     // 请求不同类型贴子的参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"a"] = @"list";
+    params[@"a"] = self.essenceOrLastestA;
     // 将数字包装成对象, AFN内部会处理;
     params[@"type"] = @(self.type);
     params[@"c"] = @"data";
-    NSInteger page = self.page + 1;
-    params[@"page"] = @(page);
     params[@"maxtime"] = self.maxtime;
+    params[@"page"] = @(self.page + 1);
+    
     // 及时记录
     self.params = params;
     
     // 请求发出
     [self.sessionManager request:RequestTypeGet URLString:HXLPUBLIC_URL parameters:params success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        WriteToPlist(_responseDict, @"pun", @(self.type))
+        self.maxtime =  responseObject[@"info"][@"maxtime"];
+        
         if (self.params != params) { // 判断是否 在加载过程中, 用户将精华控制器 切换到了 最新控制器!
             return ; // 停止加载
         }
         
-        self.maxtime =  responseObject[@"info"][@"maxtime"];
-        
         // 字典数组转 模型数组
-        self.itemArray = [HXLEssenceItem mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        NSArray *array = [HXLEssenceItem mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
         
-        //--test 查看json 数据结构--
-        //[self test];
-        self.responseDict = responseObject;
-        WriteToPlist(_responseDict, @"pun", @(self.type))
+        [self.itemArrayM addObjectsFromArray:array];
         
         // 获得新数据, 刷新界面
         [self.tableView reloadData];
@@ -271,13 +262,8 @@
         [self.tableView. mj_footer endRefreshing];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
-        if (self.params != params) { // 判断是否 在加载过程中, 用户将精华控制器 切换到了 最新控制器!
-            return ; // 停止加载
-        }
-        
         // 结束刷新
         [self.tableView.mj_footer endRefreshing];
-        
         if (error) {
             NSLog(@"%@", error);
         }
@@ -287,14 +273,13 @@
 
 #pragma mark - TableView Delegate or DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    NSLog(@"%ld", self.itemArray.count);
-    return self.itemArray.count;
+    return self.itemArrayM.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HXLPunTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:pun_reuseID forIndexPath:indexPath];
     
-    HXLEssenceItem *item = self.itemArray[indexPath.row];
+    HXLEssenceItem *item = self.itemArrayM[indexPath.row];
     cell.punCellItem = item;
     
     return cell;
@@ -302,14 +287,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    HXLEssenceItem *item = _itemArray[indexPath.row];
+    HXLEssenceItem *item = _itemArrayM[indexPath.row];
     return item.cellHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     HXLCommentViewController *commentVC = [[HXLCommentViewController alloc] init];
-    HXLEssenceItem *item = self.itemArray[indexPath.row];
+    HXLEssenceItem *item = self.itemArrayM[indexPath.row];
     commentVC.punCellItem = item;
     [self.navigationController pushViewController:commentVC animated:YES];
     // 调试的页面类型, 非页面内 tableViewCell 的类型;

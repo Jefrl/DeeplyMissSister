@@ -59,7 +59,7 @@
     dictM_titleText[NSFontAttributeName] = fontSize;
     dictM_titleText[NSForegroundColorAttributeName] = titleTextColor;
     
-    UITabBarItem *tabBarItem = [UITabBarItem appearanceWhenContainedIn:[self class], nil];
+    UITabBarItem *tabBarItem = [UITabBarItem appearanceWhenContainedInInstancesOfClasses:@[[self class] ]];
     [tabBarItem setTitleTextAttributes:dictM_titleText forState:controlState];
 }
 

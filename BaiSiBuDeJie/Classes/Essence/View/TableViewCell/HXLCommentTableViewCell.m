@@ -26,13 +26,18 @@
 @property (weak, nonatomic) IBOutlet UIView *voiceView;
 @property (weak, nonatomic) IBOutlet UILabel *voicetime;
 @property (weak, nonatomic) IBOutlet UIButton *voiceBtn;
+@property (weak, nonatomic) IBOutlet UILabel *ctime;
 
 
 @end
 
 @implementation HXLCommentTableViewCell
 - (IBAction)voiceBtnClick:(UIButton *)sender {
-    NSLog(@"..");
+    NSLog(@"");
+//    UIWebView *web = [[UIWebView alloc] initWithFrame:SCREEN_BOUNDS];
+//    [web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.commentItem.voiceuri]]];
+//    [KEYWINDOW addSubview:web];
+    
 }
 
 
@@ -46,8 +51,8 @@
 {
     // 基础信息设置
     _commentItem = commentItem;
-    
     self.user = _commentItem.user;
+    
     [self.nameImageV setImageString:_user.profile_image placeholderImage:[UIImage imageNamed:@"default_header_image_small"] circleImage:YES];
     if ([_user.sex isEqualToString:@"f"]) {
         self.sexImageV.image = [UIImage imageNamed:@"Profile_womanIcon"];
@@ -57,19 +62,27 @@
     self.DingCounts.text = _user.total_cmt_like_count;
     self.name.text = _user.username;
     
-    if (HXLTopicTypeVoice == _commentItem.cmt_type.integerValue) {
+    if (HXLTopicTypeVoice == _commentItem.cmt_type.integerValue) { // 是音频评论
         self.voiceView.hidden = NO;
         self.comment.hidden = YES;
         
         self.voicetime.text = [NSString stringWithFormat:@"%@\"",  _commentItem.voicetime];
-    } else {
+    } else { // 是文字评论
         self.voiceView.hidden = YES;
         self.comment.hidden = NO;
         self.comment.text = _commentItem.content;
     }
     
+    self.ctime.text = _commentItem.ctime;
     self.dingBtn.titleLabel.text = _commentItem.like_count;
 }
 
 
 @end
+
+/** 测试数据
+ commentItem.cmt_type = @"31";
+ commentItem.voicetime = @"10000";
+ commentItem.voiceuri = @"www.baidu.com";
+ */
+

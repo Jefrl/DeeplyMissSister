@@ -104,7 +104,7 @@
     NSLog(@"");
 }
 
-#pragma mark - init zone
+#pragma mark - Init zone
 - (void)awakeFromNib {
     [super awakeFromNib];
     
@@ -163,6 +163,7 @@
         
     } else { // 段子
         
+        [self setupMidView:nil cellItem:nil hiddenMidViews:@[self.voiceView, self.videoView, self.pictureView]];
     }
 
 }
