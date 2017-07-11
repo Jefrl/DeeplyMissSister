@@ -1,10 +1,6 @@
-//
-//  HXLPopMenu.m
-//  小码哥彩票
-//
-//  Created by 1 on 16/4/30.
-//  Copyright © 2016年 小码哥. All rights reserved.
-//
+//=================================================================
+//                       HXLPopMenu.m
+//=================================================================
 
 #import "HXLPopMenu.h"
 
@@ -20,25 +16,41 @@
     
 }
 
-+ (instancetype)popMenu
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    return [self loadViewFormXib:0];
+    if (self = [super initWithFrame:frame]) {
+        NSArray *array = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil];
+        self = array[0];
+    }
+    
+    return self;
 }
 
-- (void)showInCenter:(CGPoint)center animateWithDuration:(NSTimeInterval)duration completion:(MyBlock)completion
++ (instancetype)popMenu
 {
-    [UIView animateWithDuration:(duration * 0.8) animations:^{
-        self.center = center;
+    return [[self alloc] init];
+}
+
+- (void)showInCenter:(CGPoint)center animateWithDuration:(NSTimeInterval)duration completion:(void (^)())completion
+{
+    self.center = CGPointMake(- 0.5 *self.width, - 0.5 * self.height);
+    self.transform = CGAffineTransformMakeScale(0.3, 0.3);
+    
+    [UIView animateWithDuration:(duration * 0.2) animations:^{
+        // 添加完蒙版
+        completion();
+        
+    } completion:^(BOOL finished) {
+        // 2.再添加 popMenu
         [[UIApplication sharedApplication].keyWindow addSubview:self];
 
-    } completion:^(BOOL finished) {
-
-        // 2.动画执行完毕移除蒙版
-        if (completion) { // 判断外界有没有传递代码, 一般有移除自己的操作
-            [UIView animateWithDuration:duration *0.2 animations:^{
-//                completion();
+        if (completion) {
+            [UIView animateWithDuration:(duration + 0.3) animations:^{
+                self.center = center;
+                self.transform = CGAffineTransformMakeScale(1, 1);
             }];
         }
+        
     }];
 }
 
@@ -49,9 +61,10 @@
         self.transform = CGAffineTransformMakeScale(0.7, 0.7);
         
     } completion:^(BOOL finished) {
+        // 动画执行完移除 popMenu
         [self removeFromSuperview];
         
-        // 2.动画执行完毕移除蒙版
+        // 2. 再移除蒙版
         if (completion) { // 判断外界有没有传递代码, 一般有移除自己的操作
             [UIView animateWithDuration:duration *0.2 animations:^{
                 completion();

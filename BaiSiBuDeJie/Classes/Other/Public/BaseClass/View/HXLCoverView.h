@@ -9,14 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface HXLCoverView : UIView
++ (instancetype)coverViewWithFrame:(CGRect)frame;
 
-/**
- 添加一块蒙板到主窗口上
+- (void)show;
 
- @param frame 蒙版的 frame
- */
-+ (void)show:(CGRect)frame;
-
-+ (void)hide;
+- (void)hide;
 
 @end

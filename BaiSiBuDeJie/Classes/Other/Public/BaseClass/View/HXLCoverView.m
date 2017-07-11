@@ -4,13 +4,9 @@
 #import "HXLCoverView.h"
 
 @implementation HXLCoverView
-+ (void)show:(CGRect)frame
++ (instancetype)coverViewWithFrame:(CGRect)frame
 {
-    HXLCoverView *cover = [[self alloc] init];
-    cover.backgroundColor = [UIColor blackColor];
-    cover.alpha = 0.7f;
-    cover.frame = frame;
-    [KEYWINDOW addSubview:cover];
+    return [[self alloc] initWithFrame:frame];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -19,13 +15,17 @@
         
         self.backgroundColor = [UIColor blackColor];
         self.alpha = 0.7f;
-        [KEYWINDOW addSubview:self];
     }
     
     return self;
 }
 
-+ (void)hide
+- (void)show
+{
+    [KEYWINDOW addSubview:self];
+}
+
+- (void)hide
 {
     for (UIView *view in KEYWINDOW.subviews) {
         if ([view isKindOfClass:[HXLCoverView class]]) {

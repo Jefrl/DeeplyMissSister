@@ -1,4 +1,6 @@
-
+//=================================================================
+//                       HXLPopMenu.h
+//=================================================================
 
 
 typedef void(^MyBlock)();
@@ -14,8 +16,9 @@ typedef void(^MyBlock)();
 @end
 
 @interface HXLPopMenu : UIView
++ (instancetype)popMenu;
 
-+ (instancetype)showInCenter:(CGPoint)center animateWithDuration:(NSTimeInterval)duration;
+- (void)showInCenter:(CGPoint)center animateWithDuration:(NSTimeInterval)duration completion:(void (^)())completion;
 
 - (void)hideInCenter:(CGPoint)center animateWithDuration:(NSTimeInterval)duration completion:(MyBlock)completion;
 
