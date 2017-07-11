@@ -47,6 +47,18 @@
     
 }
 
+#pragma mark - UIMenuController
+- (BOOL)canBecomeFirstResponder
+{
+    return YES;
+}
+
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender
+{
+//    if(action == @selector(cut:) || action == @selector(copy:) || action == @selector(myCut:)|| action == @selector(myPaste:)) return YES;
+    return NO;
+}
+
 - (void)setCommentItem:(HXLEssenceCommentItem *)commentItem
 {
     // 基础信息设置

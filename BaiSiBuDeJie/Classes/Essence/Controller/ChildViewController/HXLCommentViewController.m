@@ -78,6 +78,7 @@
 #pragma mark - Initialization settings
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // 统一设置区域
     [self setupUniformStyle];
     // 网络加载
@@ -186,6 +187,7 @@
     [self.coverView addGestureRecognizer:tapGest];
     
     HXLPopMenu *popMenu = [HXLPopMenu showInCenter:self.coverView.center animateWithDuration:self.duration];
+    
     self.popMenu = popMenu;
     
     // 定义 popMenBlock
@@ -347,6 +349,8 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     [self.view endEditing:YES];
+    
+    [[UIMenuController sharedMenuController] setMenuVisible:NO animated:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -371,19 +375,22 @@
     return self.commentArray.count;
 }
 
+- (HXLEssenceCommentItem *)itemByIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        
+        HXLEssenceCommentItem *commentItem = self.hotArray.count ? self.hotArray[indexPath.row] : self.commentArray[indexPath.row];
+        return commentItem;
+    }
+    
+    return self.commentArray[indexPath.row];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
      HXLCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cmt_reuseID forIndexPath:indexPath];
-    
-    if (indexPath.section == 0) {
-        
-        cell.commentItem = self.hotArray.count ? self.hotArray[indexPath.row] : self.commentArray[indexPath.row];
-        
-    } else {
-        
-        cell.commentItem = self.commentArray[indexPath.row];
-    }
-    
+    cell.commentItem = [self itemByIndexPath:indexPath];
+
     return cell;
 }
 
@@ -410,7 +417,56 @@
     
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIMenuController *menu = [UIMenuController sharedMenuController];
+    HXLCommentTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    if (menu.isMenuVisible) { // 当点击另一个 cell 时, 失去响应者的 menu 会变成不可见, 所以此判断才成立.
+        [menu setMenuVisible:NO animated:YES];
+        return;
+    }
+        
+        [cell becomeFirstResponder];
+        UILabel *coment = [cell valueForKey:@"comment"];
+        
+        UIMenuItem *ding = [[UIMenuItem alloc] initWithTitle:@"顶" action:@selector(ding:)];
+        UIMenuItem *replay = [[UIMenuItem alloc] initWithTitle:@"回复" action:@selector(replay:)];
+        UIMenuItem *report = [[UIMenuItem alloc] initWithTitle:@"举报" action:@selector(report:)];
+        menu.menuItems = @[ding, replay, report];
+        [menu setTargetRect:coment.bounds inView:coment];
+        [menu setMenuVisible:YES animated:YES];
+    
+    //消除cell选择痕迹
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+}
 
+#pragma mark - 抽取的方法 From/TableView Delegate or DataSource
+
+- (void)ding:(UIMenuController *)menu
+{
+    [self getContent];
+}
+
+- (void)replay:(UIMenuController *)menu
+{
+    [self getContent];
+}
+
+- (void)report:(UIMenuController *)menu
+{
+    [self getContent];
+}
+
+- (void)getContent {
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    HXLEssenceCommentItem *cmtItem = [self itemByIndexPath:indexPath];
+    NSString *content = cmtItem.content;
+    
+    [self.commentTF becomeFirstResponder];
+    NSLog(@"%@", content);
+}
 
  
 @end

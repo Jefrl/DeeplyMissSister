@@ -20,15 +20,26 @@
     
 }
 
-+ (instancetype)showInCenter:(CGPoint)center animateWithDuration:(NSTimeInterval)duration
++ (instancetype)popMenu
 {
-    HXLPopMenu *popMenu = [HXLPopMenu loadViewFormXib:0];
+    return [self loadViewFormXib:0];
+}
+
+- (void)showInCenter:(CGPoint)center animateWithDuration:(NSTimeInterval)duration completion:(MyBlock)completion
+{
     [UIView animateWithDuration:(duration * 0.8) animations:^{
-        popMenu.center = center;
-        [[UIApplication sharedApplication].keyWindow addSubview:popMenu];
+        self.center = center;
+        [[UIApplication sharedApplication].keyWindow addSubview:self];
+
+    } completion:^(BOOL finished) {
+
+        // 2.动画执行完毕移除蒙版
+        if (completion) { // 判断外界有没有传递代码, 一般有移除自己的操作
+            [UIView animateWithDuration:duration *0.2 animations:^{
+//                completion();
+            }];
+        }
     }];
-    
-    return popMenu;
 }
 
 - (void)hideInCenter:(CGPoint)center animateWithDuration:(NSTimeInterval)duration completion:(MyBlock)completion
@@ -39,9 +50,12 @@
         
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
+        
         // 2.动画执行完毕移除蒙版
         if (completion) { // 判断外界有没有传递代码, 一般有移除自己的操作
-            completion();
+            [UIView animateWithDuration:duration *0.2 animations:^{
+                completion();
+            }];
         }
     }];
     
