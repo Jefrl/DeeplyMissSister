@@ -127,17 +127,18 @@
 
 - (void)setupBase
 {
+    // 右侧导航 item
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonItemImage:[UIImage imageNamed:@"comment_nav_item_share_icon"] selectedImage:[UIImage imageNamed:@"comment_nav_item_share_icon_click"] addTarget:self action:@selector(rightBarButtonItemClick:) contentEdgeInsets:UIEdgeInsetsMake(0, 0, 0, -DIY) forControlEvents:UIControlEventTouchUpInside forcontrolState:UIControlStateHighlighted];
+    
     self.title = @"评论";
     self.tableView.estimatedRowHeight = 44;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    
+    // 系统滚动内边距调整
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.tableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, TABBAR_HEIGHT, 0);
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
-    
     // 去掉 多余 cell 中的分割线
     self.tableView.tableFooterView = [[UIView alloc] init];
-    
     // 注册 cell;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([HXLCommentTableViewCell class]) bundle:nil] forCellReuseIdentifier:cmt_reuseID];
 }
@@ -162,6 +163,11 @@
     // 当把自定义的头部视图, 加入赋值给 tableView时, cell 所属的类中的 layoutsubViews 就会被调用, 这也是我们包裹 UIView 的原因
     self.tableView.tableHeaderView = header;
     
+}
+
+- (void)rightBarButtonItemClick:(UIBarButtonItem *)sender
+{
+    NSLog(@"右侧分享按钮点击");
 }
 
 #pragma mark - 监听到键盘变化所执行的方法 keyboardWillChangeFrame
@@ -418,6 +424,7 @@
     
     if (menu.isMenuVisible) { // 当点击另一个 cell 时, 失去响应者的 menu 会变成不可见, 所以此判断才成立.
         [menu setMenuVisible:NO animated:YES];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
         return;
     }
         

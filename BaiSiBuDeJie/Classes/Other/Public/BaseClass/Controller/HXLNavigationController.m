@@ -8,7 +8,7 @@
 
 #import "HXLNavigationController.h"
 
-@interface HXLNavigationController ()
+@interface HXLNavigationController () <UIGestureRecognizerDelegate>
 
 @end
 
@@ -16,6 +16,8 @@
 #pragma mark - Initialization setting
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setupFullscreenBack];
     
     [self setTitleTextAttributesOfSize:FONT_17 foregroundColor:[UIColor whiteColor]];
 }
@@ -26,14 +28,11 @@
     NSMutableDictionary *dictM_titleText = [NSMutableDictionary dictionary];
     dictM_titleText[NSFontAttributeName] = FONT_17;
     dictM_titleText[NSForegroundColorAttributeName] = [UIColor whiteColor];
-    
-    //这里是会报警告的代码
     UINavigationBar *navgationBar = [UINavigationBar appearanceWhenContainedInInstancesOfClasses:
     @[[self class]]];
     
     [navgationBar setTitleTextAttributes:dictM_titleText];
     // 背景色或图片
-//    [navgationBar setBarTintColor:BLACK_COLOR]; //navigationbarBackgroundN
     [navgationBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundN"] forBarMetrics:UIBarMetricsDefault];
 }
 
@@ -66,6 +65,30 @@
 - (void)backItemClick:(UIBarButtonItem *)sender
 {
     [self popViewControllerAnimated:YES];
+}
+
+- (void)setupFullscreenBack
+{
+    // 2.自己写一个手势 全屏滑动移除控制器
+    // action: handleNavigationTransition:
+    // traget: self.interactivePopGestureRecognizer.delegate
+    // 禁用系统的手势
+    self.interactivePopGestureRecognizer.enabled = NO;
+    
+    id target = self.interactivePopGestureRecognizer.delegate;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:target action:@selector(handleNavigationTransition:)];
+#pragma clang diagnostic pop
+    [self.view addGestureRecognizer:pan];
+
+    // 为了现实下面的手势允许判断;
+    pan.delegate = self;
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{ // 根控制器不允许出栈, 会卡死
+    return self.viewControllers.count > 1;
 }
 
 @end

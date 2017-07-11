@@ -20,6 +20,10 @@
         
         [self sd_setImageWithURL:imageUrl placeholderImage:placeholderImage completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
            
+            if (nil == image) { // 有些用户不设置头像, 默认一个头像;
+                image = placeholderImage;
+            }
+        
             // 获取圆形头像
             UIImage *circleImage = [UIImage imageCircleClipWithImage:image];
             // 赋值给控件

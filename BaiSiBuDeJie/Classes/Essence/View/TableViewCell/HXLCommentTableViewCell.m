@@ -22,7 +22,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *caiBtn;
 /** user 信息 */
 @property (nonatomic, readwrite, strong) HXLUser *user;
-
 @property (weak, nonatomic) IBOutlet UIView *voiceView;
 @property (weak, nonatomic) IBOutlet UILabel *voicetime;
 @property (weak, nonatomic) IBOutlet UIButton *voiceBtn;
@@ -32,6 +31,15 @@
 @end
 
 @implementation HXLCommentTableViewCell
+- (IBAction)dingBtnClick:(UIButton *)sender {
+    
+    [self dingOrCaiBtnClick:sender otherBtn:self.caiBtn];
+    
+}
+- (IBAction)caiBtnClick:(UIButton *)sender {
+    
+    [self dingOrCaiBtnClick:sender otherBtn:self.dingBtn];
+}
 - (IBAction)voiceBtnClick:(UIButton *)sender {
     NSLog(@"");
 //    UIWebView *web = [[UIWebView alloc] initWithFrame:SCREEN_BOUNDS];
@@ -40,10 +48,19 @@
     
 }
 
+- (void)dingOrCaiBtnClick:(UIButton *)sender otherBtn:(UIButton *)otherBtn
+{
+    if (sender.isSelected || otherBtn.isSelected) {
+        return;
+    }
+    sender.selected = YES;
+    NSString *countString = [NSString stringWithFormat:@"%ld", ([sender.titleLabel.text integerValue] + 1)];
+    [sender setTitle:countString forState:UIControlStateNormal];
+}
+
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
     
 }
 
@@ -86,7 +103,7 @@
     }
     
     self.ctime.text = _commentItem.ctime;
-    self.dingBtn.titleLabel.text = _commentItem.like_count;
+    [self.dingBtn setTitle:_commentItem.like_count forState:UIControlStateNormal];
 }
 
 
