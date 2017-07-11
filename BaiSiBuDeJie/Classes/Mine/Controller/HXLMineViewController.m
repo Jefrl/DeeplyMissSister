@@ -48,12 +48,10 @@
     UIImage *R2_imageNormal = [UIImage imageNamed:@"mine-moon-icon"];
     UIImage *R2_imageHighlighted = [UIImage imageNamed:@"mine-moon-icon-click"];
     
-    UIBarButtonItem *leftBarBtnItem = [UIBarButtonItem barButtonItemImage:imageNormal selectedImage:imageHighlighted addTarget:self action:@selector(leftBarBtnItemClick:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftBarBtnItem = [UIBarButtonItem barButtonItemImage:imageNormal selectedImage:imageHighlighted addTarget:self action:@selector(leftBarBtnItemClick:) contentEdgeInsets:UIEdgeInsetsZero forControlEvents:UIControlEventTouchUpInside forcontrolState:UIControlStateHighlighted];
+    UIBarButtonItem *right1_BarBtnItem = [UIBarButtonItem barButtonItemImage:R1_imageNormal selectedImage:R1_imageHighlighted addTarget:self action:@selector(right1_BarBtnItemClick:) contentEdgeInsets:UIEdgeInsetsMake(0, 0, 0, -5) forControlEvents:UIControlEventTouchUpInside forcontrolState:UIControlStateHighlighted];
     
-    UIBarButtonItem *right1_BarBtnItem = [UIBarButtonItem barButtonItemImage:R1_imageNormal selectedImage:R1_imageHighlighted addTarget:self action:@selector(right1_BarBtnItemClick:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *right2_BarBtnItem = [UIBarButtonItem barButtonItemImage:R2_imageNormal selectedImage:R2_imageHighlighted addTarget:self action:@selector(right2_BarBtnItemClick:) forControlEvents:UIControlEventTouchUpInside];
-    
-//    right2_BarBtnItem.customView
+    UIBarButtonItem *right2_BarBtnItem = [UIBarButtonItem barButtonItemImage:R2_imageNormal selectedImage:R2_imageHighlighted addTarget:self action:@selector(right2_BarBtnItemClick:) contentEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 10) forControlEvents:UIControlEventTouchUpInside forcontrolState:UIControlStateHighlighted];
     
     self.navigationItem.leftBarButtonItem = leftBarBtnItem;
     self.navigationItem.rightBarButtonItems = @[right1_BarBtnItem, right2_BarBtnItem];

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class HXLEssenceCommentItem;
+
 @interface HXLEssenceItem : NSObject
 /** 帖子的类型 */
 @property (nonatomic, assign)  HXLTopicType type;

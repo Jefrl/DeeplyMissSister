@@ -45,6 +45,8 @@
 #define GRAY_COLOR   [UIColor grayColor]
 #define BROWN_COLOR  [UIColor brownColor]
 #define LIGHTGRAY_COLOR [UIColor lightGrayColor]
+// 整体通用灰色
+#define GRAY_PUBLIC_COLOR RGBColor(206, 206, 206, 1)
 
 // RGB 指定颜色与不透明度 (不透明: 1 透明: 0)
 #define RGBColor(r, g, b, a) [UIColor colorWithRed: r / 255.0 green: g / 255.0 blue: b / 255.0 alpha: a]
@@ -53,6 +55,7 @@
 #define RGBRandomColor RGBColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256), 1);
 
 // 当前屏幕尺寸
+#define SCREEN [UIScreen mainScreen]
 #define SCREEN_BOUNDS [UIScreen mainScreen].bounds
 #define SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
@@ -72,10 +75,11 @@
 // 主窗口
 #define KEYWINDOW [UIApplication sharedApplication].keyWindow
 // 将数据写到桌面的plist
-#define WriteToPlist(data, filename, type) [data writeToFile:[NSString stringWithFormat:@"/Users/Jefrl/Desktop/%@%@.plist", filename, type] atomically:YES];
+#define WriteToPlist(dictionary, filename, type) [dictionary writeToFile:[NSString stringWithFormat:@"/Users/Jefrl/Desktop/01 - Comment/%@%@.plist", filename, type] atomically:YES];
 
 // 弱引用
-#define HXL_WEAKSELF __weak typeof(self) weakSelf = self;
+#define HXL_WEAKSELF   __weak typeof(self) weakSelf = self
+#define HXL_STRONGSELF __strong typeof(self) strongSelf = weakSelf
 
 /** 需要全文引用的头文件 */
 // 三方类

@@ -26,6 +26,17 @@ UIKIT_EXTERN CGFloat const DIY;
 
 // 基类(也是段子)的重用标识;
 UIKIT_EXTERN NSString * const pun_reuseID;
+// 评论页面的重用标识;
+UIKIT_EXTERN NSString * const cmt_reuseID;
+// 评论页面 section 头部重用标识
+UIKIT_EXTERN NSString * const cmt_header_reuseID;
+// 评论页面 section 头部的高度
+UIKIT_EXTERN CGFloat const heightForHeaderInSection;
 
+/** tabBar被选中的通知名字 */
+UIKIT_EXTERN NSString * const HXLTabBarDidSelectNotification;
+
+// 网络加载自定义每次加载条数
+UIKIT_EXTERN NSInteger const loadCount;
 // 规定展示的热评数目
 UIKIT_EXTERN NSInteger const showHotCount;

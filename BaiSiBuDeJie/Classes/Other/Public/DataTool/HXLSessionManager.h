@@ -5,7 +5,7 @@
 //  Created by Jefrl on 17/3/14.
 //  Copyright © 2017年 com.Jefrl.www. All rights reserved.
 //
-#import "AFNetworking.h"
+#import "AFHTTPSessionManager.h"
 
 typedef enum {
     RequestTypeGet,

@@ -39,8 +39,9 @@
     
     // tabBar 按钮的总个数
     NSInteger btnCount = 0;
-    for (UIControl *btn in self.subviews) {
-        if ([btn isKindOfClass:[UIControl class]]) {
+    for (UIControl *controlBtn in self.subviews) {
+        // 要同时包含 UIButton 跟 UITabBarButton 的类
+        if ([controlBtn isKindOfClass:[UIControl class]]) {
             btnCount ++;
         }
     }
@@ -53,11 +54,16 @@
     CGFloat itemH = TABBAR_HEIGHT;
     self.releaseBtn.frame = CGRectMake(itemW * releaseIndex, itemY, itemW, itemH);
     
-    for (UIControl *btn in self.subviews) {
-        if (![btn isMemberOfClass:NSClassFromString(@"UITabBarButton")]) continue;
+    for (UIControl *tabBarButton in self.subviews) {
+        // 过虑掉已经设置好 frame 的发布按钮
+        if (![tabBarButton isMemberOfClass:NSClassFromString(@"UITabBarButton")]) continue;
+        
+        // 注册一个发通知的
+        [tabBarButton addTarget:self action:@selector(postNotiClick:) forControlEvents:UIControlEventTouchUpInside];
         
         CGFloat tempNum = num > 1 ? num+1 : num;
-        btn.frame = CGRectMake(itemW * tempNum, itemY, itemW, itemH);
+        tabBarButton.frame = CGRectMake(itemW * tempNum, itemY, itemW, itemH);
+        
         num++;
     }
 }
@@ -72,7 +78,20 @@
     UIViewController *rootVC = keyWindow.rootViewController;
     [rootVC presentViewController:releaseVC animated:NO completion:nil];
     
-    NSLog(@"");
+    NSLog(@"发布按钮点击");
 
 }
+
+
+/**
+ 发通知, tabBar 上的按钮被点击了
+ */
+- (void)postNotiClick:(UIButton *)btn {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:HXLTabBarDidSelectNotification object:nil userInfo:nil];
+}
+
+
+
+
 @end

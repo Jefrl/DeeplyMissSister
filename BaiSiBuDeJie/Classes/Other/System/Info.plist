@@ -28,7 +28,11 @@
 		<true/>
 	</dict>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>@"姐, 想访问您的相册, 可以么"</string>
+	<string>姐姐想访问您的相册, 可以么</string>
+	<key>NSCameraUsageDescription</key>
+	<string>获取相机权限</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>获取麦克风权限</string>
 	<key>UIMainStoryboardFile</key>
 	<string></string>
 	<key>UIRequiredDeviceCapabilities</key>

@@ -14,6 +14,9 @@
 #import "HXLVoiceTableVC.h"
 #import "HXLHeadlineView.h"
 
+#import "HXLTabBarController.h"
+#import "MJRefresh.h"
+
 @interface HXLEssenceViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 /** headlineVC_arr 头标题控制器数组 */
 @property (nonatomic, strong) NSArray *headlineVC_arr;
@@ -27,20 +30,34 @@
 @property (nonatomic, strong) UIButton *selectedBtn;
 
 
+
 @end
 
 @implementation HXLEssenceViewController
 
 NSString * const reuseID = @"collectionCell";
 
+
+/** 状态栏的设置 */
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
+#pragma mark - Init Zone
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    self.view.backgroundColor = RED_COLOR;
     // 界面搭建
     [self setup];
+    
     // 注册通知
-    _ob = [[NSNotificationCenter defaultCenter] addObserverForName:@"btn" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+    [self observeNoti];
+    
+}
+
+- (void)observeNoti
+{
+    self.ob = [[NSNotificationCenter defaultCenter] addObserverForName:@"btn" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
         CGFloat offsetX = SCREEN_WIDTH * _headlineView.selectedBtnIndex;
         
         [UIView animateWithDuration:0.5 animations:^{
@@ -56,13 +73,10 @@ NSString * const reuseID = @"collectionCell";
     NSLog(@"");
 }
 
-/** 状态栏的设置 */
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
 
 /** UI 界面的搭建 */
 - (void)setup {
+    
     // 禁止系统调整
     self.automaticallyAdjustsScrollViewInsets = NO;
     // 导航栏的搭建
@@ -76,7 +90,7 @@ NSString * const reuseID = @"collectionCell";
     
 }
 
-#pragma mark - 02
+#pragma mark - 搭建contentCollectionView
 /** 搭建contentCollectionView  */
 - (void)setupContentCollectionView {
     // collectionViewFlowLayout 的创建与设置
@@ -100,12 +114,11 @@ NSString * const reuseID = @"collectionCell";
     _contentCollectionView = contentCollectionView;
 }
 
-/** 代理方法 */
+/** 代理与数据源方法 */
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     return _headlineVC_arr.count;
 }
-
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -114,8 +127,8 @@ NSString * const reuseID = @"collectionCell";
     [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     // 每一个tableView 添加到collectionViewCell 的contentView 上;
     UITableViewController *childVC = _headlineVC_arr[indexPath.row];
-//    childVC.tableView.backgroundColor = LIGHTGRAY_COLOR; // 调试灰色
     [cell.contentView addSubview:childVC.tableView];
+    //    childVC.tableView.backgroundColor = LIGHTGRAY_COLOR; // 调试灰色
     
     return cell;
 }
@@ -128,7 +141,7 @@ NSString * const reuseID = @"collectionCell";
     [_headlineView moveUnderlineBtn:_headlineView.headlineBtn_arr[i]];
 }
 
-
+#pragma mark - 搭建 headlineView
 /** 搭建 headlineView */
 - (void)setupHeadlineView:(NSArray *)array {
     
@@ -138,6 +151,7 @@ NSString * const reuseID = @"collectionCell";
     [self.view addSubview:headlineView];
 }
 
+#pragma mark - 添加essenceVC 的子控制器
 /** 添加essenceVC 的子控制器 */
 - (void)setupChildVC {
     
@@ -162,7 +176,7 @@ NSString * const reuseID = @"collectionCell";
     _headlineVC_arr = array;
 }
 
-#pragma mark - 01
+#pragma mark - 搭建导航栏 UIBarButtonItem
 /** 导航栏的搭建 */
 - (void)setupNavigationBar {
     
@@ -179,8 +193,9 @@ NSString * const reuseID = @"collectionCell";
     UIImage *R_imageNormal = [UIImage imageNamed:@"navigationButtonRandomN"];
     UIImage *R_imageHighlighted = [UIImage imageNamed:@"navigationButtonRandomClickN"];
     
-    UIBarButtonItem *leftBarBtnItem = [UIBarButtonItem barButtonItemImage:imageNormal selectedImage:imageHighlighted addTarget:self action:@selector(leftBarBtnItemClick:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *rightBarBtnItem = [UIBarButtonItem barButtonItemImage:R_imageNormal selectedImage:R_imageHighlighted addTarget:self action:@selector(rightBarBtnItemClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *leftBarBtnItem = [UIBarButtonItem barButtonItemImage:imageNormal selectedImage:imageHighlighted addTarget:self action:@selector(leftBarBtnItemClick:) contentEdgeInsets:UIEdgeInsetsZero forControlEvents:UIControlEventTouchUpInside forcontrolState:UIControlStateHighlighted];
+    UIBarButtonItem *rightBarBtnItem = [UIBarButtonItem barButtonItemImage:R_imageNormal selectedImage:R_imageHighlighted addTarget:self action:@selector(rightBarBtnItemClick:) contentEdgeInsets:UIEdgeInsetsMake(0, 0, 0, -5) forControlEvents:UIControlEventTouchUpInside forcontrolState:UIControlStateHighlighted];
     
     self.navigationItem.leftBarButtonItem = leftBarBtnItem;
     self.navigationItem.rightBarButtonItem = rightBarBtnItem;
