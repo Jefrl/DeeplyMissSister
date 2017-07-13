@@ -7,6 +7,8 @@
 //
 
 #import "HXLMineViewController.h"
+#import "HXLMineTableViewCell.h"
+#import "HXLMineFootView.h"
 
 @interface HXLMineViewController ()
 
@@ -14,25 +16,61 @@
 
 @implementation HXLMineViewController
 
+#pragma mark - Initial Setting
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.view.backgroundColor = RGBRandomColor;
-    [self setup];
+    [self setupUniformStyle];
 }
 
-///** 状态栏的设置 */
-//- (UIStatusBarStyle)preferredStatusBarStyle {
-//    return UIStatusBarStyleLightContent;
-//}
+/** 状态栏的设置 */
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 
-/** UI 界面的搭建 */
-- (void)setup {
-    
+/** UI 界面的统一风格 */
+- (void)setupUniformStyle {
+    // navBar 条上的控件设置
     [self setupNavigationBar];
+    
+    // 系统滚动设置
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    // 由于自定义了滚动, section 的头部调整10, 会对第一个 section 失效, 所以此处内容继续下行 10;
+    self.tableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT - mineSectionSroll + essenceMargin_y, 0, 0, 0);
+    self.tableView.backgroundColor = GRAY_PUBLIC_COLOR;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    // 组高设置(不然会有默认值)
+    self.tableView.sectionFooterHeight = essenceMargin_y;
+    self.tableView.sectionHeaderHeight = 0;
+    
+    // 注册 cell
+    [self.tableView registerClass:[HXLMineTableViewCell class] forCellReuseIdentifier:mineCell];
+    
+    /** 设置 tableView 的底部视图 */
+    self.tableView.tableFooterView = [[HXLMineFootView alloc] init];
 }
 
-#pragma mark - 01
+#pragma mark - TableView Delegate or DataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    HXLMineTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:mineCell];
+    
+    cell.imageView.image = (0 == indexPath.section) ? [UIImage imageNamed:@"setup-head-default"] : nil;
+    cell.textLabel.text = (indexPath.section == 0) ? @"登录/注册" : @"离线下载";
+    return cell;
+}
+
+#pragma mark - 抽取的方法 from/ Initial Setting
 /** 导航栏的搭建 */
 - (void)setupNavigationBar {
     
@@ -49,8 +87,8 @@
     UIImage *R2_imageHighlighted = [UIImage imageNamed:@"mine-moon-icon-click"];
     
     UIBarButtonItem *leftBarBtnItem = [UIBarButtonItem barButtonItemImage:imageNormal selectedImage:imageHighlighted addTarget:self action:@selector(leftBarBtnItemClick:) contentEdgeInsets:UIEdgeInsetsZero forControlEvents:UIControlEventTouchUpInside forcontrolState:UIControlStateHighlighted];
-    UIBarButtonItem *right1_BarBtnItem = [UIBarButtonItem barButtonItemImage:R1_imageNormal selectedImage:R1_imageHighlighted addTarget:self action:@selector(right1_BarBtnItemClick:) contentEdgeInsets:UIEdgeInsetsMake(0, 0, 0, -5) forControlEvents:UIControlEventTouchUpInside forcontrolState:UIControlStateHighlighted];
     
+    UIBarButtonItem *right1_BarBtnItem = [UIBarButtonItem barButtonItemImage:R1_imageNormal selectedImage:R1_imageHighlighted addTarget:self action:@selector(right1_BarBtnItemClick:) contentEdgeInsets:UIEdgeInsetsMake(0, 0, 0, -5) forControlEvents:UIControlEventTouchUpInside forcontrolState:UIControlStateHighlighted];
     UIBarButtonItem *right2_BarBtnItem = [UIBarButtonItem barButtonItemImage:R2_imageNormal selectedImage:R2_imageHighlighted addTarget:self action:@selector(right2_BarBtnItemClick:) contentEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 10) forControlEvents:UIControlEventTouchUpInside forcontrolState:UIControlStateHighlighted];
     
     self.navigationItem.leftBarButtonItem = leftBarBtnItem;
@@ -69,22 +107,24 @@
 
 - (void)right2_BarBtnItemClick:(UIButton *)btn {
     
-    if (btn.tag == 0) { // 本身是白天, 则变成夜间模式
+    if (btn.tag == 0) { // 本身是白天0, 则变成夜间模式1
         
         btn.tag = 1;
         [btn setImage:[UIImage imageNamed:@"mine-sun-icon"] forState:UIControlStateNormal];
         
         [btn setImage:[UIImage imageNamed:@"mine-sun-icon-click"] forState:UIControlStateHighlighted];
         
-    } else { // 本身是夜间, 则变白天模式 mine-sun-icon-click
+    } else { // 本身是夜间 1, 则变白天模式 0;
         
         btn.tag = 0;
         [btn setImage:[UIImage imageNamed:@"mine-moon-icon"] forState:UIControlStateNormal];
         [btn setImage:[UIImage imageNamed:@"mine-moon-icon-click"] forState:UIControlStateHighlighted];
-        
     }
     
-    NSLog(@"右侧第二个 Item 被点击了, btn.tag == %lu (PS: 1-代表开启夜间模式, 0-代表关闭夜间模式)", btn.tag);
+    NSLog(@"当前 btn.tag 的模式为: %lu (PS: 1-代表夜间模式, 0-代表白天模式)", btn.tag);
 }
+
+
+
 
 @end

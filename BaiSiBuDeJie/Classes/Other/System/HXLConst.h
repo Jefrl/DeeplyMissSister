@@ -32,6 +32,11 @@ UIKIT_EXTERN NSString * const cmt_reuseID;
 UIKIT_EXTERN NSString * const cmt_header_reuseID;
 // 评论页面 section 头部的高度
 UIKIT_EXTERN CGFloat const heightForHeaderInSection;
+// 我的页面的重用标识
+UIKIT_EXTERN NSString * const mineCell;
+// 我的页面中的 section 自动滚动距离
+UIKIT_EXTERN CGFloat const mineSectionSroll;
+
 
 /** tabBar被选中的通知名字 */
 UIKIT_EXTERN NSString * const HXLTabBarDidSelectNotification;

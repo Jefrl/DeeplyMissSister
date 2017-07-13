@@ -65,7 +65,7 @@
 #pragma mark - Lazy load
 - (NSString *)essenceOrLastestA
 {
-    _essenceOrLastestA = [self.parentViewController isKindOfClass:[HXLEssenceViewController class]] ? @"list" : @"newlist";
+    _essenceOrLastestA = [self.parentViewController isMemberOfClass:[HXLEssenceViewController class]] ? @"list" : @"newlist";
     
     return _essenceOrLastestA;
 }

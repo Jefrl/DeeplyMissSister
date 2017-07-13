@@ -41,6 +41,8 @@
 		A57F5F381E62DC2E002BA929 /* BaiSiBuDeJieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A57F5F371E62DC2E002BA929 /* BaiSiBuDeJieTests.m */; };
 		A57F5F5D1E634D01002BA929 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A57F5F561E634D00002BA929 /* AppDelegate.m */; };
 		A57F5F691E63517B002BA929 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A57F5F581E634D01002BA929 /* main.m */; };
+		A5862AC61F176FAC00011209 /* HXLMineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5862AC51F176FAC00011209 /* HXLMineTableViewCell.m */; };
+		A5862AC91F177F9D00011209 /* HXLMineFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5862AC81F177F9D00011209 /* HXLMineFootView.m */; };
 		A5877FFB1F11BF290045CFBF /* HXLCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5877FF71F11BF290045CFBF /* HXLCoverView.m */; };
 		A5877FFC1F11BF290045CFBF /* HXLPopMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A5877FF91F11BF290045CFBF /* HXLPopMenu.m */; };
 		A5877FFD1F11BF290045CFBF /* HXLPopMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5877FFA1F11BF290045CFBF /* HXLPopMenu.xib */; };
@@ -147,6 +149,10 @@
 		A57F5F561E634D00002BA929 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A57F5F581E634D01002BA929 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A57F5F671E635157002BA929 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5862AC41F176FAC00011209 /* HXLMineTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLMineTableViewCell.h; sourceTree = "<group>"; };
+		A5862AC51F176FAC00011209 /* HXLMineTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLMineTableViewCell.m; sourceTree = "<group>"; };
+		A5862AC71F177F9D00011209 /* HXLMineFootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLMineFootView.h; sourceTree = "<group>"; };
+		A5862AC81F177F9D00011209 /* HXLMineFootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLMineFootView.m; sourceTree = "<group>"; };
 		A5877FF61F11BF290045CFBF /* HXLCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLCoverView.h; sourceTree = "<group>"; };
 		A5877FF71F11BF290045CFBF /* HXLCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLCoverView.m; sourceTree = "<group>"; };
 		A5877FF81F11BF290045CFBF /* HXLPopMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLPopMenu.h; sourceTree = "<group>"; };
@@ -694,6 +700,10 @@
 		A5E1A44E1E655D410060F656 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A5862AC41F176FAC00011209 /* HXLMineTableViewCell.h */,
+				A5862AC51F176FAC00011209 /* HXLMineTableViewCell.m */,
+				A5862AC71F177F9D00011209 /* HXLMineFootView.h */,
+				A5862AC81F177F9D00011209 /* HXLMineFootView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -919,6 +929,7 @@
 				A57F5F5D1E634D01002BA929 /* AppDelegate.m in Sources */,
 				A533D1361F105FED00B976EC /* HXLCommentTableViewCell.m in Sources */,
 				A5EDA2F31F028E940053DC04 /* FLAnimatedImageView+WebCache.m in Sources */,
+				A5862AC91F177F9D00011209 /* HXLMineFootView.m in Sources */,
 				A557D91A1E70F25300B54327 /* HXLReleaseLinkViewController.m in Sources */,
 				A5C8CB681E73C3880028224E /* HXLAllTableVC.m in Sources */,
 				A5C8CB6A1E73C3880028224E /* HXLPunTableVC.m in Sources */,
@@ -939,6 +950,7 @@
 				A5C8CB551E73C3160028224E /* HXLTabBarController.m in Sources */,
 				A557D9211E70F2FD00B54327 /* HXLPunView.m in Sources */,
 				A5877FFB1F11BF290045CFBF /* HXLCoverView.m in Sources */,
+				A5862AC61F176FAC00011209 /* HXLMineTableViewCell.m in Sources */,
 				A5C8CB541E73C3160028224E /* HXLNavigationController.m in Sources */,
 				A51EEB0E1E76D844002237E0 /* HXLPunTableViewCell.m in Sources */,
 				A5C8CB571E73C3160028224E /* HXLReleaseButton.m in Sources */,

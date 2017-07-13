@@ -53,7 +53,7 @@
         UIImage *NormalImage = [UIImage imageNamed:@"navigationButtonReturn"];
         UIImage *selectedImage = [UIImage imageNamed:@"navigationButtonReturnClick"];
         
-        UIBarButtonItem *leftBarButtonItem = [UIBarButtonItem barButtonItemImage:NormalImage selectedImage:selectedImage title:@"返回" titltColor:GRAY_COLOR titleSelectedColor:WHITE_COLOR fontSize:FONT_15 addTarget:self action:@selector(backItemClick:) contentEdgeInsets:UIEdgeInsetsMake(0, -20, 0, 0) titleEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 0) forControlEvents:UIControlEventTouchUpInside forcontrolState:UIControlStateHighlighted];
+        UIBarButtonItem *leftBarButtonItem = [UIBarButtonItem barButtonItemImage:NormalImage selectedImage:selectedImage title:@"返回" titltColor:GRAY_COLOR titleSelectedColor:WHITE_COLOR fontSize:FONT_15 addTarget:self action:@selector(backItemClick:) contentEdgeInsets:UIEdgeInsetsMake(0, -2 * essenceMargin_y, 0, 0) titleEdgeInsets:UIEdgeInsetsMake(0, DIY, 0, 0) forControlEvents:UIControlEventTouchUpInside forcontrolState:UIControlStateHighlighted];
 
         viewController.navigationItem.leftBarButtonItem = leftBarButtonItem;
     }
@@ -69,6 +69,20 @@
 
 - (void)setupFullscreenBack
 {
+    /*
+    NSLog(@"%@", self.interactivePopGestureRecognizer);
+    NSLog(@"%@", self.interactivePopGestureRecognizer.delegate);
+ Log: <
+        UIScreenEdgePanGestureRecognizer: 0x7febe4d17250; state = Possible;
+        delaysTouchesBegan = YES; view = <UILayoutContainerView 0x7febe4d12e30
+      >;
+      target= <
+            (action=handleNavigationTransition:,
+             target=<_UINavigationInteractiveTransition 0x7fd963c02b10)>
+                 >
+    
+  Log: <_UINavigationInteractiveTransition: 0x7fd963c02b10> */ // 相同地址也就证实了, self.interactivePopGestureRecognizer.delegate =就是= target
+    
     // 2.自己写一个手势 全屏滑动移除控制器
     // action: handleNavigationTransition:
     // traget: self.interactivePopGestureRecognizer.delegate

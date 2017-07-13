@@ -21,9 +21,13 @@ NSString * const pun_reuseID = @"punCell";
 NSString * const cmt_reuseID = @"cmtCell";
 // 评论页面 section 头部重用标识
 NSString * const cmt_header_reuseID = @"cmt_header";
-
 // 评论页面 section 头部的高度
 CGFloat const heightForHeaderInSection = 25;
+// 我的页面的重用标识
+NSString * const mineCell = @"mineCell";
+// 我的页面中的 section 自动滚动距离
+CGFloat const mineSectionSroll = 35;
+
 
 /** tabBar被选中的通知名字 */
 NSString * const HXLTabBarDidSelectNotification = @"HXLTabBarDidSelectNotification";

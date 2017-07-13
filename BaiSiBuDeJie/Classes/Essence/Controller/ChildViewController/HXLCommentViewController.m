@@ -114,7 +114,7 @@
 #pragma mark - 抽取的方法 from Init Setting
 - (void)setupUniformStyle
 {
-    // 基本设置 comment_nav_item_share_icon_click
+    // 基本设置
     [self setupBase];
     
     // 搭建 tableView 的头部视图
