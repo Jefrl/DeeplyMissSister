@@ -25,8 +25,12 @@ NSString * const cmt_header_reuseID = @"cmt_header";
 CGFloat const heightForHeaderInSection = 25;
 // 我的页面的重用标识
 NSString * const mineCell = @"mineCell";
-// 我的页面中的 section 自动滚动距离
+// 我的页面中的 section 自动滚动距离 (这里系统滚动已经禁止, 但是依然有滚动, 通过setFrame 打印获得的值)
 CGFloat const mineSectionSroll = 35;
+
+// Mine 中方格总列数
+NSInteger const cols = 4;
+
 
 
 /** tabBar被选中的通知名字 */

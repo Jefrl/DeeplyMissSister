@@ -18,14 +18,16 @@ PODS:
   - FLAnimatedImage (1.0.12)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
-  - PNChart (0.8.9):
-    - UICountingLabel (~> 1.2.0)
+  - NJKWebViewProgress (0.2.3):
+    - NJKWebViewProgress/Core (= 0.2.3)
+    - NJKWebViewProgress/ProgressView (= 0.2.3)
+  - NJKWebViewProgress/Core (0.2.3)
+  - NJKWebViewProgress/ProgressView (0.2.3)
   - pop (1.0.10)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
   - SVProgressHUD (2.1.2)
-  - UICountingLabel (1.2.0)
 
 DEPENDENCIES:
   - AFNetworking
@@ -33,7 +35,7 @@ DEPENDENCIES:
   - FLAnimatedImage
   - MJExtension
   - MJRefresh
-  - PNChart
+  - NJKWebViewProgress
   - pop
   - SDWebImage
   - SVProgressHUD
@@ -44,12 +46,11 @@ SPEC CHECKSUMS:
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
-  PNChart: 84774d225c2126ded6c93d4dbe6ae98c3a73c2d2
+  NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
-  UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
 
-PODFILE CHECKSUM: 61f938288f39f8e70e2f1891135093ee612f6db3
+PODFILE CHECKSUM: 4a01f18d7b521ec4c03dd96d51f4996ea513a740
 
 COCOAPODS: 1.2.0.rc.1

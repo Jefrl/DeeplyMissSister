@@ -7,6 +7,7 @@
 //
 
 #import "HXLMineFootView.h"
+#import "HXLMineWebViewController.h"
 
 #import "HXLSessionManager.h"
 
@@ -23,6 +24,12 @@
 @property (nonatomic, readwrite, strong) NSArray *squares;
 /** squareBtnArray */
 @property (nonatomic, readwrite, strong) NSArray *squareBtnArray;
+/** squareHeight */
+@property (nonatomic, readwrite, assign) CGFloat squareHeight;
+/** squareWidth */
+@property (nonatomic, readwrite, assign) CGFloat squareWidth;
+/** rows */
+@property (nonatomic, readwrite, assign) CGFloat rows;
 
 @end
 
@@ -80,7 +87,6 @@
             // 创建方格;
             [self createSquares];
             
-            
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
             
             if (error) {
@@ -99,30 +105,54 @@
     NSMutableArray *arrayM = [NSMutableArray array];
     for (HXLSquareItem *item in self.squares) {
         HXLSquareButton *squareBtn = [HXLSquareButton buttonWithType:UIButtonTypeCustom];
-        
+        // 绑定模型, 不用 tag 了
         squareBtn.squareItem = item;
+
+        // 注册点击事件
+        [squareBtn addTarget:self action:@selector(squareBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        
         [arrayM addObject:squareBtn];
         
         [self addSubview:squareBtn];
+
+        // 计算一下所有方格排列后的高度
+        [self countSquareHeight];
+
     }
     // 保存方格按钮
     self.squareBtnArray = arrayM;
-    NSLog(@"%@", self.squareBtnArray);
+}
+
+- (void)countSquareHeight
+{
+    // 方格的个数
+    NSInteger count = self.squares.count;
+    _rows = ((count - 1) / cols) + 1;
+    // 方格的宽高
+    _squareWidth = SCREEN_WIDTH / cols;
+    _squareHeight = _squareWidth;
+    // 底部滚动需要调整高度
+    self.height = _rows * _squareHeight;
+    NSLog(@"%.2f", self.height);
+}
+
+- (void)squareBtnClick:(HXLSquareButton *)sender
+{
+    NSLog(@"squareBtnClick");
     
+    UITabBarController *tabBarController = (UITabBarController *)KEYWINDOW.rootViewController;
+    UINavigationController *nav = (UINavigationController *)tabBarController.selectedViewController;
+    HXLMineWebViewController *webViewController = [[HXLMineWebViewController alloc] init];
+
+    webViewController.title = sender.squareItem.name;
+    webViewController.url = sender.squareItem.url;
+    
+    [nav pushViewController:webViewController animated:YES];
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
-    NSInteger count = self.squares.count;
-    // 总列数与行数
-    NSInteger cols = 4;
-    NSInteger rows = ((count - 1) / cols) + 1;
-    
-    // 方格的宽高
-    CGFloat squareWidth = SCREEN_WIDTH / cols;
-    CGFloat squareHeight = squareWidth;
     
     // 设置子控件的 frame
     NSInteger i = 0;
@@ -131,18 +161,12 @@
         NSInteger indexRow = i / cols;
         NSInteger indexCol = i % cols;
         
-        CGFloat x = indexCol * squareWidth;
-        CGFloat y = indexRow * squareHeight;
+        CGFloat x = indexCol * _squareWidth;
+        CGFloat y = indexRow * _squareHeight;
         
-        squareBtn.frame = CGRectMake(x, y, squareWidth, squareHeight);
-        
+        squareBtn.frame = CGRectMake(x, y, _squareWidth, _squareHeight);
         i++;
-        
-        NSLog(@"%@", NSStringFromCGRect(squareBtn.frame));
     }
-    
-    // 设置 footView 的高度;
-    self.height = rows * squareHeight;
 }
 
 @end

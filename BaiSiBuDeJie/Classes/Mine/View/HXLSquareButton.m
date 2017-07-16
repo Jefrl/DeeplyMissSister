@@ -8,7 +8,7 @@
 
 #import "HXLSquareButton.h"
 #import "HXLSquareItem.h"
-#import "UIImageView+HXLSDWeb.h"
+#import "UIButton+WebCache.h"
 
 @implementation HXLSquareButton
 static const NSInteger btnInsideSpace = 10;
@@ -16,7 +16,8 @@ static const NSInteger btnInsideSpace = 10;
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         
-//        self.backgroundColor = CYAN_COLOR;
+        [self setBackgroundImage:[UIImage imageNamed:@"mainCellBackground"] forState:UIControlStateNormal];
+        
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal] ;
         self.titleLabel.font = FONT_13;
@@ -28,17 +29,17 @@ static const NSInteger btnInsideSpace = 10;
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-//    // btn 中 imageView 的形位
-//    self.imageView.x = btnInsideSpace;
-//    self.imageView.y = btnInsideSpace;
-//    self.imageView.width = self.width - (btnInsideSpace * 2);
-//    self.imageView.height = self.imageView.width;
-//    
-//    // btn 中的 label 的形位
-//    self.titleLabel.x = self.imageView.x;
-//    self.titleLabel.y = CGRectGetMaxY(self.imageView.frame) + btnInsideSpace;
-//    self.titleLabel.width = self.imageView.width;
-//    self.titleLabel.height = self.height - self.titleLabel.y;
+    // btn 中 imageView 的形位
+    self.imageView.y = btnInsideSpace;
+    self.imageView.width = self.width * 0.5;
+    self.imageView.height = self.imageView.width;
+    self.imageView.centerX = self.width * 0.5;
+    
+    // btn 中的 label 的形位
+    self.titleLabel.y = CGRectGetMaxY(self.imageView.frame);
+    self.titleLabel.width = self.width;
+    self.titleLabel.height = self.height - self.titleLabel.y;
+    self.titleLabel.x = 0;
 }
 
 - (void)setSquareItem:(HXLSquareItem *)squareItem
@@ -46,8 +47,9 @@ static const NSInteger btnInsideSpace = 10;
     _squareItem = squareItem;
     NSLog(@"%@", squareItem.name);
     
-    [self.imageView setImageString:squareItem.icon placeholderImage:nil circleImage:NO];
-    [self setTitle:@"name" forState:UIControlStateNormal];
+    [self sd_setImageWithURL:[NSURL URLWithString:squareItem.icon] forState:UIControlStateNormal placeholderImage:nil];
+    
+    [self setTitle:squareItem.name forState:UIControlStateNormal];
     
 }
 

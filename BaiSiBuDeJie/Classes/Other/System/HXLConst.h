@@ -36,7 +36,8 @@ UIKIT_EXTERN CGFloat const heightForHeaderInSection;
 UIKIT_EXTERN NSString * const mineCell;
 // 我的页面中的 section 自动滚动距离
 UIKIT_EXTERN CGFloat const mineSectionSroll;
-
+// Mine 中方格总列数
+UIKIT_EXTERN NSInteger const cols;
 
 /** tabBar被选中的通知名字 */
 UIKIT_EXTERN NSString * const HXLTabBarDidSelectNotification;

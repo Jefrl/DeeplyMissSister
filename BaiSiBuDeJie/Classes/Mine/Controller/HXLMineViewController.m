@@ -37,7 +37,7 @@
     // 系统滚动设置
     self.automaticallyAdjustsScrollViewInsets = NO;
     // 由于自定义了滚动, section 的头部调整10, 会对第一个 section 失效, 所以此处内容继续下行 10;
-    self.tableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT - mineSectionSroll + essenceMargin_y, 0, 0, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT - mineSectionSroll + essenceMargin_y, 0, 843.75 + 3 * essenceMargin_y, 0);
     self.tableView.backgroundColor = GRAY_PUBLIC_COLOR;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     // 组高设置(不然会有默认值)
@@ -46,13 +46,21 @@
     
     // 注册 cell
     [self.tableView registerClass:[HXLMineTableViewCell class] forCellReuseIdentifier:mineCell];
+    self.tableView.rowHeight = 50;
     
     /** 设置 tableView 的底部视图 */
-    self.tableView.tableFooterView = [[HXLMineFootView alloc] init];
+    HXLMineFootView *footView = [[HXLMineFootView alloc] init];
+    self.tableView.tableFooterView = footView;
+    
 }
+
+
+
 
 #pragma mark - TableView Delegate or DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+//    [self contentInset];
     return 2;
 }
 
@@ -67,6 +75,7 @@
     
     cell.imageView.image = (0 == indexPath.section) ? [UIImage imageNamed:@"setup-head-default"] : nil;
     cell.textLabel.text = (indexPath.section == 0) ? @"登录/注册" : @"离线下载";
+    
     return cell;
 }
 
