@@ -40,8 +40,8 @@
 }
 
 - (void)setFrame:(CGRect)frame
-{
-    NSLog(@"%@", NSStringFromCGRect(frame));
+{ //  NSLog(@"%@", NSStringFromCGRect(frame));
+    
     [super setFrame:frame];
 }
 

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HXLMineFootView : UITableViewHeaderFooterView
+@interface HXLMineFootView : UIView
 
 @end
