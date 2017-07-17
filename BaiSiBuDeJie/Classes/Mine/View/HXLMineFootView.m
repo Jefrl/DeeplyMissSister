@@ -138,8 +138,12 @@
 
 - (void)squareBtnClick:(HXLSquareButton *)sender
 {
-    NSLog(@"squareBtnClick");
+    if (![sender.squareItem.url hasPrefix:@"http:"]) { // 有网页才跳转
+        NSLog(@"%@", sender.squareItem.url);
+        return;
+    }
     
+    // 由于自身为 footView 而已不是当前控制器, 所以要用根控制器, 获取selectedViewController(此控制器才为 nav)
     UITabBarController *tabBarController = (UITabBarController *)KEYWINDOW.rootViewController;
     UINavigationController *nav = (UINavigationController *)tabBarController.selectedViewController;
     HXLMineWebViewController *webViewController = [[HXLMineWebViewController alloc] init];

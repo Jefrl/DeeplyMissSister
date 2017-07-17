@@ -7,17 +7,23 @@
 //
 
 #import "HXLFollowViewController.h"
+#import "HXLLoginRegisterViewController.h"
+#import "HXLFollowFriendTrendsVC.h"
 
 @interface HXLFollowViewController ()
 
 @end
 
 @implementation HXLFollowViewController
+- (IBAction)loginOrLogout:(UIButton *)sender {
+    HXLLoginRegisterViewController *loginRegisterVC = [[HXLLoginRegisterViewController alloc] init];
+    [self presentViewController:loginRegisterVC animated:YES completion:nil];
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.view.backgroundColor = RGBRandomColor;
     [self setup];
 }
 
@@ -56,7 +62,8 @@
 /** 导航栏左&右侧的点击事件 */
 - (void)leftBarBtnItemClick:(UIButton *)btn {
     
-    NSLog(@"左侧按钮被点击了");
+    HXLFollowFriendTrendsVC *trendsVC = [[HXLFollowFriendTrendsVC alloc] init];
+    [self.navigationController pushViewController:trendsVC animated:YES];
 }
 
 - (void)rightBarBtnItemClick:(UIButton *)btn {
