@@ -34,10 +34,9 @@
     // navBar 条上的控件设置
     [self setupNavigationBar];
     
-    // 系统滚动设置
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    // 由于自定义了滚动, section 的头部调整10, 会对第一个 section 失效, 所以此处内容继续下行 10;
-    self.tableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT - mineSectionSroll + essenceMargin_y, 0, 843.75 + 3 * essenceMargin_y, 0);
+    // 系统滚动设置self.automaticallyAdjustsScrollViewInsets = NO;
+    // 由于自定义了滚动, tableView 的头部增加64, 每个 section 的底部调整10
+    self.tableView.contentInset = UIEdgeInsetsMake( - mineSectionSroll + essenceMargin_y, 0, 843.75 - 2 * essenceMargin_y, 0);
     self.tableView.backgroundColor = GRAY_PUBLIC_COLOR;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     // 组高设置(不然会有默认值)
@@ -51,7 +50,6 @@
     /** 设置 tableView 的底部视图 */
     HXLMineFootView *footView = [[HXLMineFootView alloc] init];
     self.tableView.tableFooterView = footView;
-    
 }
 
 

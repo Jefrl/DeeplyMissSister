@@ -7,15 +7,22 @@
 //
 
 #import "HXLMineWebViewController.h"
+
 #import "NJKWebViewProgress.h"
 
-@interface HXLMineWebViewController ()<UIWebViewDelegate>
+#import "NJKWebViewProgressView.h"
+
+@interface HXLMineWebViewController ()<UIWebViewDelegate, NJKWebViewProgressDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *goBack;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *goForward;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *goRefresh;
-@property (weak, nonatomic) IBOutlet UIProgressView *progressView;
-@property (strong, nonatomic) NJKWebViewProgress *NJKProgressView;
+// 还可以用框架的 View
+//@property (weak, nonatomic) IBOutlet UIProgressView *progressView;
+
+/** progressV */
+@property (nonatomic, readwrite, strong) NJKWebViewProgressView *progressV;
+@property (strong, nonatomic) NJKWebViewProgress *progressProxy;
 
 @end
 
@@ -24,22 +31,43 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //    self.webView.delegate = self;
+    //    // 使用的框架, 需要
+    //    HXL_WEAKSELF;
+    //    self.progressProxy.progressBlock = ^(float progress) {
+    //
+    //        weakSelf.progressV.progress = progress;
+    //        weakSelf.progressV.hidden = (progress == 1.0);
+    //    };
     
-    self.NJKProgressView = [[NJKWebViewProgress alloc] init];
-    // 饶了一圈
-    self.webView.delegate = self.NJKProgressView;
+     _progressProxy = [[NJKWebViewProgress alloc] init];
+    // 进度对象的代理设置为 self, 实现进度方法
+     _progressProxy.progressDelegate = self;
     
-    // 使用的框架, 需要
-    HXL_WEAKSELF;
-    self.NJKProgressView.progressBlock = ^(float progress) {
-        
-        weakSelf.progressView.progress = progress;
-        weakSelf.progressView.hidden = (progress == 1.0);
-    };
-#warning - 为什么不起作用了呢?
-    self.NJKProgressView.webViewProxyDelegate = self;
+    // 首先进度对象设置为 webView 的代理
+    self.webView.delegate = _progressProxy;
+    // 然后进度对象的 web代理的代理 设置为 self; 绕一圈去激活系统 UIWebView 的代理方法, 实现 webViewDidFinishLoad 方法
+    _progressProxy.webViewProxyDelegate = self;
+    
+    CGFloat progressBarHeight = 2.f;
+    CGRect navigationBarBounds = self.navigationController.navigationBar.bounds;
+    CGRect barFrame = CGRectMake(0, navigationBarBounds.size.height - progressBarHeight, navigationBarBounds.size.width, progressBarHeight);
+    
+    _progressV = [[NJKWebViewProgressView alloc] initWithFrame:barFrame];
+    _progressV.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar addSubview:_progressV];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [_progressV removeFromSuperview];
 }
 
 - (IBAction)goBack:(UIBarButtonItem *)sender {
@@ -53,11 +81,18 @@
     
 }
 
+#pragma mark - <UIWebViewDelegate>
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    self.goBack.enabled = YES;
-    self.goForward.enabled = YES;
+    self.goBack.enabled = webView.canGoBack;
+    self.goForward.enabled = webView.canGoForward;
     
+}
+
+#pragma mark - NJKWebViewProgressDelegate
+-(void)webViewProgress:(NJKWebViewProgress *)webViewProgress updateProgress:(float)progress
+{
+    [_progressV setProgress:progress animated:YES];
 }
 
 

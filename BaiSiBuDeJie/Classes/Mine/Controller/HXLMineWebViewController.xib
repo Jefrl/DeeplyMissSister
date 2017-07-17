@@ -13,7 +13,6 @@
                 <outlet property="goBack" destination="wS4-Aj-Gb6" id="Ist-Fn-90f"/>
                 <outlet property="goForward" destination="94v-36-guW" id="9bN-31-eSP"/>
                 <outlet property="goRefresh" destination="vZM-3W-Zie" id="rvZ-tL-Eil"/>
-                <outlet property="progressView" destination="i4g-Hs-Fk1" id="Uro-8a-zPn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="rob-lt-h0N"/>
                 <outlet property="webView" destination="crb-fR-jci" id="XZN-Nt-zB9"/>
             </connections>
@@ -48,8 +47,8 @@
                         </barButtonItem>
                     </items>
                 </toolbar>
-                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i4g-Hs-Fk1">
-                    <rect key="frame" x="0.0" y="64" width="375" height="2"/>
+                <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i4g-Hs-Fk1">
+                    <rect key="frame" x="0.0" y="164" width="375" height="2"/>
                     <color key="tintColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </progressView>
             </subviews>
@@ -57,7 +56,7 @@
             <constraints>
                 <constraint firstItem="pVy-fB-9ez" firstAttribute="top" secondItem="crb-fR-jci" secondAttribute="bottom" id="0At-kv-Und"/>
                 <constraint firstItem="crb-fR-jci" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="17P-5k-Zbp"/>
-                <constraint firstItem="i4g-Hs-Fk1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="BH9-cc-gLr"/>
+                <constraint firstItem="i4g-Hs-Fk1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="164" id="BH9-cc-gLr"/>
                 <constraint firstItem="pVy-fB-9ez" firstAttribute="leading" secondItem="crb-fR-jci" secondAttribute="leading" id="E7O-m6-KfH"/>
                 <constraint firstItem="pVy-fB-9ez" firstAttribute="trailing" secondItem="crb-fR-jci" secondAttribute="trailing" id="PRk-Df-1XE"/>
                 <constraint firstAttribute="bottom" secondItem="pVy-fB-9ez" secondAttribute="bottom" id="Qv4-2J-18U"/>
