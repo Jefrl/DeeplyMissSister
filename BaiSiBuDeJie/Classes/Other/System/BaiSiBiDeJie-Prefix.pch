@@ -46,7 +46,9 @@
 #define BROWN_COLOR  [UIColor brownColor]
 #define LIGHTGRAY_COLOR [UIColor lightGrayColor]
 // 整体通用灰色
-#define GRAY_PUBLIC_COLOR RGBColor(206, 206, 206, 1)
+#define GRAY_PUBLIC_COLOR RGBColor(233, 233, 233, 1)
+// 整体底部灰色
+#define GRAY_WHITE_COLOR RGBColor(240, 240, 240, 1)
 
 // RGB 指定颜色与不透明度 (不透明: 1 透明: 0)
 #define RGBColor(r, g, b, a) [UIColor colorWithRed: r / 255.0 green: g / 255.0 blue: b / 255.0 alpha: a]
@@ -76,6 +78,8 @@
 #define KEYWINDOW [UIApplication sharedApplication].keyWindow
 // 将数据写到桌面的plist
 #define WriteToPlist(dictionary, filename, type) [dictionary writeToFile:[NSString stringWithFormat:@"/Users/Jefrl/Desktop/01 - Comment/%@%@.plist", filename, type] atomically:YES];
+// 关于错误的打印
+#define Error(error) if (error) { NSLog(@"%@", error); }
 
 // 弱引用
 #define HXL_WEAKSELF   __weak typeof(self) weakSelf = self
@@ -93,6 +97,8 @@
 #import "UIBarButtonItem+HXLBarBtnItem.h"
 #import "UIImage+HXLRenderOriginal.h"
 #import "UIView+HXLGeometry.h"
+#import "NSString+HXL.h"
+
 // 基类
 #import "HXLHeadlineBtn.h"
 #import "HXLEssenceBaseWithChildTVC.h"

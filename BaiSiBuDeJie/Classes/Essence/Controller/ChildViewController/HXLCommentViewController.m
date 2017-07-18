@@ -349,7 +349,7 @@
     if (self.commentArray.count >= total) {
         // 结束刷新状态
         [self.tableView.mj_header endRefreshing];
-        self.tableView.mj_header.hidden = YES;
+        self.tableView.mj_footer.hidden = YES;
     } else {
         // 结束刷新状态
         [self.tableView.mj_header endRefreshing];

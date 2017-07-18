@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class HXLFollowCategoryItem;
 
 @interface HXLFollowCategoryTableViewCell : UITableViewCell
+/** category */
+@property (nonatomic, readwrite, strong) HXLFollowCategoryItem *categoryItem;
 
 @end

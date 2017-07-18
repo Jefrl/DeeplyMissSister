@@ -70,7 +70,6 @@ NSString * const reuseID = @"collectionCell";
 - (void)viewWillDisappear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    NSLog(@"");
 }
 
 

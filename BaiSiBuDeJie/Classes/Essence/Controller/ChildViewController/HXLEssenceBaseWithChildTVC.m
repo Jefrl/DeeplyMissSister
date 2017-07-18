@@ -131,7 +131,6 @@
 
 - (void)getNotiTabBarbtn:(NSNotification *)noti
 {
-    NSLog(@"");
     [self.tableView.mj_header beginRefreshing];
 }
 

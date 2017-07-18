@@ -8,6 +8,12 @@
 
 #import "HXLFollowFriendTrendsVC.h"
 
+#import "HXLFollowCategoryTableViewCell.h"
+#import "HXLFollowUserTableViewCell.h"
+
+#import "HXLFollowCategoryItem.h"
+#import "HXLFollowUserItem.h"
+
 #import "MJRefresh.h"
 #import "MJExtension.h"
 #import "HXLSessionManager.h"
@@ -15,12 +21,51 @@
 @interface HXLFollowFriendTrendsVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *leftTableView;
 @property (weak, nonatomic) IBOutlet UITableView *rightTableView;
+/** 推荐关注的分类数组 */
+@property (nonatomic, readwrite, strong) NSArray *categoryArray;
+/** 推荐关注的用户数组 */
+@property (nonatomic, readwrite, strong) NSArray *userArray;
 /** sessionManager */
 @property (nonatomic, readwrite, strong) HXLSessionManager *sessionManager;
+/** 左侧选中的cell 的 indexPath */
+@property (nonatomic, readwrite, strong) NSIndexPath *seletedIndexPath;
+/** page */
+@property (nonatomic, readwrite, assign) NSInteger page;
+/** 请求参数 */
+@property (nonatomic, readwrite, strong) NSMutableDictionary *parameter;
 
 @end
 
 @implementation HXLFollowFriendTrendsVC
+
+#pragma mark - Lazy load
+- (NSIndexPath *)seletedIndexPath
+{
+    if (!_seletedIndexPath) {
+        NSIndexPath *indexPath = [[NSIndexPath alloc] init];
+        _seletedIndexPath = indexPath;
+    }
+    return _seletedIndexPath;
+}
+
+- (NSArray *)userArray
+{
+    if (!_userArray) {
+        NSArray *arr = [NSArray array];
+        _userArray = arr;
+    }
+    return _userArray;
+}
+
+- (NSArray *)categoryArray
+{
+    if (!_categoryArray) {
+        NSArray *arr = [NSArray array];
+        _categoryArray = arr;
+    }
+    return _categoryArray;
+}
+
 - (HXLSessionManager *)sessionManager
 {
     if (!_sessionManager) {
@@ -31,78 +76,223 @@
     return _sessionManager;
 }
 
+#pragma mark - 初始化 Initial setting
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // 初始化的基础设置
+    [self setupUniformStyle];
+    
+    // 左侧分类列表 网络数据加载
+    [self loadCategoryData];
+    
+}
+
+- (void)setupUniformStyle
+{
+    // 初始化的基础设置
+    self.title = @"推荐关注";
     
     self.leftTableView.delegate = self;
     self.leftTableView.dataSource = self;
     self.rightTableView.delegate = self;
     self.rightTableView.dataSource = self;
     
-    self.leftTableView.estimatedRowHeight = 44;
-    self.rightTableView.estimatedRowHeight = 44;
+    self.leftTableView.rowHeight = 50;
+    self.rightTableView.rowHeight = 80;
+    self.rightTableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, 0, 0);
     
-    [self setupRefresh];
+    self.leftTableView.backgroundColor = GRAY_PUBLIC_COLOR;
+    self.leftTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.rightTableView.backgroundColor = GRAY_PUBLIC_COLOR;
+    self.rightTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    self.rightTableView.tableFooterView = [[UIView alloc] init];
     
+    
+    // 注册 cell
+    [self.leftTableView registerNib:[UINib nibWithNibName:NSStringFromClass([HXLFollowCategoryTableViewCell class]) bundle:nil] forCellReuseIdentifier:followCategoryReuseID];
+    [self.rightTableView registerNib:[UINib nibWithNibName:NSStringFromClass([HXLFollowUserTableViewCell class]) bundle:nil] forCellReuseIdentifier:followUserReuseID];
 }
 
 #pragma mark - 网络数据加载
+// 左侧列表初始化
+- (void)loadCategoryData
+{
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    parameter[@"a"] = @"category";
+    parameter[@"c"] = @"subscribe";
+    
+    [self.sessionManager request:RequestTypeGet URLString:HXLPUBLIC_URL parameters:parameter success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        WriteToPlist(responseObject, @"Follow", @"category");
+        
+        if (![responseObject isKindOfClass:[NSDictionary class]]) {
+            NSLog(@"responseObject, 不是字典, 无数据");
+            return ;
+        }
+        
+        self.categoryArray = [HXLFollowCategoryItem mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        [self.leftTableView reloadData];
+        // 初次选中 左侧 第0行
+        self.seletedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [self.leftTableView selectRowAtIndexPath:_seletedIndexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
+        
+        // 启动右侧加载, 下拉更新数据
+        [self setupRefresh];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
+        
+        Error(error)
+    }];
+}
+
+// 右侧上下拉控件初始化
 - (void)setupRefresh
 {
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewRecommendData)];
     self.rightTableView.mj_header = header;
     [self.rightTableView.mj_header beginRefreshing];
     
-    MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreRecommendData)];
-    self.leftTableView.mj_footer = footer;
+    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreRecommendData)];
+    self.rightTableView.mj_footer = footer;
+    self.rightTableView.mj_footer.hidden = YES;
 }
 
+// 下拉更新
 - (void)loadNewRecommendData
 {
     NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
-    parameter[@"a"] = @"";
+    parameter[@"a"] = @"list";
+    parameter[@"c"] = @"subscribe";
+    HXLFollowCategoryItem *item = self.categoryArray[_seletedIndexPath.row];
+    parameter[@"category_id"] = @(item.ID);
+    self.parameter = parameter;
     
     [self.sessionManager request:RequestTypeGet URLString:HXLPUBLIC_URL parameters:parameter success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        WriteToPlist(responseObject, @"Follow", @"user");
+        
+        if (![responseObject isKindOfClass:[NSDictionary class]]) {
+            NSLog(@"responseObject, 不是字典, 无数据");
+            return ;
+        }
+        
+        // 不是最后一次请求, 慢网速快速切换上下刷新, 或快速切换别的 section 刷新时;
+        if (self.parameter != parameter) return;
+        
+        self.userArray = [HXLFollowUserItem mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        
+        [self.rightTableView reloadData];
+        [self.rightTableView.mj_header endRefreshing];
+        // 恢复默认页码 1
+        self.page = 1;
+        
+        // 是否所有数据加载完
+        [self allDataDidLoaded:responseObject];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
-        
+        Error(error);
+        [self.rightTableView.mj_header endRefreshing];
     }];
 }
 
+// 上拉更多
 - (void)loadMoreRecommendData
 {
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    parameter[@"a"] = @"list";
+    parameter[@"c"] = @"subscribe";
+    HXLFollowCategoryItem *item = self.categoryArray[_seletedIndexPath.row];
+    parameter[@"category_id"] = @(item.ID);
+    parameter[@"page"] = @(self.page + 1);
+    self.parameter = parameter;
+    
+    [self.sessionManager request:RequestTypeGet URLString:HXLPUBLIC_URL parameters:parameter success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        WriteToPlist(responseObject, @"Follow", @"user");
+        
+        if (![responseObject isKindOfClass:[NSDictionary class]]) {
+            NSLog(@"responseObject, 不是字典, 无数据");
+            return ;
+        }
+        
+        // 不是最后一次请求
+        if (self.parameter != parameter) return;
+        
+        NSMutableArray *arrayM = [HXLFollowUserItem mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.userArray.count)];
+        [arrayM insertObjects:self.userArray atIndexes:indexSet];
+        
+        self.userArray = arrayM;
+        
+        [self.rightTableView reloadData];
+        [self.rightTableView.mj_footer endRefreshing];
+        // 页码加 1;
+        self.page ++;
+        // 是否所有数据加载完
+        [self allDataDidLoaded:responseObject];
+
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
+        Error(error);
+        [self.rightTableView.mj_header endRefreshing];
+    }];
     
 }
+
+#pragma mark - 抽取方法 from 网络数据加载中
+- (void)allDataDidLoaded:(NSDictionary *)responseObject
+{
+    // 每次刷新右边数据时, 都控制footer显示或者隐藏
+    self.rightTableView.mj_footer.hidden = (self.userArray.count == 0);
+    // 是否到了最大页码
+    NSInteger total = [responseObject[@"total"] integerValue];
+    NSLog(@"%ld", total);
+    if (total <= self.userArray.count) {
+        [self.rightTableView.mj_footer endRefreshingWithNoMoreData];
+    }
+}
+
 
 #pragma mark - TableView Delegate or DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView == self.leftTableView) {
-        return 7;
+        return self.categoryArray.count;
     }
     
-    return 11;
+    // 上拉, 刷新 tableView 时, 恢复下拉控件;
+    self.rightTableView.mj_footer.hidden = (self.userArray.count == 0);
+    return self.userArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *const followReuseID = @"followLeftCell";
     if (tableView == self.leftTableView) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:followReuseID];
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:followReuseID];
-        cell.backgroundColor = GRAY_COLOR;
-        }
+        HXLFollowCategoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:followCategoryReuseID];
+        cell.contentView.backgroundColor = GRAY_COLOR;
+        cell.categoryItem = self.categoryArray[indexPath.row];
+        
         return cell;
     }
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:followReuseID];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:followReuseID];
-        cell.backgroundColor = BROWN_COLOR;
-    }
+    HXLFollowUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:followUserReuseID];
+    
+    cell.backgroundColor = WHITE_COLOR;
+    cell.userItem = self.userArray[indexPath.row];
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // 记录选中的 cell 的索引;
+    if (0 == indexPath.section) {
+        
+        self.seletedIndexPath = indexPath;
+        [self loadNewRecommendData];
+    }
+
+}
 
 @end

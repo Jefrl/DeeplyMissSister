@@ -38,6 +38,11 @@ UIKIT_EXTERN NSString * const mineCell;
 UIKIT_EXTERN CGFloat const mineSectionSroll;
 // Mine 中方格总列数
 UIKIT_EXTERN NSInteger const cols;
+// 推荐关注页面中 Category 的重用标识
+UIKIT_EXTERN NSString *const followCategoryReuseID;
+// 推荐关注页面中 user 的重用标识
+UIKIT_EXTERN NSString *const followUserReuseID;
+
 
 /** tabBar被选中的通知名字 */
 UIKIT_EXTERN NSString * const HXLTabBarDidSelectNotification;

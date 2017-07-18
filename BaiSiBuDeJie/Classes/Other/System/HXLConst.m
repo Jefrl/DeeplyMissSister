@@ -15,6 +15,10 @@ CGFloat const essenceMargin_y = 10;
 CGFloat const essenceMargin_x = 10;
 CGFloat const DIY = 5;
 
+// 用户头像 icon 的占位小图片名
+NSString *const placeholder = @"default_header_image_small";
+NSString *const bigplaceholder = @"default_header_image_big";
+
 // 基类(也是段子)的重用标识;
 NSString * const pun_reuseID = @"punCell";
 // 评论页面的重用标识;
@@ -27,10 +31,12 @@ CGFloat const heightForHeaderInSection = 25;
 NSString * const mineCell = @"mineCell";
 // 我的页面中的 section 自动滚动距离 (这里系统滚动已经禁止, 但是依然有滚动, 通过setFrame 打印获得的值)
 CGFloat const mineSectionSroll = 35;
-
 // Mine 中方格总列数
 NSInteger const cols = 4;
-
+// 推荐关注页面中 Category 的重用标识
+NSString *const followCategoryReuseID = @"followCategoryCell";
+// 推荐关注页面中 user 的重用标识
+NSString *const followUserReuseID = @"followUserCell";
 
 
 /** tabBar被选中的通知名字 */
