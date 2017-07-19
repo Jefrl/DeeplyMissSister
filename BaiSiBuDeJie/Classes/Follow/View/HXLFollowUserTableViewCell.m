@@ -21,12 +21,7 @@
 
 @implementation HXLFollowUserTableViewCell
 - (IBAction)followBtnClick:(UIButton *)sender {
-    sender.selected = !sender.selected;
-//    if (!sender.selected) {
-//        [sender setTitle:@"已关注" forState:UIControlStateNormal];
-//        
-//    }
-    
+//    sender.selected = !sender.selected;
 }
 
 - (void)awakeFromNib {
@@ -41,7 +36,7 @@
     [self.iconImageView setImageString:_userItem.header placeholderImage:[UIImage imageNamed:@"default_header_image_small"] circleImage:YES];
     
     self.nameLabel.text = _userItem.screen_name;
-    self.followLabel.text = [NSString stringFansFollowWithString:_userItem.fans_count];
+    self.followLabel.text = [NSString stringWithFormat:@"%@人关注", [NSString stringFansFollowWithString:_userItem.fans_count]];
     
 }
 

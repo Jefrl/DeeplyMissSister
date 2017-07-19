@@ -7,8 +7,11 @@
 //
 
 #import "HXLNavigationController.h"
+#import "HXLPersonDetailViewController.h"
 
 @interface HXLNavigationController () <UIGestureRecognizerDelegate>
+/** backgroundImage */
+@property (nonatomic, readwrite, strong) UIImage *backgroundImage;
 
 @end
 
@@ -28,12 +31,15 @@
     NSMutableDictionary *dictM_titleText = [NSMutableDictionary dictionary];
     dictM_titleText[NSFontAttributeName] = FONT_17;
     dictM_titleText[NSForegroundColorAttributeName] = [UIColor whiteColor];
+    // 老方法已废除
     UINavigationBar *navgationBar = [UINavigationBar appearanceWhenContainedInInstancesOfClasses:
     @[[self class]]];
     
     [navgationBar setTitleTextAttributes:dictM_titleText];
     // 背景色或图片
-    [navgationBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundN"] forBarMetrics:UIBarMetricsDefault];
+    self.backgroundImage = [UIImage imageNamed:@"navigationbarBackgroundN"];
+    
+    [navgationBar setBackgroundImage:_backgroundImage forBarMetrics:UIBarMetricsDefault];
 }
 
 /** 供系统的导航控制器调用, 来精准设置栈顶子控制器的状态栏 */
@@ -46,6 +52,11 @@
 #pragma mark - Optimaize method zone
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
+    if ([viewController isMemberOfClass:[HXLPersonDetailViewController class]]) {
+        HXLPersonDetailViewController *vc = (HXLPersonDetailViewController *)viewController;
+        vc.backgroundImage = _backgroundImage;
+    }
+    
     if (self.childViewControllers.count > 0) {
         viewController.hidesBottomBarWhenPushed = YES;
         

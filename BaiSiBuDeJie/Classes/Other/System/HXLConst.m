@@ -14,9 +14,9 @@ CGFloat const cellMargin_y = 1;
 CGFloat const essenceMargin_y = 10;
 CGFloat const essenceMargin_x = 10;
 CGFloat const DIY = 5;
-
 // 用户头像 icon 的占位小图片名
 NSString *const placeholder = @"default_header_image_small";
+// 用户头像 icon 的占位大图片名
 NSString *const bigplaceholder = @"default_header_image_big";
 
 // 基类(也是段子)的重用标识;

@@ -174,6 +174,7 @@
     [self.tableView.mj_header beginRefreshing];
     
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreTopics)];
+//    self.tableView.mj_footer.hidden = YES;
 }
 
 /**
@@ -272,6 +273,8 @@
 
 #pragma mark - TableView Delegate or DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    self.tableView.mj_footer.hidden = (self.itemArrayM.count == 0);
     return self.itemArrayM.count;
 }
 

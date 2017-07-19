@@ -40,6 +40,8 @@
 		A547F6001F1B6BEC002F86A4 /* HXLMineWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A547F5FE1F1B6BEB002F86A4 /* HXLMineWebViewController.xib */; };
 		A54C558F1F066C8600BFAB3D /* HXLProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A54C558E1F066C8600BFAB3D /* HXLProgressView.m */; };
 		A552086D1E8E3E5B00E77AFC /* UIView+HXL.m in Sources */ = {isa = PBXBuildFile; fileRef = A552086C1E8E3E5B00E77AFC /* UIView+HXL.m */; };
+		A554330D1F1F04440025EDD5 /* HXLPersonDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A554330B1F1F04440025EDD5 /* HXLPersonDetailViewController.m */; };
+		A554330E1F1F04440025EDD5 /* HXLPersonDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A554330C1F1F04440025EDD5 /* HXLPersonDetailViewController.xib */; };
 		A557D91A1E70F25300B54327 /* HXLReleaseLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A557D9151E70F25300B54327 /* HXLReleaseLinkViewController.m */; };
 		A557D91B1E70F25300B54327 /* HXLReleasePunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A557D9171E70F25300B54327 /* HXLReleasePunViewController.m */; };
 		A557D91C1E70F25300B54327 /* HXLReleaseVoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A557D9191E70F25300B54327 /* HXLReleaseVoiceViewController.m */; };
@@ -160,6 +162,9 @@
 		A54C558E1F066C8600BFAB3D /* HXLProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HXLProgressView.m; path = ../../../../Essence/View/TableViewCell/HXLProgressView.m; sourceTree = "<group>"; };
 		A552086B1E8E3E5B00E77AFC /* UIView+HXL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HXL.h"; sourceTree = "<group>"; };
 		A552086C1E8E3E5B00E77AFC /* UIView+HXL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HXL.m"; sourceTree = "<group>"; };
+		A554330A1F1F04440025EDD5 /* HXLPersonDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLPersonDetailViewController.h; sourceTree = "<group>"; };
+		A554330B1F1F04440025EDD5 /* HXLPersonDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLPersonDetailViewController.m; sourceTree = "<group>"; };
+		A554330C1F1F04440025EDD5 /* HXLPersonDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLPersonDetailViewController.xib; sourceTree = "<group>"; };
 		A557D9141E70F25300B54327 /* HXLReleaseLinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLReleaseLinkViewController.h; sourceTree = "<group>"; };
 		A557D9151E70F25300B54327 /* HXLReleaseLinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLReleaseLinkViewController.m; sourceTree = "<group>"; };
 		A557D9161E70F25300B54327 /* HXLReleasePunViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLReleasePunViewController.h; sourceTree = "<group>"; };
@@ -485,6 +490,9 @@
 				A53C1B4B1F1CAB82007E8DB9 /* HXLFollowFriendTrendsVC.h */,
 				A53C1B4C1F1CAB82007E8DB9 /* HXLFollowFriendTrendsVC.m */,
 				A53C1B4D1F1CAB82007E8DB9 /* HXLFollowFriendTrendsVC.xib */,
+				A554330A1F1F04440025EDD5 /* HXLPersonDetailViewController.h */,
+				A554330B1F1F04440025EDD5 /* HXLPersonDetailViewController.m */,
+				A554330C1F1F04440025EDD5 /* HXLPersonDetailViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -905,6 +913,7 @@
 				A57F5F281E62DC2E002BA929 /* Main.storyboard in Resources */,
 				A53C1B451F1C93D7007E8DB9 /* HXLFollowViewController.xib in Resources */,
 				A5877FFD1F11BF290045CFBF /* HXLPopMenu.xib in Resources */,
+				A554330E1F1F04440025EDD5 /* HXLPersonDetailViewController.xib in Resources */,
 				A557D9221E70F2FD00B54327 /* HXLPunView.xib in Resources */,
 				A533D1371F105FED00B976EC /* HXLCommentTableViewCell.xib in Resources */,
 				A51EEB1B1E76D8D5002237E0 /* HXLPictureView.xib in Resources */,
@@ -1021,6 +1030,7 @@
 				A56300581F01100400DAEE75 /* HXLShowBigPictureViewController.m in Sources */,
 				A53C1B491F1C9B99007E8DB9 /* HXLLoginRegisterViewController.m in Sources */,
 				A59F83421E8CE23600A342BB /* HXLUser.m in Sources */,
+				A554330D1F1F04440025EDD5 /* HXLPersonDetailViewController.m in Sources */,
 				A5C8CB551E73C3160028224E /* HXLTabBarController.m in Sources */,
 				A557D9211E70F2FD00B54327 /* HXLPunView.m in Sources */,
 				A5877FFB1F11BF290045CFBF /* HXLCoverView.m in Sources */,

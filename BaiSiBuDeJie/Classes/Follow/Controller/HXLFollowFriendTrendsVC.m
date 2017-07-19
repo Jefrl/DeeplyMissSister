@@ -10,6 +10,7 @@
 
 #import "HXLFollowCategoryTableViewCell.h"
 #import "HXLFollowUserTableViewCell.h"
+#import "HXLPersonDetailViewController.h"
 
 #import "HXLFollowCategoryItem.h"
 #import "HXLFollowUserItem.h"
@@ -17,6 +18,7 @@
 #import "MJRefresh.h"
 #import "MJExtension.h"
 #import "HXLSessionManager.h"
+#import "SVProgressHUD.h"
 
 @interface HXLFollowFriendTrendsVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *leftTableView;
@@ -72,47 +74,44 @@
         HXLSessionManager *mg = [HXLSessionManager manager];
         _sessionManager = mg;
     }
-    
     return _sessionManager;
 }
 
 #pragma mark - 初始化 Initial setting
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // 初始化的基础设置
+    [self setupUniformStyle];
+    // 左侧分类列表 网络数据加载
+    [self loadCategoryData];
+}
+
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // 初始化的基础设置
-    [self setupUniformStyle];
-    
-    // 左侧分类列表 网络数据加载
-    [self loadCategoryData];
-    
-}
-
+// 初始化的基础设置
 - (void)setupUniformStyle
 {
-    // 初始化的基础设置
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     self.title = @"推荐关注";
-    
+    // 代理
     self.leftTableView.delegate = self;
     self.leftTableView.dataSource = self;
     self.rightTableView.delegate = self;
     self.rightTableView.dataSource = self;
-    
+    // 行高与滚动
     self.leftTableView.rowHeight = 50;
     self.rightTableView.rowHeight = 80;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.leftTableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, 0, 0);
     self.rightTableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, 0, 0);
-    
+    // 背景颜色与分割线
     self.leftTableView.backgroundColor = GRAY_PUBLIC_COLOR;
     self.leftTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.rightTableView.backgroundColor = GRAY_PUBLIC_COLOR;
     self.rightTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    self.rightTableView.tableFooterView = [[UIView alloc] init];
-    
-    
     // 注册 cell
     [self.leftTableView registerNib:[UINib nibWithNibName:NSStringFromClass([HXLFollowCategoryTableViewCell class]) bundle:nil] forCellReuseIdentifier:followCategoryReuseID];
     [self.rightTableView registerNib:[UINib nibWithNibName:NSStringFromClass([HXLFollowUserTableViewCell class]) bundle:nil] forCellReuseIdentifier:followUserReuseID];
@@ -122,12 +121,19 @@
 // 左侧列表初始化
 - (void)loadCategoryData
 {
+    
+    // 提示正在加载框
+    [SVProgressHUD showWithStatus:@"主人, 小的正在加载"];
+    
     NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
     parameter[@"a"] = @"category";
     parameter[@"c"] = @"subscribe";
     
     [self.sessionManager request:RequestTypeGet URLString:HXLPUBLIC_URL parameters:parameter success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
         WriteToPlist(responseObject, @"Follow", @"category");
+        
+        [SVProgressHUD showSuccessWithStatus:@"主人, O(∩_∩)O 哈哈~加载成功"];
+        [SVProgressHUD dismissWithDelay:0.7];
         
         if (![responseObject isKindOfClass:[NSDictionary class]]) {
             NSLog(@"responseObject, 不是字典, 无数据");
@@ -144,6 +150,8 @@
         [self setupRefresh];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
+        [SVProgressHUD showErrorWithStatus:@"加载失败"];
+        [self.rightTableView.mj_header endRefreshing];
         
         Error(error)
     }];
@@ -194,6 +202,7 @@
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
         Error(error);
+        [SVProgressHUD showErrorWithStatus:@"主人~~~~(>_<)~~~~, 加载失败了"];
         [self.rightTableView.mj_header endRefreshing];
     }];
 }
@@ -233,10 +242,11 @@
         // 是否所有数据加载完
         [self allDataDidLoaded:responseObject];
 
-        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
-        Error(error);
+        
+        [SVProgressHUD showErrorWithStatus:@"加载失败"];
         [self.rightTableView.mj_header endRefreshing];
+        Error(error);
     }];
     
 }
@@ -248,12 +258,10 @@
     self.rightTableView.mj_footer.hidden = (self.userArray.count == 0);
     // 是否到了最大页码
     NSInteger total = [responseObject[@"total"] integerValue];
-    NSLog(@"%ld", total);
     if (total <= self.userArray.count) {
         [self.rightTableView.mj_footer endRefreshingWithNoMoreData];
     }
 }
-
 
 #pragma mark - TableView Delegate or DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -286,11 +294,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // 记录选中的 cell 的索引;
-    if (0 == indexPath.section) {
-        
+    if (tableView == self.leftTableView) {
+        // 记录选中的左侧 cell 的索引, 以便更新参数
         self.seletedIndexPath = indexPath;
+        // 刷新右侧数据
         [self loadNewRecommendData];
+    }
+    if (tableView == self.rightTableView) {
+        // 跳转对应的界面
+        HXLPersonDetailViewController *detailVC = [[HXLPersonDetailViewController alloc] init];
+        detailVC.userItem = self.userArray[indexPath.row];
+        [self.navigationController pushViewController:detailVC animated:YES];
     }
 
 }
