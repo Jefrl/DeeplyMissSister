@@ -12,6 +12,8 @@
 #import "HXLPictureTableVC.h"
 #import "HXLPunTableVC.h"
 #import "HXLVoiceTableVC.h"
+#import "HXLRecommendTagTableViewController.h"
+
 #import "HXLHeadlineView.h"
 
 #import "HXLTabBarController.h"
@@ -203,7 +205,9 @@ NSString * const reuseID = @"collectionCell";
 /** 导航栏左&右侧的点击事件 */
 - (void)leftBarBtnItemClick:(UIButton *)btn {
     
-    NSLog(@"左侧按钮被点击了");
+    HXLRecommendTagTableViewController *tagTVC = [[HXLRecommendTagTableViewController alloc] init];
+    [self.navigationController pushViewController:tagTVC animated:YES];
+    
 }
 
 - (void)rightBarBtnItemClick:(UIButton *)btn {

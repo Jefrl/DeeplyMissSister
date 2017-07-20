@@ -10,8 +10,8 @@
 @class HXLFollowUserItem;
 
 @interface HXLPersonDetailViewController : UIViewController
-/** backgroundImage */
-@property (nonatomic, readwrite, strong) UIImage *backgroundImage;
+///** backgroundImage */
+//@property (nonatomic, readwrite, strong) UIImage *backgroundImage;
 /** userItem */
 @property (nonatomic, readwrite, strong) HXLFollowUserItem *userItem;
 

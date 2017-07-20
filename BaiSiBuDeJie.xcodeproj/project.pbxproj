@@ -33,6 +33,10 @@
 		A53C1B541F1CB1BF007E8DB9 /* HXLFollowUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A53C1B521F1CB1BF007E8DB9 /* HXLFollowUserTableViewCell.xib */; };
 		A53C1B581F1CB33D007E8DB9 /* HXLFollowCategoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A53C1B561F1CB33D007E8DB9 /* HXLFollowCategoryTableViewCell.m */; };
 		A53C1B591F1CB33D007E8DB9 /* HXLFollowCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A53C1B571F1CB33D007E8DB9 /* HXLFollowCategoryTableViewCell.xib */; };
+		A53D7B731F20B32E008BCDE1 /* HXLRecommendTagTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A53D7B711F20B32E008BCDE1 /* HXLRecommendTagTableViewController.m */; };
+		A53D7B791F20B45E008BCDE1 /* HXLRecommentTagTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A53D7B771F20B45E008BCDE1 /* HXLRecommentTagTableViewCell.m */; };
+		A53D7B7A1F20B45E008BCDE1 /* HXLRecommentTagTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A53D7B781F20B45E008BCDE1 /* HXLRecommentTagTableViewCell.xib */; };
+		A53D7B7D1F20B5AA008BCDE1 /* HXLRecommentTagItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A53D7B7C1F20B5AA008BCDE1 /* HXLRecommentTagItem.m */; };
 		A53E05B91E7BECFF0079DA41 /* HXLDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A53E05B81E7BECFF0079DA41 /* HXLDataTool.m */; };
 		A547F5F81F1AEDBA002F86A4 /* HXLSquareItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A547F5F71F1AEDBA002F86A4 /* HXLSquareItem.m */; };
 		A547F5FB1F1AF7D2002F86A4 /* HXLSquareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A547F5FA1F1AF7D2002F86A4 /* HXLSquareButton.m */; };
@@ -149,6 +153,13 @@
 		A53C1B551F1CB33D007E8DB9 /* HXLFollowCategoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLFollowCategoryTableViewCell.h; sourceTree = "<group>"; };
 		A53C1B561F1CB33D007E8DB9 /* HXLFollowCategoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLFollowCategoryTableViewCell.m; sourceTree = "<group>"; };
 		A53C1B571F1CB33D007E8DB9 /* HXLFollowCategoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLFollowCategoryTableViewCell.xib; sourceTree = "<group>"; };
+		A53D7B701F20B32E008BCDE1 /* HXLRecommendTagTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLRecommendTagTableViewController.h; sourceTree = "<group>"; };
+		A53D7B711F20B32E008BCDE1 /* HXLRecommendTagTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLRecommendTagTableViewController.m; sourceTree = "<group>"; };
+		A53D7B761F20B45E008BCDE1 /* HXLRecommentTagTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLRecommentTagTableViewCell.h; sourceTree = "<group>"; };
+		A53D7B771F20B45E008BCDE1 /* HXLRecommentTagTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLRecommentTagTableViewCell.m; sourceTree = "<group>"; };
+		A53D7B781F20B45E008BCDE1 /* HXLRecommentTagTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLRecommentTagTableViewCell.xib; sourceTree = "<group>"; };
+		A53D7B7B1F20B5AA008BCDE1 /* HXLRecommentTagItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLRecommentTagItem.h; sourceTree = "<group>"; };
+		A53D7B7C1F20B5AA008BCDE1 /* HXLRecommentTagItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLRecommentTagItem.m; sourceTree = "<group>"; };
 		A53E05B71E7BECFF0079DA41 /* HXLDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLDataTool.h; sourceTree = "<group>"; };
 		A53E05B81E7BECFF0079DA41 /* HXLDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLDataTool.m; sourceTree = "<group>"; };
 		A547F5F61F1AEDBA002F86A4 /* HXLSquareItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLSquareItem.h; sourceTree = "<group>"; };
@@ -298,23 +309,18 @@
 		A51EEB041E76D7BA002237E0 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				A53D7B751F20B3F1008BCDE1 /* subClassTVCell */,
 				A51EEB0B1E76D844002237E0 /* HXLPunTableViewCell.h */,
 				A51EEB0C1E76D844002237E0 /* HXLPunTableViewCell.m */,
 				A51EEB0D1E76D844002237E0 /* HXLPunTableViewCell.xib */,
-				A51EEB081E76D816002237E0 /* HXLPictureView.h */,
-				A51EEB091E76D816002237E0 /* HXLPictureView.m */,
-				A51EEB1A1E76D8D5002237E0 /* HXLPictureView.xib */,
-				A51EEB051E76D7F6002237E0 /* HXLVideoView.h */,
-				A51EEB061E76D7F6002237E0 /* HXLVideoView.m */,
-				A578101C1F0E38790003E1BE /* HXLVideoView.xib */,
-				A51EEB101E76D857002237E0 /* HXLVoiceView.h */,
-				A51EEB111E76D857002237E0 /* HXLVoiceView.m */,
-				A57810201F0E4A3E0003E1BE /* HXLVoiceView.xib */,
 				A533D1331F105FED00B976EC /* HXLCommentTableViewCell.h */,
 				A533D1341F105FED00B976EC /* HXLCommentTableViewCell.m */,
 				A533D1351F105FED00B976EC /* HXLCommentTableViewCell.xib */,
 				A58780001F125F770045CFBF /* HXLHeaderFooterView.h */,
 				A58780011F125F770045CFBF /* HXLHeaderFooterView.m */,
+				A53D7B761F20B45E008BCDE1 /* HXLRecommentTagTableViewCell.h */,
+				A53D7B771F20B45E008BCDE1 /* HXLRecommentTagTableViewCell.m */,
+				A53D7B781F20B45E008BCDE1 /* HXLRecommentTagTableViewCell.xib */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -326,6 +332,22 @@
 				A52CBBD31E83EA37006042B1 /* HXLEssenceViewModel.m */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A53D7B751F20B3F1008BCDE1 /* subClassTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				A51EEB081E76D816002237E0 /* HXLPictureView.h */,
+				A51EEB091E76D816002237E0 /* HXLPictureView.m */,
+				A51EEB1A1E76D8D5002237E0 /* HXLPictureView.xib */,
+				A51EEB051E76D7F6002237E0 /* HXLVideoView.h */,
+				A51EEB061E76D7F6002237E0 /* HXLVideoView.m */,
+				A578101C1F0E38790003E1BE /* HXLVideoView.xib */,
+				A51EEB101E76D857002237E0 /* HXLVoiceView.h */,
+				A51EEB111E76D857002237E0 /* HXLVoiceView.m */,
+				A57810201F0E4A3E0003E1BE /* HXLVoiceView.xib */,
+			);
+			name = subClassTVCell;
 			sourceTree = "<group>";
 		};
 		A557D9131E70F25300B54327 /* PostViewControl */ = {
@@ -425,9 +447,9 @@
 			isa = PBXGroup;
 			children = (
 				A57F5F441E634D00002BA929 /* Controller */,
-				A52CBBD11E83E9DF006042B1 /* ViewModel */,
 				A57F5F461E634D00002BA929 /* View */,
 				A57F5F451E634D00002BA929 /* Model */,
+				A52CBBD11E83E9DF006042B1 /* ViewModel */,
 			);
 			path = Essence;
 			sourceTree = "<group>";
@@ -437,6 +459,8 @@
 			children = (
 				A5E1A4691E6598DF0060F656 /* HXLEssenceViewController.h */,
 				A5E1A46A1E6598DF0060F656 /* HXLEssenceViewController.m */,
+				A53D7B701F20B32E008BCDE1 /* HXLRecommendTagTableViewController.h */,
+				A53D7B711F20B32E008BCDE1 /* HXLRecommendTagTableViewController.m */,
 				A5C8CB5D1E73C3880028224E /* ChildViewController */,
 			);
 			path = Controller;
@@ -453,6 +477,8 @@
 				A59F83411E8CE23600A342BB /* HXLUser.m */,
 				A533D13A1F107ED700B976EC /* HXLPrecmtUser.h */,
 				A533D13B1F107ED700B976EC /* HXLPrecmtUser.m */,
+				A53D7B7B1F20B5AA008BCDE1 /* HXLRecommentTagItem.h */,
+				A53D7B7C1F20B5AA008BCDE1 /* HXLRecommentTagItem.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -689,13 +715,13 @@
 			isa = PBXGroup;
 			children = (
 				A58ADC141F0F622B0080DBE8 /* subClassTVC */,
-				A56300561F01100400DAEE75 /* HXLShowBigPictureViewController.h */,
-				A56300571F01100400DAEE75 /* HXLShowBigPictureViewController.m */,
 				A52CBBCA1E83B489006042B1 /* HXLEssenceBaseWithChildTVC.h */,
 				A52CBBCB1E83B489006042B1 /* HXLEssenceBaseWithChildTVC.m */,
 				A58ADC0F1F0F21A30080DBE8 /* HXLCommentViewController.h */,
 				A58ADC101F0F21A30080DBE8 /* HXLCommentViewController.m */,
 				A58ADC111F0F21A30080DBE8 /* HXLCommentViewController.xib */,
+				A56300561F01100400DAEE75 /* HXLShowBigPictureViewController.h */,
+				A56300571F01100400DAEE75 /* HXLShowBigPictureViewController.m */,
 			);
 			path = ChildViewController;
 			sourceTree = "<group>";
@@ -905,6 +931,7 @@
 				A57F5F2D1E62DC2E002BA929 /* LaunchScreen.storyboard in Resources */,
 				A578101E1F0E38790003E1BE /* HXLVideoView.xib in Resources */,
 				A53C1B591F1CB33D007E8DB9 /* HXLFollowCategoryTableViewCell.xib in Resources */,
+				A53D7B7A1F20B45E008BCDE1 /* HXLRecommentTagTableViewCell.xib in Resources */,
 				A53C1B541F1CB1BF007E8DB9 /* HXLFollowUserTableViewCell.xib in Resources */,
 				A538C3E51E7AD0F200B3EFD3 /* member_ diamond_icon.gif in Resources */,
 				A5E1A4701E65A7C70060F656 /* Assets.xcassets in Resources */,
@@ -989,12 +1016,14 @@
 				A51EEB071E76D7F6002237E0 /* HXLVideoView.m in Sources */,
 				A53C1B531F1CB1BF007E8DB9 /* HXLFollowUserTableViewCell.m in Sources */,
 				A5C8CB3F1E73C2660028224E /* HXLHeadlineView.m in Sources */,
+				A53D7B791F20B45E008BCDE1 /* HXLRecommentTagTableViewCell.m in Sources */,
 				A5ADEE241E76677100997971 /* HXLEssenceCollectionView.m in Sources */,
 				A557D91B1E70F25300B54327 /* HXLReleasePunViewController.m in Sources */,
 				A52CBBCF1E83DF4D006042B1 /* UIImageView+HXLSDWeb.m in Sources */,
 				A5C8CB591E73C3160028224E /* UIBarButtonItem+HXLBarBtnItem.m in Sources */,
 				A5E1A46B1E6598DF0060F656 /* HXLEssenceViewController.m in Sources */,
 				A538C3E21E7A643000B3EFD3 /* HXLEssenceItem.m in Sources */,
+				A53D7B7D1F20B5AA008BCDE1 /* HXLRecommentTagItem.m in Sources */,
 				A51EEB0A1E76D816002237E0 /* HXLPictureView.m in Sources */,
 				A54C558F1F066C8600BFAB3D /* HXLProgressView.m in Sources */,
 				A557D91C1E70F25300B54327 /* HXLReleaseVoiceViewController.m in Sources */,
@@ -1021,6 +1050,7 @@
 				A552086D1E8E3E5B00E77AFC /* UIView+HXL.m in Sources */,
 				A5C8CB691E73C3880028224E /* HXLPictureTableVC.m in Sources */,
 				A5E1A45F1E6593AE0060F656 /* HXLReleaseViewController.m in Sources */,
+				A53D7B731F20B32E008BCDE1 /* HXLRecommendTagTableViewController.m in Sources */,
 				A5ADEE271E766CFB00997971 /* HXLEssenceCollectionViewCell.m in Sources */,
 				A5C8CB6C1E73C3880028224E /* HXLVoiceTableVC.m in Sources */,
 				A5FD85D01E77A9C6002D0CC6 /* HXLSessionManager.m in Sources */,

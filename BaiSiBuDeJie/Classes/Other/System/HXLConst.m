@@ -37,7 +37,10 @@ NSInteger const cols = 4;
 NSString *const followCategoryReuseID = @"followCategoryCell";
 // 推荐关注页面中 user 的重用标识
 NSString *const followUserReuseID = @"followUserCell";
-
+// 推荐标签页面中的重用标识
+NSString *const recommentTagReuseID = @"recommentTagCell";
+// 个人详情页面 tableView 下滚的调整距离
+CGFloat scrollValue = 240+150;
 
 /** tabBar被选中的通知名字 */
 NSString * const HXLTabBarDidSelectNotification = @"HXLTabBarDidSelectNotification";

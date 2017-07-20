@@ -46,6 +46,10 @@ UIKIT_EXTERN NSInteger const cols;
 UIKIT_EXTERN NSString *const followCategoryReuseID;
 // 推荐关注页面中 user 的重用标识
 UIKIT_EXTERN NSString *const followUserReuseID;
+// 推荐标签页面中的重用标识
+UIKIT_EXTERN NSString *const recommentTagReuseID;
+// 个人详情页面 tableView 下滚的调整距离
+UIKIT_EXTERN CGFloat scrollValue;
 
 
 /** tabBar被选中的通知名字 */

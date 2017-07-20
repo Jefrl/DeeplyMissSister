@@ -133,7 +133,7 @@
         WriteToPlist(responseObject, @"Follow", @"category");
         
         [SVProgressHUD showSuccessWithStatus:@"主人, O(∩_∩)O 哈哈~加载成功"];
-        [SVProgressHUD dismissWithDelay:0.7];
+        [SVProgressHUD dismissWithDelay:0.5];
         
         if (![responseObject isKindOfClass:[NSDictionary class]]) {
             NSLog(@"responseObject, 不是字典, 无数据");
