@@ -10,8 +10,9 @@
 #import "HXLPostButton.h"
 #import "HXLPunView.h"
 #import "HXLPlaceHolderTextView.h"
+#import "HXLAddTagToolbar.h"
 
-@interface HXLReleasePunViewController ()
+@interface HXLReleasePunViewController ()<UITextViewDelegate>
 /** postBtn */
 @property (nonatomic, weak) HXLPostButton *postBtn;
 /** HXLPlaceHolderTextView *placeholderTextView */
@@ -28,6 +29,8 @@
     [self setupPostPunsNavigationBar];
     // 设置 textView
     [self setupTextView];
+    // 设置 addToolbar
+    [self setupAddToolbar];
 }
 
 - (void)test
@@ -41,17 +44,43 @@
     return UIStatusBarStyleLightContent;
 }
 
+
+
+#pragma mark - UITextViewDelegate
+- (void)textViewDidChange:(UITextView *)textView
+{
+    if (textView.hasText) {
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+    } else {
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }
+}
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    return YES;
+}
+
 #pragma mark - 设置 textView
+- (void)setupAddToolbar
+{
+    HXLAddTagToolbar *toolbar = [HXLAddTagToolbar toolbar];
+    self.placeholderTextView.inputAccessoryView = toolbar;
+}
+
 - (void)setupTextView
 {
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     HXLPlaceHolderTextView *placeholderTextView = [[HXLPlaceHolderTextView alloc] init];
     self.placeholderTextView = placeholderTextView;
-    placeholderTextView.textColor = CYAN_COLOR;
+    placeholderTextView.delegate = self;
+    
+    placeholderTextView.textColor = BLACK_COLOR;
     placeholderTextView.font = FONT_15;
-    placeholderTextView.placeholderColor = GREEN_COLOR;
+    placeholderTextView.placeholderColor = GRAY_COLOR;
     placeholderTextView.placeholder = @"把好玩的图片，好笑的段子或糗事发到这里，接受千万网友膜拜吧！发布违反国家法律内容的，我们将依法提交给有关部门处理。";
+    
     placeholderTextView.frame = self.view.bounds;
     placeholderTextView.y = NAVIGATIONBAR_HEIGHT;
     [self.view addSubview:placeholderTextView];
@@ -65,7 +94,7 @@
     // 右侧发表按钮
     HXLPostButton *postBtn = [HXLPostButton buttonWithType:UIButtonTypeCustom];
     [postBtn setTitle:@"发表" forState:UIControlStateNormal];
-    [postBtn setImage:[UIImage imageNamed:@"1-1"] forState:UIControlStateNormal];
+    [postBtn setImage:[UIImage imageNamed:@"post-tag-bg"] forState:UIControlStateNormal];
     [postBtn addTarget:self action:@selector(postPunBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [postBtn sizeToFit];
     _postBtn = postBtn;
@@ -75,12 +104,12 @@
 
 - (void)postPunBtnClick:(UIButton *)postPunBtn {
     NSLog(@"postPunBtnClick");
+    [self.view endEditing:YES];
 }
 
 - (void)cancelItemClick:(UIButton *)cancelItem {
     
-    self.placeholderTextView.text = @"你是谁";
-    // [self dismissViewControllerAnimated:YES completion:nil];
+     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

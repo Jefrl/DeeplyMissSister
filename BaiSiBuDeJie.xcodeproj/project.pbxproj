@@ -43,6 +43,9 @@
 		A547F5FF1F1B6BEB002F86A4 /* HXLMineWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A547F5FD1F1B6BEB002F86A4 /* HXLMineWebViewController.m */; };
 		A547F6001F1B6BEC002F86A4 /* HXLMineWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A547F5FE1F1B6BEB002F86A4 /* HXLMineWebViewController.xib */; };
 		A54C558F1F066C8600BFAB3D /* HXLProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A54C558E1F066C8600BFAB3D /* HXLProgressView.m */; };
+		A551B27D1F274E370093251D /* HXLAddTagToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = A551B27C1F274E370093251D /* HXLAddTagToolbar.m */; };
+		A551B27F1F274E440093251D /* HXLAddTagToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = A551B27E1F274E440093251D /* HXLAddTagToolbar.xib */; };
+		A551B2821F2758300093251D /* HXLAddTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A551B2811F2758300093251D /* HXLAddTagViewController.m */; };
 		A552086D1E8E3E5B00E77AFC /* UIView+HXL.m in Sources */ = {isa = PBXBuildFile; fileRef = A552086C1E8E3E5B00E77AFC /* UIView+HXL.m */; };
 		A554330D1F1F04440025EDD5 /* HXLPersonDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A554330B1F1F04440025EDD5 /* HXLPersonDetailViewController.m */; };
 		A554330E1F1F04440025EDD5 /* HXLPersonDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A554330C1F1F04440025EDD5 /* HXLPersonDetailViewController.xib */; };
@@ -175,6 +178,11 @@
 		A547F5FE1F1B6BEB002F86A4 /* HXLMineWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLMineWebViewController.xib; sourceTree = "<group>"; };
 		A54C558D1F066C8600BFAB3D /* HXLProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HXLProgressView.h; path = ../../../../Essence/View/TableViewCell/HXLProgressView.h; sourceTree = "<group>"; };
 		A54C558E1F066C8600BFAB3D /* HXLProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HXLProgressView.m; path = ../../../../Essence/View/TableViewCell/HXLProgressView.m; sourceTree = "<group>"; };
+		A551B27B1F274E370093251D /* HXLAddTagToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLAddTagToolbar.h; sourceTree = "<group>"; };
+		A551B27C1F274E370093251D /* HXLAddTagToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLAddTagToolbar.m; sourceTree = "<group>"; };
+		A551B27E1F274E440093251D /* HXLAddTagToolbar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLAddTagToolbar.xib; sourceTree = "<group>"; };
+		A551B2801F2758300093251D /* HXLAddTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLAddTagViewController.h; sourceTree = "<group>"; };
+		A551B2811F2758300093251D /* HXLAddTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLAddTagViewController.m; sourceTree = "<group>"; };
 		A552086B1E8E3E5B00E77AFC /* UIView+HXL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HXL.h"; sourceTree = "<group>"; };
 		A552086C1E8E3E5B00E77AFC /* UIView+HXL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HXL.m"; sourceTree = "<group>"; };
 		A554330A1F1F04440025EDD5 /* HXLPersonDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLPersonDetailViewController.h; sourceTree = "<group>"; };
@@ -370,6 +378,8 @@
 				A557D9191E70F25300B54327 /* HXLReleaseVoiceViewController.m */,
 				A557D9161E70F25300B54327 /* HXLReleasePunViewController.h */,
 				A557D9171E70F25300B54327 /* HXLReleasePunViewController.m */,
+				A551B2801F2758300093251D /* HXLAddTagViewController.h */,
+				A551B2811F2758300093251D /* HXLAddTagViewController.m */,
 			);
 			path = PostViewControl;
 			sourceTree = "<group>";
@@ -382,6 +392,9 @@
 				A557D9201E70F2FD00B54327 /* HXLPunView.xib */,
 				A57EF7701F2595A900345FC8 /* HXLPlaceHolderTextView.h */,
 				A57EF7711F2595A900345FC8 /* HXLPlaceHolderTextView.m */,
+				A551B27B1F274E370093251D /* HXLAddTagToolbar.h */,
+				A551B27C1F274E370093251D /* HXLAddTagToolbar.m */,
+				A551B27E1F274E440093251D /* HXLAddTagToolbar.xib */,
 			);
 			name = PuntView;
 			path = PostView;
@@ -951,6 +964,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A53C1B4A1F1C9B99007E8DB9 /* HXLLoginRegisterViewController.xib in Resources */,
+				A551B27F1F274E440093251D /* HXLAddTagToolbar.xib in Resources */,
 				A58ADC131F0F21A30080DBE8 /* HXLCommentViewController.xib in Resources */,
 				A538C3E61E7AD0F200B3EFD3 /* member_ diamond_iconN.gif in Resources */,
 				A53C1B4F1F1CAB82007E8DB9 /* HXLFollowFriendTrendsVC.xib in Resources */,
@@ -1086,9 +1100,11 @@
 				A5C8CB6C1E73C3880028224E /* HXLVoiceTableVC.m in Sources */,
 				A5FD85D01E77A9C6002D0CC6 /* HXLSessionManager.m in Sources */,
 				A5C8CB5B1E73C3160028224E /* UIView+HXLGeometry.m in Sources */,
+				A551B27D1F274E370093251D /* HXLAddTagToolbar.m in Sources */,
 				A51EEB131E76D857002237E0 /* HXLVoiceView.m in Sources */,
 				A5E1A4651E6593E20060F656 /* HXLFollowViewController.m in Sources */,
 				A56300581F01100400DAEE75 /* HXLShowBigPictureViewController.m in Sources */,
+				A551B2821F2758300093251D /* HXLAddTagViewController.m in Sources */,
 				A53C1B491F1C9B99007E8DB9 /* HXLLoginRegisterViewController.m in Sources */,
 				A59F83421E8CE23600A342BB /* HXLUser.m in Sources */,
 				A554330D1F1F04440025EDD5 /* HXLPersonDetailViewController.m in Sources */,
