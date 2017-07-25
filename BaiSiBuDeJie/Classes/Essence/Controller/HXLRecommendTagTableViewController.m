@@ -56,10 +56,14 @@
     return UIStatusBarStyleLightContent;
 }
 
+- (void)dealloc
+{
+    [self.sessionManager.tasks makeObjectsPerformSelector:@selector(cancel)];
+}
+
 // 初始化的基础设置
 - (void)setupUniformStyle
 {
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     self.title = @"推荐标签";
     // 行高与滚动
     self.tableView.rowHeight = 80;

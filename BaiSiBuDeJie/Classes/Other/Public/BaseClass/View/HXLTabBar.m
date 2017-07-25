@@ -9,6 +9,9 @@
 #import "HXLTabBar.h"
 #import "HXLReleaseViewController.h"
 
+#import "HXLReleasePunViewController.h"
+#import "HXLNavigationController.h"
+
 @interface HXLTabBar ()
 /** 发布按钮 */
 @property (nonatomic, weak) UIButton *releaseBtn;
@@ -70,16 +73,22 @@
 
 /** 发布按钮点击 */
 - (void)releaseBtnClick:(UIButton *)btn {
-    
+    /*
     // 获取主窗口来 modal 控制器
     HXLReleaseViewController *releaseVC = [[HXLReleaseViewController alloc] init];
     
     UIWindow *keyWindow = UIApplication.sharedApplication.keyWindow;
     UIViewController *rootVC = keyWindow.rootViewController;
-    [rootVC presentViewController:releaseVC animated:NO completion:nil];
+    [rootVC presentViewController:releaseVC animated:NO completion:nil]; */
+#warning - 为了加快调试, 直接跳转到要发布的文字页面;
     
-    NSLog(@"发布按钮点击");
-
+    // 通过 APP 类的主窗口获取, 当前窗口的根控制器;
+    UIWindow *keywidow = [UIApplication sharedApplication].keyWindow;
+    UITabBarController *tabBarC = (UITabBarController *)keywidow.rootViewController;
+    HXLReleasePunViewController *releasePunVC = [[HXLReleasePunViewController alloc] init];
+    HXLNavigationController *nav = [[HXLNavigationController alloc] initWithRootViewController:releasePunVC];
+    
+    [tabBarC.selectedViewController presentViewController:nav animated:YES completion:nil];
 }
 
 

@@ -91,10 +91,16 @@
     return UIStatusBarStyleLightContent;
 }
 
+- (void)dealloc
+{
+    [self.sessionManager.operationQueue cancelAllOperations];
+}
+
 // 初始化的基础设置
 - (void)setupUniformStyle
 {
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeCustom];
+    
     self.title = @"推荐关注";
     // 代理
     self.leftTableView.delegate = self;
@@ -137,6 +143,7 @@
         
         if (![responseObject isKindOfClass:[NSDictionary class]]) {
             NSLog(@"responseObject, 不是字典, 无数据");
+            [self loadDataFailure:self.rightTableView.mj_header];
             return ;
         }
         
@@ -150,8 +157,7 @@
         [self setupRefresh];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
-        [SVProgressHUD showErrorWithStatus:@"加载失败"];
-        [self.rightTableView.mj_header endRefreshing];
+        [self loadDataFailure:self.rightTableView.mj_header];
         
         Error(error)
     }];
@@ -184,6 +190,7 @@
         
         if (![responseObject isKindOfClass:[NSDictionary class]]) {
             NSLog(@"responseObject, 不是字典, 无数据");
+            [self loadDataFailure:self.rightTableView.mj_header];
             return ;
         }
         
@@ -202,8 +209,7 @@
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
         Error(error);
-        [SVProgressHUD showErrorWithStatus:@"主人~~~~(>_<)~~~~, 加载失败了"];
-        [self.rightTableView.mj_header endRefreshing];
+        [self loadDataFailure:self.rightTableView.mj_header];
     }];
 }
 
@@ -223,6 +229,7 @@
         
         if (![responseObject isKindOfClass:[NSDictionary class]]) {
             NSLog(@"responseObject, 不是字典, 无数据");
+           [self loadDataFailure:self.rightTableView.mj_footer];
             return ;
         }
         
@@ -244,14 +251,20 @@
 
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
         
-        [SVProgressHUD showErrorWithStatus:@"加载失败"];
-        [self.rightTableView.mj_header endRefreshing];
+        [self loadDataFailure:self.rightTableView.mj_footer];
         Error(error);
     }];
     
 }
 
 #pragma mark - 抽取方法 from 网络数据加载中
+- (void)loadDataFailure:(MJRefreshComponent *)refreshView
+{
+    [SVProgressHUD showErrorWithStatus:@"加载失败"];
+    [refreshView endRefreshing];
+    [SVProgressHUD dismissWithDelay:0.5];
+}
+
 - (void)allDataDidLoaded:(NSDictionary *)responseObject
 {
     // 每次刷新右边数据时, 都控制footer显示或者隐藏
@@ -294,11 +307,22 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // 如果点击了新的左侧分类, 先停止控件刷新
+    [self.rightTableView.mj_header endRefreshing];
+    [self.rightTableView.mj_footer endRefreshing];
+    
     if (tableView == self.leftTableView) {
+        // 如果曾今加载过, 点击左侧时, 不再重复加载右侧, 除非用户自己主动下拉
+        if (self.userArray.count) {
+            [self.rightTableView reloadData];
+        } else {
+            // 不让界面的残留数据影响视觉, 应该先立即执行一次刷新;
+            [self.rightTableView reloadData];
+            // 刷新右侧数据
+            [self.rightTableView.mj_header beginRefreshing];
+        }
         // 记录选中的左侧 cell 的索引, 以便更新参数
         self.seletedIndexPath = indexPath;
-        // 刷新右侧数据
-        [self loadNewRecommendData];
     }
     if (tableView == self.rightTableView) {
         // 跳转对应的界面

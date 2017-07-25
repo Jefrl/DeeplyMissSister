@@ -14,14 +14,15 @@
             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cute.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="2HU-3m-eLG">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="HXLPopMenu.bundle/cute.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="2HU-3m-eLG">
                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdg-S3-UTS">
                     <rect key="frame" x="181" y="0.0" width="19" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="post-tag-close-icon"/>
+                    <state key="normal" image="HXLPopMenu.bundle/post-tag-close-icon"/>
+                    <state key="highlighted" image="HXLPopMenu.bundle/post-tag-close-icon-click"/>
                     <connections>
                         <action selector="closeBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="TN3-Y0-xfs"/>
                     </connections>
@@ -33,7 +34,8 @@
         </view>
     </objects>
     <resources>
-        <image name="cute.jpg" width="200" height="200"/>
-        <image name="post-tag-close-icon" width="21" height="21"/>
+        <image name="HXLPopMenu.bundle/cute.jpg" width="16" height="16"/>
+        <image name="HXLPopMenu.bundle/post-tag-close-icon" width="16" height="16"/>
+        <image name="HXLPopMenu.bundle/post-tag-close-icon-click" width="16" height="16"/>
     </resources>
 </document>

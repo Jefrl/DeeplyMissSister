@@ -9,37 +9,59 @@
 #import "HXLReleasePunViewController.h"
 #import "HXLPostButton.h"
 #import "HXLPunView.h"
+#import "HXLPlaceHolderTextView.h"
 
 @interface HXLReleasePunViewController ()
 /** postBtn */
 @property (nonatomic, weak) HXLPostButton *postBtn;
+/** HXLPlaceHolderTextView *placeholderTextView */
+@property (nonatomic, readwrite, weak) HXLPlaceHolderTextView *placeholderTextView;
 
 @end
 
 @implementation HXLReleasePunViewController
-
+#pragma mark - 初始化
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.view.backgroundColor = RGBRandomColor;
+    
     // 设置导航条
     [self setupPostPunsNavigationBar];
-    HXLPunView *voatView = [HXLPunView loadViewFormXib:0];
-    
-    voatView.frame = CGRectMake(0, SCREEN_HEIGHT - 49*2, SCREEN_WIDTH, 49);
-    [self.view addSubview:voatView];
-
+    // 设置 textView
+    [self setupTextView];
 }
 
+- (void)test
+{
+    HXLPunView *voatView = [HXLPunView loadViewFormXib:0];
+    voatView.frame = CGRectMake(0, SCREEN_HEIGHT - 49*2, SCREEN_WIDTH, 49);
+    [self.view addSubview:voatView];
+}
 
-/** 设置导航条 */
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
+#pragma mark - 设置 textView
+- (void)setupTextView
+{
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    HXLPlaceHolderTextView *placeholderTextView = [[HXLPlaceHolderTextView alloc] init];
+    self.placeholderTextView = placeholderTextView;
+    placeholderTextView.textColor = CYAN_COLOR;
+    placeholderTextView.font = FONT_15;
+    placeholderTextView.placeholderColor = GREEN_COLOR;
+    placeholderTextView.placeholder = @"把好玩的图片，好笑的段子或糗事发到这里，接受千万网友膜拜吧！发布违反国家法律内容的，我们将依法提交给有关部门处理。";
+    placeholderTextView.frame = self.view.bounds;
+    placeholderTextView.y = NAVIGATIONBAR_HEIGHT;
+    [self.view addSubview:placeholderTextView];
+}
+
+#pragma mark - 设置导航栏
 - (void)setupPostPunsNavigationBar {
     self.navigationItem.title = @"发表文字";
-    // 1. 导航控制器的设置页面了, 非导航的根控制器了, 需要侧滑 pop 甚至全屏侧滑, 所以最好不自定义 barButtonItem; 保留导航控制器的手势代理; 就有系统自带的侧滑;
-    // (2. 否则你自定义了 Item 按钮, 你就需要在 push完后 跟 pop 完页面后在监听方法didShowViewController 恰当的清空手势代理设为nil 跟恢复手势按钮)
-    // < 3. 否则, 就干脆做一个自定义的全屏侧滑(推荐, 尤其是本身要求全屏侧滑的时候, 同时又兼容了自定义的好处)>
-    // 这里我用方法3;
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemTitle:@"取消" titltColor:WHITE_COLOR  titleSelectedColor:GRAY_COLOR fontSize:FONT_15 target:self action:@selector(cancelItemClick:) contentEdgeInsets:UIEdgeInsetsZero forControlEvents:UIControlEventTouchUpInside forcontrolState:UIControlStateHighlighted];
+    
     // 右侧发表按钮
     HXLPostButton *postBtn = [HXLPostButton buttonWithType:UIButtonTypeCustom];
     [postBtn setTitle:@"发表" forState:UIControlStateNormal];
@@ -51,24 +73,17 @@
     self.navigationItem.rightBarButtonItem.enabled = NO;
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    self.navigationItem.rightBarButtonItem.enabled = YES;
-    [_postBtn setImage:[UIImage imageNamed:@"Snip20170307_1"] forState:UIControlStateNormal];
-}
-
-/** postPunBtnClick */
 - (void)postPunBtnClick:(UIButton *)postPunBtn {
-    NSLog(@"");
+    NSLog(@"postPunBtnClick");
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
-
-/** cancelItemClick */
 - (void)cancelItemClick:(UIButton *)cancelItem {
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    self.placeholderTextView.text = @"你是谁";
+    // [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
+
 
 @end
