@@ -82,6 +82,7 @@
 		A59F83421E8CE23600A342BB /* HXLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A59F83411E8CE23600A342BB /* HXLUser.m */; };
 		A5ADEE241E76677100997971 /* HXLEssenceCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5ADEE231E76677100997971 /* HXLEssenceCollectionView.m */; };
 		A5ADEE271E766CFB00997971 /* HXLEssenceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5ADEE261E766CFB00997971 /* HXLEssenceCollectionViewCell.m */; };
+		A5AEA0CE1F29A432003C8230 /* HXLTagButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A5AEA0CD1F29A432003C8230 /* HXLTagButton.m */; };
 		A5C8CB3F1E73C2660028224E /* HXLHeadlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C8CB3E1E73C2660028224E /* HXLHeadlineView.m */; };
 		A5C8CB541E73C3160028224E /* HXLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C8CB431E73C3160028224E /* HXLNavigationController.m */; };
 		A5C8CB551E73C3160028224E /* HXLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C8CB451E73C3160028224E /* HXLTabBarController.m */; };
@@ -247,6 +248,8 @@
 		A5ADEE231E76677100997971 /* HXLEssenceCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLEssenceCollectionView.m; sourceTree = "<group>"; };
 		A5ADEE251E766CFB00997971 /* HXLEssenceCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLEssenceCollectionViewCell.h; sourceTree = "<group>"; };
 		A5ADEE261E766CFB00997971 /* HXLEssenceCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLEssenceCollectionViewCell.m; sourceTree = "<group>"; };
+		A5AEA0CC1F29A432003C8230 /* HXLTagButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLTagButton.h; sourceTree = "<group>"; };
+		A5AEA0CD1F29A432003C8230 /* HXLTagButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLTagButton.m; sourceTree = "<group>"; };
 		A5C8CB3D1E73C2660028224E /* HXLHeadlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLHeadlineView.h; sourceTree = "<group>"; };
 		A5C8CB3E1E73C2660028224E /* HXLHeadlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLHeadlineView.m; sourceTree = "<group>"; };
 		A5C8CB421E73C3160028224E /* HXLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLNavigationController.h; sourceTree = "<group>"; };
@@ -395,6 +398,8 @@
 				A551B27B1F274E370093251D /* HXLAddTagToolbar.h */,
 				A551B27C1F274E370093251D /* HXLAddTagToolbar.m */,
 				A551B27E1F274E440093251D /* HXLAddTagToolbar.xib */,
+				A5AEA0CC1F29A432003C8230 /* HXLTagButton.h */,
+				A5AEA0CD1F29A432003C8230 /* HXLTagButton.m */,
 			);
 			name = PuntView;
 			path = PostView;
@@ -1076,6 +1081,7 @@
 				A5F7AA131E79959F00F72EDD /* HXLConst.m in Sources */,
 				A5C8CB581E73C3160028224E /* HXLTabBar.m in Sources */,
 				A58C44771E8BAC1000F91698 /* HXLEssenceCommentItem.m in Sources */,
+				A5AEA0CE1F29A432003C8230 /* HXLTagButton.m in Sources */,
 				A52C40071E6E6C0F00D2DC8C /* HXLPostButton.m in Sources */,
 				A5C8CB5A1E73C3160028224E /* UIImage+HXLRenderOriginal.m in Sources */,
 				A57F5F691E63517B002BA929 /* main.m in Sources */,

@@ -70,7 +70,6 @@
 // 文字变化时
 - (void)textDidChange:(NSNotification *)sender
 {
-    NSLog(@"%@---%@---%@", sender, sender.name, sender.object);
     self.placeholderLabel.hidden = self.hasText;
 }
 

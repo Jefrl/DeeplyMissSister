@@ -38,10 +38,12 @@
 - (void)addTagButtonClick:(UIButton *)sender
 {
     HXLAddTagViewController *tagVC = [[HXLAddTagViewController alloc] init];
-    UIViewController *punVC = KEYWINDOW.rootViewController;
+    UIViewController *releasePunVC = KEYWINDOW.rootViewController;
     // 拿到被根控制器 presented 出来的那个导航控制器, 然后用这个 nav 来 push;
-    HXLNavigationController *selectedNav = (HXLNavigationController *)punVC.presentedViewController;
-    [selectedNav pushViewController:tagVC animated:YES];
+    HXLNavigationController *presentNav = (HXLNavigationController *)releasePunVC.presentedViewController;
+    NSLog(@"%@---%@", releasePunVC, presentNav);
+    
+    [presentNav pushViewController:tagVC animated:YES];
 }
 
 

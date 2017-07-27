@@ -33,11 +33,16 @@
     [self setupAddToolbar];
 }
 
-- (void)test
+- (void)viewDidAppear:(BOOL)animated
 {
-    HXLPunView *voatView = [HXLPunView loadViewFormXib:0];
-    voatView.frame = CGRectMake(0, SCREEN_HEIGHT - 49*2, SCREEN_WIDTH, 49);
-    [self.view addSubview:voatView];
+    [super viewDidAppear:animated];
+    [self.placeholderTextView becomeFirstResponder];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [self.placeholderTextView resignFirstResponder];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -61,13 +66,14 @@
     return YES;
 }
 
-#pragma mark - 设置 textView
+#pragma mark - 设置 toolbar
 - (void)setupAddToolbar
 {
     HXLAddTagToolbar *toolbar = [HXLAddTagToolbar toolbar];
     self.placeholderTextView.inputAccessoryView = toolbar;
 }
 
+#pragma mark - 设置 textView
 - (void)setupTextView
 {
     self.automaticallyAdjustsScrollViewInsets = NO;
