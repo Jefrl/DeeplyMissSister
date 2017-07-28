@@ -13,7 +13,10 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        
+        self.titleLabel.font = FONT_12;
+        [self setBackgroundColor:RGBColor(60, 120, 200, 1)];
+        [self setImage:[UIImage imageNamed:@"chose_tag_close_icon"] forState:UIControlStateNormal];
+        self.height = 3 *essenceMargin_x;
     }
     return self;
 }
@@ -23,6 +26,7 @@
     [super setTitle:title forState:state];
     [self sizeToFit];
     self.width += 3 * DIY;
+    self.height = 3 *essenceMargin_x;
 }
 
 - (void)layoutSubviews

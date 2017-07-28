@@ -174,7 +174,7 @@
     [self.tableView.mj_header beginRefreshing];
     
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreTopics)];
-//    self.tableView.mj_footer.hidden = YES;
+    self.tableView.mj_footer.hidden = YES;
 }
 
 /**
@@ -213,6 +213,8 @@
         // 页码清 0
         self.page = 0;
         
+        [self refreshTwice];
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
         // 结束刷新
         [self.tableView.mj_header endRefreshing];
@@ -221,6 +223,20 @@
         }
     }];
     
+}
+
+// 连续刷新两次, 当第一次打开应用程序时;
+- (void)refreshTwice
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self.tableView.mj_header beginRefreshing];
+        });
+        
+    });
 }
 
 /**

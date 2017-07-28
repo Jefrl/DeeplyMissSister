@@ -15,7 +15,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEy-AE-Pkp">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="77"/>
+                    <rect key="frame" x="5" y="0.0" width="365" height="77"/>
                     <color key="backgroundColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0OU-5v-HtR">
@@ -71,10 +71,10 @@
             <constraints>
                 <constraint firstItem="IEy-AE-Pkp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="VRn-dy-bvY"/>
                 <constraint firstAttribute="bottom" secondItem="0OU-5v-HtR" secondAttribute="bottom" id="WEE-wB-wad"/>
-                <constraint firstItem="IEy-AE-Pkp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="djy-Tn-85q"/>
+                <constraint firstItem="IEy-AE-Pkp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="djy-Tn-85q"/>
                 <constraint firstItem="0OU-5v-HtR" firstAttribute="top" secondItem="IEy-AE-Pkp" secondAttribute="bottom" id="gxl-qU-qcU"/>
                 <constraint firstAttribute="trailing" secondItem="0OU-5v-HtR" secondAttribute="trailing" id="v2y-Pp-9Qk"/>
-                <constraint firstAttribute="trailing" secondItem="IEy-AE-Pkp" secondAttribute="trailing" id="xa3-kI-w9U"/>
+                <constraint firstAttribute="trailing" secondItem="IEy-AE-Pkp" secondAttribute="trailing" constant="5" id="xa3-kI-w9U"/>
                 <constraint firstItem="0OU-5v-HtR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="yZ3-FB-I9b"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

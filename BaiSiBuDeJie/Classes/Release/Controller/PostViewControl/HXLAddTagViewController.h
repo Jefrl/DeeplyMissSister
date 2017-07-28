@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface HXLAddTagViewController : UIViewController
+/** textArray */
+@property (nonatomic, readwrite, copy) NSArray *textArray;
+/** textBlock */
+@property (nonatomic, readwrite, copy) void (^textBlock)(NSArray *tagTextArray);
 
 @end
