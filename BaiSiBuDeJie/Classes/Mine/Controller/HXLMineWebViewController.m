@@ -39,8 +39,8 @@
     //        weakSelf.progressV.hidden = (progress == 1.0);
     //    };
     
-     _progressProxy = [[NJKWebViewProgress alloc] init];
     // 进度对象的代理设置为 self, 实现进度方法
+     _progressProxy = [[NJKWebViewProgress alloc] init];
      _progressProxy.progressDelegate = self;
     
     // 首先进度对象设置为 webView 的代理

@@ -46,11 +46,11 @@
     if (!_plusBtn) {
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        
+        btn.backgroundColor = GREEN_COLOR;
         [btn setImage:[UIImage imageNamed:@"tag_add_icon"]  forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(addTagButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         
-        btn.x = essenceMargin_x;
+        btn.x = 0;
         btn.size = btn.currentImage.size;
         btn.height = 3 * essenceMargin_x;
         
@@ -119,7 +119,9 @@
         self.plusBtn.y = lastTagLabel.y;
     }
     
-    
+    // xib 的整体高度 = topView.height + 40;
+    CGFloat lastLabelHeight = CGRectGetMaxY(self.plusBtn.frame) + 40;
+    self.height = lastLabelHeight;
     
 }
 

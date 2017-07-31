@@ -7,6 +7,8 @@
 //
 
 #import "HXLMineViewController.h"
+#import "HXLSettingTableViewController.h"
+
 #import "HXLMineTableViewCell.h"
 #import "HXLMineFootView.h"
 
@@ -36,7 +38,7 @@
     
     // 系统滚动设置self.automaticallyAdjustsScrollViewInsets = NO;
     // 由于自定义了滚动, tableView 的头部增加64, 每个 section 的底部调整10
-    self.tableView.contentInset = UIEdgeInsetsMake( - mineSectionSroll + essenceMargin_y, 0, 843.75 - 2 * essenceMargin_y, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake( - mineSectionSroll + essenceMargin_y, 0, 937.50 - 2 * essenceMargin_y, 0);
     self.tableView.backgroundColor = GRAY_PUBLIC_COLOR;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     // 组高设置(不然会有默认值)
@@ -109,7 +111,8 @@
 }
 
 - (void)right1_BarBtnItemClick:(UIButton *)btn {
-    NSLog(@"右侧第一个 Item 被点击了");
+    HXLSettingTableViewController *settingTVC = [[HXLSettingTableViewController alloc] init];
+    [self.navigationController pushViewController:settingTVC animated:YES];
 }
 
 - (void)right2_BarBtnItemClick:(UIButton *)btn {

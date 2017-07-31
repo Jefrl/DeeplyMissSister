@@ -422,12 +422,13 @@
     UIMenuController *menu = [UIMenuController sharedMenuController];
     HXLCommentTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
+    // 重复点击同一个 cell 时, 让 menu 消失;
     if (menu.isMenuVisible) { // 当点击另一个 cell 时, 失去响应者的 menu 会变成不可见, 所以此判断才成立.
         [menu setMenuVisible:NO animated:YES];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         return;
     }
-        
+    
         [cell becomeFirstResponder];
         UILabel *coment = [cell valueForKey:@"comment"];
         

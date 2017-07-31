@@ -66,6 +66,7 @@
 // 导航条 & UITabBar 条的高度
 #define NAVIGATIONBAR_HEIGHT (20 + 44)
 #define TABBAR_HEIGHT 49
+#define NSLogTest NSLog(@"") 
 
 // 统一日志输出
 #ifdef DEBUG  // 调试阶段
@@ -73,6 +74,9 @@
 #else  // 发布阶段
 #define NSLog(...)
 #endif
+
+// 读取当前版本, 对比偏好设置中记录的版本
+#define CURRENT_VERSION [NSBundle mainBundle].infoDictionary[versionKey]
 
 // 主窗口
 #define KEYWINDOW [UIApplication sharedApplication].keyWindow

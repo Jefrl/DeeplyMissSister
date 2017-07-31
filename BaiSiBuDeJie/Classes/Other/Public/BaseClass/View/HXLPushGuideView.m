@@ -21,8 +21,6 @@
     return [self loadViewFormXib:0];
 }
 
-static NSString *versionKey = @"CFBundleShortVersionString";
-
 + (void)show
 {
     // 读取当前版本, 对比偏好设置中记录的版本

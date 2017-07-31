@@ -64,29 +64,26 @@
         CGFloat imageW = self.width;
         CGFloat imageH = self.height;
         
-        if (self.type != HXLTopicTypeWord) { // 图片
-            if (self.is_gif) { // GIF 图片,且始终无大图模式
+        self.isBigPicture = NO;
+        
+        if (self.type != HXLTopicTypeWord) { // 如果非文字类型
+            CGFloat tmpH;
+            tmpH = imageH * small_SCREEN_WIDTH  / imageW;
+            
+            if (imageW > SCREEN_WIDTH) {
+                tmpH = imageH * small_SCREEN_WIDTH / imageW;
                 
-                self.isBigPicture = NO;
-                imageH = imageH * small_SCREEN_WIDTH  / imageW;
-                
-            } else {
-                
-                if (imageW > SCREEN_WIDTH) {
-                    imageH = imageH * small_SCREEN_WIDTH / imageW;
+                if (tmpH > SCREEN_HEIGHT * 0.8) {
+                    self.isBigPicture = YES;
                     
-                    if (imageH > SCREEN_HEIGHT * 0.8) {
-                        self.isBigPicture = YES;
-                        
-                        imageH = SCREEN_HEIGHT * 0.8;
-                    }
-                    
+                    tmpH = SCREEN_HEIGHT * 0.8;
                 }
+                
             }
             
-            _pictureFrame = CGRectMake(0, self.sumHight, small_SCREEN_WIDTH, imageH);
+            _pictureFrame = CGRectMake(0, self.sumHight, small_SCREEN_WIDTH, tmpH);
             
-            _cellHeight = _cellHeight + imageH;
+            _cellHeight = _cellHeight + tmpH;
             
         } else if(self.type == HXLTopicTypeVideo ) {
             
@@ -104,5 +101,6 @@
     
     return _cellHeight;
 }
+
 
 @end

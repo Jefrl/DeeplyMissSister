@@ -33,8 +33,6 @@
 @property (nonatomic, strong) NSArray *hottestArray;
 /** 帖子所有热评模型数组(有多组) */
 @property (nonatomic, strong) NSMutableArray *allHots;
-/** responseDict */
-@property (nonatomic, strong) NSDictionary *responseDict;
 /** cell 保存? */
 @property (nonatomic, strong) HXLPunTableViewCell *cell;
 /** dict */
@@ -196,7 +194,8 @@
     
     // 请求发出
     [self.sessionManager request:RequestTypeGet URLString:HXLPUBLIC_URL parameters:params success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
-        WriteToPlist(_responseDict, @"pun", @(self.type))
+       
+        WriteToPlist(responseObject, @"pun", @(self.type))
         
         self.maxtime =  responseObject[@"info"][@"maxtime"];
         if (self.params != params) { // 判断是否 在加载过程中, 用户将对应的父控制器(精华控制器) 切换到了 最新控制器!
@@ -205,7 +204,7 @@
         
         // 字典数组转 模型数组
         self.itemArrayM = [HXLEssenceItem mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
-        
+
         // 获得新数据, 刷新界面
         [self.tableView reloadData];
         // 结束刷新
@@ -260,7 +259,7 @@
     
     // 请求发出
     [self.sessionManager request:RequestTypeGet URLString:HXLPUBLIC_URL parameters:params success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
-        WriteToPlist(_responseDict, @"pun", @(self.type))
+        WriteToPlist(responseObject, @"pun", @(self.type))
         self.maxtime =  responseObject[@"info"][@"maxtime"];
         
         if (self.params != params) { // 判断是否 在加载过程中, 用户将精华控制器 切换到了 最新控制器!

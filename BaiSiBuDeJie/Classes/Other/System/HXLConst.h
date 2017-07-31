@@ -15,6 +15,9 @@ typedef enum {
     HXLTopicTypeVideo = 41
 } HXLTopicType;
 
+// 获取版本号的 key 值 versionKey
+UIKIT_EXTERN NSString *const versionKey;
+
 // 基类的容器控件上, 中的高度, 竖直, 水平方向的间隙值
 UIKIT_EXTERN CGFloat const containTopView_hight;
 UIKIT_EXTERN CGFloat const containDingView_hight;
@@ -23,10 +26,13 @@ UIKIT_EXTERN CGFloat const essenceMargin_y;
 UIKIT_EXTERN CGFloat const essenceMargin_x;
 // 只是为了透彻, setFrame 跟 layoutsubViews 的自娱;
 UIKIT_EXTERN CGFloat const DIY;
+
 // 用户头像 icon 的占位小图片名
 UIKIT_EXTERN NSString *const placeholder;
 // 用户头像 icon 的占位大图片名
 UIKIT_EXTERN NSString *const bigplaceholder;
+// 设置界面重用标识
+UIKIT_EXTERN NSString * const settingReuseID;
 
 // 基类(也是段子)的重用标识;
 UIKIT_EXTERN NSString * const pun_reuseID;

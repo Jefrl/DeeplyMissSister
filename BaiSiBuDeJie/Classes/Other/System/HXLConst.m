@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+
+// 获取版本号的 key 值 versionKey
+NSString *const versionKey = @"CFBundleShortVersionString";
+
 // 基类的容器控件上, 中的高度, 竖直, 水平方向的间隙值
 CGFloat const containTopView_hight = 50;
 CGFloat const containDingView_hight = 40;
@@ -18,6 +22,8 @@ CGFloat const DIY = 5;
 NSString *const placeholder = @"default_header_image_small";
 // 用户头像 icon 的占位大图片名
 NSString *const bigplaceholder = @"default_header_image_big";
+// 设置界面重用标识
+NSString * const settingReuseID = @"settingReuseID";
 
 // 基类(也是段子)的重用标识;
 NSString * const pun_reuseID = @"punCell";

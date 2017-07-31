@@ -9,6 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @interface UIView (HXLGeometry)
+
+/**
+ UIView 扩展一个判断图片的真实类型的方法
+ 
+ @param data 图片的二进制流
+ @return 图片类型字符串
+ */
+- (NSString *)contentTypeForImageData:(NSData *)data;
+
 /** xib 的加载 */
 + (instancetype)loadViewFormXib:(NSInteger)index;
 /** 当前 View 是否在主窗口上 */

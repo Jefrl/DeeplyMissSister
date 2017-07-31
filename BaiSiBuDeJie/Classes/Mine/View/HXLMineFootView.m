@@ -133,7 +133,7 @@
     _squareHeight = _squareWidth;
     // 底部滚动需要调整高度
     self.height = _rows * _squareHeight;
-    NSLog(@"%.2f", self.height);
+    NSLog(@"_squareWidth: %.2f, footViewHeight: %.2f", _squareWidth, self.height);
 }
 
 - (void)squareBtnClick:(HXLSquareButton *)sender
