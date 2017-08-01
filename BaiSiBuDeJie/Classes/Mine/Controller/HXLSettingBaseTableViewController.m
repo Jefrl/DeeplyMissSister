@@ -19,6 +19,7 @@
 
 #import "SDImageCache.h"
 #import "MJExtension.h"
+#import "SVProgressHUD.h"
 
 @interface HXLSettingBaseTableViewController ()
 
@@ -67,7 +68,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     HXLSettingTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    if (cell.settingItem.operationIndexPath) {
+        cell.settingItem.operationIndexPath(indexPath);
+    }
+    
     if (cell.settingItem.operation) {
         cell.settingItem.operation();
     } else if ([cell.settingItem isKindOfClass:[HXLSettingArrowItem class]]) {
@@ -76,25 +84,35 @@
         UIViewController *pushVC = nil;
         if (item.objectClass) { // 如果指定控制器
             pushVC  = [[item.objectClass alloc] init];
-            
-        } else { // 否则统一跳转一个控制, 暂时先;
-            pushVC  = [[HXLArrowTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        } else { // 否则统一暂不跳转
         }
         
         pushVC.title = item.title;
         [self.navigationController pushViewController:pushVC animated:YES];
     }
     
-    if (indexPath.section == 1 && indexPath.row == 0) {
+    if ([cell.textLabel.text containsString:@"清除缓存"]) {
         // 清空缓存
         [[SDImageCache sharedImageCache] clearDiskOnCompletion:nil];
-        
         [tableView reloadData];
-        
+        [self popSVProgress];
     }
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
+- (void)popSVProgress
+{
+    [SVProgressHUD showSuccessWithStatus:@"清除缓存成功 !"];
+//    小窗设置, 但在 SVProgressHUDStyleCustom 下, 才生效;
+//    盖板设置, 但在 SVProgressHUDMaskTypeCustom 下, 才生效;
+    [SVProgressHUD setBackgroundColor:RGBColor(0, 0, 0, 0.5)];
+    [SVProgressHUD setForegroundColor:RGBColor(255, 255, 255, 0.5)];
+    [SVProgressHUD setBackgroundLayerColor:RGBColor(0, 0, 0, 0.5)];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeCustom];
+    [SVProgressHUD setMinimumSize:CGSizeMake(100, 100)];
+    [SVProgressHUD dismissWithDelay:0.5];
+}
+
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

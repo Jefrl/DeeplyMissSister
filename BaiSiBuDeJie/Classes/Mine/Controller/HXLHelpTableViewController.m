@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    self.tableView.backgroundColor = GREEN_COLOR;
 }
 
 @end

@@ -42,7 +42,7 @@
         HXLSettingArrowItem *item02 = [HXLSettingArrowItem itemWithTitle:@"通知设置" icon:nil];
         item02.title = @"通知设置";
         
-        // 具备跳转功能 --- block 方式
+        // 具备跳转功能 --- 绑定了 block 方式
         HXLNotificationTableViewController *notiTVC = [[HXLNotificationTableViewController alloc] init];
         notiTVC.title = item02.title;
         
@@ -141,55 +141,6 @@
 
 
 @end
-
-
-/*
-
-if (indexPath.section == 0) {
-    NSInteger row = indexPath.row;
-    if (row == 0) {
-        
-        cell.textLabel.text = @"字体大小";
-    } else if (row == 1) {
-        cell.accessoryType = UIAccessibilityTraitButton;
-        cell.textLabel.text = @"通知设置";
-    } else if (row == 2) {
-        
-        cell.textLabel.text = @"应用内私心提醒";
-        
-    }
-} else {
-    NSInteger row = indexPath.row;
-    if (row == 0) {
-        CGFloat cacheSize = [SDImageCache sharedImageCache].getSize / 1000.0 / 1000;
-        NSLog(@"%.2f", cacheSize);
-        cell.textLabel.text = [NSString stringWithFormat:@"清除缓存 (已使用%.2f MB)", cacheSize];
-        cell.accessoryType = UIAccessibilityTraitButton;
-    } else if (row == 1) {
-        cell.textLabel.text = @"推荐给朋友";
-        cell.accessoryType = UIAccessibilityTraitButton;
-    } else if (row == 2) {
-        cell.textLabel.text = @"帮助";
-        cell.accessoryType = UIAccessibilityTraitButton;
-    } else if (row == 3) {
-        NSString *currentVersion = [NSString stringWithFormat:@"当前版本: %@", CURRENT_VERSION];
-        cell.textLabel.text = currentVersion;
-        
-    } else if (row == 4) {
-        cell.textLabel.text = @"关于我们";
-        cell.accessoryType = UIAccessibilityTraitButton;
-    } else if (row == 5) {
-        cell.textLabel.text = @"隐私政策";
-        cell.accessoryType = UIAccessibilityTraitButton;
-    } else if (row == 6) {
-        cell.textLabel.text = @"打分支持不得姐";
-        cell.accessoryType = UIAccessibilityTraitButton;
-    }
-    
-}
-
-
- */
 
 /*
 - (void)getSize2
