@@ -13,6 +13,10 @@
 #import "HXLPunTableVC.h"
 #import "HXLVoiceTableVC.h"
 #import "HXLRecommendTagTableViewController.h"
+<<<<<<< HEAD
+=======
+
+>>>>>>> d105a9f04d9fdc7a8a9f5d0df9022b9c53a12b31
 #import "HXLHeadlineView.h"
 
 #import "HXLTabBarController.h"
