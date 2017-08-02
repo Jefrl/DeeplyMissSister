@@ -7,6 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef NS_ENUM(NSInteger, ButtonType)
+{
+    ButtonTypePostVideo = 0,
+    ButtonTypePostPicture,
+    ButtonTypePostPun,
+    ButtonTypePostVoice,
+    ButtonTypePostLink
+    
+};
 
 @interface HXLReleaseViewController : UIViewController
 

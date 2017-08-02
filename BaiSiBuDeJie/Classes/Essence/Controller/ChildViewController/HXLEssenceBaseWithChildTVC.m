@@ -33,8 +33,6 @@
 @property (nonatomic, strong) NSArray *hottestArray;
 /** 帖子所有热评模型数组(有多组) */
 @property (nonatomic, strong) NSMutableArray *allHots;
-/** responseDict */
-@property (nonatomic, strong) NSDictionary *responseDict;
 /** cell 保存? */
 @property (nonatomic, strong) HXLPunTableViewCell *cell;
 /** dict */
@@ -65,7 +63,7 @@
 #pragma mark - Lazy load
 - (NSString *)essenceOrLastestA
 {
-    _essenceOrLastestA = [self.parentViewController isKindOfClass:[HXLEssenceViewController class]] ? @"list" : @"newlist";
+    _essenceOrLastestA = [self.parentViewController isMemberOfClass:[HXLEssenceViewController class]] ? @"list" : @"newlist";
     
     return _essenceOrLastestA;
 }
@@ -131,7 +129,6 @@
 
 - (void)getNotiTabBarbtn:(NSNotification *)noti
 {
-    NSLog(@"");
     [self.tableView.mj_header beginRefreshing];
 }
 
@@ -175,6 +172,7 @@
     [self.tableView.mj_header beginRefreshing];
     
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreTopics)];
+    self.tableView.mj_footer.hidden = YES;
 }
 
 /**
@@ -196,7 +194,8 @@
     
     // 请求发出
     [self.sessionManager request:RequestTypeGet URLString:HXLPUBLIC_URL parameters:params success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
-        WriteToPlist(_responseDict, @"pun", @(self.type))
+       
+        WriteToPlist(responseObject, @"pun", @(self.type))
         
         self.maxtime =  responseObject[@"info"][@"maxtime"];
         if (self.params != params) { // 判断是否 在加载过程中, 用户将对应的父控制器(精华控制器) 切换到了 最新控制器!
@@ -205,13 +204,15 @@
         
         // 字典数组转 模型数组
         self.itemArrayM = [HXLEssenceItem mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
-        
+
         // 获得新数据, 刷新界面
         [self.tableView reloadData];
         // 结束刷新
         [self.tableView.mj_header endRefreshing];
         // 页码清 0
         self.page = 0;
+        
+        [self refreshTwice];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
         // 结束刷新
@@ -221,6 +222,20 @@
         }
     }];
     
+}
+
+// 连续刷新两次, 当第一次打开应用程序时;
+- (void)refreshTwice
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self.tableView.mj_header beginRefreshing];
+        });
+        
+    });
 }
 
 /**
@@ -244,7 +259,7 @@
     
     // 请求发出
     [self.sessionManager request:RequestTypeGet URLString:HXLPUBLIC_URL parameters:params success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
-        WriteToPlist(_responseDict, @"pun", @(self.type))
+        WriteToPlist(responseObject, @"pun", @(self.type))
         self.maxtime =  responseObject[@"info"][@"maxtime"];
         
         if (self.params != params) { // 判断是否 在加载过程中, 用户将精华控制器 切换到了 最新控制器!
@@ -273,6 +288,8 @@
 
 #pragma mark - TableView Delegate or DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    self.tableView.mj_footer.hidden = (self.itemArrayM.count == 0);
     return self.itemArrayM.count;
 }
 

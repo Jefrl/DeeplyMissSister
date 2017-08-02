@@ -9,6 +9,7 @@
 #import "UIImage+HXLRenderOriginal.h"
 
 @implementation UIImage (HXLRenderOriginal)
+
 + (UIImage *)imageRenderingModeAlwaysOriginal:(UIImage *)image
 {
     
@@ -36,10 +37,15 @@
     return resizableImage;
 }
 
-+ (UIImage *)imageWithURLString:(NSString *)nameString
++ (NSData *)dataWithURLString:(NSString *)urlString
 {
-    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: nameString]]];
-    
+    return [NSData dataWithContentsOfURL:[NSURL URLWithString: urlString]];
+}
+
++ (UIImage *)imageWithURLString:(NSString *)urlString
+{
+    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: urlString]]];
+
     return image;
 }
 

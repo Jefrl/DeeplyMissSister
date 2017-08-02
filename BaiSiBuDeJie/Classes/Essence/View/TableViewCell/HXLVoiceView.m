@@ -42,8 +42,7 @@
     
     showBigPicVC.punCellItem = self.punCellItem;
     
-    UIViewController *rootVC = KEYWINDOW.rootViewController;
-    
+    UITabBarController *rootVC = (UITabBarController *)KEYWINDOW.rootViewController;
     [rootVC presentViewController:showBigPicVC animated:YES completion:nil];
     
 }

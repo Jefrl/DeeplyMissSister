@@ -33,6 +33,8 @@
 @property (nonatomic, assign, getter=isSina_v) BOOL sina_v;
 /** is_gif 是 GIF图片 */
 @property (nonatomic, assign) BOOL is_gif;
+/** isRealGif */
+@property (nonatomic, readwrite, assign) BOOL isRealGif;
 /** 图片的宽度 */
 @property (nonatomic, assign) CGFloat width;
 /** 图片的高度 */
