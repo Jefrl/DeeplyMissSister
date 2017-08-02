@@ -36,7 +36,7 @@
     HXLShowBigPictureViewController *showBigPicVC = [[HXLShowBigPictureViewController alloc] init];
     showBigPicVC.punCellItem = self.punCellItem;
     
-    UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    UIViewController *rootVC = KEYWINDOW.rootViewController;
     
     [rootVC presentViewController:showBigPicVC animated:YES completion:nil];
     
@@ -64,6 +64,9 @@
 #pragma mark - setter zone
 - (void)setPunCellItem:(HXLEssenceItem *)punCellItem
 {
+    self.seeBigButton.hidden = YES;
+    self.gifImageView.hidden = YES;
+    
     _punCellItem = punCellItem;
 
     // 立马显示最新的进度值(防止因为网速慢, 导致显示的是其他图片的下载进度)
@@ -116,17 +119,50 @@
     }];
     
     if (_punCellItem.isBigPicture) {
-        self.gifImageView.hidden = YES;
         self.seeBigButton.hidden = NO;
     }
     
+//    [self validateGif];
     if (_punCellItem.is_gif) {
-
-        self.seeBigButton.hidden = YES;
         self.gifImageView.hidden = NO;
     }
     
 }
 
+
+/**
+// 是否开启图片真实格式判断;
+// 但是有点耗性能啊, 如果开子线程, 后期刷新, 那么意义不大, 控件突然出现的感觉;
+- (void)validateGif
+{
+    _punCellItem.isRealGif = NO;
+    
+    NSData *dataImage = [NSData dataWithContentsOfURL:[NSURL URLWithString:_punCellItem.small_image]];
+    NSString *imageType = [self contentTypeForImageData:dataImage];
+    
+    NSLog(@"%@", imageType);
+    if ([imageType isEqualToString:@"gif"]) {
+        //  这个属性后台不处理, 标记的 GIF 有假的;
+        _punCellItem.isRealGif = YES;
+        _punCellItem.is_gif = YES;
+        
+        [self performSelectorOnMainThread:@selector(refresh) withObject:nil waitUntilDone:YES];
+    }
+}
+
+- (void)refresh
+{
+    LogTest;
+    UITabBarController *tabC = (UITabBarController *)KEYWINDOW.rootViewController;
+    UINavigationController *nav = tabC.selectedViewController;
+    UIViewController *essVC = nav.topViewController;
+    UITableViewController *tabVC = essVC.childViewControllers.firstObject;
+    
+    NSLog(@"%@---%@---%@---%@", tabC, nav, essVC, tabVC);
+    
+//    [tabVC.tableView reloadData];
+}
+
+*/
 
 @end

@@ -39,8 +39,8 @@
         CGFloat unitInterval = 0.1;
         NSArray *timeArray = @[
                                @(2 * unitInterval), //发视频
-                               @(4 * unitInterval), //发段子
-                               @(3 * unitInterval), //发图片
+                               @(4 * unitInterval), //发图片
+                               @(3 * unitInterval), //发段子
                                @(0 * unitInterval), //发声音
                                @(1 * unitInterval), //发链接
                                @(5 * unitInterval)  //发口号标题;
@@ -53,8 +53,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.view.backgroundColor = RGBRandomColor;
     
     [self setup];
 
@@ -161,16 +159,18 @@
     }
 }
 
+
+
 /** 五个按钮的点击事件 */
 - (void)btnClick:(UIButton *)btn {
     NSInteger num = btn.tag;
-    if (num == 0) { // 视频
+    if (num == ButtonTypePostVideo) { // 视频
         NSLog(@"%@", _labelArray[num]);
         [self btnViewDisappearWithPop:nil];
-    } else if (num == 1) { // 图片
+    } else if (num == ButtonTypePostPicture) { // 图片
         NSLog(@"%@", _labelArray[num]);
         [self btnViewDisappearWithPop:nil];
-    } else if (num == 2) { // 段子
+    } else if (num == ButtonTypePostPun) { // 段子
         NSLog(@"%@", _labelArray[num]);
         
         // 定义一个 block, 动画完成后执行
@@ -187,10 +187,10 @@
         // 动画
         [self btnViewDisappearWithPop:complete_block];
         
-    } else if (num == 3) { // 声音
+    } else if (num == ButtonTypePostVoice) { // 声音
         NSLog(@"%@", _labelArray[num]);
         [self btnViewDisappearWithPop:nil];
-    } else if (num == 4) { // 链接
+    } else if (num == ButtonTypePostLink) { // 链接
         NSLog(@"%@", _labelArray[num]);
         [self btnViewDisappearWithPop:nil];
     }
@@ -232,13 +232,12 @@
         animation.springBounciness = HXLSPRING_SPEEDBOUNDCE;
         animation.beginTime = CACurrentMediaTime() + [self.timeArray[i] doubleValue];
         
-        
         HXL_WEAKSELF; // 弱指向
         if (i == totalCount - 1) { // 最后一个动画了
             [animation setCompletionBlock:^(POPAnimation *animation, BOOL finished) {
                 HXL_STRONGSELF;
                 
-                // 有没有循环引用呢?!
+                // 有没有循环引用呢, 代码块执行完毕, 这里为局部变量, 会释放;
                 [strongSelf dismissViewControllerAnimated:NO completion:nil];
                 
                 // block 有值才调用

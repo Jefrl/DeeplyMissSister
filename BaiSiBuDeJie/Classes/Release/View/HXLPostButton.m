@@ -36,4 +36,5 @@
     self.titleLabel.size = CGSizeMake(self.imageView.width - 2*space, self.imageView.height - 2*space);
     self.titleLabel.center = self.imageView.center;
 }
+
 @end

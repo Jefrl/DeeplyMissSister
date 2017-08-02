@@ -33,8 +33,6 @@
 @property (nonatomic, readwrite, strong) NSMutableArray *commentArray;
 /** 最热模型数组 */
 @property (nonatomic, readwrite, strong) NSArray *hotArray;
-/** coverView */
-@property (nonatomic, readwrite, strong) HXLCoverView *coverView;
 /** popMenu */
 @property (nonatomic, readwrite, strong) HXLPopMenu *popMenu;
 /** duration */
@@ -75,16 +73,14 @@
     return _sessionManager;
 }
 
-#pragma mark - Initialization settings
+#pragma mark - Setup Init
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // 统一设置区域
     [self setupUniformStyle];
     // 网络加载
     [self setupRefresh];
-    // 注册通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 
 }
 
@@ -115,28 +111,39 @@
     [self.sessionManager invalidateSessionCancelingTasks:YES];
 }
 
-#pragma mark - 优化抽取的功能方法大区域
+#pragma mark - 抽取的方法 from Init Setting
 - (void)setupUniformStyle
 {
-    // 基本设置 comment_nav_item_share_icon_click
-    self.title = @"评论";
-    self.tableView.estimatedRowHeight = 44;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    self.tableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, TABBAR_HEIGHT, 0);
-    self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+    // 基本设置
+    [self setupBase];
     
     // 搭建 tableView 的头部视图
     [self setupTableHeaderView];
     
+    // 注册通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+}
+
+- (void)setupBase
+{
+    // 右侧导航 item
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonItemImage:[UIImage imageNamed:@"comment_nav_item_share_icon"] selectedImage:[UIImage imageNamed:@"comment_nav_item_share_icon_click"] addTarget:self action:@selector(rightBarButtonItemClick:) contentEdgeInsets:UIEdgeInsetsMake(0, 0, 0, -DIY) forControlEvents:UIControlEventTouchUpInside forcontrolState:UIControlStateHighlighted];
+    
+    self.title = @"评论";
+    self.tableView.estimatedRowHeight = 44;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    // 系统滚动内边距调整
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.tableView.contentInset = UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, TABBAR_HEIGHT, 0);
+    self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
     // 去掉 多余 cell 中的分割线
     self.tableView.tableFooterView = [[UIView alloc] init];
-    
     // 注册 cell;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([HXLCommentTableViewCell class]) bundle:nil] forCellReuseIdentifier:cmt_reuseID];
 }
 
+// 搭建 tableView 的头部视图
 - (void)setupTableHeaderView
 {
     HXLPunTableViewCell *cell = [HXLPunTableViewCell loadViewFormXib:0];
@@ -156,6 +163,11 @@
     // 当把自定义的头部视图, 加入赋值给 tableView时, cell 所属的类中的 layoutsubViews 就会被调用, 这也是我们包裹 UIView 的原因
     self.tableView.tableHeaderView = header;
     
+}
+
+- (void)rightBarButtonItemClick:(UIBarButtonItem *)sender
+{
+    NSLog(@"右侧分享按钮点击");
 }
 
 #pragma mark - 监听到键盘变化所执行的方法 keyboardWillChangeFrame
@@ -178,24 +190,27 @@
     [self setupCoverView:CGRectMake(0, 0, SCREEN_WIDTH, self.bottomView.y)];
 }
 
-#pragma mark - 加蒙板跟弹收动画区域
+#pragma mark - 设置蒙板跟弹窗口区域
 - (void)setupCoverView:(CGRect)frame
 {
-    self.coverView = [[HXLCoverView alloc] initWithFrame:frame];
-    UITapGestureRecognizer *tapGest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(coverViewTap)];
-    [self.coverView addGestureRecognizer:tapGest];
-    
-    HXLPopMenu *popMenu = [HXLPopMenu showInCenter:self.coverView.center animateWithDuration:self.duration];
+    HXLCoverView *coverView = [HXLCoverView coverViewWithFrame:frame];
+    HXLPopMenu *popMenu = [HXLPopMenu popMenu];
     self.popMenu = popMenu;
     
-    // 定义 popMenBlock
+    UITapGestureRecognizer *tapGest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(coverViewTap)];
+    [coverView addGestureRecognizer:tapGest];
     
+    [popMenu showInCenter:coverView.center animateWithDuration:self.duration completion:^{
+        [coverView show];
+    }];
+    
+    // 定义 popMenBlock
     HXL_WEAKSELF;
     self.popMenu.popMenBlock = ^() {
         HXL_STRONGSELF;
         
         [strongSelf.popMenu hideInCenter:CGPointZero animateWithDuration:strongSelf.duration completion:^{
-            [strongSelf.coverView removeFromSuperview];
+            [coverView removeFromSuperview];
         }];
         
         [strongSelf.view endEditing:YES];
@@ -209,34 +224,6 @@
 }
 
 #pragma mark - LoadData
-#pragma mark - LoadData 抽取的方法
-- (void)alldataDidLoadByPullup
-{
-    NSInteger total = [self.responseObject[@"total"] integerValue];
-    if (self.commentArray.count >= total) {
-        // 结束刷新状态
-        [self.tableView.mj_footer endRefreshing];
-        self.tableView.mj_footer.hidden = YES;
-    } else {
-        // 结束刷新状态
-        [self.tableView.mj_footer endRefreshing];
-    }
-}
-
-- (void)alldataDidLoadByPulldown
-{
-    NSInteger total = [self.responseObject[@"total"] integerValue];
-    if (self.commentArray.count >= total) {
-        // 结束刷新状态
-        [self.tableView.mj_header endRefreshing];
-        self.tableView.mj_header.hidden = YES;
-    } else {
-        // 结束刷新状态
-        [self.tableView.mj_header endRefreshing];
-    }
-}
-
-
 // 上下拉控件初始化
 - (void)setupRefresh
 {
@@ -342,11 +329,39 @@
     }];
 }
 
+#pragma mark - 抽取的方法 from LoadData
+- (void)alldataDidLoadByPullup
+{
+    NSInteger total = [self.responseObject[@"total"] integerValue];
+    if (self.commentArray.count >= total) {
+        // 结束刷新状态
+        [self.tableView.mj_footer endRefreshing];
+        self.tableView.mj_footer.hidden = YES;
+    } else {
+        // 结束刷新状态
+        [self.tableView.mj_footer endRefreshing];
+    }
+}
+
+- (void)alldataDidLoadByPulldown
+{
+    NSInteger total = [self.responseObject[@"total"] integerValue];
+    if (self.commentArray.count >= total) {
+        // 结束刷新状态
+        [self.tableView.mj_header endRefreshing];
+        self.tableView.mj_footer.hidden = YES;
+    } else {
+        // 结束刷新状态
+        [self.tableView.mj_header endRefreshing];
+    }
+}
 
 #pragma mark - TableView Delegate or DataSource
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     [self.view endEditing:YES];
+    
+    [[UIMenuController sharedMenuController] setMenuVisible:NO animated:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -374,16 +389,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
      HXLCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cmt_reuseID forIndexPath:indexPath];
-    
-    if (indexPath.section == 0) {
-        
-        cell.commentItem = self.hotArray.count ? self.hotArray[indexPath.row] : self.commentArray[indexPath.row];
-        
-    } else {
-        
-        cell.commentItem = self.commentArray[indexPath.row];
-    }
-    
+    cell.commentItem = [self itemByIndexPath:indexPath];
+
     return cell;
 }
 
@@ -410,7 +417,68 @@
     
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIMenuController *menu = [UIMenuController sharedMenuController];
+    HXLCommentTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    // 重复点击同一个 cell 时, 让 menu 消失;
+    if (menu.isMenuVisible) { // 当点击另一个 cell 时, 失去响应者的 menu 会变成不可见, 所以此判断才成立.
+        [menu setMenuVisible:NO animated:YES];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        return;
+    }
+    
+        [cell becomeFirstResponder];
+        UILabel *coment = [cell valueForKey:@"comment"];
+        
+        UIMenuItem *ding = [[UIMenuItem alloc] initWithTitle:@"顶" action:@selector(ding:)];
+        UIMenuItem *replay = [[UIMenuItem alloc] initWithTitle:@"回复" action:@selector(replay:)];
+        UIMenuItem *report = [[UIMenuItem alloc] initWithTitle:@"举报" action:@selector(report:)];
+        menu.menuItems = @[ding, replay, report];
+        [menu setTargetRect:coment.bounds inView:coment];
+        [menu setMenuVisible:YES animated:YES];
+    
+    //消除cell选择痕迹
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+}
 
+#pragma mark - 抽取的方法 From/TableView Delegate or DataSource
+- (HXLEssenceCommentItem *)itemByIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        
+        HXLEssenceCommentItem *commentItem = self.hotArray.count ? self.hotArray[indexPath.row] : self.commentArray[indexPath.row];
+        return commentItem;
+    }
+    
+    return self.commentArray[indexPath.row];
+}
+
+- (void)ding:(UIMenuController *)menu
+{
+    [self getContent];
+}
+
+- (void)replay:(UIMenuController *)menu
+{
+    [self getContent];
+}
+
+- (void)report:(UIMenuController *)menu
+{
+    [self getContent];
+}
+
+- (void)getContent {
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    HXLEssenceCommentItem *cmtItem = [self itemByIndexPath:indexPath];
+    NSString *content = cmtItem.content;
+    
+    [self.commentTF becomeFirstResponder];
+    NSLog(@"%@", content);
+}
 
  
 @end

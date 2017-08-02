@@ -14,18 +14,5 @@
     // 取消高亮效果
 }
 
-//- (instancetype)initWithFrame:(CGRect)frame {
-//    if (self == [super initWithFrame:frame]) {
-//        self.titleLabel.textAlignment = NSTextAlignmentCenter;
-//    }
-//    return self;
-//}
-//
-//- (void)layoutSubviews {
-//    [super layoutSubviews];
-//    self.imageView.frame = CGRectZero;
-//    self.titleLabel.frame = CGRectMake(0, 0, self.width, HeadlineView_height);
-//}
-
 
 @end

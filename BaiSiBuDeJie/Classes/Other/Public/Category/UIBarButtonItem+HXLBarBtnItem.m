@@ -57,7 +57,6 @@
     [btn addTarget:target action:action forControlEvents:controlEvents];
     btn.contentEdgeInsets = contentEdgeInsets;
     [btn sizeToFit];
-    btn.contentEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0);
     // 消除按钮监听点击范围过大的 bug;
     // custom view控件
     UIView *btnView = [[UIView alloc] initWithFrame:btn.bounds];

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HXLMineViewController : UIViewController
+@interface HXLMineViewController : UITableViewController
 
 @end

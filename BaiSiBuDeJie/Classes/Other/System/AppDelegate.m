@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "HXLTabBarController.h"
+#import "HXLPushGuideView.h"
 
 @interface AppDelegate ()
 
@@ -24,6 +25,8 @@
     
     self.window.rootViewController = hxlTabVC;
     [self.window makeKeyAndVisible];
+    // 添加引导页
+    [HXLPushGuideView show];
     
     return YES;
 }
