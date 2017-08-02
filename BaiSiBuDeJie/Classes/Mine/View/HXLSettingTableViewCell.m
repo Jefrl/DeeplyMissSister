@@ -52,14 +52,14 @@
         UISwitch *sw = [[UISwitch alloc] init];
         sw.on = self.isOpaque;
         self.accessoryView = sw;
-        NSLogTest;
+        
     } else if ([self.settingItem isKindOfClass:[HXLSettingArrowItem class]] ) {
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         NSLogTest;
     } else { // 其他没有附件控件的要清空, 由于有循环使用;
         self.accessoryView = nil;
         self.accessoryType = UITableViewCellAccessoryNone;
-        NSLogTest;
+        
     }
 }
 

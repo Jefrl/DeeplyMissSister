@@ -43,9 +43,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    HXLSettingGroupItem *group = (section == 0) ? self.groupBaseArray[0] : self.groupBaseArray[1];
-    return group.settingItemArray.count;
+    NSArray *item = [self.groupBaseArray[section] settingItemArray];
+    return item.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -53,7 +52,7 @@
     HXLSettingTableViewCell *cell = [HXLSettingTableViewCell cellWithTableView: tableView];
     cell.textLabel.font = FONT_14;
     
-    HXLSettingGroupItem *group = (indexPath.section == 0) ? self.groupBaseArray[0] : self.groupBaseArray[1];
+    HXLSettingGroupItem *group = self.groupBaseArray[indexPath.section];
     HXLSettingSwitchItem *item = group.settingItemArray[indexPath.row];
     
     cell.settingItem = item;
@@ -84,7 +83,7 @@
         UIViewController *pushVC = nil;
         if (item.objectClass) { // 如果指定控制器
             pushVC  = [[item.objectClass alloc] init];
-        } else { // 否则统一暂不跳转
+        } else { // 否则统一不跳转
         }
         
         pushVC.title = item.title;

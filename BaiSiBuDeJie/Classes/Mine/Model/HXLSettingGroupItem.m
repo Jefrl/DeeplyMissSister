@@ -18,7 +18,7 @@
 
 + (instancetype)groupWithHeaderTitle:(NSString *)headerTitle footerTitle:(NSString *)footerTitle andSettingItemArray:(NSArray *)settingItemArray
 {
-    HXLSettingGroupItem *groupItem = [[HXLSettingGroupItem alloc] init];
+    HXLSettingGroupItem *groupItem = [[self alloc] init];
     groupItem.headerTitle = headerTitle;
     groupItem.footerTitle = footerTitle;
     groupItem.settingItemArray = settingItemArray;

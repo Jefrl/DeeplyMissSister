@@ -24,7 +24,7 @@
 
 + (instancetype)itemWithTitle:(NSString *)title icon:(NSString *)icon;
 
-///** 含有子标题的 cell 的设置 */
-//+ (instancetype)itemWithTitle:(NSString *)title detailTitle:(NSString *)detailTitle icon:(NSString *)icon;
+/** 含有子标题的 cell 的设置 */
++ (instancetype)itemWithTitle:(NSString *)title detailTitle:(NSString *)detailTitle icon:(NSString *)icon;
 
 @end

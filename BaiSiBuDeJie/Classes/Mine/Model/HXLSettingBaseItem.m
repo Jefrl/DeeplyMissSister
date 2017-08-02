@@ -17,5 +17,15 @@
     return settingItem;
 }
 
+/** 含有子标题的 cell 的设置 */
++ (instancetype)itemWithTitle:(NSString *)title detailTitle:(NSString *)detailTitle icon:(NSString *)icon
+{
+    HXLSettingBaseItem *settingItem = [[self alloc] init];
+    settingItem.title = title;
+    settingItem.icon = icon;
+    settingItem.detailTitle = detailTitle;
+    return settingItem;
+}
+
 
 @end
