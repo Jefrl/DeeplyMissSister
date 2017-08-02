@@ -46,7 +46,6 @@
     if (!_plusBtn) {
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.backgroundColor = GREEN_COLOR;
         [btn setImage:[UIImage imageNamed:@"tag_add_icon"]  forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(addTagButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -84,6 +83,7 @@
     [super layoutSubviews];
     // 标签布局;
     NSUInteger count = self.labelArrayM.count;
+    
     for (NSUInteger i =0 ; i<count; i++) {
         UILabel *tagLabel = self.labelArrayM[i];
         
@@ -111,18 +111,25 @@
     CGFloat rightWith = self.topView.width -leftWith;
     
     self.plusBtn.x = 0;
-    self.plusBtn.y = CGRectGetMaxY(lastTagLabel.frame) + DIY;
-    self.plusBtn.height = 3*essenceMargin_y;
+    self.plusBtn.y = CGRectGetMaxY(lastTagLabel.frame);
+    self.plusBtn.height = 3 * essenceMargin_y;
     
     if (50 <= rightWith) {
         self.plusBtn.x = CGRectGetMaxX(lastTagLabel.frame) + DIY;
         self.plusBtn.y = lastTagLabel.y;
     }
     
-    // xib 的整体高度 = topView.height + 40;
+    if (count == 0) {
+        self.plusBtn.x = 0;
+        self.plusBtn.y = 0;
+    }
+    
+    [self.plusBtn setBackgroundColor:CYAN_COLOR];
+    // xib 的整体高度 = topView.height + accessView.height; (ps: 定为40);
     CGFloat lastLabelHeight = CGRectGetMaxY(self.plusBtn.frame) + 40;
     self.height = lastLabelHeight;
-    
+    NSLog(@"%.2f----%@", self.height, NSStringFromCGRect(self.frame));
+    NSLog(@"%@", NSStringFromCGRect(self.topView.frame));
 }
 
 /** 添加标签 */
@@ -132,6 +139,7 @@
     [self.labelArrayM removeAllObjects];
     
     NSUInteger count = tagArray.count;
+    
     for (NSUInteger i = 0; i< count; i++) {
         UILabel *label = [[UILabel alloc] init];
         label.textColor = WHITE_COLOR;
@@ -158,10 +166,10 @@
         [self.textArrayM addObject:label.text];
         NSLog(@"%@", label);
     }
+    
     tagVC.textArray = self.textArrayM;
-    // 因为此时的 releasePun是新 modal 出来的导航控制器的根控制器, 所以不会释放, 当页面跳转进来时; 所以数组要主动清空, 不然标签会累加;
+    // 因为此时的 releasePun是新 modal 出来的导航控制器的根控制器, 所以不会释放, 属性数组也不会释放, 即使当标签页面跳转进来时;    // 所以数组要主动清空, 不然标签会累加;
     self.textArrayM = nil;
-    NSLog(@"%@", tagVC.textArray);
     
     // 设置逆传的回调
     HXL_WEAKSELF;
